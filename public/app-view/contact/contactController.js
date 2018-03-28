@@ -1,4 +1,4 @@
-app.controller('ContactController', ['$rootScope','$scope', '$location', function( $rootScope,$scope,$location ){
+app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpService', function( $rootScope,$scope,$location,HttpService ){
     var vm = this;
 
     vm.state = $rootScope.search.state;
@@ -30,4 +30,33 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', functio
             console.log("asdasdsa");
             $location.path('/search');
         };
+
+
+    $scope.notify = function () {
+        $rootScope.loading = true;
+        var data = {
+         "message": $scope.message + "\n\n Regards, \n\n" + $scope.name+"\n\n"+$scope.email ,
+            "subject": $scope.subject,
+            // "sender1": "healthyfling@gmail.com"
+            "sender1": "duttasubh2010@gmail.com"
+        };
+        HttpService.SendMail(data)
+        .then(function(response){
+            console.log(response);
+            if (response.success == '200' || response.success == '250') {
+                console.log("success");
+                $rootScope.loading = false;
+                alert("Your request has been received!"); 
+            }else{
+                // FlashService.Error(response.data.resultDescription);
+                vm.dataLoading = false;
+                $rootScope.loading = false;
+                alert("Your request has been received!"); 
+                $location.path('/');
+            };
+            
+        });    
+        
+    };
+
 }]);

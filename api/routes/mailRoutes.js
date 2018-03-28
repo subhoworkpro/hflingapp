@@ -16,11 +16,13 @@ module.exports = function(apiRoutes) {
     if (req.body) {
       var text = req.body.message;
 
+      var link = req.body.link || "";
+
       var mailOptions = {
           from: 'healthyfling@gmail.com', // sender address
           to: [req.body.sender1,req.body.sender2], // list of receivers
           subject: 'Healthy Fling: '+req.body.subject, // Subject line
-          text: "Greeting! \n\n"+text+"\n\n"+req.body.link
+          text: "Greeting! \n\n"+text+"\n\n"+link
           // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
       };
 
