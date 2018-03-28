@@ -61,7 +61,18 @@
         </div>
         <div class="gallery_det">
           <h2>{{message}}- {{age}}({{region}})</h2>
-          <a href="#" ng-click="$event.preventDefault();vm.notify();">Reply</a>
+          <div>
+            <a href="" ng-click="notify();">Reply</a>
+          </div>
+          <div class="row" ng-show="showEmail" >
+            <div class="col-md-7">
+              <div class="form-group">
+                <div class="col-md-9" style="padding: 0px;margin-bottom: 15px;">
+                  <input id="email" name="email" type="text" placeholder="Your email" class="form-control" ng-model="sender2">
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="gallery_slider clearfix">
               <div class="galery_full">
                   <img src="http://placehold.it/420" alt=""/>

@@ -7,6 +7,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     vm.category = $rootScope.search.category;
 
 
+
     var path = $location.path();
     var arr = path.split("/");
     var id = arr[arr.length-1];
@@ -56,26 +57,37 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $location.path('/search');
     };
 
-    vm.notify = function () {
+    $scope.notify = function () {
+        $scope.showEmail = true;
     	console.log("mail sent");
-    	var data = {
-    		"message": "Perfect match found for both of you.", 
-		    "subject": "We need to put in a subject",
-		    "sender1": $scope.sender1,
-		    "sender2": "duttasubh2010@gmail.com",
-		    "link": $location.$$absUrl
-    	};
-    	HttpService.SendMail(data)
-        .then(function(response){
-            if (response.success == '200') {
-                console.log("success");
-            }else{
-                // FlashService.Error(response.data.resultDescription);
-                vm.dataLoading = false;
-                $location.path('/');
+
+        if ($scope.showEmail && vm.sender2 && vm.sender2.length > 0) {
+            $rootScope.loading = true;
+            var data = {
+             "message": "Perfect match found for both of you.", 
+                "subject": "We need to put in a subject",
+                "sender1": $scope.sender1,
+                "sender2": $scope.sender2,
+                "link": $location.$$absUrl
             };
-            
-        });
+            HttpService.SendMail(data)
+            .then(function(response){
+                console.log(response);
+                if (response.success == '200' || response.success == '250') {
+                    console.log("success");
+                    $rootScope.loading = false;
+                    alert("Email has been sent to both the parties!"); 
+                }else{
+                    // FlashService.Error(response.data.resultDescription);
+                    vm.dataLoading = false;
+                    $rootScope.loading = false;
+                    alert("Email has been sent to both the parties!"); 
+                    $location.path('/');
+                };
+                
+            });    
+        }
+    	
     };
 
 
