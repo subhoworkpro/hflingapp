@@ -62,6 +62,8 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',function($rootScope,
         //         $location.path('/login');
         //     }
         // });
+
+        $rootScope.loading = false;
         $rootScope.adposts = {};
         $rootScope.search = {};
         $rootScope.search.state = "California";

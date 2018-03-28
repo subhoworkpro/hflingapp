@@ -13,10 +13,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
         $location.path('/post');
     };
 
-    vm.upload=function(){
-	    alert(vm.data.files.length+" files selected ... Write your Upload Code"); 
+ //    vm.upload=function(){
+	//     alert(vm.data.files.length+" files selected ... Write your Upload Code"); 
 	    
-	};
+	// };
 
 	vm.check=function(){
 		if (vm.data.files.length > 0) {
@@ -44,15 +44,18 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	};
 	vm.verifyemail = "";
     vm.addPost = function(){
-    	if (vm.data.files.length > 5) {
+    	if (vm.data.files && vm.data.files.length > 5) {
 	    	alert(vm.data.files.length+" files selected ... Max allowed files is 5."); 
 		}else{
+			$rootScope.loading = true;
 	    	 HttpService.AddPost(this.data)
 	        .then(function(response){
 	            if (response.data.resultDescription === 'SUCCESS') {
 	                console.log("success");
 	                $location.path('/search');
+	                $rootScope.loading = false;
 	            }else{
+	            	$rootScope.loading = false;
 	                // FlashService.Error(response.data.resultDescription);
 	                vm.dataLoading = false;
 	                $location.path('/');

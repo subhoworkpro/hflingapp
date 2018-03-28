@@ -1,6 +1,7 @@
 app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService', function( $rootScope,$scope,$location,HttpService ){
     var vm = this;
 
+    $rootScope.loading = true;
 
     $rootScope.adPosts = {};
     console.log("in SearchController");
@@ -45,10 +46,12 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
                 }
                 console.log("success");
                 $rootScope.refreshAds();
+                $rootScope.loading = false;
             }else{
                 // FlashService.Error(response.data.resultDescription);
                 vm.dataLoading = false;
                 $location.path('/');
+                $rootScope.loading = false;
             };
             
         });
@@ -83,6 +86,8 @@ app.controller("AdsController",['$scope','$rootScope','$location','HttpService',
   vm.region = $rootScope.search.region;
   vm.category = $rootScope.search.category;
 
+  $rootScope.loading = false;
+
   $rootScope.currentPost = {};
 
    $rootScope.viewDetail = function(data){
@@ -103,7 +108,9 @@ app.controller("AdsController",['$scope','$rootScope','$location','HttpService',
                 $rootScope.adPosts.data.push(response.data[i]);
             }
             console.log("success");
+            $rootScope.loading = false;
         }else{
+            $rootScope.loading = false;
             vm.dataLoading = false;
             $location.path('/');
         };

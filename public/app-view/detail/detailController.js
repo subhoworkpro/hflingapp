@@ -1,6 +1,7 @@
 app.controller('DetailController', ['$rootScope','$scope','$location','HttpService', function( $rootScope,$scope,$location,HttpService ){
     var vm = this;
 
+    $rootScope.loading = true;
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
@@ -16,7 +17,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 	    var arr = path.split("/");
 	    var id = arr[arr.length-1];
 	    $scope.id = id;
-
+        $rootScope.loading = true;
 	    HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);
@@ -28,7 +29,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
+                $rootScope.loading = false;
             }else{
+                $rootScope.loading = false;
                 vm.dataLoading = false;
                 $location.path('/');
             };
@@ -45,6 +48,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     };
 
     vm.search = function () {
+        $rootScope.loading = true;
     	$rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
