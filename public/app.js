@@ -106,8 +106,9 @@ app.directive('ngFileModel', ['$parse', function ($parse) {
                             // _file: item
                         };
                         console.log(value);
+                        values.push(value);
+                        console.log(values);
                     };
-                    values.push(value);
                     fileReader.readAsDataURL(item);
                     
                 });

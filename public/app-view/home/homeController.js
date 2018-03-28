@@ -19,6 +19,7 @@ app.controller('HomeController', ['$rootScope','$scope', '$location', function( 
         };
 
         vm.search = function () {
+            $rootScope.loading = true;
             console.log(this.state);
             $rootScope.search.state = this.state;
             $rootScope.search.region = this.region;

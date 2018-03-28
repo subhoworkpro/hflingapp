@@ -48,9 +48,20 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	    	alert(vm.data.files.length+" files selected ... Max allowed files is 5."); 
 		}else{
 			$rootScope.loading = true;
+            console.log(vm.data.files);
+			var postData = {
+				"state": this.data.state, 
+			    "region": this.data.region, 
+			    "category": this.data.category, 
+			    "location": this.data.location, 
+			    "age": this.data.age,
+			    "message": this.data.message, 
+			    "email": this.data.email
+			    // "images": vm.data.files
+			};
 	    	 HttpService.AddPost(this.data)
 	        .then(function(response){
-	            if (response.data.resultDescription === 'SUCCESS') {
+	            if (response.data.status === 'SUCCESS') {
 	                console.log("success");
 	                $location.path('/search');
 	                $rootScope.loading = false;

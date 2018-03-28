@@ -21,11 +21,34 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
         console.log("asdasdsa");
-        $location.path('/search');
+        this.reloadSearch();
     };
+
+    vm.reloadSearch = function(){
+        $rootScope.loading = true;
+        HttpService.GetPosts()
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $rootScope.adPosts.data = [];
+
+                for(var i = 0;i<response.data.length;i++){
+                    $rootScope.adPosts.data.push(response.data[i]);
+                }
+                console.log("success");
+                $rootScope.loading = false;
+            }else{
+                vm.dataLoading = false;
+                $location.path('/');
+                $rootScope.loading = false;
+            };
+            
+        });
+    }
 
     $scope.initController = function () {
         console.log("loading....");
+        $rootScope.loading = true;
         HttpService.GetPosts()
         .then(function(response){
             console.log(response);
@@ -86,7 +109,7 @@ app.controller("AdsController",['$scope','$rootScope','$location','HttpService',
   vm.region = $rootScope.search.region;
   vm.category = $rootScope.search.category;
 
-  $rootScope.loading = false;
+  $rootScope.loading = true;
 
   $rootScope.currentPost = {};
 
