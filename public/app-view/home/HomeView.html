@@ -1,0 +1,63 @@
+<!-- selection-section starts-->
+    <div class="select_sec" ng-controller = "HomeController" >
+      <div class="container">
+          <div class="select_inr">
+            <div class="select_item clearfix"> 
+                <div class="select_area">
+                  <select name="number" class="block" ng-model="vm.state" >
+                    <option ng-repeat="x in states" value="{{x}}">{{x}}</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions">
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category" ng-options="x for x in categories">
+                  </select>
+                </div>
+                <div class="select_sbt">
+                   <input type="submit" placeholder="Submit" ng-click ="vm.search()">
+                </div>
+            </div>
+            <div class="add_post post_bk">
+              <input type="submit" value="Post an AD" ng-click="vm.post()">
+            </div>
+          </div>
+      </div>  
+    </div>
+    <!-- selection-section ends-->
+
+    <!--- favourate-text -->
+    <section class="favourate_text">
+        <div class="container">
+          <div class="fav_hdr">
+            <h2>Your new favourite personals site!</h2>
+          </div>
+          <div class="fav_cnt">
+            <ul>
+              <li>
+                Create Personal Records              
+              </li>
+              <li>
+                Search and reply to personal ads            
+              </li>
+              <li>No accounts required ever!</li>
+            </ul>
+          </div>
+        </div>
+    </section>
+
+    <!--- favourate-text ends -->
+
+    <!--- disclamer-text -->
+    <section class="disclamer-text">
+      <div class="container">
+          <div class="dis_inr clearfix">
+            <span>Disclamer:</span>
+            <p>By either posting or browsing on Healthfiling.com, you confirm that you are at least 18 years of age, understand that this site may include adult content, and release Healthfiling.com from any liability related to your use of this site.</p>
+          </div>
+      </div>
+    </section>
+
+    <!--- disclamer-text ends -->

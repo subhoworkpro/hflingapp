@@ -1,0 +1,103 @@
+<!-- selection-section starts-->
+    <div class="select_sec" ng-controller = "DetailController" >
+      <div class="container">
+          <div class="select_inr">
+            <div class="select_item clearfix"> 
+                <div class="select_area">
+                  <select name="number" id="state" class="block" ng-model="vm.state">
+                    <option selected="selected">State</option>
+                    <option>California</option>
+                    <option>State2</option>
+                    <option>State3</option>
+                    <option>State4</option>
+                    <option>State5</option>
+                    <option>State6</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region">
+                    <option selected="selected">Region</option>
+                    <option>Los Angelas</option>
+                    <option>Region2</option>
+                    <option>Region3</option>
+                    <option>Region4</option>
+                    <option>Region5</option>
+                    <option>Region6</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category">
+                    <option selected="selected">Category</option>
+                    <option>Men Seeking Woman</option>
+                    <option>Category2</option>
+                    <option>Category3</option>
+                    <option>Category4</option>
+                    <option>Category5</option>
+                    <option>Category6</option>
+                  </select>
+                </div>
+                <div class="select_sbt">
+                   <input type="submit" placeholder="Submit" ng-click ="vm.search()">
+                </div>
+            </div>
+            <div class="add_post post_bk">
+              <input type="submit" value="Post an AD" ng-click="vm.post()">
+            </div>
+          </div>
+      </div>  
+    </div>
+    <!-- selection-section ends-->
+
+    <!-- gallery cnt-->
+
+    <div class="gallery_cnt" ng-controller = "DetailController" ng-init = "initController();"> 
+      <div class="container">
+         <div class="bread_cnt">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="#">{{vm.state}}</a></li>
+              <li class="breadcrumb-item"><a href="#">{{vm.region}}</a></li>
+               <li class="breadcrumb-item"><a href="#">{{vm.category}}</a></li>
+            </ol>
+        </div>
+        <div class="gallery_det">
+          <h2>{{message}}- {{age}}({{region}})</h2>
+          <a href="#" ng-click="$event.preventDefault();vm.notify();">Reply</a>
+          <div class="gallery_slider clearfix">
+              <div class="galery_full">
+                  <img src="http://placehold.it/420" alt=""/>
+              </div>
+              <div class="gallery_thumb">
+                <ul>
+                    <li>
+                      <a href="javascript:void(0)">
+                          <img src="http://placehold.it/80" alt=""/>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                          <img src="http://placehold.it/80" alt=""/>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                          <img src="http://placehold.it/80" alt=""/>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                          <img src="http://placehold.it/80" alt=""/>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:void(0)">
+                          <img src="http://placehold.it/80" alt=""/>
+                      </a>
+                    </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- gallery cnt ends-->

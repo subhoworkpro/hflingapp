@@ -1,0 +1,38 @@
+{
+  "name": "picasaapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subhoworkpro/picasaapp.git"
+  },
+  "keywords": [
+    "picasapp",
+    "nodejs"
+  ],
+  "author": "subhasish.workpro@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subhoworkpro/picasaapp/issues"
+  },
+  "homepage": "https://github.com/subhoworkpro/picasaapp#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cloudinary": "^1.9.1",
+    "crypto-js": "^3.1.9-1",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongoose": "^4.12.4",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.6.3",
+    "picasa": "^1.0.6"
+  }
+}

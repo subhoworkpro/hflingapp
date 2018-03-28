@@ -1,0 +1,157 @@
+<!-- selection-section starts-->
+    <div class="select_sec" ng-controller = "PostController" >
+      <div class="container">
+          <div class="select_inr">
+            <div class="select_item clearfix"> 
+                <div class="select_area">
+                  <select name="number" id="state" class="block" ng-model="vm.state">
+                    <option selected="selected">State</option>
+                    <option>California</option>
+                    <option>State2</option>
+                    <option>State3</option>
+                    <option>State4</option>
+                    <option>State5</option>
+                    <option>State6</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region">
+                    <option selected="selected">Region</option>
+                    <option>Los Angelas</option>
+                    <option>Region2</option>
+                    <option>Region3</option>
+                    <option>Region4</option>
+                    <option>Region5</option>
+                    <option>Region6</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category">
+                    <option selected="selected">Category</option>
+                    <option>Men Seeking Woman</option>
+                    <option>Category2</option>
+                    <option>Category3</option>
+                    <option>Category4</option>
+                    <option>Category5</option>
+                    <option>Category6</option>
+                  </select>
+                </div>
+                <div class="select_sbt">
+                   <input type="submit" placeholder="Submit" ng-click ="vm.search()">
+                </div>
+            </div>
+            <div class="add_post post_bk">
+              <input type="submit" value="Post an AD" ng-click="vm.upload();">
+            </div>
+          </div>
+      </div>  
+    </div>
+    <!-- selection-section ends-->
+
+   <!-- add_details -->
+   <section class="add_details">
+      <div class="container">
+          <div class="add_hdr">
+            <h2>Post an Ad</h2>
+          </div>
+          <div class="add_cnt">
+            <div class="add_note">
+              <p>* All posts will automatically delete after 48 hours</p>
+              <p>* Once you create a post, it <em>CAN NOT</em> be deleted untill it expires</p>
+            </div>
+          </div>
+          <div class="bio_sec">
+            <div class="bio_area">
+              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" required>
+                <option selected="selected">Select State</option>
+                <option>California</option>
+                <option>State2</option>
+                <option>State3</option>
+                <option>State4</option>
+                <option>State5</option>
+                <option>State6</option>
+              </select>
+            </div>
+            <div class="bio_area">
+              <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region">
+                <option selected="selected">Select Region</option>
+                <option>Los Angelas</option>
+                <option>Region2</option>
+                <option>Region3</option>
+                <option>Region4</option>
+                <option>Region5</option>
+                <option>Region6</option>
+              </select>
+            </div>
+            <div class="bio_area">
+              <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category">
+                <option selected="selected">Select Category</option>
+                <option>Men Seeking Woman</option>
+                <option>Category2</option>
+                <option>Category3</option>
+                <option>Category4</option>
+                <option>Category5</option>
+                <option>Category6</option>
+              </select>
+            </div>
+            <div class="bio_area">
+              <select name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.location">
+                <option selected="selected">Specific Location</option>
+                <option>Location1</option>
+                <option>Location2</option>
+                <option>Location3</option>
+                <option>Location4</option>
+                <option>Location5</option>
+                <option>Location6</option>
+              </select>
+            </div>
+            <div class="bio_area">
+              <select name="number" id="slct_age" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.age">
+                <option selected="selected">Age</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+              </select>
+            </div>
+
+            <div class="bio_area">
+              <textarea class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.message" id="message" name="message" placeholder="Please enter your message here..." rows="10" style = "width: 500px; text-align: left; height: 200px;"></textarea>
+            </div>
+
+            <div class="bio_area">
+              <input type="file" ng-file-model="vm.data.files" multiple />
+              <div style="margin-bottom: 20px;">
+                <div class='col-md-2' ng-repeat="file in vm.data.files" style="padding: 20px 0px;"><img class='img-responsive' src='http://placehold.it/100'></div>
+              </div>
+            </div>
+
+            <div class="bio_area" style="clear:both;">
+              <input id="email" name="email" type="email" placeholder="Your email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.email" style = "width: 300px; text-align: left;">
+            </div>
+
+            <div class="bio_area">
+              <input id="email" name="email" type="email" placeholder="Verify email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.verifyemail" style = "width: 300px; text-align: left;">
+            </div>
+            <div class="bio_area" style="margin-bottom: 15px;">
+              <p>By posting on Healthyfling.com you agree to the <a href="#">terms and conditions</a>, <a href="#">privacy policy</a> and <a href="#">Disclaimer</a> of this site.</p>
+            </div>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LfKURIUAAAAAO50vlwWZkyK_G2ywqE52NU7YO0S" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                <input class="form-control d-none hidden" data-recaptcha="true" required data-error="Please complete the Captcha">
+                <div class="help-block with-errors"></div>
+            </div>
+
+
+            <div class="bio_area" style=" width: 200px;">
+              <div class="post_bk">
+                <input type="submit" value="Post!" ng-click = "vm.addPost()">
+              </div>
+            </div>
+
+          </div>
+      </div>
+   </section>
+   <script src='https://www.google.com/recaptcha/api.js'></script>

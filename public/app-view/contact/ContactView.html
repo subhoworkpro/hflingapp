@@ -1,0 +1,104 @@
+<!-- selection-section starts-->
+    <div class="select_sec" ng-controller = "ContactController" >
+      <div class="container">
+          <div class="select_inr">
+            <div class="select_item clearfix"> 
+                <div class="select_area">
+                  <select name="number" id="state" class="block" ng-model="vm.state">
+                    <option selected="selected">State</option>
+                    <option>California</option>
+                    <option>State2</option>
+                    <option>State3</option>
+                    <option>State4</option>
+                    <option>State5</option>
+                    <option>State6</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region">
+                    <option selected="selected">Region</option>
+                    <option>Los Angelas</option>
+                    <option>Region2</option>
+                    <option>Region3</option>
+                    <option>Region4</option>
+                    <option>Region5</option>
+                    <option>Region6</option>
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category">
+                    <option selected="selected">Category</option>
+                    <option>Men Seeking Woman</option>
+                    <option>Category2</option>
+                    <option>Category3</option>
+                    <option>Category4</option>
+                    <option>Category5</option>
+                    <option>Category6</option>
+                  </select>
+                </div>
+                <div class="select_sbt">
+                   <input type="submit" placeholder="Submit" ng-click ="vm.search()">
+                </div>
+            </div>
+            <div class="add_post post_bk">
+              <input type="submit" value="Post an AD" ng-click="vm.post()">
+            </div>
+          </div>
+      </div>  
+    </div>
+    <!-- selection-section ends-->
+
+   <!-- add_details -->
+   <section class="add_details">
+      <div class="container">
+          <div class="add_hdr">
+            <h2>Contact</h2>
+          </div>
+          <div class="bio_sec">
+            <div class="col-md-7">
+                    <form class="form-horizontal" action="" method="post">
+              
+                      <!-- Name input-->
+                      <div class="form-group">
+                        <label class="col-md-3 control-label" for="name">Name</label>
+                        <div class="col-md-9">
+                          <input id="name" name="name" type="text" placeholder="Your name" class="form-control">
+                        </div>
+                      </div>
+              
+                      <!-- Email input-->
+                      <div class="form-group">
+                        <label class="col-md-3 control-label" for="email">E-mail</label>
+                        <div class="col-md-9">
+                          <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                        </div>
+                      </div>
+
+                      <!-- Email input-->
+                      <div class="form-group">
+                        <label class="col-md-3 control-label" for="email">Subject</label>
+                        <div class="col-md-9">
+                          <input id="email" name="email" type="text" placeholder="Your email" class="form-control">
+                        </div>
+                      </div>
+              
+                      <!-- Message body -->
+                      <div class="form-group">
+                        <label class="col-md-3 control-label" for="message">Body</label>
+                        <div class="col-md-9">
+                          <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                        </div>
+                      </div>
+              
+                      <!-- Form actions -->
+                      <div class="form-group">
+                        <div class="col-md-12 text-right">
+                          <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+            </div>
+
+          </div>
+      </div>
+   </section>

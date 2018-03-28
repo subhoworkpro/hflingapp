@@ -1,0 +1,14 @@
+To start server:
+
+cd /home/intellir/api.intelliriolabs.com/picasaapp
+nohup node server.js &
+
+To Stop server:
+
+pkill node
+
+
+Connect to server:
+
+ssh -p 7822 intellir@intelliriolabs.com
+0bZdd47y0Y
