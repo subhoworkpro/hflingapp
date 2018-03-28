@@ -4,7 +4,7 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
         service.AddPost = function (data) {
             console.log(data);
             var serializeData = JSON.stringify(data);
-            var url = "http://localhost:8000/api/posts";
+            var url = "/api/posts";
             var config = {
                 headers : {
                     'Content-Type': 'application/json; charset=utf-8',
@@ -18,7 +18,7 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
         service.SendMail = function (data) {
             console.log(data);
             var serializeData = JSON.stringify(data);
-            var url = "http://localhost:8000/api/sendMail";
+            var url = "/api/sendMail";
             var config = {
                 headers : {
                     'Content-Type': 'application/json; charset=utf-8',
@@ -39,7 +39,7 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
             if($rootScope.search.category == "Category"){
                 $rootScope.search.category = "Men Seeking Woman";
             }
-            var url = "http://localhost:8000/api/posts?state="+$rootScope.search.state+"&region="+$rootScope.search.region+"&category="+$rootScope.search.category;
+            var url = "/api/posts?state="+$rootScope.search.state+"&region="+$rootScope.search.region+"&category="+$rootScope.search.category;
              return $http({
                         url: url,
                         method: "GET",
@@ -50,7 +50,7 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
         };
 
         service.GetAPost = function (id) {
-            var url = "http://localhost:8000/api/posts/"+id;
+            var url = "/api/posts/"+id;
              return $http({
                         url: url,
                         method: "GET",
