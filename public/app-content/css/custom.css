@@ -574,3 +574,128 @@ select {
 }
 
 /*** 28-03-18 ***/
+
+
+/**** reply ****/
+
+.reply_popup.modal-header{
+    padding: 0;
+}
+.reply_popup{
+    cursor: default;
+    margin: 150px auto;
+}
+
+.reply_popup .modal-header{
+    position: relative;
+    border: 0;
+    padding: 15px 15px 0;
+}
+
+.reply_popup .close{
+    opacity: 1;
+}
+
+.reply_popup .close span{
+    border: 2px solid #e40b00;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    color: #e40b00;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 26px;
+    z-index: 5;
+}
+
+.reply_popup .close:hover span{
+    color: #000;
+    border-color: #000;
+}
+
+.book_subscribe {
+    padding: 20px;
+    position: relative;
+}
+
+.input_box {
+    color: #000;
+    font-size: 22px;
+    float: left;
+    padding: 0 20px;
+    height: 46px;
+    border: 1px solid #063456;
+    margin-bottom: 20px;
+}
+
+input[type="submit"].cus_btn {
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    background-color: #063456;
+    border: 1px solid #063456;
+    float: right;
+    width: 141px;
+    line-height: 34px;
+    margin-top: 10px;
+}
+
+input[type="submit"].cus_btn {
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+    background-color: #063456;
+    border: 1px solid #063456;
+}
+
+.input_area{   
+    color: #000;
+    font-size: 22px;
+    width: 100%;
+    padding: 20px;
+    height: 46px;
+    border: 1px solid #063456;
+    resize: vertical;;
+    height: 195px;
+}
+
+.input_box:focus,
+.input_area:focus{
+    border-color: #e40b00;
+}
+
+input[type="submit"].cus_btn:hover {
+    background-color: #fb0007;
+    border-color: #fb0007;
+}
+
+/**** reply ends ****/
+
+
+/*--loader--*/
+#preloader {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    height: 100%;
+    width: 100%;
+    background-color:#f3f8f9;
+    z-index:999; 
+}
+
+#status {
+    width: 120px;
+    position: absolute;
+    left: 50%; 
+    top: 50%; 
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+
+/*--end loader--*/
