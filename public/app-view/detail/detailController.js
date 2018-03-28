@@ -61,7 +61,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.showEmail = true;
     	console.log("mail sent");
 
-        if ($scope.showEmail && vm.sender2 && vm.sender2.length > 0) {
+        if ($scope.showEmail && $scope.sender2 && $scope.sender2.length > 0) {
             $rootScope.loading = true;
             var data = {
              "message": "Perfect match found for both of you.", 
