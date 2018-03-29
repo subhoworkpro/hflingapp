@@ -76,7 +76,7 @@
           </div>
           <div class="bio_sec">
             <div class="bio_area">
-              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in states" required>
+              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" required>
               </select>
             </div>
             <div class="bio_area">
