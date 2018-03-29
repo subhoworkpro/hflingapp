@@ -30,16 +30,24 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
 
         service.GetPosts = function () {
 
-            if($rootScope.search.state == "State"){
-                $rootScope.search.state = "California";
+            var params = "";
+
+            if($rootScope.search.state == "State" || $rootScope.search.state == ""){
+                $rootScope.search.state = "";
+            }else{
+                params = params + "state="+$rootScope.search.state;
             }
-            if($rootScope.search.region == "Region"){
-                $rootScope.search.region = "Los Angelas";
+            if($rootScope.search.region == "Region" || $rootScope.search.region == ""){
+                $rootScope.search.region = "";
+            }else{
+                params = params + "&region="+$rootScope.search.region;
             }
-            if($rootScope.search.category == "Category"){
-                $rootScope.search.category = "Men Seeking Woman";
+            if($rootScope.search.category == "Category" || $rootScope.search.category == ""){
+                $rootScope.search.category = "";
+            }else{
+                params = params + "&category="+$rootScope.search.category;
             }
-            var url = "/api/posts?state="+$rootScope.search.state+"&region="+$rootScope.search.region+"&category="+$rootScope.search.category;
+            var url = "/api/posts?"+params;
              return $http({
                         url: url,
                         method: "GET",

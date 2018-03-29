@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap' ]);
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularMoment' ]);
 
 
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
@@ -67,7 +67,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',function($rootScope,
         $rootScope.adposts = {};
         $rootScope.search = {};
         $rootScope.search.state = "California";
-        $rootScope.search.region = "Los Angelas";
+        $rootScope.search.region = "LOS ANGELES";
         $rootScope.search.category = "Men Seeking Woman";
 
         $rootScope.currentPost = {};

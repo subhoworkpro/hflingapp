@@ -80,7 +80,7 @@
                     </a>
                     <div class="text_right">
                       <p><h4><a href="javascript:void(0)" ng-click="viewDetail(item)" >{{item.body}} - {{item.age}} ({{item.location}})</a></h4><p>
-                      <p>2 min ago</p>
+                      <p><time am-time-ago="item.created"></time></p>
                     </div>
                 </li>
             </ul>

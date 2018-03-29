@@ -20,7 +20,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     vm.pageSize = 10;
 
     vm.state = $rootScope.search.state;
-    vm.region = "$rootScope.search.region";
+    vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
 
      vm.post = function () {
@@ -47,6 +47,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
                     $rootScope.adPosts.data.push(response.data[i]);
                 }
                 console.log("success");
+                $rootScope.refreshAds();
                 $rootScope.loading = false;
             }else{
                 vm.dataLoading = false;
@@ -151,9 +152,9 @@ app.controller("AdsController",['$scope','$rootScope','$location','HttpService',
         
     });
 
-    if($rootScope.adPosts.data){
+    // if($rootScope.adPosts.data){
         $scope.data = $rootScope.adPosts.data.reverse();    
-    }
+    // }
     
   }
 
