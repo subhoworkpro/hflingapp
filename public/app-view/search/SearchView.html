@@ -8,7 +8,7 @@
                   </select>
                 </div>
                 <div class="select_area">
-                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions">
+                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions" ng-init="vm.region = vm.region || 'Region'">
                   </select>
                 </div>
                 <div class="select_area">

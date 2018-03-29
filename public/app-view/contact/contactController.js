@@ -19,9 +19,9 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
         $scope.regions.unshift("Region");
    };
 
-    vm.state = $rootScope.search.state;
-    vm.region = $rootScope.search.region;
-    vm.category = $rootScope.search.category;
+    // vm.state = $rootScope.search.state;
+    // vm.region = $rootScope.search.region;
+    // vm.category = $rootScope.search.category;
 
     vm.post = function () {
         $location.path('/post');
