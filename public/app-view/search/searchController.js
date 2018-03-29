@@ -1,6 +1,17 @@
 app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService', function( $rootScope,$scope,$location,HttpService ){
     var vm = this;
 
+    $scope.states = $rootScope.stateList;
+    $scope.regions = $rootScope.regionList;
+    $scope.categories = $rootScope.categoryList;
+
+    $scope.changeListInCtrl = function(data){
+        $rootScope.regionList = $rootScope.masterList[data];
+        console.log("list updated:"+data);
+        $scope.regions = $rootScope.regionList
+        $scope.regions.unshift("Region");
+   };
+
     $rootScope.loading = true;
 
     $rootScope.adPosts = {};
@@ -9,7 +20,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     vm.pageSize = 10;
 
     vm.state = $rootScope.search.state;
-    vm.region = $rootScope.search.region;
+    vm.region = "$rootScope.search.region";
     vm.category = $rootScope.search.category;
 
      vm.post = function () {

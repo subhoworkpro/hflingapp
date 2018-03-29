@@ -1,9 +1,21 @@
 app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpService', function( $rootScope,$scope,$location,HttpService ){
     var vm = this;
 
+    $scope.states = $rootScope.stateList;
+    $scope.regions = $rootScope.regionList;
+    $scope.categories = $rootScope.categoryList;
+
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
+
+    $scope.changeListInCtrl = function(data){
+        $rootScope.regionList = $rootScope.masterList[data];
+        console.log("list updated:"+data);
+        $scope.regions = $rootScope.regionList
+        $scope.regions.unshift("Region");
+   };
+
 
     vm.files = []; 
 
@@ -34,10 +46,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     };
 
     vm.data = {
-	  	"state": "Select State", 
-	    "region": "Select Region",
-	    "category": "Select Category",
-	    "location": "Specific Location", 
+	  	"state": "State", 
+	    "region": "Region",
+	    "category": "Category",
+	    "location": "", 
 	    "age": 19,
 	    "message": "Post your add here",
 	    "email": ""

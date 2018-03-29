@@ -3,7 +3,19 @@
       <div class="container">
           <div class="select_inr">
             <div class="select_item clearfix"> 
+              <div class="select_area">
+                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);">
+                  </select>
+                </div>
                 <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions">
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category" ng-options="x for x in categories">
+                  </select>
+                </div>
+               <!--  <div class="select_area">
                   <select name="number" id="state" class="block" ng-model="vm.state">
                     <option selected="selected">State</option>
                     <option>California</option>
@@ -35,7 +47,7 @@
                     <option>Category5</option>
                     <option>Category6</option>
                   </select>
-                </div>
+                </div> -->
                 <div class="select_sbt">
                    <input type="submit" placeholder="Submit" ng-click ="vm.search()">
                 </div>

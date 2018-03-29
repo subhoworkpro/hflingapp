@@ -3,7 +3,21 @@
       <div class="container">
           <div class="select_inr">
             <div class="select_item clearfix"> 
+
                 <div class="select_area">
+                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);">
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions">
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category" ng-options="x for x in categories">
+                  </select>
+                </div>
+
+                <!-- <div class="select_area">
                   <select name="number" id="state" class="block" ng-model="vm.state">
                     <option selected="selected">State</option>
                     <option>California</option>
@@ -35,7 +49,7 @@
                     <option>Category5</option>
                     <option>Category6</option>
                   </select>
-                </div>
+                </div> -->
                 <div class="select_sbt">
                    <input type="submit" placeholder="Submit" ng-click ="vm.search()">
                 </div>
@@ -62,58 +76,25 @@
           </div>
           <div class="bio_sec">
             <div class="bio_area">
-              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" required>
-                <option selected="selected">Select State</option>
-                <option>California</option>
-                <option>State2</option>
-                <option>State3</option>
-                <option>State4</option>
-                <option>State5</option>
-                <option>State6</option>
+              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in states" required>
               </select>
             </div>
             <div class="bio_area">
-              <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region">
-                <option selected="selected">Select Region</option>
-                <option>Los Angelas</option>
-                <option>Region2</option>
-                <option>Region3</option>
-                <option>Region4</option>
-                <option>Region5</option>
-                <option>Region6</option>
+              <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region" ng-options="x for x in regions">
               </select>
             </div>
             <div class="bio_area">
-              <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category">
-                <option selected="selected">Select Category</option>
-                <option>Men Seeking Woman</option>
-                <option>Category2</option>
-                <option>Category3</option>
-                <option>Category4</option>
-                <option>Category5</option>
-                <option>Category6</option>
+              <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category" ng-options="x for x in categories">
               </select>
             </div>
             <div class="bio_area">
-              <select name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.location">
-                <option selected="selected">Specific Location</option>
-                <option>Location1</option>
-                <option>Location2</option>
-                <option>Location3</option>
-                <option>Location4</option>
-                <option>Location5</option>
-                <option>Location6</option>
-              </select>
+              <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.location" placeholder="LOCATION" style="text-align:left;">
+              </input>
             </div>
             <div class="bio_area">
               <select name="number" id="slct_age" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.age">
                 <option selected="selected">Age</option>
-                <option>18</option>
-                <option>19</option>
-                <option>20</option>
-                <option>21</option>
-                <option>22</option>
-                <option>23</option>
+                <option ng-repeat="n in [] | range:42">{{$index + 18}}</option>
               </select>
             </div>
 
