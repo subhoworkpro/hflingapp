@@ -46,7 +46,7 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 
 
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http',function($rootScope, $location, $cookieStore, $http){
+app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($rootScope, $location, $cookieStore, $http,$route ){
 
        // keep user logged in after page refresh
         // $rootScope.globals = $cookieStore.get('globals') || {};
@@ -54,14 +54,24 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',function($rootScope,
         //     $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         // }
 
-        // $rootScope.$on('$locationChangeStart', function (event, next, current) {
-        //     // redirect to login page if not logged in and trying to access a restricted page
-        //     var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
-        //     var loggedIn = $rootScope.globals.currentUser;
-        //     if (restrictedPage && !loggedIn) {
-        //         $location.path('/login');
-        //     }
-        // });
+
+        $rootScope.$on('$locationChangeStart', function (event, next, current) {
+            // redirect to login page if not logged in and trying to access a restricted page
+            // var restrictedPage = $.inArray($location.path(), ['/login']) === -1;
+            // var loggedIn = $rootScope.globals.currentUser;
+            // if (restrictedPage && !loggedIn) {
+            //     $location.path('/login');
+            // }
+            console.log($location.path());
+            if($location.path().indexOf("/detail") !== -1){
+                $http.get("/data.json")
+                .success(function (data) {
+                    $rootScope.masterList = data;
+                    $route.reload();
+                    console.log("reload");
+                });
+            }
+        });
 
         $rootScope.loading = false;
         $rootScope.adposts = {};

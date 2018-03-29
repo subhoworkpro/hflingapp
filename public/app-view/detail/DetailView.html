@@ -4,15 +4,15 @@
           <div class="select_inr">
             <div class="select_item clearfix"> 
                 <div class="select_area">
-                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);">
+                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" ng-init="vm.state = vm.state || 'State'">
                   </select>
                 </div>
                 <div class="select_area">
-                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions">
+                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions" ng-init="vm.region = vm.region || 'Region'">
                   </select>
                 </div>
                 <div class="select_area">
-                  <select name="number" id="category" class="block" ng-model="vm.category" ng-options="x for x in categories">
+                  <select name="number" id="category" class="block" ng-model="vm.category" ng-options="x for x in categories" ng-init="vm.category = vm.category || 'Category'">
                   </select>
                 </div>
                 <!-- <div class="select_area">
@@ -66,9 +66,9 @@
       <div class="container">
          <div class="bread_cnt">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item" ng-if ="vm.state"><a href="#">{{vm.state}}</a></li>
-              <li class="breadcrumb-item" ng-if ="vm.region"><a href="#">{{vm.region}}</a></li>
-               <li class="breadcrumb-item" ng-if ="vm.category"><a href="#">{{vm.category}}</a></li>
+              <li class="breadcrumb-item" ng-if ="state"><a href="">{{state}}</a></li>
+              <li class="breadcrumb-item" ng-if ="region"><a href="">{{region}}</a></li>
+               <li class="breadcrumb-item" ng-if ="category"><a href="">{{category}}</a></li>
             </ol>
         </div>
         <div class="gallery_det">

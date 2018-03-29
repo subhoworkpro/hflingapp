@@ -28,9 +28,9 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     };
 
     vm.search = function () {
-        $rootScope.search.state = this.state;
-        $rootScope.search.region = this.region;
-        $rootScope.search.category = this.category;
+        $rootScope.search.state = vm.state;
+        $rootScope.search.region = vm.region;
+        $rootScope.search.category = vm.category;
         console.log("asdasdsa");
         this.reloadSearch();
     };

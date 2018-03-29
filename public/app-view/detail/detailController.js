@@ -1,10 +1,10 @@
-app.controller('DetailController', ['$rootScope','$scope','$location','HttpService', function( $rootScope,$scope,$location,HttpService ){
+app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route', function( $rootScope,$scope,$location,HttpService,$http,$route){
     var vm = this;
 
     $rootScope.loading = true;
 
     $scope.states = $rootScope.stateList;
-    $scope.regions = $rootScope.regionList;
+    $scope.regions = $rootScope.regionList || ["REGION"];
     $scope.categories = $rootScope.categoryList;
 
     $scope.changeListInCtrl = function(data){
@@ -25,7 +25,17 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     var id = arr[arr.length-1];
     $scope.id = id;
 
+
     $scope.initController = function () {
+
+        $http.get("/data.json")
+        .success(function (data) {
+            $rootScope.masterList = data;
+        })
+
+        vm.state = $rootScope.search.state;
+        vm.region = $rootScope.search.region;
+        vm.category = $rootScope.search.category;
 	    var	path = $location.path();
 	    var arr = path.split("/");
 	    var id = arr[arr.length-1];
@@ -37,11 +47,18 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             if (response.status == '200') {
                 $rootScope.currentPost.data = response.data;
 
+                $rootScope.regionList = $rootScope.masterList[response.data.state];
+                $scope.regions = $rootScope.regionList;
                 console.log("success");
+                vm.state = response.data.state;
+                vm.region = response.data.region;
+                vm.category = response.data.category;
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
+                $scope.state = $rootScope.currentPost.data.state;
+                $scope.category = $rootScope.currentPost.data.category;
                 $rootScope.loading = false;
             }else{
                 $rootScope.loading = false;
