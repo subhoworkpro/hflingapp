@@ -71,7 +71,7 @@ exports.read_all_posts = function(req, res) {
   var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
   var query_params = url.parse(req.url,true).query; 
-  query_params.created = {$lt : deletionDate};
+  query_params.created = {$gt : deletionDate};
   var query = {
     state : 'STATE1'
   };  

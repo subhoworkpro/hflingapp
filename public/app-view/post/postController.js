@@ -55,7 +55,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	    "category": "Category",
 	    "location": "", 
 	    "age": "",
-	    "message": "Post your add here",
+	    "message": "",
 	    "email": ""
 	};
 	vm.verifyemail = "";
