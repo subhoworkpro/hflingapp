@@ -6,9 +6,9 @@ var url  = require('url');
 
 
 cloudinary.config({ 
-  cloud_name: 'intellirio-consultancy-and-labs-llp', 
-  api_key: '579673852831583', 
-  api_secret: 'BCArjT98AV1jmrSwL45DNnlK_DE' 
+  cloud_name: 'dtrj5hqdm', 
+  api_key: '415183322599141', 
+  api_secret: 'LUhuCC5Iw5V3hizFzPFdztazwLI' 
 });
 
 
@@ -19,15 +19,14 @@ exports.list_all_images = function(req, res) {
 };
 
 exports.uploadimages = function(req, res) {
-
+	console.log(req.body);
 	cloudinary.v2.uploader.upload(req.body.url, function(error, result) {
-		console.log(result)
-		res.json(error);
+		if (result) {
+			res.json(result);
+		}else{
+			res.json(error);
+		}
 	});
-
-	// cloudinary.v2.api.resources(function(error, result){
-	// 	res.json(result.resources);
-	// });
 };
 
 

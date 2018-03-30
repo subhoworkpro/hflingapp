@@ -74,6 +74,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($
         });
 
         $rootScope.loading = false;
+        $rootScope.loadingImage = false;
         $rootScope.adposts = {};
         $rootScope.search = {};
         $rootScope.search.state = "California";
@@ -103,7 +104,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($
 }]); 
 
 
-app.directive('ngFileModel', ['$parse', function ($parse) {
+app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$http,$rootScope) {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
@@ -111,6 +112,7 @@ app.directive('ngFileModel', ['$parse', function ($parse) {
             var isMultiple = attrs.multiple;
             var modelSetter = model.assign;
             element.bind('change', function () {
+                $rootScope.loadingImage = true;
                 var values = [];
                 angular.forEach(element[0].files, function (item) {
                     var fileReader = new FileReader();
@@ -128,9 +130,17 @@ app.directive('ngFileModel', ['$parse', function ($parse) {
                             // _file: item
                         };
                         console.log(value);
+                        $http.post("/api/uploadimages",JSON.stringify(value), {'Content-Type': 'application/json; charset=utf-8','Authorization': undefined })
+                        .success(function (data) {
+                            console.log(data);
+                            values.push(data);
+                        })
+                        .error(function (data) {
+                            console.log("there was an error");
+                        });
+
                         // values.push(value);
                     };
-                    values.push(value);
                     fileReader.readAsDataURL(item);
                     
                 });

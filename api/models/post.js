@@ -14,8 +14,21 @@ module.exports = mongoose.model('Post', new Schema({
     email: String,
     files: [
         {
-            url: Buffer,
-        }
+            url: String,
+            public_id: String,
+            version: String,
+            signature: String,
+            width: String,
+            height: String,
+            format: String,
+            resource_type: String,
+            created_at: String,
+            bytes: String,
+            tags: [],
+            etag: String,
+            placeholder: String,
+            secure_url: String
+        }   
     ],
     created: { 
         type: Date,

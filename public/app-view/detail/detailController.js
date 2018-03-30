@@ -14,6 +14,10 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.regions.unshift("Region");
    };
 
+   $scope.changeMainImage = function(file){
+        $scope.mainImage = file.url;
+   }
+
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
@@ -41,6 +45,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 	    var id = arr[arr.length-1];
 	    $scope.id = id;
         $rootScope.loading = true;
+        $scope.mainImage = "http://placehold.it/710X420";
 	    HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);
@@ -53,13 +58,18 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 vm.state = response.data.state;
                 vm.region = response.data.region;
                 vm.category = response.data.category;
+                $scope.title = $rootScope.currentPost.data.title;
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
+                $scope.files = $rootScope.currentPost.data.files;
                 $rootScope.loading = false;
+                if($scope.files.length > 0){
+                    $scope.mainImage = $scope.files[0].url;
+                }
             }else{
                 $rootScope.loading = false;
                 vm.dataLoading = false;

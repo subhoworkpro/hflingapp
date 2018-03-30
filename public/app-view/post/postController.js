@@ -16,6 +16,9 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
         $scope.regions.unshift("Region");
    };
 
+   $scope.stopLoader = function(){
+		$rootScope.loadingImage = false;
+   };
 
     vm.files = []; 
 
@@ -75,9 +78,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			};
 	    	 HttpService.AddPost(this.data)
 	        .then(function(response){
-	            if (response.data.status === 'SUCCESS') {
+	            if (response.status == '200') {
 	                console.log("success");
-	                $location.path('/search');
+	                alert("Your ad has been posted successfully!"); 
+	                $location.path('/');
 	                $rootScope.loading = false;
 	            }else{
 	            	$rootScope.loading = false;

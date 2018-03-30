@@ -7,9 +7,9 @@ var url  = require('url');
 
 
 cloudinary.config({ 
-  cloud_name: 'intellirio-consultancy-and-labs-llp', 
-  api_key: '579673852831583', 
-  api_secret: 'BCArjT98AV1jmrSwL45DNnlK_DE' 
+  cloud_name: 'dtrj5hqdm', 
+  api_key: '415183322599141', 
+  api_secret: 'LUhuCC5Iw5V3hizFzPFdztazwLI' 
 });
 
 
@@ -45,7 +45,8 @@ exports.create_a_post = function(req, res) {
 				    location: req.body.location, 
 				    age: req.body.age,
 				    body: req.body.message,
-				    email: req.body.email
+				    email: req.body.email,
+            files: req.body.files
 	  			});
   new_post.save(function(err, post) {
     if (err)

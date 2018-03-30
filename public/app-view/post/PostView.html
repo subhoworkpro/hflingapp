@@ -107,7 +107,8 @@
             <div class="bio_area">
               <input type="file" ng-file-model="vm.data.files" multiple />
               <div style="margin-bottom: 20px;">
-                <div class='col-md-2' ng-repeat="file in vm.data.files" style="padding: 20px 0px;"><img class='img-responsive' src='http://placehold.it/100'></div>
+                <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
+                <div class='col-md-2' ng-repeat="file in vm.data.files" style="padding: 20px 0px;"><img style="padding: 5px;" class='img-responsive' src={{file.url}} ng-init = "stopLoader();"></div>
               </div>
             </div>
 
