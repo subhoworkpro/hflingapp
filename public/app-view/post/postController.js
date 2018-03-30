@@ -46,11 +46,12 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     };
 
     vm.data = {
+    	"title": "",
 	  	"state": "State", 
 	    "region": "Region",
 	    "category": "Category",
 	    "location": "", 
-	    "age": 19,
+	    "age": "",
 	    "message": "Post your add here",
 	    "email": ""
 	};
@@ -62,6 +63,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			$rootScope.loading = true;
             console.log(vm.data.files);
 			var postData = {
+				"title": this.data.title, 
 				"state": this.data.state, 
 			    "region": this.data.region, 
 			    "category": this.data.category, 

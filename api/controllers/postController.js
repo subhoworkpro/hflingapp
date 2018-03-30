@@ -38,6 +38,7 @@ exports.create_a_post = function(req, res) {
   console.log(req.body);
   console.log(req.body.state);	
   var new_post = new Post({
+            title: req.body.title,
   					state: req.body.state, 
 				    region: req.body.region,
 				    category: req.body.category,

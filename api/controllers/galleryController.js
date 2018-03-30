@@ -20,7 +20,7 @@ exports.list_all_images = function(req, res) {
 
 exports.uploadimages = function(req, res) {
 
-	cloudinary.v2.uploader.upload("blob:http://localhost:8000/9069f56f-e5c7-41b7-a55d-b9f32fcb933d", function(error, result) {
+	cloudinary.v2.uploader.upload(req.body.url, function(error, result) {
 		console.log(result)
 		res.json(error);
 	});
