@@ -65,10 +65,16 @@ exports.read_a_post = function(req, res) {
 };
 
 exports.read_all_posts = function(req, res) {
-  var query_params = url.parse(req.url,true).query;	
+
+  var date = new Date();
+  var daysToDeletion = 2;
+  var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+  var query_params = url.parse(req.url,true).query; 
+  query_params.created = {$lt : deletionDate};
   var query = {
-  	state : 'STATE1'
-  };	
+    state : 'STATE1'
+  };  
 
   console.log(query_params);
   Post.find(query_params, function (err, posts) {
