@@ -2,6 +2,16 @@
 
 var Post = require('../models/post');
 
+var nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'healthyfling@gmail.com', // Your email id
+        pass: 'photography88' // Your password
+    }
+});
+
 var cloudinary = require('cloudinary');
 var url  = require('url');
 
@@ -51,6 +61,24 @@ exports.create_a_post = function(req, res) {
   new_post.save(function(err, post) {
     if (err)
       res.send(err);
+
+    var mailBody = "Greeting! \n\n"+ "Your ad has been posted successfully" + "\n\n"+"http://healthyfling.com/#/detail/"+post['_id'];
+    var mailOptions = {
+        from: 'healthyfling@gmail.com',
+        to: post.email,
+        subject: "Healthy Fling: "+ post.title,
+        text: mailBody
+    };
+
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if(error){
+            console.log(error);
+        }else{
+            console.log('Message sent: ' + info.response);
+        };
+    });
+
     res.json(post);
   });
 };

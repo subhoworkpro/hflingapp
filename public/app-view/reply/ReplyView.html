@@ -1,0 +1,76 @@
+<!-- selection-section starts-->
+  <div class="select_sec" ng-controller = "ReplyController" >
+      <div class="container">
+          <div class="select_inr">
+            <div class="select_item clearfix"> 
+                <div class="select_area">
+                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" ng-init="vm.state = vm.state || 'State'">
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="region" class="block" ng-model="vm.region" ng-options="x for x in regions" ng-init="vm.region = vm.region || 'State'">
+                  </select>
+                </div>
+                <div class="select_area">
+                  <select name="number" id="category" class="block" ng-model="vm.category" ng-options="x for x in categories" ng-init="vm.category = vm.category || 'Category'">
+                  </select>
+                </div>
+                <div class="select_sbt">
+                   <input type="submit" placeholder="Submit" ng-click ="vm.search()">
+                </div>
+            </div>
+            <div class="add_post post_bk">
+              <input type="submit" value="Post an AD" ng-click="vm.post()">
+            </div>
+          </div>
+      </div>  
+    </div>
+    <!-- selection-section ends-->
+
+   <!-- add_details -->
+   <section class="add_details" ng-controller = "ReplyController" ng-init = "initController();">
+      <div class="container">
+          <div class="add_hdr">
+            <h2>Re: {{title || message}}- {{age}}({{region}})</h2>
+          </div>
+          <div class="bio_sec">
+            <div class="col-md-7">
+              <form class="form-horizontal" action="" method="post">
+        
+                <!-- Email input-->
+                <div class="form-group">
+                  <div class="col-md-9">
+                    <input id="email" name="email" type="text" placeholder="Your email" class="form-control" ng-model="email">
+                  </div>
+                </div>
+
+                <!-- Email input-->
+                <div class="form-group">
+                  <div class="col-md-9">
+                    <input id="email" name="email" type="text" placeholder="Confirm your email" class="form-control" ng-model="confirmemail">
+                  </div>
+                </div>
+        
+                <!-- Message body -->
+                <div class="form-group">
+                  <div class="col-md-9">
+                    <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" ng-model="replymessage"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-9" vc-recaptcha key="'6LdK608UAAAAAIIPni45gUqw9p_vn4mLa_CtlSlv'" ng-model="captcha"></div>
+                </div>
+        
+                <!-- Form actions -->
+                <div class="form-group">
+                  <div class="col-md-9 text-left">
+                    <button type="submit" class="btn btn-primary btn-lg" ng-click="notify();">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+          </div>
+      </div>
+   </section>

@@ -27,6 +27,18 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/reply', {
+            controller: 'ReplyController',
+            templateUrl: 'app-view/reply/ReplyView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/reply/:id', {
+            controller: 'ReplyController',
+            templateUrl: 'app-view/reply/ReplyView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/detail', {
             controller: 'DetailController',
             templateUrl: 'app-view/detail/DetailView.html',
