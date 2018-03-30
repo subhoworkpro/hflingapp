@@ -62,6 +62,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     vm.addPost = function(){
     	if (vm.data.files && vm.data.files.length > 5) {
 	    	alert(vm.data.files.length+" files selected ... Max allowed files is 5."); 
+		}else if (!vm.captcha){
+			alert("Please accept the terms and condition."); 
 		}else{
 			$rootScope.loading = true;
             console.log(vm.data.files);

@@ -79,7 +79,7 @@
                     <a href="#detail/{{item['_id']}}" class="result-image gallery"><img style="width: 50px;height:50px:max-width: 100;" alt="" class="thumb" src="{{item.files[0].url || 'http://placehold.it/50'}}">
                     </a>
                     <div class="text_right">
-                      <p><h4><a href="#detail/{{item['_id']}}" >{{item.title || item.body}} - {{item.age}} ({{item.location}})</a></h4><p>
+                      <p><h4><a href="#detail/{{item['_id']}}" >{{item.title || item.body}} - {{item.age}} ({{item.region}})</a></h4><p>
                       <p><time am-time-ago="item.created"></time></p>
                     </div>
                 </li>
