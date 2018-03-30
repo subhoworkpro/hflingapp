@@ -109,7 +109,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             $rootScope.loading = true;
             var data = {
                 "message": $scope.replymessage + "\n\n Thanks, \n\n",
-                "subject": "Re: "+$scope.title,
+                "subject": "Re: "+( $scope.title || $scope.message),
                 "sender1": $scope.sender1,
                 "sender2": $scope.email,
                 "link": $location.hostname+"/detail/"+$scope.id
