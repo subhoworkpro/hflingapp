@@ -56,13 +56,14 @@ exports.create_a_post = function(req, res) {
 				    age: req.body.age,
 				    body: req.body.message,
 				    email: req.body.email,
-            files: req.body.files
+            files: req.body.files,
+            status: "inactive"
 	  			});
   new_post.save(function(err, post) {
     if (err)
       res.send(err);
 
-    var mailBody = "Greeting! \n\n"+ "Your ad has been posted successfully" + "\n\n"+"http://healthyfling.com/#/detail/"+post['_id'];
+    var mailBody = "Greeting! \n\n"+ "Your ad has been posted successfully. \n\nPlease click on the below link to verify." + "\n"+"http://healthyfling.com/api/verifypost/"+post['_id']+"\n\n Regards, \n\n Healthyfling Team.";
     var mailOptions = {
         from: 'healthyfling@gmail.com',
         to: post.email,
@@ -92,6 +93,20 @@ exports.read_a_post = function(req, res) {
   });
 };
 
+exports.verifypost = function(req, res) {
+  Post.findById(req.params.postId, function(err, post) {
+    if (err)
+      res.send(err);
+    post.status = "active";
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+      res.redirect("/");
+      
+    });
+  });
+};
+
 exports.read_all_posts = function(req, res) {
 
   var date = new Date();
@@ -100,6 +115,7 @@ exports.read_all_posts = function(req, res) {
 
   var query_params = url.parse(req.url,true).query; 
   query_params.created = {$gt : deletionDate};
+  query_params.status = "active";
   var query = {
     state : 'STATE1'
   };  

@@ -12,6 +12,7 @@ module.exports = mongoose.model('Post', new Schema({
     age: Number,
     body: String,
     email: String,
+    status: String,
     files: [
         {
             url: String,

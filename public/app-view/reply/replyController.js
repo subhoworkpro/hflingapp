@@ -108,10 +108,9 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         }else{
             $rootScope.loading = true;
             var data = {
-                "message": $scope.replymessage +"\n\n"+ "Contact me @"+$scope.email+ "\n\n Thanks, \n\n",
+                "message": "You received a reply for your post: "+$location.absUrl().replace("reply","detail")+"\n\n Message Received:\n"+$scope.replymessage +"\n\n"+ "To connect with him/her please reply to: "+$scope.email+ "\n\n Regards, \n\nHealthyfling Team",
                 "subject": "Re: "+( $scope.title || $scope.message),
-                "sender1": $scope.sender1,
-                "link": $location.hostname+"/detail/"+$scope.id
+                "sender1": $scope.sender1
             };
             console.log(data);
             HttpService.SendMail(data)

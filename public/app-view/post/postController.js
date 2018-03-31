@@ -82,7 +82,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	        .then(function(response){
 	            if (response.status == '200') {
 	                console.log("success");
-	                alert("Your ad has been posted successfully!"); 
+	                alert("Your ad has been created. A verification mail will be sent shortly!"); 
 	                $location.path('/');
 	                $rootScope.loading = false;
 	            }else{
