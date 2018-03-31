@@ -117,12 +117,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 if (response.success == '200' || response.success == '250') {
                     console.log("success");
                     $rootScope.loading = false;
-                    alert("Email has been sent to both the parties!"); 
+                    alert("Email has been sent to the poster!"); 
                 }else{
                     // FlashService.Error(response.data.resultDescription);
                     vm.dataLoading = false;
                     $rootScope.loading = false;
-                    alert("Email has been sent to both the parties!"); 
+                    alert("Email has been sent to the poster!"); 
                     $location.path('/');
                 };
                 

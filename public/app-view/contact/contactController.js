@@ -53,10 +53,10 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
     $scope.notify = function () {
         $rootScope.loading = true;
         var data = {
-         "message": $scope.message + "\n\n Regards, \n\n" + $scope.name+"\n\n"+$scope.email ,
-            "subject": $scope.subject,
-            // "sender1": "healthyfling@gmail.com"
-            "sender1": "duttasubh2010@gmail.com"
+         "message": "Equiry Log: \n\n Name: "+$scope.name+"\nEnquiry: "+$scope.message+"\nEmail: "+$scope.email+"\n\n Regards, \n\n"+$scope.name,
+            "subject": "Received Request: "+$scope.subject,
+            "sender1": "healthyfling@gmail.com",
+            "from": $scope.email
         };
         HttpService.SendMail(data)
         .then(function(response){
