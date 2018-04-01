@@ -89,9 +89,9 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($
         $rootScope.loadingImage = false;
         $rootScope.adposts = {};
         $rootScope.search = {};
-        $rootScope.search.state = "California";
-        $rootScope.search.region = "LOS ANGELES";
-        $rootScope.search.category = "Men Seeking Woman";
+        $rootScope.search.state = "State";
+        $rootScope.search.region = "Region";
+        $rootScope.search.category = "Category";
 
         $rootScope.currentPost = {};
 
