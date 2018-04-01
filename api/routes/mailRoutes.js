@@ -18,13 +18,28 @@ module.exports = function(apiRoutes) {
 
       var link = req.body.link || "";
 
-      var mailOptions = {
-          from: 'healthyfling@gmail.com', // sender address
-          to: [req.body.sender1,req.body.sender2], // list of receivers
-          subject: 'Healthy Fling: '+req.body.subject, // Subject line
-          text: "Greeting! \n\n"+text+"\n\n"+link
-          // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-      };
+      var mailOptions = {};
+
+      if (req.body.htmlmessage) {
+        text = req.body.htmlmessage || req.body.message;
+        mailOptions = {
+            from: 'healthyfling@gmail.com', // sender address
+            to: [req.body.sender1,req.body.sender2], // list of receivers
+            subject: 'Healthy Fling: '+req.body.subject, // Subject line
+            html: "<b>Greeting!</b> <br/>"+text+"\n\n"+link
+            // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+        };
+      }else{
+
+        mailOptions = {
+            from: 'healthyfling@gmail.com', // sender address
+            to: [req.body.sender1,req.body.sender2], // list of receivers
+            subject: 'Healthy Fling: '+req.body.subject, // Subject line
+            text: "Greeting! \n\n"+text+"\n\n"+link
+            // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
+        };
+
+      }
 
 
       transporter.sendMail(mailOptions, function(error, info){

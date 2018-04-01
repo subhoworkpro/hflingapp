@@ -108,7 +108,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         }else{
             $rootScope.loading = true;
             var data = {
-                "message": "You received a reply for your post: "+$location.absUrl().replace("reply","detail")+"\n\n Message Received:\n"+$scope.replymessage +"\n\n"+ "To connect with him/her please reply to: "+$scope.email+ "\n\n Regards, \n\nHealthyfling Team",
+                "htmlmessage": "<p>"+$scope.replymessage +"</p><p>"+ $location.absUrl().replace("reply","detail")+"</p><p><a href='mailto:Hi@"+$scope.email+"?subject="+"Re: "+$scope.title+"'>Reply to this message</a> </p> Regards, <br/>Healthyfling Team",
                 "subject": "Re: "+( $scope.title || $scope.message),
                 "sender1": $scope.sender1
             };
@@ -119,12 +119,12 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 if (response.success == '200' || response.success == '250') {
                     console.log("success");
                     $rootScope.loading = false;
-                    alert("Email has been sent to both the parties!"); 
+                    alert("Email has been sent to the poster!"); 
                 }else{
                     // FlashService.Error(response.data.resultDescription);
                     vm.dataLoading = false;
                     $rootScope.loading = false;
-                    alert("Email has been sent to both the parties!"); 
+                    alert("Email has been sent to the poster!"); 
                     $location.path('/');
                 };
                 
