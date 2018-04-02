@@ -63,6 +63,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.region = $rootScope.currentPost.data.region;
+                $scope.location = $rootScope.currentPost.data.location;
                 $scope.sender1 = $rootScope.currentPost.data.email;
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;

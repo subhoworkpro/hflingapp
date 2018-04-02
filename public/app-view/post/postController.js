@@ -3,6 +3,9 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
+    if ($scope.regions && $scope.regions.indexOf("Region") == -1){
+	    $scope.regions.unshift("Region");
+	}
     $scope.categories = $rootScope.categoryList;
 
     vm.state = $rootScope.search.state;
@@ -62,6 +65,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     vm.addPost = function(){
     	if (vm.data.files && vm.data.files.length > 5) {
 	    	alert(vm.data.files.length+" files selected ... Max allowed files is 5."); 
+		}else if ((!vm.data.state ||vm.data.state == 'State')||(!vm.data.region ||vm.data.region == 'Region')||(!vm.data.category ||vm.data.category == 'Category')){
+			alert("Please Select, Region and Category."); 
+		}else if (!vm.data.title){
+			alert("Please enter title of the post."); 
 		}else if (!vm.captcha){
 			alert("Please accept the terms and condition."); 
 		}else{
