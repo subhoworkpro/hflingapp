@@ -12,6 +12,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
 
+    $rootScope.imageList = [];
+
     $scope.changeListInCtrl = function(data){
         $rootScope.regionList = $rootScope.masterList[data];
         console.log("list updated:"+data);
@@ -63,8 +65,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	};
 	vm.verifyemail = "";
     vm.addPost = function(){
-    	if (vm.data.files && vm.data.files.length > 5) {
-	    	alert(vm.data.files.length+" files selected ... Max allowed files is 5."); 
+    	if ($rootScope.imageList && $rootScope.imageList.length > 5) {
+	    	alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
 		}else if ((!vm.data.state ||vm.data.state == 'State')||(!vm.data.region ||vm.data.region == 'Region')||(!vm.data.category ||vm.data.category == 'Category')){
 			alert("Please Select, Region and Category."); 
 		}else if (!vm.data.title){
@@ -82,10 +84,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "location": this.data.location, 
 			    "age": this.data.age,
 			    "message": this.data.message, 
-			    "email": this.data.email
-			    // "images": vm.data.files
+			    "email": this.data.email,
+			    "files": $rootScope.imageList
 			};
-	    	 HttpService.AddPost(this.data)
+	    	 HttpService.AddPost(postData)
 	        .then(function(response){
 	            if (response.status == '200') {
 	                console.log("success");

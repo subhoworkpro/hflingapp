@@ -146,6 +146,8 @@ app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$h
                         .success(function (data) {
                             console.log(data);
                             values.push(data);
+                            $rootScope.imageList.push(data);
+                            console.log($rootScope.loadingImage);
                         })
                         .error(function (data) {
                             console.log("there was an error");
