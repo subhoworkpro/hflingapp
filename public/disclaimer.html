@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-    <html ng-app="app" lang="en">
+    <html lang="en">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Healthy Fling</title>
-        <link rel="icon" type="image/png" href="app-content/images/favicon.png" />
 
         <!--CSS-->
               
@@ -19,34 +18,55 @@
     </head>
 
     <body>
-
-    <!--loader-->
-    <div id="preloader" ng-show="loading"> 
-        <div id="status">
-            <span>
-                <img src="app-content/images/pre-loader.gif" alt="">
-            </span>
-        </div>
-    </div>
-    <!--end loader-->
       <!-- Header-section starts -->
     <header class="header_section">
         <div class="container">
             <div class="navbar_brand">
               <a href="/">
-                <img src="app-content/images/logo.png" alt=""/>
+                <img src="/app-content/images/logo.png" alt=""/>
               </a>
             </div>
         </div>
     </header>
     <!-- Header-section ends -->   
 
-    <div ng-view></div>
+   <section class="favourate_text">
+        <div class="container">
+          <div class="fav_hdr">
+            <h2>Your new favourite personals site!</h2>
+          </div>
+          <div class="fav_cnt">
+            <ul>
+              <li>
+                Create Personal Records              
+              </li>
+              <li>
+                Search and reply to personal ads            
+              </li>
+              <li>No accounts required ever!</li>
+            </ul>
+          </div>
+        </div>
+    </section>
+
+    <!--- favourate-text ends -->
+
+    <!--- disclamer-text -->
+    <section class="disclamer-text">
+      <div class="container">
+          <div class="dis_inr clearfix">
+            <span>Disclaimer:</span>
+            <p>By either posting or browsing on Healthfiling.com, you confirm that you are at least 18 years of age, understand that this site may include adult content, and release Healthfiling.com from any liability related to your use of this site.</p>
+          </div>
+      </div>
+    </section>
+
+    <!--- favourate-text ends -->
 
     
 
     <!-- footer section starts -->
-    <footer class="footer_section">
+    <footer class="footer_section" style="padding-top: 100px;">
       <div class="container">
         <div class="footer_nav">
           <ul>
@@ -66,12 +86,12 @@
                 </a>
               </li>
                <li>
-                <a href="#contact">
+                <a href="/#/contact">
                     Contact
                 </a>
               </li>
                <li>
-                <a href="#post">
+                <a href="/#/post">
                     Post an Ad
                 </a>
               </li>
@@ -85,40 +105,14 @@
 
 
     <!-- Scripts -->
-    <script src="app-lib/jquery-1.11.1.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
 
-    <script src="app-lib/jquery-2.1.4.js"></script>
-    
     <!--Plugins-->
-    <script src="app-lib/bootstrap.min.js"></script>
-    <script src="app-lib/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
 
     <!--Custom-->
-    <script src="app-lib/custom.js"></script>
-
-
-    <script src="app-lib/angular.js"></script>
-    <script src="app-lib/jquery-ui.js"></script>
-    <script src="app-lib/ui-bootstrap-tpls.min.js"></script>  
-    <script src="app-lib/angular-route.js"></script>
-    <script src="app-lib/angular-cookies.js"></script>
-    <script src="app-lib/moment.min.js"></script>
-    <script src="app-lib/angular-moment.min.js"></script>
-    <script src="app-lib/angular-recaptcha.min.js"></script>
-    
-    <script src="app.js"></script>
-
-    <script src="app-services/HttpService.js"></script>
-    
-    <script src="app-view/home/homeController.js"></script>
-    <script src="app-view/post/postController.js"></script>
-    <script src="app-view/search/searchController.js"></script>
-    <script src="app-view/contact/contactController.js"></script>
-    <script src="app-view/reply/replyController.js"></script>
-    <script src="app-view/detail/detailController.js"></script>
-
-
-
+    <script src="js/custom.js"></script>
     </body>
 
 </html>

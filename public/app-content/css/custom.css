@@ -699,3 +699,64 @@ input[type="submit"].cus_btn:hover {
 }
 
 /*--end loader--*/
+
+
+/**** 01-04-18 ****/
+
+.terms_section,
+.privacy_section{
+    padding: 50px 0;
+}
+.privacy_inr h1,
+.terms_inr h1{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 900;
+    text-decoration: underline;
+}
+
+.privacy_inr h3,
+.terms_inr h3{
+    font-size: 25px;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+.privacy_inr p,
+.terms_inr p{
+       font-size: 20px;
+    line-height: 45px;
+    margin-bottom: 50px;
+}
+
+
+.terms_note p{
+    font-weight: 700;
+}
+
+.terms_note span{
+    display: block;
+}
+
+
+/**** 01-04-18 ****/
+
+textarea::placeholder {
+  font-weight: 400; 
+}
+
+textarea::-webkit-input-placeholder {
+font-weight: 400; 
+}
+
+textarea:-moz-placeholder { /* Firefox 18- */
+font-weight: 400;   
+}
+
+textarea::-moz-placeholder {  /* Firefox 19+ */
+font-weight: 400;   
+}
+
+textarea:-ms-input-placeholder {
+font-weight: 400;   
+}
