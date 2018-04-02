@@ -31,7 +31,7 @@ body {
     overflow-x: hidden;
     -webkit-overflow-x: hidden;
     -moz-overflow-x: hidden;
-     font-family: "Times New Roman", Times, serif;
+     /*font-family: "Times New Roman", Times, serif;*/
     font-weight: 400; 
     font-size: 14px;
 }
@@ -689,3 +689,11 @@ input[type="submit"].cus_btn:hover {
 
 
 /**** 01-04-18 ****/
+
+.footer_nav li {
+    text-decoration: none !important;
+    line-height: 100%;
+}
+.footer_nav ul {
+    font-size: inherit !important;
+}
