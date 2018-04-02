@@ -3,6 +3,9 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
+    if ($scope.regions && $scope.regions.indexOf("Region") == -1){
+        $scope.regions.unshift("Region");
+    }
     $scope.categories = $rootScope.categoryList;
 
     $scope.changeListInCtrl = function(data){
