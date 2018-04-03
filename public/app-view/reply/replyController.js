@@ -59,9 +59,9 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             $rootScope.masterList = data;
         })
 
-        vm.state = $rootScope.search.state;
-        vm.region = $rootScope.search.region;
-        vm.category = $rootScope.search.category;
+        // vm.state = $rootScope.search.state;
+        // vm.region = $rootScope.search.region;
+        // vm.category = $rootScope.search.category;
         var path = $location.path();
         var arr = path.split("/");
         var id = arr[arr.length-1];
