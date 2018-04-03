@@ -84,6 +84,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 $scope.title = $rootScope.currentPost.data.title;
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;
+                $scope.location = $rootScope.currentPost.data.location;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
                 $scope.state = $rootScope.currentPost.data.state;
