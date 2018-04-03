@@ -31,7 +31,7 @@
    <section class="add_details" ng-controller = "ReplyController" ng-init = "initController();">
       <div class="container">
           <div class="add_hdr">
-            <h2>Re: {{title || message}}<span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
+            <h2>Re: {{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
           </div>
           <div class="bio_sec">
             <div class="col-md-7">
