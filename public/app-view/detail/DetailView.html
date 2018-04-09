@@ -86,21 +86,21 @@
             </div>
           </div>
           <div class="gallery_slider clearfix" ng-if = "files" style="padding-bottom:15px;">
-              <div class="galery_full" style="height:420px;">
-                  <img style="max-height: : 100%;" src="{{mainImage}}" alt=""/>
+              <div class="galery_full">
+                  <img src="{{mainImage}}" alt=""/>
               </div>
               <div class="gallery_thumb">
                 <ul>
                     <li ng-repeat="item in files">
                       <a href="" ng-click = "changeMainImage(item);" >
-                          <img style="width: 80px;height:80px;max-width: 100%;" src="{{ item.url}}" alt=""/>
+                          <img src="{{ item.url}}" alt=""/>
                       </a>
                     </li>
                 </ul>
               </div>
           </div>
-          <div style="padding-bottom:50px;width:800px;padding-top:20px;">
-            <h4 style= "padding-bottom: 20px">{{message}}</h2>
+          <div class="created_section">
+            <h4>{{message}}</h2>
             <h6>Posted: <time am-time-ago="created"></time</h6>
           </div>
         </div>

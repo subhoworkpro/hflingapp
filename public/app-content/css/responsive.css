@@ -1,1070 +1,414 @@
-
-@media(max-width:1365px){
-    .text_Aria h1{
-        font-size: 38px;
-        line-height: 40px;
-    } 
+@media(max-width: 1199px){
+     .select_area {
+         width: 30%;
+         float: left;
+         margin-right: 10px;
+    }
 }
-/*=======================================================*/
-@media(max-width:1199px){
-    .rqst_btn li:first-child a{
-        line-height: 38px;
-        padding: 0px 15px;
+/***768***/
+ @media(max-width: 991px) {
+     .select_area {
+         width: 24%;
+         margin-right: 18px;
+         margin-top: 3px;
+         margin-bottom:3px;
     }
-    
-    .rqst_btn li a{
-        font-size: 12px;
+     .select_item {
+         padding: 12px;
     }
-    
-    .rqst_btn li{
+     .add_post input[type="submit"] {
+         position: static;
+         margin: 10px 0px 0px;
+    }
+     .select_inr {
+         padding-right: 0px;
+    }
+     .select_sbt {
+         top: 16px;
+    }
+     .bio_area {
+         width: 30%;
+         display: inline-block;
+    }
+     .add_details {
+         padding: 20px 0;
+    }
+     .favourate_text {
+         padding: 0px 0px 15px;
+    }
+     .decimal strong {
+         line-height: 1;
+    }
+     .decimal li {
+         line-height: 10px;
+    }
+     .privacy_inr p, .terms_inr p {
+         font-size: 20px;
+         line-height: 30px;
+         margin-bottom: 10px;
+    }
+     .bio_area .ui-selectmenu-button.ui-button{
+         width: 100%;
+    }
+     .bio_full{
+         width: 91%;
+    }
+     .bio_half{
+         width: 45%;
+    }
+    .galery_full{
+        width: 580px;
+        height: auto;
+    }
+}
+/******/
+ @media(max-width: 767px) {
+     .select_area {
+         width: 45%;
+         float: left;
+         margin: 5px 12px;
+    }
+     .select_sbt {
+         width: 45%;
+         float: left;
+         position: static;
+         margin: 6px 12px 0;
+    }
+     .favourate_text {
+         padding: 0px 0px 10px;
+    }
+     .add_hdr h2 {
+         margin-bottom: 25px;
+    }
+     .bio_area .ui-selectmenu-button.ui-button {
+         font-size: 13px;
+         width: 100%;
+         border: 1px solid #7e7e7e;
+         margin-bottom: 15px;
+    }
+     .gallery_slider {
+         padding-bottom: 20px;
+    }
+     .gallery_det h2 {
+         font-size: 25px;
+         margin-bottom: 7px;
+         line-height: 30px;
+    }
+     .privacy_section {
+         padding: 0;
+    }
+     .container .privacy_inr h1 {
+         font-size: 35px;
+    }
+     .privacy_inr h1 {
+         margin-bottom: 25px;
+    }
+     .privacy_inr p {
+         font-size: 15px;
+         line-height: 25px;
+         margin-bottom: 8px;
+    }
+     .privacy_inr h3 {
+         margin-bottom: 10px;
+    }
+     .result-image{
+         height: auto;
+    }
+    .galery_full {
+        float: none;
+        width: 100%;
+    }
+    .gallery_thumb li{
+        display: inline-block;
         margin-right: 10px;
     }
-    
-    .text_Aria h1 {
-        font-size: 25px;
-        line-height: 30px;
-        color: #fff;
-        letter-spacing: 2px;
-        margin-bottom: 10px;
-    }
-    
-    .innr_pic {
-        float: left;
-        width: 60%;
-        margin-left: -5%;
-    }
-    
-    .how_WorksInnr_row:nth-child(2n) .innr_pic {
-        float: right;
-        margin-right: -5%;
-    }
-    
-    .beneit_item{
-        min-height: 323px;
-    }
-    
-    .footer{
-        margin-top: -405px;
-    }
-    
-    .cms-text {
-        width: 75%;
-    }
-    
-    .blg-text p {
-        font-size: 16px;
-        line-height: 22px;
-        padding: 8px 0;
-    }
-    
-    .blog-text-area h2 {
-        font-size: 27px;
-        line-height: 36px;
-        margin-top: -30px;
-    }
-    
-    a.read-more{
-        line-height: 45px;
-        margin-top: 15px;
-    }
-    
-    .block-row {
-        margin-bottom: 50px;
-    }
-    
-    .blog-text-area{
-        margin-top: 25px;
-    }
-    
-    .trans-text {
-        padding-top: 0;
-    }
-    
-    .trans-text h3 {
-        font-size: 26px;
-        line-height: 36px;
-        margin-bottom: 15px;
-    }
-    
-    .trans-text p {
-        font-size: 17px;
-        line-height: 24px;
-    }
-    
-    .col-serv h4 {
-        font-size: 18px;
-        line-height: 23px;
-        margin-bottom: 8px;
-    }
-    
-    .col-serv p {
-        font-size: 15px;
-        color: #8793a4;
-        line-height: 20px;
-    }
-    
-    .ceo-talk {
-        margin-top: 30px;
-    }
-    
-    .desig-text p {
-        font-size: 18px;
-        line-height: 25px;
-        padding-top: 30px;
-        padding-left: 25px;
-    }
-    
-    .cloud-trans {
-        padding: 30px 0;
-    }
-    
-    .talk-inner {
-        padding-bottom: 40px;
-    }
-    
-    .cloud-optimization,.cloud-migration {
-        margin-top: 40px;
-        margin-bottom: 30px;
-    }
-    
-    .about-footer{
-        margin-top: -572px;
-    }
-}
-
-@media(max-width:991px){
-     .navbar-default .hddr_outer .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-        background-color: #db433e;
-        border: none;
-    }
-    
-    .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
-        background-color: #db433e;
-    }
-    
-    .navbar-default .navbar-toggle {
-        border: none;
-        padding: 9px;
-        background-color: rgba(218,67,62,.6);
-    }
-    
-    .hddr_outer .navbar-default .navbar-collapse, .hddr_outer .navbar-default .navbar-form{
-        background: #fff;
-        padding: 0;
-        box-shadow: 0px 10px 30px rgba(0,0,0,.6);
-    }
-    
-    .hddr_outer .navbar-default .navbar-nav li a{
-        color: #d54039;
-    }
-    
-    .hddr_outer ul.navbar-nav{
-        padding: 0 25px;
-        /*border-bottom: 2px solid #999;*/
-        margin: 0;
-        /*box-shadow: 0px 13px 30px rgba(0,0,0,.6);*/
-    }
-    
-    
-     .navbar-default .navbar-toggle .icon-bar {
-        background-color: #fff;
-    }
-    
-    .text_Aria {
-        max-width: 345px;
-    }
-    
-    .text_Aria h1 {
-        font-size: 25px;
-        line-height: 28px;
-        letter-spacing: 1px;
-        font-weight: 600;
-    }
-    
-    .text_Aria p {
-        font-size: 16px;
-        color: #fff;
-        line-height: 20px;
-        padding-right: 0px;
-        margin-bottom: 18px;
-    }
-    
-    .bannr_text{
-        top: 96px;
-    }
-    
-    .how_itPara {
-        max-width: 100%;
-        padding: 0 30px;
-    }
-    
-    .how_itPara p {
-        font-size: 24px;
-        line-height: 34px;
-        font-family: 'Montserrat', sans-serif;
-    }
-    
-    .vdo_btn{
-        bottom: 40px;
-    }
-    
-    .innr_pic {
-        float: none;
-        width: 100%;
-        margin: -10%;
-    }
-    
-    .innr_text {
-        width: 100%;
-        float: none;
-        padding-left: 0px;
-        padding-top: 65px;
-    }
-    
-    .how_WorksInnr_row:nth-child(2n) .innr_text {
-        padding-right: 0px;
-        padding-left: 0px;
-        clear: both;
-    }
-    
-    .how_WorksInnr_row:nth-child(2n) .innr_pic {
-        float: right;
-        margin-right: -5%;
-    }
-    
-    .how_WorksInnr_row:last-child {
-        padding-bottom: 30px;
-    }
-    
-    .how_WorksInnr_row:nth-child(2n) .innr_text{
-        padding-bottom: 30px;
-    }
-    
-    .beneit_item{
-        margin-bottom: 20px;
-    }
-    
-    .how_rqstbtn{
-        text-align: center;
-    }
-    
-    .cms-text h2 {
-        font-size: 44px;
-        line-height: 48px;
-    }
-    
-    .footer {
-        margin-top: -350px;
-    }
-    
-    .cloud-cost{
-        margin-top: -50px;
-    }
-    
-    .cloud-cost{
-        padding-bottom: 30px;
-    }
-    
-    .cont-footer {
-        padding-top: 40px;
-    }
-    
-    .team {
-        padding: 45px 0 0;
-    }
-    
-    .team-head h2{
-        margin-bottom: 5px;
-    }
-    
-    .team-head{
-        padding: 0 5%;
-    }
-    
-    .hddr_outer .navbar-default .navbar-nav li.active a, .hddr_outer .navbar-default .navbar-nav li a:hover, .hddr_outer .navbar-default .navbar-nav li a:focus {
-    color: #d54039 !important;
-    }
-    
-    .hddr_outer .navbar-default .navbar-nav li.active a{
-        position: relative;
-    }
-    
-    .hddr_outer .navbar-default .navbar-nav li.active a:after{
-        position: absolute;
-        content: "";
-        background-color: #d54039;
-        height: 2px;
-        left: 0;
-        bottom: 0;
-        width: 54px;
-    }
-    
-    .team-head {
-        margin-bottom: 30px;
-    }
-    
-    .team-blk {
-        margin-bottom: 35px;
-    }
-    
-    .data {
-        padding: 25px 0;
-    }
-    
-    .data-text {
-        padding-top: 20px;
+    .gallery_thumb{
+        overflow: inherit;
         padding-left: 0;
+        padding-top: 20px;
     }
-    
-    .data-text li {
-        font-size: 19px;
-        line-height: 25px;
-        padding-bottom: 15px;
-        background-position: left 6px;
-        padding-left: 25px;
-    }
-    
-    .crdt-inner {
-        padding: 0 4px 0 15px;
-        min-height: 160px;
-    }
-    
-    .crdt-inner p {
-        font-size: 14px;
-        line-height: 20px;
-        margin-top: 6px;
-    }
-    
-    .credit-box {
-        padding: 35px 0;
-    }
-    
-    .customer {
-        padding-top: 25px;
-    }
-    
-    .customer .team-head,.statement .team-head {
-        padding: 0 15%;
-    } 
-    
-    .statement {
-        padding: 30px 0 0;
-    }
-    
-    .stmnt-blk {
-        padding: 0 25%;
-        margin-bottom: 50px;
-    }
-    
-    .stmnt-blk p {
-        font-size: 15px;
-        line-height: 20px;
-    }
-    
-    .stmnt-blk h3{
-        margin-bottom: 10px;
-    }
-    
-    .benefits_trackit{
-        padding: 35px 0;
-    }
-    
-    .about-footer {
-        margin-top: -565px;
-    }
-    
-    .stmnt-blk {
-        padding: 0 0;
-    }
-    
 }
-@media(max-width:767px){
-    .footer {
-        margin-top: -270px;
-    }
-    .bannr_text {
-        position: relative;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background: #d53d36;
-        top: 0;
-        background-color: #d53d36;
-        padding: 15px 30px;
-    }
-    
-    .text_Aria {
-        max-width: 100%;
-    }
-    
-    .hddr_outer .navbar-brand{
-        margin-left: 25px;
-    }
-    .footer {
-        background-image: url(../images/res-footer-bg.png);
-        background-position: center center;
-    }
-    
-    .how_It_Works{
-        padding-top: 25px;
-    }
-    
-    .how_itPara p {
-        font-size: 22px;
-        line-height: 28px;
-    }
-    
-    .innr_text h3 {
-        font-size: 28px;
-        margin-bottom: 10px;
-        line-height: 32px;
-    }
-    
-    .innr_text p {
-        font-size: 16px;
-        line-height: 20px;
-        margin-bottom: 15px;
-    }
-    
-    .how_rqstbtn li:first-child a {
-        line-height: 40px;
-        padding: 0px 20px;
-    }
-    
-    .how_rqstbtn li a{
-        letter-spacing: 1px;
-    }
-    
-    .beneit_item {
-        min-height: 270px;
-    }
-    
-    .benefit_btn {
-        margin-top: 20px;
-    }
-    
-    .benefits_trackit{
-        padding: 30px 0;
-    }
-    
-    .trckt_btn{
-        line-height: 40px;
-        min-width: 200px;
-    }
-    
-    .beneft_text p {
-        font-size: 15px;
-        line-height: 20px;
-    }
-    
-    .blog-inner{
-        width: 450px;
-        margin: 10px auto;
-    }
-    
-    .blog-inner figure img{
-        width: 100%;
-    }
-    
-    .blog {
-        padding: 25px 0 30px;
-    }
-    
-    .blog-inner a .des {
-       min-height: 106px;
-    }
-    
-    .vdo_btn p{
-        margin-bottom: 6px;
-    }
-    
-    .vdo_btn {
-        bottom: 20px;
-    }
-    
-    .cms-text h2 {
-        font-size: 38px;
-        line-height: 40px;
-    }
-    
-    .cms-text {
-        width: 85%;
-    }
-    
-    .cms {
-        padding-top: 35px;
-    }
-    
-    .ft-sec-one {
-        padding: 0 15px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    
-    .sec-two-inner li {
-        padding-bottom: 10px;
-    }
-    
-    .ft-sec-two {
-        text-align: center;
-        margin: 15px 0;
-    }
-    .sec-two-inner li {
-        padding-bottom: 5px;
-    }
-    
-    .ft-sec-three{
-        text-align: center;
-    }
-    
-    .left_cntct_infrm li:first-child {
-        padding-bottom: 5px;
-    }
-    
-    .cont-footer h3{
-        padding-bottom: 10px;
-    }
-    
-    .cloud-cost {
-        margin-top: -130px;
-    }
-    
-    .blg-bnr-txt{
-       top: 20px; 
-    }
-    
-    .block-row .col-sm-5.col-xs-12 figure img{
-        width: 100%
-    }
-    
-    .blog-text-area h2 {
-        margin-top: -15px;
-        line-height: 30px;
-    }
-    
-    .trans-text h3 {
-        font-size: 24px;
-        line-height: 30px;
-        margin-bottom: 8px;
-        margin-top: 15px;
-    }
-    
-    .col-serv .col-sm-4{
-        margin-bottom: 20px;
-    }
-    
-    .ceo-talk {
-        margin-top: 0;
-    }
-    
-    .desig-text {
-        background-position: left 15px;
-        background-size: 90px;
-    }
-    
-    .talk-inner{
-        margin: 0
-    }
-    
-    .cloud-optimization figure,.cloud-migration figure,.cloud-trans figure{
-        text-align: center;
-    }
-    
-    .cloud-migration .col-sm-6.pull-right{
-        float: none !important;
-    }
-    
-    .cloud-migration .trans-text {
-        padding-right: 0px;
-    }
-    
-    .member-detail .mem-name{
-        line-height: 30px;
-    }
-    
-    .team-blk {
-        margin-bottom: 25px;
-        min-height: 450px;
-    }
-    
-    .team-blk figure img{
-        width: 100%
-    }
-    
-    .member-detail p {
-        font-size: 14px;
-        line-height: 16px;
-    }
-    
-    .col-cutomer-1, .col-cutomer-2, .col-cutomer-3{
-        width: 100%;
-    }
-    
-    .col-cutomer-2,.col-cutomer-3 {
-        margin-top: 0;
-    }
-    
-    .col-cutomer-1 a, .col-cutomer-2 a, .col-cutomer-3 a{
-        width: 32.33%;
-    }
-    
-    .system-pg-about .how_rqstbtn{
-        top: 20%;
-    }
-    
-    .about-footer {
-        margin-top: -520px;
-    }
-    
-    .customer .team-head, .statement .team-head {
-        padding: 0 6%;
-    }
-    
-    .team-head h2 {
-        line-height: 34px;
-        font-size: 26px;
-    }
-    
-    .crdt-inner {
-        padding: 0 10px 0;
-        min-height: 160px;
-        border: 1px solid #fff !important;
-        width: 32.33%;
-        margin: 2px 2px;
-    }
-    
-    .crdt-inner:first-child {
-        padding-left: 15px;
-    }
-    
-    .col-cutomer-1:nth-child(2), .col-cutomer-1:nth-child(4) {
-        margin-top: 0;
-        text-align: center;
-    }
-    
-    .col-cutomer-1:nth-child(3), .col-cutomer-1:nth-child(6) {
-        margin-top: 0;
-        text-align: center;
-    }
-    
-}
-@media(max-width:568px){
-    .how_WorksInnr_row {
-        padding-top: 50px;
-    }
-    
-    .blog-inner {
-        width: 90%;
-    }
-    
-    .vdo_btn a {
-        height: 45px;
-        width: 45px;
-        line-height: 40px;
-    }
-    
-    .vdo_btn a i{
-        font-size: 20px;
-        margin-left: 6px;
-    }
-    
-    .innr_text{
-        padding-top: 40px;
-    }
-    
-    .request .trail{
-        margin-right: 0;
-        margin-bottom: 12px;
-        padding: 13px 25px;
-    }
-    
-    .request .demo{
-        display: block
-    }
-    
-    .footer {
-        margin-top: -230px;
-    }
-    
-    .request {
-        margin-top: 25px;
-        margin-bottom: 30px;
-    }
-    
-    .cms-text p{
-        padding: 0 0;
-    }
-    
-    .cms-text h2 {
-        font-size: 32px;
-        line-height: 36px;
-    }
-    
-    .cms-text p {
-        font-size: 15px;
-        line-height: 20px;
-    }
-    
-    .cms-text {
-        width: 95%;
-    }
-    
-    .blog-gal {
-        margin-top: 20px;
-    }
-    
-    .sec-two-inner ul.ftr_innr{
-        display: none;
-    }
-    
-    .hddr_outer{
-        top: 12px;
-    }
-    
-    .sec-two-inner h3{
-        position: relative;
-        cursor: pointer;
-    }
-    
-    .sec-two-inner h3:after {
-        content: "\f078";
-        font-family: FontAwesome;
-        font-style: normal;
-        font-weight: normal;
-        text-decoration: inherit;
-        position: absolute;
-        font-size: 12px;
-        color: #fff;
-        top: 0;
-        transform: translateX(-50%);
-        right: 0;
-    }
-    
-    .designation .ceo-name{
-        margin-top: 6px;
-    }
-   
-    .ft-sec-two .sec-two-inner {
-        display: block;
-        width: 100%;
-        vertical-align: top;
-        text-align: left;
-    }
-    
-    .system-pg-about .how_rqstbtn{
-        top: 10px;
-        width: 225px;
-    }
-    
-    .about-footer {
-        margin-top: -395px;
-    }
-    
-    .team-head p {
+/******/
+ @media(max-width: 568px) {
+     .select_area {
+         width: 100%;
+         display: block;
+         margin: 3px auto;
+         float: none;
+    }
+     .select_sbt {
+         display: block;
+         margin: 7px auto;
+         position: static;
+    }
+     .footer_nav li {
+         margin: 0 15px 14px 0;
+         display: inline-block;
+    }
+     .footer_nav li a {
+         line-height: 1.2;
+    }
+     .footer_section {
+         padding: 15px 0;
+    }
+     .bio_area {
+         width: 49%;
+         display: inline-block;
+    }
+     .bio_full{
+         width: 100%;
+    }
+     .add_hdr h2 {
+         font-size: 25px;
+         padding-bottom: 5px;
+    }
+     .add_details {
+         padding: 10px 0;
+    }
+     .add_note p {
+         font-size: 15px;
+         line-height: 20px;
+    }
+     .gallery_thumb {
+         overflow: inherit;
+         padding-left: 0;
+    }
+     .galery_full {
+         float: none;
+    }
+     .gallery_slider {
+         padding-bottom: 10px;
+    }
+     .galery_full img {
+         width: 100%;
+    }
+     .form-group {
+         margin-bottom: 10px;
+    }
+     .btn-group-lg>.btn, .btn-lg {
+         padding: 8px 15px;
+         font-size: 15px;
+         line-height: 1;
+         border-radius: 4px;
+    }
+     .terms_inr ol, .terms_inr li {
+         line-height: 10px;
+    }
+     .upperRoman {
+         padding-left: 60px;
+    }
+     .container .terms_inr h1 {
+         font-size: 30px;
+    }
+     .privacy_inr p, .terms_inr p {
+         font-size: 18px;
+         line-height: 22px;
+         margin-bottom: 5px;
+    }
+     .upperRoman h3 {
+         font-size: 20px;
+         margin-bottom: 20px;
+         line-height: 25px;
+    }
+     .upperRoman mark {
+         font-size: 16px;
+    }
+     .upperRoman p {
+         font-size: 15px;
+         margin-bottom: 15px;
+    }
+     .decimal strong {
+         font-size: 15px;
+    }
+     .upperRoman li {
+         font-size: 18px;
+         margin-bottom: 10px;
+    }
+     .container .privacy_inr h1 {
+         font-size: 30px;
+    }
+     .privacy_inr h1 {
+         margin-bottom: 20px;
+    }
+     .privacy_inr p {
+         font-size: 15px;
+         line-height: 20px;
+         margin-bottom: 15px;
+         overflow: hidden;
+    }
+     .privacy_inr h3 {
+         margin-bottom: 10px;
+         font-size: 20px;
+    }
+     .bio_full p{
+         font-size: 13px;
+    }
+     .text_right h4 a {
+         font-size: 16px;
+    }
+     .text_right p{
+         font-size: 13px;
+    }
+    .gallery_det h2 {
         font-size: 18px;
-        line-height: 23px;
     }
-    
-    .data-text li {
-        font-size: 17px;
-        line-height: 20px;
-        padding-bottom: 10px;
-        background-position: left 5px;
-        padding-left: 20px;
-        background-size: 8px;
-    }
-    
-    .team-blk {
-        min-height: 350px;
-    }
-    
-}
-@media(max-width:480px){
-    .hddr_outer .navbar-brand {
-        width: 150px;
-    }
-    
-    .bannr_text{
-        padding: 12px 10px;
-    }
-    
-    .rqst_btn li:first-child a {
-        line-height: 30px;
-        padding: 0px 10px;
-    }
-    
-    .beneft_text h4{
-        font-size: 15px;
-    }
-    
-    .beneit_item{
-        padding: 25px 10px 15px;
-    }
-    
-    .beneft_text p {
-        font-size: 14px;
-        line-height: 18px;
-    }
-    
-    .beneit_item {
-        min-height: 240px;
-    }
-    
-    .how_itPara p {
-        font-size: 17px;
-        line-height: 24px;
-    }
-    
-    .how_rqstbtn li{
-        margin-bottom: 12px;
-        margin-right: 0
-    }
-    
-    .how_rqstbtn li:last-child{
-        display: block;
-    }
-    
-    .footer {
-        margin-top: -265px;
-    }
-    
-    .benefit_btn li {
-        display: block;
-        vertical-align: middle;
-        width: 200px;
-        margin: 0 auto 10px;
-    }
-    
-    .benefit_btn li:last-child {
-        margin: 0px auto;
-    }
-    
-    .cont-footer {
-        padding-top: 25px;
-    }
-    
-    .cont-footer .col-sm-3.col-xs-12{
-        padding: 0;
-    }
-    
-    .text_Aria h1 {
-        font-size: 22px;
-        line-height: 25px;
-    }
-    
-    .vdo_btn a {
-        height: 30px;
-        width: 30px;
-        line-height: 25px;
-    }
-    
-    .vdo_btn a i {
-        font-size: 15px;
-        margin-left: 4px;
-    }
-    
-    .trackit_hdng p {
-        line-height: 20px;
-        font-size: 16px;
-        color: #8793a4;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-    
-    .trackit_hdng h3 {
-        font-size: 25px;
-        margin-bottom: 0;
-    }
-    
-    .blog-gallery {
-        padding: 40px 0 0px;
-    }
-    
-    .block-row {
-        margin-bottom: 30px;
-    }
-    
-    .blg-text p {
-        font-size: 15px;
-        line-height: 20px;
-        padding: 5px 0;
-    }
-    
-    .des-text {
-        padding-top: 7px;
-    }
-    
-    .hddr_outer .navbar-default .navbar-nav li {
-        margin: 10px 40px 6px 0px;
-    }
-    
-    .about-footer {
-        margin-top: -350px;
-    }
-    
-    .stmnt-blk {
-        padding: 0 8%;
-    }
-    
-    .team .col-md-3.col-sm-4.col-xs-6{
-        width: 100%;
-    }
-    
-    .crdt-inner{
-        width: 48%;
-    }
-    
-    .crdt-inner p {
-        line-height: 18px;
-        margin-top: 0;
-    }
-    
-}
-@media(max-width:420px){
-    .rqst_btn li {
-        margin-bottom: 10px;
-    }
-    
-    .benefit_outer .col-md-3.col-sm-6.col-xs-6{
-        width: 100%;
-    }
-    
-    .beneit_item {
-        min-height: 210px;
-    }
-    
-    .blog-inner a .des p {
-        font-size: 14px;
-    }
-    
-    .blog-inner a .des {
-        min-height: 98px;
-    }
-    
-    .cms-text h2 {
-        font-size: 27px;
-        line-height: 31px;
-    }
-    .footer {
-        margin-top: -200px;
-    }
-    
-    .service-logos a{
-        width: 28%;
-        display: inline-block;
-        vertical-align: middle;
-    }
-    
-    .how_itPara p {
-        font-size: 16px;
-        line-height: 20px;
-        padding-bottom: 15px;
-    }
-    
-    .vdo_btn {
-        bottom: 2px;
-        width: 100%;
-    }
-    
-    .vdo_btn p{
-        letter-spacing: 1px;
-    }
-    
-    .rqst_btn {
-        text-align: center;
-    }
-    
-    .blog-text-area h2 {
-        font-size: 25px;
-        line-height: 30px;
-        margin-bottom: 18px;
-    }
-    
-    .blg-text p {
-        font-size: 15px;
-        line-height: 20px;
-        padding: 5px 0;
-    }
-    
-    a.read-more {
-        line-height: 36px;
-        margin-top: 10px;
+    .bread_cnt a {
         font-size: 13px;
-        letter-spacing: 1px;
     }
-    
-    .description {
-        margin-top: 15px;
+    .bread_cnt .breadcrumb>li+li:before{
+        font-size: 18px;
     }
-    
-    .blog-pagination .pagination>li>a, .blog-pagination .pagination>li>span{
-        padding: 0px 10px;
-        font-size: 12px;
-    }
-    
-    .blog-pagination  .pagination {
-        margin: 10px 0;
-    }
-    
-    .trans-text p {
-        font-size: 15px;
-        line-height: 20px;
-    }
-    
-    .talk-inner {
-        padding-bottom: 20px;
-    }
-    
-    .cloud-optimization, .cloud-migration {
-        margin-top: 20px;
-        margin-bottom: 15px;
-    }
-    
-    .desig-text p {
-        font-size: 17px;
-        line-height: 20px;
-    }
-    
-    .about-footer {
-        margin-top: -315px;
-    }
-    
-    .col-cutomer-1 a, .col-cutomer-2 a, .col-cutomer-3 a {
-        width: 49%;
-    }
-    
-    .team-head p {
-        font-size: 16px;
-        line-height: 20px;
-    }
-    
-    .trackit_hdng h3 {
-        font-size: 22px;
-    }
-    
 }
-@media(max-width:360px){
-    .hddr_outer .navbar-brand {
-        width: 120px;
+ @media(max-width: 420px) {
+     .select_area {
+         width: 100%;
+         display: block;
+         margin: 3px auto;
+         float: none;
     }
-    
-    .social{
-        float: none !important;
-        display: block;
-        text-align: center;
+     .select_sbt {
+         width: 135px;
+         display: block;
+         margin: 7px auto;
+         position: static;
     }
-    
-    .cpy-rit {
-        display: block;
-        text-align: center;
-        margin-bottom: 10px;
+     .footer_nav li a {
+         line-height: 1.2;
     }
-    
-    .col-cutomer-1 a, .col-cutomer-2 a, .col-cutomer-3 a {
-        width: 100%;
+     .fav_hdr h2 {
+         display: block;
+         font-size: 21px;
+         border-bottom: 1px solid #000;
+         margin-bottom: 15px;
+         line-height: 25px;
+         padding-bottom: 5px;
     }
-    
-    .col-cutomer-1 a img, .col-cutomer-2 a img, .col-cutomer-3 a img {
-        width: 100%;
+     .fav_cnt li {
+         font-size: 16px;
+         color: #000;
+         line-height: 26px;
     }
+     .disclamer-text {
+         padding: 0px 0 15px;
+    }
+     .dis_inr span {
+         float: none;
+         font-size: 15px;
+    }
+     .dis_inr p {
+         font-size: 14px;
+         line-height: 18px;
+         overflow: inherit;
+         padding-top: 7px;
+         padding-left: 0px;
+    }
+     .footer_section {
+         padding: 10px 0;
+    }
+     .add_details {
+         padding: 0px;
+    }
+     .upperRoman {
+         font-size: 20px;
+         padding-left: 45px;
+    }
+     .upperAlpha {
+         font-size: 18px;
+         padding-left: 0px;
+    }
+     .decimal {
+         font-size: 16px;
+         padding-left: 0px;
+    }
+     .lowerAlpha {
+         font-size: 15px;
+         padding-left: 0px;
+    }
+     .lowerRoman {
+         font-size: 15px;
+         padding-left: 0px;
+    }
+     .terms_section, .privacy_section {
+         padding: 30px 0;
+    }
+     .privacy_inr h1, .terms_inr h1 {
+         margin-bottom: 30px;
+    }
+     .upperRoman {
+         font-size: 18px;
+         padding-left: 30px;
+    }
+     .upperAlpha {
+         font-size: 16px;
+    }
+     .decimal {
+         font-size: 15px;
+    }
+     .lowerAlpha {
+         font-size: 13px;
+    }
+     .lowerRoman {
+         font-size: 13px;
+    }
+     .upperRoman li {
+         font-size: 15px;
+         margin-bottom: 10px;
+    }
+     .privacy_section {
+         padding: 30px 0 0;
+    }
+     .form-group .ng-isolate-scope > div{
+         transform: scale(0.9);
+    }
+    .result-image{
+        width: 70px;
+    }
+    .text_right{
+        padding-left: 12px;
+    }
+    .text_right h4 a {
+        font-size: 15px;
+    }
+}
+ @media(max-width: 360px) {
+     .select_area {
+         width: 100%;
+         display: block;
+         margin: 3px auto;
+         float: none;
+    }
+     .select_sbt {
+         width: 100%;
+         display: block;
+         margin: 7px auto;
+         position: static;
+    }
+     .footer_nav li a {
+         line-height: 1.2;
+    }
+     .add_post input[type="submit"] {
+         width: 100%;
+         background-color: #fd0000;
+         position: static;
+         top: 0;
+         right: 0px;
+         bottom: 0;
+         font-size: 18px;
+         color: #570000;
+         font-weight: 600;
+         margin-top: 10px;
+    }
+     .select_inr {
+         padding-right: 0px;
+         position: relative;
+    }
+     .bio_area {
+         width: 100%;
+         display: block;
+    }
+     .upperRoman {
+         overflow: hidden;
+    }
+}
+ @media(max-width: 320px) {
 }
