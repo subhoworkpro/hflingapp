@@ -799,3 +799,40 @@ font-weight: 400;
 .created_section h4{
     margin-bottom: 20px;
 }
+.upload_txt{
+    padding-top: 10px;
+}
+.upload_txt p{
+    font-size: 15px;
+    line-height: 25px;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.upload_txt p em{
+    font-style: normal;
+}
+
+.cust_file{
+    padding: 0;
+}
+
+.mandatory_section{
+    padding: 20px;
+    background: #f1545b;
+    margin-bottom: 20px;
+}
+
+.mandatory_section h3{
+    color: #fff;
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    text-decoration: underline;
+}
+
+.mandatory_section p{
+    font-size: 17px;
+    color: #fff;
+    line-height: 25px;
+}

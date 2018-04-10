@@ -54,29 +54,51 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
 
 
     $scope.notify = function () {
-        $rootScope.loading = true;
-        var data = {
-         "message": "Equiry Log: \n\n Name: "+$scope.name+"\nEnquiry: "+$scope.message+"\nEmail: "+$scope.email+"\n\n Regards, \n\n"+$scope.name,
-            "subject": "Received Request: "+$scope.subject,
-            "sender1": "healthyfling@gmail.com",
-            "from": $scope.email
-        };
-        HttpService.SendMail(data)
-        .then(function(response){
-            console.log(response);
-            if (response.success == '200' || response.success == '250') {
-                console.log("success");
-                $rootScope.loading = false;
-                alert("Your request has been received!"); 
-            }else{
-                // FlashService.Error(response.data.resultDescription);
-                vm.dataLoading = false;
-                $rootScope.loading = false;
-                alert("Your request has been received!"); 
-                $location.path('/');
+        $scope.showError = true;
+        $scope.showRequiredError = false;
+        $scope.showCaptchaError = false;
+
+        if (!$scope.name || !$scope.email || !$scope.subject || !$scope.message){
+            $scope.showRequiredError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (!$scope.captcha){
+            $scope.showCaptchaError = true;
+            // alert("Please accept the terms and condition."); 
+        }
+
+        if($scope.showCaptchaError || $scope.showRequiredError ){
+            console.log("Validation Failed");
+        }else{
+
+            $rootScope.loading = true;
+
+            var data = {
+             "message": "Equiry Log: \n\n Name: "+$scope.name+"\nEnquiry: "+$scope.message+"\nEmail: "+$scope.email+"\n\n Regards, \n\n"+$scope.name,
+                "subject": "Received Request: "+$scope.subject,
+                "sender1": "healthyfling@gmail.com",
+                "from": $scope.email
             };
-            
-        });    
+
+            $scope.showError = false;
+            HttpService.SendMail(data)
+            .then(function(response){
+                console.log(response);
+                if (response.success == '200' || response.success == '250') {
+                    console.log("success");
+                    $rootScope.loading = false;
+                    alert("Your request has been received!"); 
+                }else{
+                    // FlashService.Error(response.data.resultDescription);
+                    vm.dataLoading = false;
+                    $rootScope.loading = false;
+                    alert("Your request has been received!"); 
+                    $location.path('/');
+                };
+                
+            }); 
+        }   
         
     };
 

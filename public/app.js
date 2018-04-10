@@ -27,6 +27,12 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/confirm/:id', {
+            controller: 'ConfirmController',
+            templateUrl: 'app-view/confirm/ConfirmView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/reply', {
             controller: 'ReplyController',
             templateUrl: 'app-view/reply/ReplyView.html',
