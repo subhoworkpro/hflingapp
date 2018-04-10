@@ -65,15 +65,40 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	};
 	vm.verifyemail = "";
     vm.addPost = function(){
+    	vm.showImageError = false;
+    	vm.showRequiredError = false;
+    	vm.showTitleError = false;
+    	vm.showCaptchaError = false;
+    	vm.showEmailError = false;
+
+    	vm.showError = true;
     	if ($rootScope.imageList && $rootScope.imageList.length > 5) {
-	    	alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
-		}else if ((!vm.data.state ||vm.data.state == 'State')||(!vm.data.region ||vm.data.region == 'Region')||(!vm.data.category ||vm.data.category == 'Category')){
-			alert("Please Select, Region and Category."); 
-		}else if (!vm.data.title){
-			alert("Please enter title of the post."); 
-		}else if (!vm.captcha){
-			alert("Please accept the terms and condition."); 
+    		vm.showImageError = true;
+    		vm.imageLength = $rootScope.imageList.length;
+	    	// alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
+		}
+		if ((!vm.data.state ||vm.data.state == 'State')||(!vm.data.region ||vm.data.region == 'Region')||(!vm.data.category ||vm.data.category == 'Category')){
+			vm.showRequiredError = true;
+			// alert("Please Select, Region and Category."); 
+		}
+		if (!vm.data.title){
+			vm.showTitleError = true;
+			// alert("Please enter title of the post."); 
+		}
+		if (!vm.captcha){
+			vm.showCaptchaError = true;
+			// alert("Please accept the terms and condition."); 
+		}
+
+		if (vm.data.email != vm.verifyemail){
+			vm.showEmailError = true;
+			// alert("Please accept the terms and condition."); 
+		}
+
+		if(vm.showCaptchaError || vm.showImageError || vm.showRequiredError || vm.showTitleError || vm.showEmailError){
+			console.log("Validation Failed");
 		}else{
+			vm.showImageError = false;
 			$rootScope.loading = true;
             console.log(vm.data.files);
 			var postData = {
@@ -91,8 +116,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	        .then(function(response){
 	            if (response.status == '200') {
 	                console.log("success");
+	                console.log(response)
 	                alert("Your ad has been created. A verification mail will be sent shortly!"); 
-	                $location.path('/');
+	                if (response && response.data && response.data["_id"]) {}
+	                $location.path('/confirm/'+response.data["_id"]);
 	                $rootScope.loading = false;
 	            }else{
 	            	$rootScope.loading = false;

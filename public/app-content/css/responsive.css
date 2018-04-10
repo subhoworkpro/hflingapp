@@ -60,6 +60,10 @@
         width: 580px;
         height: auto;
     }
+
+    .bio_title{
+        width: 91%;
+    }
 }
 /******/
  @media(max-width: 767px) {
@@ -154,6 +158,9 @@
      .bio_area {
          width: 49%;
          display: inline-block;
+    }
+    .bio_title {
+        width: 100%;
     }
      .bio_full{
          width: 100%;
