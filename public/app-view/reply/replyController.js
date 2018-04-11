@@ -1,4 +1,4 @@
-app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpService', '$http', function( $rootScope,$scope,$location,HttpService,$http ){
+app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpService', '$http','$window','FlashService', function( $rootScope,$scope,$location,HttpService,$http,$window,FlashService ){
     var vm = this;
 
     $scope.states = $rootScope.stateList;
@@ -82,6 +82,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 vm.category = response.data.category;
                 $scope.id = $rootScope.currentPost.data["_id"];
                 $scope.title = $rootScope.currentPost.data.title;
+                $rootScope.pageTitle = $scope.title;
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.location = $rootScope.currentPost.data.location;
@@ -105,10 +106,30 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
     };
 
     $scope.notify = function () {
+
+        $scope.showError = true;
+        $scope.showRequiredError = false;
+        $scope.showCaptchaError = false;
+
+        if (!$scope.email || !$scope.confirmemail || !$scope.replymessage){
+            $scope.showRequiredError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
         if (!$scope.captcha){
-            alert("Please accept the terms and condition."); 
-        }else if(!$scope.email){
-            alert("Email address is missing");
+            $scope.showCaptchaError = true;
+            // alert("Please accept the terms and condition."); 
+        }
+
+        if ($scope.email != $scope.confirmemail){
+            $scope.showEmailError = true;
+            // alert("Please accept the terms and condition."); 
+        }
+
+        if ($scope.showCaptchaError || $scope.showRequiredError || $scope.showEmailError){
+            console.log("Validation Failed");
+            $window.scrollTo(0, 0);
+
         }else{
             $rootScope.loading = true;
             var data = {
@@ -117,19 +138,23 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 "sender1": $scope.sender1
             };
             console.log(data);
+            $scope.showError = false;
             HttpService.SendMail(data)
             .then(function(response){
                 console.log(response);
-                if (response.success == '200' || response.success == '250') {
+                if (response.status == '200' || response.status == '250') {
                     console.log("success");
                     $rootScope.loading = false;
-                    alert("Email has been sent to the poster!"); 
+                    $location.path('/response');
+                    $rootScope.loading = false;
+                    // alert("Email has been sent to the poster!"); 
                 }else{
                     // FlashService.Error(response.data.resultDescription);
                     vm.dataLoading = false;
                     $rootScope.loading = false;
-                    alert("Email has been sent to the poster!"); 
-                    $location.path('/');
+                    // alert("Email has been sent to the poster!"); 
+                    FlashService.Error("There was an error while submitting your request. Please try again.");
+                    // $location.path('/');
                 };
                 
             });   

@@ -66,6 +66,7 @@
           <div class="add_hdr">
             <h2>Contact</h2>
           </div>
+          <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
           <div class="mandatory_section" ng-if = "showError">
             <h3>Important</h3>
             <p ng-if = "showRequiredError">- Please enter name, email, subject and body of the message.</p>

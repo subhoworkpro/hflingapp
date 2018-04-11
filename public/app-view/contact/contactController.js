@@ -1,5 +1,7 @@
-app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpService','$window', function( $rootScope,$scope,$location,HttpService,$window ){
+app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpService','$window','FlashService', function( $rootScope,$scope,$location,HttpService,$window,FlashService ){
     var vm = this;
+
+    $rootScope.pageTitle = "Contact us";
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
@@ -86,16 +88,22 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
             HttpService.SendMail(data)
             .then(function(response){
                 console.log(response);
-                if (response.success == '200' || response.success == '250') {
+                if (response.status == '200' || response.status == '250') {
                     console.log("success");
                     $rootScope.loading = false;
-                    alert("Your request has been received!"); 
+                    // alert("Your request has been received!"); 
+                    FlashService.Success("Your Contact submission went through, you will receive a response between 24 and 48 hours.");
+                    $scope.name = "";
+                    $scope.message = "";
+                    $scope.email = "";
+                    $scope.subject = "";
+                    $scope.captcha = "";
                 }else{
                     // FlashService.Error(response.data.resultDescription);
                     vm.dataLoading = false;
                     $rootScope.loading = false;
-                    alert("Your request has been received!"); 
-                    $location.path('/');
+                    FlashService.Error("There was an error while submitting your request. Please try again.");
+                    // $location.path('/');
                 };
                 
             }); 

@@ -33,6 +33,12 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/response', {
+            controller: 'ResponseController',
+            templateUrl: 'app-view/response/ResponseView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/reply', {
             controller: 'ReplyController',
             templateUrl: 'app-view/reply/ReplyView.html',
@@ -100,6 +106,8 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($
         $rootScope.search.category = "Category";
 
         $rootScope.currentPost = {};
+
+        $rootScope.pageTitle = "Healthy Fling";
 
         $http.get("/data.json")
         .success(function (data) {

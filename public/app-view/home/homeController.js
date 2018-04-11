@@ -1,6 +1,8 @@
 app.controller('HomeController', ['$rootScope','$scope', '$location', function( $rootScope,$scope,$location ){
     var vm = this;
 
+    $rootScope.pageTitle = "Healthy Fling";
+
     vm.state = "State";
     vm.region = "Region";
     vm.category = "Category";
