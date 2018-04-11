@@ -34,26 +34,26 @@
             <h2>Re: {{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
           </div>
           <div class="bio_sec">
-            <div class="col-md-7">
+            <div class="col-md-7 mand">
               <form class="form-horizontal" action="" method="post">
         
                 <!-- Email input-->
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-9 mand">
                     <input id="email" name="email" type="text" placeholder="Your email" class="form-control" ng-model="email">
                   </div>
                 </div>
 
                 <!-- Email input-->
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-9 mand">
                     <input id="email" name="email" type="text" placeholder="Confirm your email" class="form-control" ng-model="confirmemail">
                   </div>
                 </div>
         
                 <!-- Message body -->
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-9 mand">
                     <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" ng-model="replymessage"></textarea>
                   </div>
                 </div>

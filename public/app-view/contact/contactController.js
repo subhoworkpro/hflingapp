@@ -1,4 +1,4 @@
-app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpService', function( $rootScope,$scope,$location,HttpService ){
+app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpService','$window', function( $rootScope,$scope,$location,HttpService,$window ){
     var vm = this;
 
     $scope.states = $rootScope.stateList;
@@ -70,6 +70,7 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
 
         if($scope.showCaptchaError || $scope.showRequiredError ){
             console.log("Validation Failed");
+            $window.scrollTo(0, 0);
         }else{
 
             $rootScope.loading = true;

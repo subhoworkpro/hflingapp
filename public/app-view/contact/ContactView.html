@@ -68,7 +68,7 @@
           </div>
           <div class="mandatory_section" ng-if = "showError">
             <h3>Important</h3>
-            <p ng-if = "showRequiredError">- Please select all the mandatory fields</p>
+            <p ng-if = "showRequiredError">- Please enter name, email, subject and body of the message.</p>
             <p ng-if = "showCaptchaError">- Please accept the Recaptcha</p>
           </div>
           <div class="bio_sec">
@@ -78,7 +78,7 @@
                       <!-- Name input-->
                       <div class="form-group">
                         <label class="col-md-3 control-label" for="name">Name</label>
-                        <div class="col-md-9">
+                        <div class="col-md-9 mand">
                           <input id="name" name="name" type="text" placeholder="Your name" class="form-control" ng-model="name">
                         </div>
                       </div>
@@ -86,7 +86,7 @@
                       <!-- Email input-->
                       <div class="form-group">
                         <label class="col-md-3 control-label" for="email">E-mail</label>
-                        <div class="col-md-9">
+                        <div class="col-md-9 mand">
                           <input id="email" name="email" type="text" placeholder="Your email" class="form-control" ng-model="email">
                         </div>
                       </div>
@@ -94,7 +94,7 @@
                       <!-- Email input-->
                       <div class="form-group">
                         <label class="col-md-3 control-label" for="email">Subject</label>
-                        <div class="col-md-9">
+                        <div class="col-md-9 mand">
                           <input id="email" name="email" type="text" placeholder="Your email" class="form-control" ng-model="subject">
                         </div>
                       </div>
@@ -102,7 +102,7 @@
                       <!-- Message body -->
                       <div class="form-group">
                         <label class="col-md-3 control-label" for="message">Body</label>
-                        <div class="col-md-9">
+                        <div class="col-md-9 mand">
                           <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" ng-model="message"></textarea>
                         </div>
                       </div>
