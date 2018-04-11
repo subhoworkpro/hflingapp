@@ -1,5 +1,7 @@
-app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpService', function( $rootScope,$scope,$location,HttpService ){
+app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpService', '$window', function( $rootScope,$scope,$location,HttpService,$window ){
     var vm = this;
+
+    $rootScope.pageTitle = "Post an ad";
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
@@ -69,6 +71,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     	vm.showRequiredError = false;
     	vm.showTitleError = false;
     	vm.showCaptchaError = false;
+    	vm.showMissingEmailError =false;
     	vm.showEmailError = false;
 
     	vm.showError = true;
@@ -90,13 +93,19 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			// alert("Please accept the terms and condition."); 
 		}
 
+		if (vm.data.email == ''){
+			vm.showMissingEmailError = true;
+			// alert("Please accept the terms and condition."); 
+		}
+
 		if (vm.data.email != vm.verifyemail){
 			vm.showEmailError = true;
 			// alert("Please accept the terms and condition."); 
 		}
 
-		if(vm.showCaptchaError || vm.showImageError || vm.showRequiredError || vm.showTitleError || vm.showEmailError){
+		if(vm.showCaptchaError || vm.showImageError || vm.showRequiredError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
+			$window.scrollTo(0, 0);
 		}else{
 			vm.showImageError = false;
 			$rootScope.loading = true;
@@ -117,7 +126,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	            if (response.status == '200') {
 	                console.log("success");
 	                console.log(response)
-	                alert("Your ad has been created. A verification mail will be sent shortly!"); 
+	                // alert("Your ad has been created. A verification mail will be sent shortly!"); 
 	                if (response && response.data && response.data["_id"]) {}
 	                $location.path('/confirm/'+response.data["_id"]);
 	                $rootScope.loading = false;

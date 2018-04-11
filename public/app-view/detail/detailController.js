@@ -62,6 +62,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 vm.region = response.data.region;
                 vm.category = response.data.category;
                 $scope.title = $rootScope.currentPost.data.title;
+                $rootScope.pageTitle = $scope.title;
                 $scope.post_id = $rootScope.currentPost.data["_id"];
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;

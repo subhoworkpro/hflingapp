@@ -36,8 +36,9 @@
           </div>
           <div class="mandatory_section" ng-if ="vm.showError">
             <h3>Important</h3>
-            <p ng-if = "vm.showRequiredError">- Please select all the mandatory fields</p>
+            <p ng-if = "vm.showRequiredError">- Please select State, Region and Category.</p>
             <p ng-if = "vm.showTitleError">- Please enter title of the post.</p>
+            <p ng-if = "vm.showMissingEmailError">- Please enter a valid email.</p>
             <p ng-if = "vm.showCaptchaError">- Please accept the Recaptcha</p>
             <p ng-if = "vm.showEmailError">- Your verification email doesn't match</p>
             <p ng-if = "vm.showImageError">- Selected {{vm.imageLength}} images ... Max allowed images is 5.</p>
@@ -49,27 +50,27 @@
               <p>* <em>DO NOT</em> post anything illegal!</p>
             </div>
           </div>
-          <div class="bio_area bio_title bio_full">
+          <div class="bio_area mand bio_title bio_full">
             
             <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.title" maxlength="100">
           </div>
 
-          <div class="bio_area bio_full">
+          <div class="bio_area mand bio_full">
             
             <textarea class="bio_block ui-selectmenu-button ui-button ui-corner-all" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
           </div>
           <div class="bio_sec">
-            <div class="bio_area">
+            <div class="bio_area mand">
               
               <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.data.state);" required>
               </select>
             </div>
-            <div class="bio_area">
+            <div class="bio_area mand">
               
               <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region" ng-options="x for x in regions">
               </select>
             </div>
-            <div class="bio_area">
+            <div class="bio_area mand">
               
               <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category" ng-options="x for x in categories">
               </select>
@@ -96,12 +97,12 @@
               </div>
             </div>
 
-            <div class="bio_area bio_half" style="clear:both;">
+            <div class="bio_area bio_half mand" style="clear:both;">
               
               <input id="email" name="email" type="email" placeholder="Your email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.email">
             </div>
 
-            <div class="bio_area bio_half">
+            <div class="bio_area bio_half mand">
               
               <input id="email" name="email" type="email" placeholder="Verify email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.verifyemail">
             </div>

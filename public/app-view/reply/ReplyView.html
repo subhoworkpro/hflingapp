@@ -33,27 +33,34 @@
           <div class="add_hdr">
             <h2>Re: {{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
           </div>
+          <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+          <div class="mandatory_section" ng-if = "showError">
+            <h3>Important</h3>
+            <p ng-if = "showRequiredError">- Please enter email and body of the message.</p>
+            <p ng-if = "showEmailError">- Your verification email doesn't match</p>
+            <p ng-if = "showCaptchaError">- Please accept the Recaptcha</p>
+          </div>
           <div class="bio_sec">
-            <div class="col-md-7">
+            <div class="col-md-7 mand">
               <form class="form-horizontal" action="" method="post">
         
                 <!-- Email input-->
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-9 mand">
                     <input id="email" name="email" type="text" placeholder="Your email" class="form-control" ng-model="email">
                   </div>
                 </div>
 
                 <!-- Email input-->
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-9 mand">
                     <input id="email" name="email" type="text" placeholder="Confirm your email" class="form-control" ng-model="confirmemail">
                   </div>
                 </div>
         
                 <!-- Message body -->
                 <div class="form-group">
-                  <div class="col-md-9">
+                  <div class="col-md-9 mand">
                     <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" ng-model="replymessage"></textarea>
                   </div>
                 </div>

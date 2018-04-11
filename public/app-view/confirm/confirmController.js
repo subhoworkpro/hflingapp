@@ -1,6 +1,8 @@
 app.controller('ConfirmController', ['$rootScope','$scope', '$location', 'HttpService', '$http', function( $rootScope,$scope,$location,HttpService,$http ){
     var vm = this;
 
+    $rootScope.pageTitle = "Healthy Fling";
+
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -82,6 +84,7 @@ app.controller('ConfirmController', ['$rootScope','$scope', '$location', 'HttpSe
                 vm.category = response.data.category;
                 $scope.id = $rootScope.currentPost.data["_id"];
                 $scope.title = $rootScope.currentPost.data.title;
+                $rootScope.pageTitle = $scope.title;
                 $scope.message = $rootScope.currentPost.data.body;
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.location = $rootScope.currentPost.data.location;
