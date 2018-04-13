@@ -71,6 +71,7 @@
                <li class="breadcrumb-item" ng-if ="category"><a href="">{{category}}</a></li>
             </ol>
         </div>
+        <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
         <div class="gallery_det">
           <h2>{{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
           <div>
@@ -127,7 +128,7 @@
             <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':668809});</script> -->
 
             <!--JuicyAds END-->
-            
+
           </div>
           <p style="margin-bottom: 20px;"> *If you feel this post violates the law in any way shape or form, such as exploitation of minors or human trafficking, please contact the authorities immediately.</p>  
         </div>

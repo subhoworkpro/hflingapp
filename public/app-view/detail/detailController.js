@@ -1,4 +1,4 @@
-app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route', function( $rootScope,$scope,$location,HttpService,$http,$route){
+app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService){
     var vm = this;
 
     $rootScope.loading = true;
@@ -54,7 +54,10 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             console.log(response);
             if (response.status == '200') {
                 $rootScope.currentPost.data = response.data;
-
+                var params = $location.search();
+                if(params && params.success == 'true'){
+                    FlashService.Success("Your post is now Live.");
+                }
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;
                 console.log("success");
