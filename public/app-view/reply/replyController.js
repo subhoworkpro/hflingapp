@@ -108,11 +108,19 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
     $scope.notify = function () {
 
         $scope.showError = true;
-        $scope.showRequiredError = false;
+        $scope.showRequiredEmailError = false;
+        $scope.showRequiredReplyMessageError = false;
+        $scope.showEmailError = false;
+
         $scope.showCaptchaError = false;
 
-        if (!$scope.email || !$scope.confirmemail || !$scope.replymessage){
-            $scope.showRequiredError = true;
+        if (!$scope.email ){
+            $scope.showRequiredEmailError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (!$scope.replymessage){
+            $scope.showRequiredReplyMessageError = true;
             // alert("Please Select, Region and Category."); 
         }
 
@@ -126,7 +134,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             // alert("Please accept the terms and condition."); 
         }
 
-        if ($scope.showCaptchaError || $scope.showRequiredError || $scope.showEmailError){
+        if ($scope.showCaptchaError || $scope.showRequiredEmailError || $scope.showRequiredReplyMessageError || $scope.showEmailError){
             console.log("Validation Failed");
             $window.scrollTo(0, 0);
 

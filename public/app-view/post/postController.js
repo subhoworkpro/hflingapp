@@ -68,7 +68,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	vm.verifyemail = "";
     vm.addPost = function(){
     	vm.showImageError = false;
-    	vm.showRequiredError = false;
+    	vm.showRequiredStateError = false;
+    	vm.showRequiredRegionError = false;
+    	vm.showRequiredCategoryError = false;
+    	vm.showMessageError = false;
     	vm.showTitleError = false;
     	vm.showCaptchaError = false;
     	vm.showMissingEmailError =false;
@@ -80,12 +83,24 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     		vm.imageLength = $rootScope.imageList.length;
 	    	// alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
 		}
-		if ((!vm.data.state ||vm.data.state == 'State')||(!vm.data.region ||vm.data.region == 'Region')||(!vm.data.category ||vm.data.category == 'Category')){
-			vm.showRequiredError = true;
+		if ((!vm.data.state ||vm.data.state == 'State')){
+			vm.showRequiredStateError = true;
+			// alert("Please Select, Region and Category."); 
+		}
+		if ((!vm.data.region ||vm.data.region == 'Region')){
+			vm.showRequiredRegionError = true;
+			// alert("Please Select, Region and Category."); 
+		}
+		if ((!vm.data.category ||vm.data.category == 'Category')){
+			vm.showRequiredCategoryError = true;
 			// alert("Please Select, Region and Category."); 
 		}
 		if (!vm.data.title){
 			vm.showTitleError = true;
+			// alert("Please enter title of the post."); 
+		}
+		if (!vm.data.message){
+			vm.showMessageError = true;
 			// alert("Please enter title of the post."); 
 		}
 		if (!vm.captcha){
@@ -103,7 +118,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			// alert("Please accept the terms and condition."); 
 		}
 
-		if(vm.showCaptchaError || vm.showImageError || vm.showRequiredError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
+		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
 		}else{

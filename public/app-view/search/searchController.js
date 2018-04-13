@@ -1,6 +1,8 @@
 app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService', function( $rootScope,$scope,$location,HttpService ){
     var vm = this;
 
+    $rootScope.pageTitle = "Healthy Fling";
+
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){

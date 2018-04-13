@@ -36,8 +36,11 @@
           </div>
           <div class="mandatory_section" ng-if ="vm.showError">
             <h3>Important</h3>
-            <p ng-if = "vm.showRequiredError">- Please select State, Region and Category.</p>
+            <p ng-if = "vm.showRequiredStateError">- Please select State.</p>
+            <p ng-if = "vm.showRequiredRegionError">- Please select Region.</p>
+            <p ng-if = "vm.showRequiredCategoryError">- Please select Category.</p>
             <p ng-if = "vm.showTitleError">- Please enter title of the post.</p>
+            <p ng-if = "vm.showMessageError">- Please enter body of the post.</p>
             <p ng-if = "vm.showMissingEmailError">- Please enter a valid email.</p>
             <p ng-if = "vm.showCaptchaError">- Please accept the Recaptcha</p>
             <p ng-if = "vm.showEmailError">- Your verification email doesn't match</p>
@@ -52,12 +55,12 @@
           </div>
           <div class="bio_area mand bio_title bio_full">
             
-            <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.title" maxlength="100">
+            <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.title" maxlength="100">
           </div>
 
           <div class="bio_area mand bio_full">
             
-            <textarea class="bio_block ui-selectmenu-button ui-button ui-corner-all" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
+            <textarea class="bio_block ui-selectmenu-button ui-button ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
           </div>
           <div class="bio_sec">
             <div class="bio_area mand">
@@ -76,12 +79,12 @@
               </select>
             </div>
             <div class="bio_area">
-              <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.location" 
+              <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.location" 
               placeholder="SPECIFIC LOCATION">
               </input>
             </div>
             <div class="bio_area">
-              <input name="number" id="slct_age" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.age" placeholder="AGE" min="18" max="60">
+              <input name="number" id="slct_age" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.age" placeholder="AGE" min="18" max="60">
               </input>
             </div>
 
@@ -99,12 +102,12 @@
 
             <div class="bio_area bio_half mand" style="clear:both;">
               
-              <input id="email" name="email" type="email" placeholder="Your email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.email">
+              <input id="email" name="email" type="email" placeholder="Your email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.email">
             </div>
 
             <div class="bio_area bio_half mand">
               
-              <input id="email" name="email" type="email" placeholder="Verify email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.verifyemail">
+              <input id="email" name="email" type="email" placeholder="Verify email" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.verifyemail">
             </div>
             <div class="bio_area bio_full">
               <p>By posting on Healthyfling.com you agree to the <a href="terms.html">terms and conditions</a>, <a href="policy.html">privacy policy</a> and <a href="disclaimer.html">Disclaimer</a> of this site.</p>

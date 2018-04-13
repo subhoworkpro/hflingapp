@@ -888,3 +888,7 @@ font-weight: 400;
 .advertise img{
     width: 100%;
 }
+
+.cursor-select {
+    cursor: text !important;
+}
