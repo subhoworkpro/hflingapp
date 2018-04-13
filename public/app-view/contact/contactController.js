@@ -57,11 +57,29 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
 
     $scope.notify = function () {
         $scope.showError = true;
-        $scope.showRequiredError = false;
+        $scope.showRequiredNameError = false;
+        $scope.showRequiredEmailError = false;
+        $scope.showRequiredSubjectError = false;
+        $scope.showRequiredMessageError = false;
         $scope.showCaptchaError = false;
 
-        if (!$scope.name || !$scope.email || !$scope.subject || !$scope.message){
-            $scope.showRequiredError = true;
+        if (!$scope.name ){
+            $scope.showRequiredNameError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (!$scope.email){
+            $scope.showRequiredEmailError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (!$scope.subject){
+            $scope.showRequiredSubjectError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (!$scope.message){
+            $scope.showRequiredMessageError = true;
             // alert("Please Select, Region and Category."); 
         }
 
@@ -70,7 +88,7 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
             // alert("Please accept the terms and condition."); 
         }
 
-        if($scope.showCaptchaError || $scope.showRequiredError ){
+        if( $scope.showCaptchaError || $scope.showRequiredNameError || $scope.showRequiredEmailError || $scope.showRequiredSubjectError || $scope.showRequiredMessageError ){
             console.log("Validation Failed");
             $window.scrollTo(0, 0);
         }else{

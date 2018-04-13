@@ -414,6 +414,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404040', end
     border: 2px solid #7e7e7e;
     background-color: #fff;
     margin-bottom: 20px;
+    white-space: inherit;
+    cursor: default;
 }
 
 .bio_area sup{
@@ -593,13 +595,10 @@ select {
 
 .galery_full{
     float: left;
-    width: 700px;
-    height: 420px;
 }
 
 .galery_full img{
     width: 100%;
-    height: 100%;
 }
 
 .gallery_thumb {
@@ -874,8 +873,22 @@ font-weight: 400;
 }
 
 .copy_right p{
-    font-size: 17px;
-    color: #000;
+    font-size: 15px;
+    color:  #A9A9A9;
     font-weight: 500;
     text-align: left;
+}
+
+.advertise{
+    width: 729px;
+    height: 90px;
+    margin-bottom: 30px;
+}
+
+.advertise img{
+    width: 100%;
+}
+
+.cursor-select {
+    cursor: text !important;
 }

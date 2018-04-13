@@ -36,7 +36,8 @@
           <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
           <div class="mandatory_section" ng-if = "showError">
             <h3>Important</h3>
-            <p ng-if = "showRequiredError">- Please enter email and body of the message.</p>
+            <p ng-if = "showRequiredEmailError">- Please enter a valid email.</p>
+            <p ng-if = "showRequiredReplyMessageError">- Please enter body of the message.</p>
             <p ng-if = "showEmailError">- Your verification email doesn't match</p>
             <p ng-if = "showCaptchaError">- Please accept the Recaptcha</p>
           </div>

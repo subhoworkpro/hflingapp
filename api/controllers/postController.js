@@ -101,7 +101,7 @@ exports.verifypost = function(req, res) {
     post.save(function(err, post) {
       if (err)
         res.send(err);
-      res.redirect("/");
+      res.redirect("/#/detail/"+post["_id"]+"?success=true");
       
     });
   });
