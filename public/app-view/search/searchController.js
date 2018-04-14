@@ -146,6 +146,12 @@ app.controller("AdsController",['$scope','$rootScope','$location','HttpService',
         if (response.status == '200') {
             $rootScope.adPosts.data = [];
 
+            if($rootScope.search.region != "Region" && $rootScope.search.region != ""){
+                $rootScope.pageTitle = $rootScope.search.region;
+            }else{
+                $rootScope.pageTitle = "All Regions";
+            }
+
             for(var i = 0;i<response.data.length;i++){
                 $rootScope.adPosts.data.push(response.data[i]);
             }
