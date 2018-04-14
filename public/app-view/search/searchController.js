@@ -71,6 +71,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
         .then(function(response){
             console.log(response);
             if (response.status == '200') {
+                $rootScope.visitedSearchPage = true;
                 // $rootScope.allCharts.pie.labels = [];
                 // $rootScope.allCharts.pie.data = [];
                 // for(var i = 0;i<response.data.data.length;i++){
