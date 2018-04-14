@@ -595,6 +595,7 @@ select {
 
 .galery_full{
     float: left;
+    max-width: 600px;
 }
 
 .galery_full img{
@@ -880,7 +881,7 @@ font-weight: 400;
 }
 
 .advertise{
-    width: 100%;
+    width: 728px;
     height: 90px;
     margin-bottom: 30px;
 }
