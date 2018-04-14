@@ -70,13 +70,22 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 
 
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($rootScope, $location, $cookieStore, $http,$route ){
+app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache', function($rootScope, $location, $cookieStore, $http,$route,$templateCache ){
 
        // keep user logged in after page refresh
         // $rootScope.globals = $cookieStore.get('globals') || {};
         // if ($rootScope.globals.currentUser) {
         //     $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         // }
+
+        var url;
+        for (var i in $route.routes) {
+            if ($route.routes[i].preload) {
+                if (url = $route.routes[i].templateUrl) {
+                    $http.get(url, { cache: $templateCache });
+                }
+            }
+        }
 
 
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
@@ -96,6 +105,8 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', function($
                 });
             }
         });
+
+        $rootScope.visitedSearchPage = false;
 
         $rootScope.loading = false;
         $rootScope.loadingImage = false;

@@ -1,7 +1,9 @@
 app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService){
     var vm = this;
-
-    $rootScope.loading = true;
+    
+    if($rootScope.visitedSearchPage){
+        $rootScope.loading = true;
+    }
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
@@ -47,7 +49,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 	    var arr = path.split("/");
 	    var id = arr[arr.length-1];
 	    $scope.id = id;
-        $rootScope.loading = true;
+        if($rootScope.visitedSearchPage){
+            $rootScope.loading = true;
+        }
         $scope.mainImage = "http://placehold.it/710X420";
 	    HttpService.GetAPost(id)
         .then(function(response){
