@@ -77,7 +77,7 @@
         <div ng-show="data">
             <ul style="padding-top: 0px;">
                 <li ng-repeat="item in data | startFrom: vm.currentPage * vm.pageSize | limitTo: vm.pageSize" class="clearfix">
-                    <a href="#detail/{{item['_id']}}" class="result-image gallery"><img alt="" class="thumb" src="{{item.files[0].url || 'http://placehold.it/50'}}">
+                    <a href="#detail/{{item['_id']}}" class="result-image gallery"><img alt="" class="thumb" src="{{item.files[0].url || 'https://placehold.it/50'}}">
                     </a>
                     <div class="text_right">
                       <p><h4><a href="#detail/{{item['_id']}}" >{{item.title || item.body}}<span ng-if="item.location || item.age ">- </span><span ng-if="item.age">{{item.age}}</span><span ng-if="item.location"> ({{item.location}})</span></a></h4><p>
