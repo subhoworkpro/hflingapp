@@ -60,6 +60,9 @@
     .bio_title{
         width: 91%;
     }
+    .advertise{
+        width: 100%;
+    }
 }
 /******/
  @media(max-width: 767px) {
@@ -126,6 +129,9 @@
         overflow: inherit;
         padding-left: 0;
         padding-top: 20px;
+    }
+    .advertise{
+        width: 100%;
     }
 }
 /******/
@@ -261,6 +267,9 @@
     .bread_cnt .breadcrumb>li+li:before{
         font-size: 18px;
     }
+    .advertise{
+        width: 100%;
+    }
 }
  @media(max-width: 420px) {
      .select_area {
@@ -372,6 +381,9 @@
     .text_right h4 a {
         font-size: 15px;
     }
+    .advertise{
+        width: 100%;
+    }
 }
  @media(max-width: 360px) {
      .select_area {
@@ -411,6 +423,9 @@
     }
      .upperRoman {
          overflow: hidden;
+    }
+    .advertise{
+        width: 100%;
     }
 }
  @media(max-width: 320px) {
