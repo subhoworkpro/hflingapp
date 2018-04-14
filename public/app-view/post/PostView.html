@@ -96,7 +96,7 @@
               <input type="file" class="cust_file" ng-file-model="vm.data.files" multiple />
               <div style="margin-bottom: 20px;">
                 <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
-                <div class='col-md-2' ng-repeat="file in imageList" style="padding: 20px 0px;"><img style="padding: 5px;" class='img-responsive' src={{file.url}} ng-init = "stopLoader();"></div>
+                <div class='col-md-2 col-sm-2 col-xs-2' ng-repeat="file in imageList" style="padding: 20px 0px;"><img style="padding: 5px;" class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"></div>
               </div>
             </div>
 
