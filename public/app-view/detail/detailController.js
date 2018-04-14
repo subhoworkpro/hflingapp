@@ -20,7 +20,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
    };
 
    $scope.changeMainImage = function(file){
-        $scope.mainImage = file.url;
+        $scope.mainImage = file.secure_url;
    }
 
     vm.state = $rootScope.search.state;
@@ -82,7 +82,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.files = $rootScope.currentPost.data.files;
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
-                    $scope.mainImage = $scope.files[0].url;
+                    $scope.mainImage = $scope.files[0].secure_url;
                 }
             }else{
                 $rootScope.loading = false;

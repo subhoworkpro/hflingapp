@@ -94,7 +94,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 $scope.files = $rootScope.currentPost.data.files;
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
-                    $scope.mainImage = $scope.files[0].url;
+                    $scope.mainImage = $scope.files[0].secure_url;
                 }
             }else{
                 $rootScope.loading = false;
