@@ -67,7 +67,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         var id = arr[arr.length-1];
         $scope.id = id;
         $rootScope.loading = true;
-        $scope.mainImage = "http://placehold.it/710X420";
+        $scope.mainImage = "https://placehold.it/710X420";
         HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);

@@ -1,6 +1,6 @@
 app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService){
     var vm = this;
-    
+
     if($rootScope.visitedSearchPage){
         $rootScope.loading = true;
     }
@@ -52,7 +52,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         if($rootScope.visitedSearchPage){
             $rootScope.loading = true;
         }
-        $scope.mainImage = "http://placehold.it/710X420";
+        $scope.mainImage = "https://placehold.it/710X420";
 	    HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);
