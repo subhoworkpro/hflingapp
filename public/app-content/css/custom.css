@@ -880,9 +880,13 @@ font-weight: 400;
 }
 
 .advertise{
-    width: 729px;
+    width: 100%;
     height: 90px;
     margin-bottom: 30px;
+}
+
+.advertise iframe {
+    width: 100% !important;
 }
 
 .advertise img{
