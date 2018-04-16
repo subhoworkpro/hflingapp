@@ -56,7 +56,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 	    HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);
-            if (response.status == '200') {
+            if (response.status == '200' && response.data["_id"]) {
                 $rootScope.currentPost.data = response.data;
                 var params = $location.search();
                 if(params && params.success == 'true'){
