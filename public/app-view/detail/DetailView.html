@@ -104,31 +104,54 @@
             <h4 style="word-wrap: break-word;">{{message}}</h2>  
             <h5 style= "margin-top: 10px;font-weight: 500;">Posted: <time am-time-ago="created"></time</h5>
           </div>
-          <div class="advertise" ng-if = " (category == 'Men Seeking Woman') || (category == 'Women Seeking Men') || (category == 'Woman Seeking Woman') ">
+          <div ng-if = "windowWidth >= 752">
+            <div class="advertise" ng-if = " (category == 'Men Seeking Woman') || (category == 'Women Seeking Men') || (category == 'Woman Seeking Woman') ">
+                
+                <!-- JuicyAds v3.0 -->
+
+                <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>
+
+                <ins id="668806" data-width="728" data-height="90"></ins>
+
+                <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':668806});</script>
+
+                <!--JuicyAds END-->
+
+            </div>
+            <div class="advertise" ng-if = " (category == 'Men Seeking Men') ">
               
               <!-- JuicyAds v3.0 -->
 
               <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>
 
-              <ins id="668806" data-width="728" data-height="90"></ins>
+              <ins id="668809" data-width="728" data-height="90"></ins>
 
-              <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':668806});</script>
+              <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':668809});</script>
 
               <!--JuicyAds END-->
 
+            </div>
           </div>
-          <div class="advertise" ng-if = " (category == 'Men Seeking Men') ">
-            
-            <!-- JuicyAds v3.0 -->
 
-            <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>
+          <div ng-if = "windowWidth < 752">
+            <div class="advertise" ng-if = " (category == 'Men Seeking Woman') || (category == 'Women Seeking Men') || (category == 'Woman Seeking Woman') ">
+                
+                <!-- JuicyAds v3.0 -->
+                <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>
+                <ins id="670058" data-width="300" data-height="62"></ins>
+                <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':670058});</script>
+                <!--JuicyAds END-->
 
-            <ins id="668809" data-width="728" data-height="90"></ins>
+            </div>
+            <div class="advertise" ng-if = " (category == 'Men Seeking Men') ">
+              
+              <!-- JuicyAds v3.0 -->
+              <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>
+              <ins id="670059" data-width="300" data-height="62"></ins>
+              <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':670059});</script>
+              <!--JuicyAds END-->
 
-            <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone':668809});</script>
-
-            <!--JuicyAds END-->
-
+            </div>
           </div>
           <p style="margin-bottom: 20px;"> *If you feel this post violates the law in any way shape or form, such as exploitation of minors or human trafficking, please contact the authorities immediately</p>  
         </div>

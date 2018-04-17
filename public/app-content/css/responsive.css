@@ -4,6 +4,9 @@
          float: left;
          margin-right: 10px;
     }
+    .advertise {
+        border: rgb(244,101,87) 1px solid;
+    }
 }
 /***768***/
  @media(max-width: 991px) {
@@ -62,6 +65,7 @@
     }
     .advertise{
         width: 100%;
+        border: rgb(244,101,87) 1px solid;
     }
 }
 /******/
@@ -132,6 +136,7 @@
     }
     .advertise{
         width: 100%;
+        border: none;
     }
 }
 /******/
