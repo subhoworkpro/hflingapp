@@ -33,7 +33,7 @@ module.exports = function(apiRoutes) {
       if (req.body.htmlmessage) {
         text = req.body.htmlmessage || req.body.message;
         mailOptions = {
-            from: '<Healthy Fling> xxxxxxxxx@gmail.com', // sender address
+            from: 'Healthy Fling <info@healthyfling.com>', // sender address
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: 'Healthy Fling: '+req.body.subject, // Subject line
             html: "<b>Greeting!</b> <br/>"+text+"\n\n"+link,
@@ -43,7 +43,7 @@ module.exports = function(apiRoutes) {
       }else{
 
         mailOptions = {
-            from: '<Healthy Fling> xxxxxxxxxx@gmail.com', // sender address
+            from: 'Healthy Fling <info@healthyfling.com>', // sender address
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: 'Healthy Fling: '+req.body.subject, // Subject line
             text: "Greeting! \n\n"+text+"\n\n"+link,
