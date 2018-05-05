@@ -1,15 +1,19 @@
 'use strict';
 var nodemailer = require('nodemailer');
 
+var Cryptr = require('cryptr'),
+cryptr = new Cryptr('Ji5RW2BlJ6');
+
 module.exports = function(apiRoutes) {
 
   apiRoutes.post('/sendMail', function(req, res) {
 
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
+        port: 25,
         auth: {
-            user: 'healthyfling@gmail.com', // Your email id
-            pass: 'photography88' // Your password
+            user: 'info@healthyfling.com',
+            pass: 'photography99'
         }
     });
 
@@ -18,24 +22,32 @@ module.exports = function(apiRoutes) {
 
       var link = req.body.link || "";
 
-      var mailOptions = {};
+      var replyAddr = "";
 
+      if (req.body['x-post-id'] && req.body['x-from']) {
+        replyAddr = req.body['x-post-id']+"-"+cryptr.encrypt(req.body['x-from'])+"-reply@healthyfling.com"
+      }
+
+      var mailOptions = {};
+      console.log(req.body);
       if (req.body.htmlmessage) {
         text = req.body.htmlmessage || req.body.message;
         mailOptions = {
-            from: 'healthyfling@gmail.com', // sender address
+            from: '<Healthy Fling> xxxxxxxxx@gmail.com', // sender address
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: 'Healthy Fling: '+req.body.subject, // Subject line
-            html: "<b>Greeting!</b> <br/>"+text+"\n\n"+link
+            html: "<b>Greeting!</b> <br/>"+text+"\n\n"+link,
+            replyTo: replyAddr
             // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
         };
       }else{
 
         mailOptions = {
-            from: 'healthyfling@gmail.com', // sender address
+            from: '<Healthy Fling> xxxxxxxxxx@gmail.com', // sender address
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: 'Healthy Fling: '+req.body.subject, // Subject line
-            text: "Greeting! \n\n"+text+"\n\n"+link
+            text: "Greeting! \n\n"+text+"\n\n"+link,
+            replyTo: replyAddr
             // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
         };
 

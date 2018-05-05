@@ -98,7 +98,7 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
             var data = {
              "message": "Equiry Log: \n\n Name: "+$scope.name+"\nEnquiry: "+$scope.message+"\nEmail: "+$scope.email+"\n\n Regards, \n\n"+$scope.name,
                 "subject": "Received Request: "+$scope.subject,
-                "sender1": "healthyfling@gmail.com",
+                "sender1": "info@healthyfling.com",
                 "from": $scope.email
             };
 

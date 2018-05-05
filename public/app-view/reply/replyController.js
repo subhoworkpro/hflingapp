@@ -141,9 +141,11 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         }else{
             $rootScope.loading = true;
             var data = {
-                "htmlmessage": "<p>"+$scope.replymessage +"</p><p><a href='mailto:"+$scope.email+"?subject="+"Re: "+$scope.title+"'>Reply to this message</a> </p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
+                "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
                 "subject": "Re: "+( $scope.title || $scope.message),
-                "sender1": $scope.sender1
+                "sender1": $scope.sender1,
+                "x-from": $scope.email,
+                "x-post-id": $scope.id
             };
             console.log(data);
             $scope.showError = false;
