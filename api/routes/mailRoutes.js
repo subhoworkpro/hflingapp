@@ -25,7 +25,8 @@ module.exports = function(apiRoutes) {
       var replyAddr = "";
 
       if (req.body['x-post-id'] && req.body['x-from']) {
-        replyAddr = req.body['x-post-id']+"-"+cryptr.encrypt(req.body['x-from'])+"-reply@healthyfling.com"
+        // replyAddr = req.body['x-post-id']+"-"+cryptr.encrypt(req.body['x-from'])+"-reply@healthyfling.com"
+        replyAddr = req.body['x-from']
       }
 
       var mailOptions = {};
