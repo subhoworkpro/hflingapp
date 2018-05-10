@@ -7,8 +7,8 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-        user: 'healthyfling@gmail.com', // Your email id
-        pass: 'photography88' // Your password
+            user: 'info@healthyfling.com',
+            pass: 'photography99'
     }
 });
 
@@ -65,7 +65,7 @@ exports.create_a_post = function(req, res) {
 
     var mailBody = "Greeting! \n\n"+ "Your ad has been posted successfully. \n\nPlease click on the below link to verify." + "\n"+"http://healthyfling.com/api/verifypost/"+post['_id']+"\n\n Regards, \n\n Healthyfling Team.";
     var mailOptions = {
-        from: 'healthyfling@gmail.com',
+        from: 'Healthy Fling <info@healthyfling.com>', // sender address
         to: post.email,
         subject: "Healthy Fling: "+ post.title,
         text: mailBody
