@@ -67,7 +67,7 @@ exports.create_a_post = function(req, res) {
     var mailOptions = {
         from: 'Healthy Fling <info@healthyfling.com>', // sender address
         to: post.email,
-        subject: "Healthy Fling: "+ post.title,
+        subject: post.title,
         text: mailBody
     };
 
