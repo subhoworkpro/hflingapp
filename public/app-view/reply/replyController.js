@@ -142,7 +142,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             $rootScope.loading = true;
             var data = {
                 "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
-                "subject": "Re: "+( $scope.title || $scope.message),
+                "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message),
                 "sender1": $scope.sender1,
                 "x-from": $scope.email,
                 "x-post-id": $scope.id

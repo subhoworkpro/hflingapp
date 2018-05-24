@@ -63,12 +63,24 @@ exports.create_a_post = function(req, res) {
     if (err)
       res.send(err);
 
-    var mailBody = "Greeting! \n\n"+ "Your ad has been posted successfully. \n\nPlease click on the below link to verify." + "\n"+"http://healthyfling.com/api/verifypost/"+post['_id']+"\n\n Regards, \n\n Healthyfling Team.";
+    var subject_sufix = "";
+
+    if(post.location || post.age){
+      subject_sufix = " -";
+      if(post.age){
+        subject_sufix = subject_sufix + " " +post.location;
+      }
+      if(post.location){
+        subject_sufix = subject_sufix + " (" +post.location+")";
+      }
+    }
+
+    var mailBody = "<b>Greeting!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><br/><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 2 days</p>";
     var mailOptions = {
         from: 'Healthy Fling <info@healthyfling.com>', // sender address
         to: post.email,
-        subject: post.title,
-        text: mailBody
+        subject: "[HealthyFling/PLEASE VERIFY YOUR SUBMISSION] : " + post.title + subject_sufix,
+        html: mailBody
     };
 
 
