@@ -75,7 +75,7 @@ exports.create_a_post = function(req, res) {
       }
     }
 
-    var mailBody = "<b>Greeting!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><br/><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 2 days</p>";
+    var mailBody = "<b>Greeting!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 2 days</p>";
     var mailOptions = {
         from: 'Healthy Fling <info@healthyfling.com>', // sender address
         to: post.email,
