@@ -37,7 +37,7 @@ module.exports = function(apiRoutes) {
             from: 'Healthy Fling <info@healthyfling.com>', // sender address
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: req.body.subject, // Subject line
-            html: "<b>Greeting!</b> <br/>"+text+"\n\n"+link,
+            html: "<b>Greetings!</b> <br/>"+text+"\n\n"+link,
             replyTo: replyAddr
             // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
         };
@@ -47,7 +47,7 @@ module.exports = function(apiRoutes) {
             from: 'Healthy Fling <info@healthyfling.com>', // sender address
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: req.body.subject, // Subject line
-            text: "Greeting! \n\n"+text+"\n\n"+link,
+            text: "Greetings! \n\n"+text+"\n\n"+link,
             replyTo: replyAddr
             // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
         };
