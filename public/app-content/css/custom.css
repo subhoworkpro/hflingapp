@@ -308,6 +308,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f46557', end
     line-height: 30px;
 }
 
+.fav_cnt p{
+    margin-top: 15px;
+    /*font-size: 18px;*/
+    color: #000;
+    font-weight: 600;
+    line-height: 20px;
+}
+
 /*** favourate-text ends ***/
 
 /*** disclamer-text ***/
@@ -350,7 +358,8 @@ background: linear-gradient(to bottom,  rgba(64,64,64,1) 0%,rgba(0,0,0,1) 24%,rg
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#404040', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 
     border: 3px solid #000;
-    color: #94150e;
+    /*color: #94150e;*/
+    color: #fff;
     font-size: 20px;
     text-transform: uppercase;
     width: 145px;
