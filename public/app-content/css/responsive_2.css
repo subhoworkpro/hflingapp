@@ -30,7 +30,7 @@
          top: 16px;
     }
      .bio_area {
-         width: 45%;
+         width: 30%;
          display: inline-block;
     }
      .add_details {
@@ -56,6 +56,9 @@
      .bio_full{
          width: 91%;
     }
+     .bio_half{
+         width: 45%;
+    } 
 
     .bio_title{
         width: 91%;
@@ -63,23 +66,6 @@
     .advertise{
         width: 100%;
         border: rgb(244,101,87) 1px solid;
-    }
-
-    .bio_area input::-webkit-input-placeholder {
-        font-size: 13px;
-    }
-    .bio_area input:-moz-placeholder {
-        font-size: 13px;
-    }
-    .bio_area input:-ms-input-placeholder{
-        font-size: 13px;
-    }
-    .bio_area input::-o-placeholder {
-        font-size: 13px;
-    }
-
-    .bio_area input{
-        padding: 9px 15px;
     }
 }
 /******/
@@ -403,9 +389,6 @@
     .advertise{
         width: 100%;
     }
-    .bio_area{
-        width: 100%;
-    }
 }
  @media(max-width: 360px) {
      .select_area {
@@ -431,6 +414,7 @@
          right: 0px;
          bottom: 0;
          font-size: 18px;
+         color: #570000;
          font-weight: 600;
          margin-top: 10px;
     }
