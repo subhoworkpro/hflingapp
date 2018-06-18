@@ -87,7 +87,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             }else{
                 $rootScope.loading = false;
                 vm.dataLoading = false;
-                $location.path('/');
+                $location.path('/expired');
             };
             
         });

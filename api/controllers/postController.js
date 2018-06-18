@@ -97,12 +97,39 @@ exports.create_a_post = function(req, res) {
 };
 
 
+// exports.read_a_post = function(req, res) {
+//   Post.findById(req.params.postId, function(err, post) {
+//     if (err)
+//       res.send(err);
+//     res.json(post);
+//   });
+// };
+
+
 exports.read_a_post = function(req, res) {
-  Post.findById(req.params.postId, function(err, post) {
-    if (err)
-      res.send(err);
-    res.json(post);
-  });
+
+  var date = new Date();
+  var daysToDeletion = 2;
+  var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+  var query_params = {};
+  query_params.created = {$gt : deletionDate};
+  query_params.status = "active";
+  query_params["_id"] = req.params.postId;
+  var query = {
+    state : 'STATE1'
+  };  
+
+  console.log(query_params);
+  Post.find(query_params, function (err, posts) {
+    // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+        // console.log(posts[0]);
+        res.json(posts[0]); // return all todos in JSON format
+    });
+
 };
 
 exports.verifypost = function(req, res) {

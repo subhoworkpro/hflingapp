@@ -39,6 +39,12 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/expired', {
+            controller: 'ExpiredController',
+            templateUrl: 'app-view/expired/ExpiredView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/reply', {
             controller: 'ReplyController',
             templateUrl: 'app-view/reply/ReplyView.html',
