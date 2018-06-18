@@ -8,6 +8,7 @@ module.exports = function(apiRoutes) {
   apiRoutes.post('/posts', post.create_a_post);
   apiRoutes.delete('/posts/:postId', post.delete_a_post);
   apiRoutes.get('/verifypost/:postId', post.verifypost);
+  apiRoutes.get('/flagpost/:postId', post.flagpost);
 
   // app.route('/tasks/:taskId')
   //   .get(todoList.read_a_task)

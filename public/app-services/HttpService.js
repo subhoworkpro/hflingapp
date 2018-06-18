@@ -68,6 +68,17 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
                     }).then(handleSuccess, handleError('Error getting result'));
         };
 
+        service.FlagAPost = function (id) {
+            var url = "/api/flagpost/"+id;
+             return $http({
+                        url: url,
+                        method: "GET",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
         
         service.GetSalesPerMan = function (sessionId) {
             var url = "http://localhost:8080/salesmandata?sessionid="+sessionId;

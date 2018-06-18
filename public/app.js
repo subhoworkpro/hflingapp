@@ -57,6 +57,18 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/flag', {
+            controller: 'FlagController',
+            templateUrl: 'app-view/flag/FlagView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/flag/:id', {
+            controller: 'FlagController',
+            templateUrl: 'app-view/flag/FlagView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/detail', {
             controller: 'DetailController',
             templateUrl: 'app-view/detail/DetailView.html',

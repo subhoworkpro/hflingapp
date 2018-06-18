@@ -146,6 +146,48 @@ exports.verifypost = function(req, res) {
   });
 };
 
+exports.flagpost = function(req, res) {
+  Post.findById(req.params.postId, function(err, post) {
+    if (err)
+      res.send(err);
+    post.status = "flaged";
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+
+      var subject_sufix = "";
+
+      if(post.location || post.age){
+        subject_sufix = " -";
+        if(post.age){
+          subject_sufix = subject_sufix + " " +post.location;
+        }
+        if(post.location){
+          subject_sufix = subject_sufix + " (" +post.location+")";
+        }
+      }
+
+      var mailBody = "<b>Greetings!</b><br/>"+ "<p>Your posting in HealthyFling has been flaged!</p>"+"<p>";
+      var mailOptions = {
+          from: 'Healthy Fling <info@healthyfling.com>', // sender address
+          to: post.email,
+          subject: "[HealthyFling/POST FLAGED] : " + post.title + subject_sufix,
+          html: mailBody
+      };
+
+
+      transporter.sendMail(mailOptions, function(error, info){
+          if(error){
+              console.log(error);
+          }else{
+              console.log('Message sent: ' + info.response);
+          };
+      });
+      res.json(post);
+    });
+  });
+};
+
 exports.read_all_posts = function(req, res) {
 
   var date = new Date();
