@@ -110,6 +110,19 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $location.path('/search');
     };
 
+    vm.searchFilter = function (state,region,category) {
+        if(state == 'State' || region == 'Region'){
+            console.log("Do nothing");
+        }else{
+            $rootScope.loading = true;
+            $rootScope.search.state = state;
+            $rootScope.search.region = region;
+            $rootScope.search.category = category;
+            console.log("asdasdsa");
+            $location.path('/search');
+        };
+    };
+
     $scope.notify = function () {
         $scope.showEmail = true;
     	console.log("mail sent");
