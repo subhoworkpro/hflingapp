@@ -64,9 +64,9 @@
   <div class="container" ng-controller="AdsController">
       <div class="bread_cnt">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter()">{{vm.state}}</a></li>
-            <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter()">{{vm.region}}</a></li>
-             <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter()">{{vm.category}}</a></li>
+            <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,'Region','Category')">{{vm.state}}</a></li>
+            <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,vm.region,'Category')">{{vm.region}}</a></li>
+             <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,vm.region,vm.category)">{{vm.category}}</a></li>
           </ol>
       </div>
       <div class="add_hdr">

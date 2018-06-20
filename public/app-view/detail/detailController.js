@@ -111,7 +111,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     };
 
     vm.searchFilter = function (state,region,category) {
-        if(state == 'State' || region == 'Region'){
+        if(state == 'State' && region == 'Region'){
             console.log("Do nothing");
         }else{
             $rootScope.loading = true;

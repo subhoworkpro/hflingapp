@@ -150,7 +150,7 @@ exports.flagpost = function(req, res) {
   Post.findById(req.params.postId, function(err, post) {
     if (err)
       res.send(err);
-    post.status = "flaged";
+    post.status = "flagged";
     post.save(function(err, post) {
       if (err)
         res.send(err);
@@ -167,11 +167,11 @@ exports.flagpost = function(req, res) {
         }
       }
 
-      var mailBody = "<b>Greetings!</b><br/>"+ "<p>Your posting in HealthyFling has been flaged!</p>"+"<p>";
+      var mailBody = "<b>Greetings!</b><br/>"+ "<p>Your posting in HealthyFling has been flaged!</p>"+"<p>If you feel your post was flagged incorrectly, please contact us for further review.</p><p>You can contact us <a href='https://www.healthyfling.com/#/contact'>here</a></p><p>https://www.healthyfling.com/#/contact</p>";
       var mailOptions = {
           from: 'Healthy Fling <info@healthyfling.com>', // sender address
           to: post.email,
-          subject: "[HealthyFling/POST FLAGED] : " + post.title + subject_sufix,
+          subject: "[POST FLAGGED] : " + post.title + subject_sufix,
           html: mailBody
       };
 

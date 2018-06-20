@@ -66,8 +66,8 @@
       <div class="container">
          <div class="bread_cnt">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item" ng-if ="state"><a href="" ng-click="vm.searchFilter(state,region,category)">{{state}}</a></li>
-              <li class="breadcrumb-item" ng-if ="region"><a href="" ng-click="vm.searchFilter(state,region,category)">{{region}}</a></li>
+              <li class="breadcrumb-item" ng-if ="state"><a href="" ng-click="vm.searchFilter(state,'Region','Category')">{{state}}</a></li>
+              <li class="breadcrumb-item" ng-if ="region"><a href="" ng-click="vm.searchFilter(state,region,'Category')">{{region}}</a></li>
                <li class="breadcrumb-item" ng-if ="category"><a href="" ng-click="vm.searchFilter(state,region,category)">{{category}}</a></li>
             </ol>
         </div>

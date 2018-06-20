@@ -41,13 +41,17 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
         this.reloadSearch();
     };
 
-    vm.searchFilter = function () {
-        if(vm.state == 'State' || vm.region == 'Region'){
+    vm.searchFilter = function (state,region,category) {
+        if(state == 'State' && region == 'Region'){
             console.log("Do nothing");
         }else{
-            $rootScope.search.state = vm.state;
-            $rootScope.search.region = vm.region;
-            $rootScope.search.category = vm.category;
+            // $rootScope.loading = true;
+            $rootScope.search.state = state;
+            vm.state = state;
+            $rootScope.search.region = region;
+            vm.region = region;
+            $rootScope.search.category = category;
+            vm.category = category;
             console.log("asdasdsa");
             this.reloadSearch();
         };
