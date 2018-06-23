@@ -188,6 +188,22 @@ exports.flagpost = function(req, res) {
   });
 };
 
+
+exports.unflagpost = function(req, res) {
+  Post.findById(req.params.postId, function(err, post) {
+    if (err)
+      res.send(err);
+    post.status = "active";
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+      res.json(post);
+    });
+  });
+};
+
+
+
 exports.read_all_posts = function(req, res) {
 
   var date = new Date();
@@ -212,6 +228,29 @@ exports.read_all_posts = function(req, res) {
 
 };
 
+
+exports.admin_read_all_posts = function(req, res) {
+
+  var date = new Date();
+  var daysToDeletion = 2;
+  var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+  var query_params = url.parse(req.url,true).query; 
+  query_params.created = {$gt : deletionDate};
+  var query = {
+    state : 'STATE1'
+  };  
+
+  console.log(query_params);
+  Post.find(query_params, function (err, posts) {
+    // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+        res.json(posts); // return all todos in JSON format
+    });
+
+};
 
 // exports.update_a_post = function(req, res) {
 //   Task.findOneAndUpdate({_id: req.params.taskId}, req.body, {new: true}, function(err, task) {

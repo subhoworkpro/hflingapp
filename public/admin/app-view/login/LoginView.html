@@ -1,0 +1,32 @@
+
+    <div class="split left" ng-controller = "LoginController">
+        <div class="login_container">
+            <figure class="brand_logo"><img src="app-content/images/logonew.png" alt="/"></figure>
+            <div class="login_container">
+                <form class="login_form validate-form">
+                    <div class="login_input validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input" type="text" name="email" ng-model="vm.username">
+                        <span class="focus-input"></span>
+                        <span class="label-input">Email Address</span>
+                    </div>
+
+                    <div class="login_input validate-input">
+                        <input class="input" type="password" name="password" ng-model = "vm.password">
+                        <span class="focus-input"></span>
+                        <span class="label-input">Password</span>
+                    </div>
+                    <div class="container-login-form-btn">
+                        <button class="login-form-btn" ng-click="vm.login()">Log in</button>
+                    </div>
+                    <!-- <div class="reg_link">
+                        <a href="register.html" class="txt1">Register</a> &nbsp;
+                        <a href="reset.html" class="txt1">Forgot Password?</a>
+                    </div> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="split right">
+
+    </div>

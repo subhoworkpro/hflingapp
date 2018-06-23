@@ -1,0 +1,8 @@
+@media only screen and (max-width: 768px) {
+    [class*="split left"] {
+      width: 100%;
+    }
+    [class*="split right"] {
+      width: 0%;
+    }
+  }

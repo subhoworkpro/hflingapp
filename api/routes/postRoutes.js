@@ -4,11 +4,13 @@ module.exports = function(apiRoutes) {
 
   // Post Routes
   apiRoutes.get('/posts', post.read_all_posts);
+  apiRoutes.get('/adminposts', post.admin_read_all_posts);
   apiRoutes.get('/posts/:postId', post.read_a_post);
   apiRoutes.post('/posts', post.create_a_post);
   apiRoutes.delete('/posts/:postId', post.delete_a_post);
   apiRoutes.get('/verifypost/:postId', post.verifypost);
   apiRoutes.get('/flagpost/:postId', post.flagpost);
+  apiRoutes.get('/unflagpost/:postId', post.unflagpost);
 
   // app.route('/tasks/:taskId')
   //   .get(todoList.read_a_task)
