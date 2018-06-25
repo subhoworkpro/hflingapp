@@ -11,6 +11,7 @@ module.exports = function(apiRoutes) {
   apiRoutes.get('/verifypost/:postId', post.verifypost);
   apiRoutes.get('/flagpost/:postId', post.flagpost);
   apiRoutes.get('/unflagpost/:postId', post.unflagpost);
+  apiRoutes.get('/adminpost/:postId', post.admin_read_a_post);
 
   // app.route('/tasks/:taskId')
   //   .get(todoList.read_a_task)

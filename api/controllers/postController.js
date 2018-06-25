@@ -132,6 +132,32 @@ exports.read_a_post = function(req, res) {
 
 };
 
+exports.admin_read_a_post = function(req, res) {
+
+  var date = new Date();
+  var daysToDeletion = 30;
+  var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+  var query_params = {};
+  query_params.created = {$gt : deletionDate};
+  // query_params.status = "active";
+  query_params["_id"] = req.params.postId;
+  var query = {
+    state : 'STATE1'
+  };  
+
+  console.log(query_params);
+  Post.find(query_params, function (err, posts) {
+    // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+        // console.log(posts[0]);
+        res.json(posts[0]); // return all todos in JSON format
+    });
+
+};
+
 exports.verifypost = function(req, res) {
   Post.findById(req.params.postId, function(err, post) {
     if (err)
@@ -232,7 +258,7 @@ exports.read_all_posts = function(req, res) {
 exports.admin_read_all_posts = function(req, res) {
 
   var date = new Date();
-  var daysToDeletion = 2;
+  var daysToDeletion = 30;
   var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
   var query_params = url.parse(req.url,true).query; 
@@ -262,11 +288,23 @@ exports.admin_read_all_posts = function(req, res) {
 
 
 exports.delete_a_post= function(req, res) {
-  Post.remove({
-    _id: req.params.postId
-  }, function(err, post) {
+
+  Post.findById(req.params.postId, function(err, post) {
     if (err)
       res.send(err);
-    res.json({ message: 'post successfully deleted' });
+    post.status = "inactive";
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'post successfully deleted' });
+    });
   });
+
+  // Post.remove({
+  //   _id: req.params.postId
+  // }, function(err, post) {
+  //   if (err)
+  //     res.send(err);
+  //   res.json({ message: 'post successfully deleted' });
+  // });
 };

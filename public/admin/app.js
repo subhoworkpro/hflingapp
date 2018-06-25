@@ -75,6 +75,18 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/detail', {
+            controller: 'DetailController',
+            templateUrl: 'app-view/detail/DetailView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/detail/:id', {
+            controller: 'DetailController',
+            templateUrl: 'app-view/detail/DetailView.html',
+            controllerAs: 'vm'
+        })
+
         .otherwise({ redirectTo: '404.html' });
 
 }]);

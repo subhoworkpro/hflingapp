@@ -47,7 +47,11 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
             }else{
                 params = params + "&category="+$rootScope.search.category;
             }
-
+            if($rootScope.search.status == ""){
+                $rootScope.search.status = "active";
+            }else{
+                params = params + "status="+$rootScope.search.status;
+            }
             var url = "/api/adminposts?"+params;
              return $http({
                         url: url,
@@ -59,7 +63,36 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
         };
 
         service.GetAPost = function (id) {
-            var url = "/api/posts/"+id;
+            var url = "/api/adminpost/"+id;
+             return $http({
+                        url: url,
+                        method: "GET",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
+        service.GetFlagPosts = function (id) {
+            var params = "status=flagged&";
+
+            if($rootScope.search.state == "State" || $rootScope.search.state == ""){
+                $rootScope.search.state = "";
+            }else{
+                params = params + "state="+$rootScope.search.state;
+            }
+            if($rootScope.search.region == "Region" || $rootScope.search.region == ""){
+                $rootScope.search.region = "";
+            }else{
+                params = params + "&region="+$rootScope.search.region;
+            }
+            if($rootScope.search.category == "Category" || $rootScope.search.category == ""){
+                $rootScope.search.category = "";
+            }else{
+                params = params + "&category="+$rootScope.search.category;
+            }
+
+            var url = "/api/adminposts?"+params;
              return $http({
                         url: url,
                         method: "GET",

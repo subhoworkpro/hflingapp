@@ -49,6 +49,15 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
         this.reloadSearch();
     };
 
+    vm.flagged_search = function () {
+        $rootScope.search.state = vm.state;
+        $rootScope.search.region = vm.region;
+        $rootScope.search.category = vm.category;
+        $rootScope.search.status = "flagged";
+        console.log("asdasdsa");
+        this.reloadSearch();
+    };
+
       vm.reloadSearch = function(){
         $rootScope.loading = true;
         HttpService.GetPosts()
