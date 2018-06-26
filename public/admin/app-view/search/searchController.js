@@ -42,6 +42,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     };
 
     vm.search = function () {
+        $rootScope.search.status = "";
         $rootScope.search.state = vm.state;
         $rootScope.search.region = vm.region;
         $rootScope.search.category = vm.category;

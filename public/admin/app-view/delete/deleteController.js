@@ -199,7 +199,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     vm.search = function () {
         $rootScope.loading = true;
         console.log(this.state);
-        $rootScope.search.status = "active";
+        $rootScope.search.status = "";
         $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
