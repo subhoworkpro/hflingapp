@@ -5,6 +5,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $rootScope.loading = true;
     }
 
+
+    
+
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
