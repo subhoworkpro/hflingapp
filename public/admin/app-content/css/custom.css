@@ -1504,3 +1504,18 @@ img {
 .text_buttons li a:focus{
    color: #fd0006;
 }
+
+.gallery_det a{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000;
+    background-color: #cbc8c3;
+    padding: 2px 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.gallery_det a:hover,
+.gallery_det a:focus{
+    background-color: #e1ae2e;
+}

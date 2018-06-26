@@ -35,6 +35,43 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.id = id;
 
 
+    vm.logout = function () {
+        $location.path('/login');
+    };
+
+    vm.login = function () {
+        $location.path('/login');
+    };
+
+    vm.dashboard = function () {
+      $location.path('/');
+    };
+    
+
+    vm.search = function () {
+        $rootScope.loading = true;
+        console.log(this.state);
+        $rootScope.search.status = "active";
+        $rootScope.search.state = this.state;
+        $rootScope.search.region = this.region;
+        $rootScope.search.category = this.category;
+        vm.dataLoading = true;
+        console.log("asdasdsa");
+        $location.path('/search');
+    };
+
+    vm.flagged_search = function () {
+        $rootScope.loading = true;
+        console.log(this.state);
+        $rootScope.search.status = "flagged";
+        $rootScope.search.state = this.state;
+        $rootScope.search.region = this.region;
+        $rootScope.search.category = this.category;
+        vm.dataLoading = true;
+        console.log("asdasdsa");
+        $location.path('/search');
+    };
+
     $scope.initController = function () {
 
         $http.get("/data.json")
