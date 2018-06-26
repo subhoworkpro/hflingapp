@@ -71,7 +71,7 @@
         </div>
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
         <div class="gallery_det">
-          <h2>{{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
+          <h2>{{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span><span style= "font-weight: bold;text-transform: uppercase;padding: 0px 10px;background: darkseagreen;margin-left: 20px;">{{status}}</span></h2>
           <div>
             <a href="#flag/{{post_id}}">Flag</a>
             <a style="margin-left: 5px;" href="#unflag/{{post_id}}">Unflag</a>

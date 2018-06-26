@@ -262,6 +262,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.sender1 = $rootScope.currentPost.data.email;
                 $scope.state = $rootScope.currentPost.data.state;
+                $scope.status = $rootScope.currentPost.data.status;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;

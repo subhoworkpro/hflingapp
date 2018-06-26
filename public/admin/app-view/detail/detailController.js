@@ -82,9 +82,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             $rootScope.masterList = data;
         })
 
-        vm.state = $rootScope.search.state;
-        vm.region = $rootScope.search.region;
-        vm.category = $rootScope.search.category;
+        vm.state = $rootScope.search.state || 'State';
+        vm.region = $rootScope.search.region || 'Region';
+        vm.category = $rootScope.search.category || 'Category';
       var path = $location.path();
       var arr = path.split("/");
       var id = arr[arr.length-1];
@@ -117,6 +117,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.sender1 = $rootScope.currentPost.data.email;
                 $scope.state = $rootScope.currentPost.data.state;
+                $scope.status = $rootScope.currentPost.data.status;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
