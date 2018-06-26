@@ -161,14 +161,18 @@ exports.admin_read_a_post = function(req, res) {
 exports.verifypost = function(req, res) {
   Post.findById(req.params.postId, function(err, post) {
     if (err)
-      res.send(err);
-    post.status = "active";
-    post.save(function(err, post) {
-      if (err)
-        res.send(err);
-      res.redirect("/#/detail/"+post["_id"]+"?success=true");
-      
-    });
+      res.redirect("/#/expired");
+    if(post == null){
+      res.redirect("/#/expired");
+    }else{
+      post.status = "active";
+      post.save(function(err, post) {
+        if (err)
+          res.redirect("/#/expired");
+        res.redirect("/#/detail/"+post["_id"]+"?success=true");
+        
+      });
+    }
   });
 };
 
