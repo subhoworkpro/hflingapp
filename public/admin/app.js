@@ -136,7 +136,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.loadingImage = false;
         $rootScope.adposts = {};
         $rootScope.search = {};
-        $rootScope.search.status = "active";
+        $rootScope.search.status = "";
         $rootScope.search.state = "State";
         $rootScope.search.region = "Region";
         $rootScope.search.category = "Category";

@@ -47,9 +47,7 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
             }else{
                 params = params + "&category="+$rootScope.search.category;
             }
-            if($rootScope.search.status == ""){
-                $rootScope.search.status = "active";
-            }else{
+            if($rootScope.search.status != ""){
                 params = params + "status="+$rootScope.search.status;
             }
             var url = "/api/adminposts?"+params;
