@@ -66,6 +66,16 @@
     .moltin_logo{
         display: none;
     }
+
+    .moltin_logo_favicon{
+        display: block;
+    }
+
+    .moltin_logo_favicon {
+        width: 40px;
+        display: block;
+        margin: 15px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -119,8 +129,6 @@
         width: 97%;
     }
 
-
-
     .select_sbt {
         display: block;
         margin: 7px auto;
@@ -140,7 +148,12 @@
 
     .text_right{
         overflow: visible;
-        padding-top: 0;
+        padding-top: 15px;
+        padding-left: 0;
+    }
+
+    .moltin_logo_favicon{
+        width: 38px;
     }
 }
 

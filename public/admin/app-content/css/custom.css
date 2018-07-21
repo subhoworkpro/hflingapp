@@ -240,11 +240,8 @@ a.txt1 {
     margin: 26px 4px;
 }
 
-.moltin_logo_hidden {
-    visibility: hidden;
-    display: block;
-    width: 68px;
-    margin: -50px 0px 0px 25px;
+.moltin_logo_favicon {
+    display: none;
 }
 
 ul.primary_menu {
