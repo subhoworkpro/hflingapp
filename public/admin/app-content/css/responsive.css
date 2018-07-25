@@ -83,9 +83,19 @@
     }
 
     .gallery_cnt {
-		height: 100%;
-		overflow: auto;
-	}
+        height: 100%;
+        overflow: visible;
+    }
+
+    h2 {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    h4 {
+        font-size: 16px;
+        line-height: 25px;
+    }
 
 }
 
