@@ -37,6 +37,7 @@
     }
     .right_section {
         width: 90%;
+        overflow-y: scroll;
     }
     .select_area {
         width: 33%;
@@ -78,7 +79,7 @@
     }
 
     .result_cnt {
-       height: calc(100vh - 330px);
+       height: 100%;
     }
 
 }
@@ -159,9 +160,6 @@
 
     .moltin_logo_favicon{
         width: 38px;
-    }
-    .result_cnt {
-       height: calc(100vh - 415px);
     }
 }
 
