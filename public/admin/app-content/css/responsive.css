@@ -82,6 +82,11 @@
        height: 100%;
     }
 
+    .gallery_cnt {
+		height: 100%;
+		overflow: auto;
+	}
+
 }
 
 @media (max-width: 767px) {
