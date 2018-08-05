@@ -45,6 +45,12 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/error', {
+            controller: 'ErrorController',
+            templateUrl: 'app-view/error/ErrorView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/reply', {
             controller: 'ReplyController',
             templateUrl: 'app-view/reply/ReplyView.html',

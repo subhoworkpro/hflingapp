@@ -142,8 +142,11 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	                console.log("success");
 	                console.log(response)
 	                // alert("Your ad has been created. A verification mail will be sent shortly!"); 
-	                if (response && response.data && response.data["_id"]) {}
-	                $location.path('/confirm/'+response.data["_id"]);
+	                if (response && response.data && response.data["_id"]) {
+	                	$location.path('/confirm/'+response.data["_id"]);
+	                }else if(response && response.data && response.data["data"] == "limit reached"){
+	                	$location.path('/error');
+	                }
 	                $rootScope.loading = false;
 	            }else{
 	            	$rootScope.loading = false;

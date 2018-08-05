@@ -15,6 +15,10 @@ var transporter = nodemailer.createTransport({
 var cloudinary = require('cloudinary');
 var url  = require('url');
 
+var MAXIMUM_ALLOWED_POST = 4;
+var POSTS_TIMEOUT = 7;
+var ADMIN_POSTS_TIMEOUT = 30;
+
 
 cloudinary.config({ 
   cloud_name: 'dtrj5hqdm', 
@@ -59,41 +63,66 @@ exports.create_a_post = function(req, res) {
             files: req.body.files,
             status: "inactive"
 	  			});
-  new_post.save(function(err, post) {
-    if (err)
-      res.send(err);
 
-    var subject_sufix = "";
+  var date = new Date();
+  var daysToDeletion = POSTS_TIMEOUT;
+  var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
-    if(post.location || post.age){
-      subject_sufix = " -";
-      if(post.age){
-        subject_sufix = subject_sufix + " " +post.location;
+  var query_params = {};
+  query_params.created = {$gt : deletionDate};
+  query_params.email = req.body.email;  
+
+  Post.find(query_params, function (err, posts) {
+  // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+      if (err) {
+          res.send(err);
       }
-      if(post.location){
-        subject_sufix = subject_sufix + " (" +post.location+")";
+      console.log("Number of post found: "+(posts ? posts.length : 0));
+      if(posts && posts.length < MAXIMUM_ALLOWED_POST){
+        new_post.save(function(err, post) {
+          if (err)
+            res.send(err);
+
+          var subject_sufix = "";
+
+          if(post.location || post.age){
+            subject_sufix = " -";
+            if(post.age){
+              subject_sufix = subject_sufix + " " +post.location;
+            }
+            if(post.location){
+              subject_sufix = subject_sufix + " (" +post.location+")";
+            }
+          }
+
+          var mailBody = "<b>Greetings!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 2 days</p><p style='width: 125px;'><a href='https://www.healthyfling.com'><img alt='healthyfling-logo.png' src='https://www.healthyfling.com/app-content/images/logo.png' style='max-width: 100%;'></a><br></p>";
+          var mailOptions = {
+              from: 'Healthy Fling <info@healthyfling.com>', // sender address
+              to: post.email,
+              subject: "[HealthyFling/PLEASE VERIFY YOUR SUBMISSION] : " + post.title + subject_sufix,
+              html: mailBody
+          };
+
+
+          transporter.sendMail(mailOptions, function(error, info){
+              if(error){
+                  console.log(error);
+              }else{
+                  console.log('Message sent: ' + info.response);
+              };
+          });
+
+          res.json(post);
+        });
+        console.log("New post added");
+      }else{
+        console.log("Maximum limit reached");
+          var data = {data:"limit reached"};
+          res.json(data);
       }
-    }
-
-    var mailBody = "<b>Greetings!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 2 days</p><p style='width: 125px;'><a href='https://www.healthyfling.com'><img alt='healthyfling-logo.png' src='https://www.healthyfling.com/app-content/images/logo.png' style='max-width: 100%;'></a><br></p>";
-    var mailOptions = {
-        from: 'Healthy Fling <info@healthyfling.com>', // sender address
-        to: post.email,
-        subject: "[HealthyFling/PLEASE VERIFY YOUR SUBMISSION] : " + post.title + subject_sufix,
-        html: mailBody
-    };
-
-
-    transporter.sendMail(mailOptions, function(error, info){
-        if(error){
-            console.log(error);
-        }else{
-            console.log('Message sent: ' + info.response);
-        };
-    });
-
-    res.json(post);
+    // console.log(posts[0]);
   });
+  
 };
 
 
@@ -109,7 +138,7 @@ exports.create_a_post = function(req, res) {
 exports.read_a_post = function(req, res) {
 
   var date = new Date();
-  var daysToDeletion = 2;
+  var daysToDeletion = POSTS_TIMEOUT;
   var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
   var query_params = {};
@@ -135,7 +164,7 @@ exports.read_a_post = function(req, res) {
 exports.admin_read_a_post = function(req, res) {
 
   var date = new Date();
-  var daysToDeletion = 30;
+  var daysToDeletion = ADMIN_POSTS_TIMEOUT;
   var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
   var query_params = {};
@@ -237,7 +266,7 @@ exports.unflagpost = function(req, res) {
 exports.read_all_posts = function(req, res) {
 
   var date = new Date();
-  var daysToDeletion = 2;
+  var daysToDeletion = POSTS_TIMEOUT;
   var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
   var query_params = url.parse(req.url,true).query; 
@@ -262,7 +291,7 @@ exports.read_all_posts = function(req, res) {
 exports.admin_read_all_posts = function(req, res) {
 
   var date = new Date();
-  var daysToDeletion = 30;
+  var daysToDeletion = ADMIN_POSTS_TIMEOUT;
   var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
   var query_params = url.parse(req.url,true).query; 
