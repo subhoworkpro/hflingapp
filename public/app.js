@@ -87,6 +87,30 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/edit', {
+            controller: 'EditController',
+            templateUrl: 'app-view/edit/EditView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/edit/:id', {
+            controller: 'EditController',
+            templateUrl: 'app-view/edit/EditView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/delete', {
+            controller: 'DeleteController',
+            templateUrl: 'app-view/delete/DeleteView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/delete/:id', {
+            controller: 'DeleteController',
+            templateUrl: 'app-view/delete/DeleteView.html',
+            controllerAs: 'vm'
+        })
+
 
         .otherwise({ redirectTo: '404.html' });
 

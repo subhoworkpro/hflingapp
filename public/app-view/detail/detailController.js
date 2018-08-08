@@ -1,4 +1,4 @@
-app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService){
+app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document){
     var vm = this;
 
     if($rootScope.visitedSearchPage){
@@ -56,11 +56,14 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 	    HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);
+            $scope.is_edit = false;
             if (response.status == '200' && response.data["_id"]) {
                 $rootScope.currentPost.data = response.data;
                 var params = $location.search();
                 if(params && params.success == 'true'){
                     FlashService.Success("Your post is now Live.");
+                }else if(params && params.edit == 'true'){
+                    $scope.is_edit = true;
                 }
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;

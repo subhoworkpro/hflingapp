@@ -95,11 +95,12 @@ exports.create_a_post = function(req, res) {
             }
           }
 
-          var mailBody = "<b>Greetings!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 7 days</p><p style='width: 125px;'><a href='https://www.healthyfling.com'><img alt='healthyfling-logo.png' src='https://www.healthyfling.com/app-content/images/logo.png' style='max-width: 100%;'></a><br></p>";
+          // var mailBody = "<b>Greetings!</b><br/>"+ "<p>Thank you for posting in HealthyFling!</p>"+"<p>Click on the following link to verify your submittion. Please <a href='"+"http://healthyfling.com/api/verifypost/"+post['_id']+"'>click here</a></p>"+"<p>If the link doesn't work, please copy and paste the URL in your browser: </p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><br/><p>Also please be aware:</p><p> - Once your post is verified and published on the site, it cannot be deleted or edited</p><p> - Posts naturally expire after 7 days</p><p style='width: 125px;'><a href='https://www.healthyfling.com'><img alt='healthyfling-logo.png' src='https://www.healthyfling.com/app-content/images/logo.png' style='max-width: 100%;'></a><br></p>";
+          var mailBody = "<p style='color: red;'>IMPORTANT - FURTHER ACTION IS REQUIRED TO COMPLETE YOUR REQUEST !!!</p><p>FOLLOW THE WEB ADDRESS BELOW TO:</p><ul><li>PUBLISH YOUR AD</li><li>EDIT (OR CONFIRM AN EDIT TO) YOUR AD</li><li>DELETE YOUR AD</li></ul><p>If not clickable, please copy and paste the address ti your browser:</p><p><span style='color: red;'>THIS LINK IS A PASSWORD. DO NOT SHARE IT </span>- anyone who has a copy of this link can edit or delete your posting.</p>" +"<p>http://healthyfling.com/api/verifypost/"+post['_id']+"</p><p style='color: red;'>PLEASE KEEP THIS EMAIL TO MANAGE YOUR POSTING!</p><p>Your posting will expire off the site 7 days after it was created.</p><p>Thanks for using Healthyfling!</p><p style='width: 125px;'><a href='https://www.healthyfling.com'><img alt='healthyfling-logo.png' src='https://www.healthyfling.com/app-content/images/logo.png' style='max-width: 100%;'></a><br></p>";
           var mailOptions = {
               from: 'Healthy Fling <info@healthyfling.com>', // sender address
               to: post.email,
-              subject: "[HealthyFling/PLEASE VERIFY YOUR SUBMISSION] : " + post.title + subject_sufix,
+              subject: "POST/EDIT/DELETE : " + post.title + subject_sufix,
               html: mailBody
           };
 
@@ -189,16 +190,24 @@ exports.admin_read_a_post = function(req, res) {
 
 exports.verifypost = function(req, res) {
   Post.findById(req.params.postId, function(err, post) {
+    var is_edit = false;
     if (err)
       res.redirect("/#/expired");
     if(post == null){
       res.redirect("/#/expired");
     }else{
+      if(post.status == "active"){
+        is_edit = true;
+      }
       post.status = "active";
       post.save(function(err, post) {
         if (err)
           res.redirect("/#/expired");
-        res.redirect("/#/detail/"+post["_id"]+"?success=true");
+        if(is_edit){
+          res.redirect("/#/detail/"+post["_id"]+"?edit=true");
+        }else{
+          res.redirect("/#/detail/"+post["_id"]+"?success=true");
+        }
         
       });
     }
@@ -318,6 +327,42 @@ exports.admin_read_all_posts = function(req, res) {
 //     res.json(task);
 //   });
 // };
+
+exports.edit_a_post= function(req, res) {
+  console.log(req.params);
+  console.log(req.body);
+  Post.findById(req.params.postId, function(err, post) {
+    if (err)
+      res.send(err);
+    if(req.body.title){
+      post.title = req.body.title;
+    }
+    if(req.body.state){
+      post.state = req.body.state;
+    }
+    if(req.body.region){
+      post.region = req.body.region;
+    }
+    if(req.body.category){
+      post.category = req.body.category;
+    }
+    if(req.body.location){
+      post.location = req.body.location;
+    }
+    if(req.body.age){
+      post.age = req.body.age;
+    }
+    if(req.body.message){
+      post.body = req.body.message;
+    }
+    // post.status = "inactive";
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+      res.json(post);
+    });
+  });
+};
 
 
 exports.delete_a_post= function(req, res) {

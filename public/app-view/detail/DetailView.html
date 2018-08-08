@@ -77,6 +77,8 @@
           <div>
             <a href="#reply/{{post_id}}">Reply</a>
             <a style="margin-left: 5px;" href="#flag/{{post_id}}">Flag</a>
+            <a ng-if = "is_edit" style="margin-left: 5px;" href="#edit/{{post_id}}">Edit</a>
+            <a ng-if = "is_edit" style="margin-left: 5px;" href="#delete/{{post_id}}">Delete</a>
           </div>
           <div class="row" ng-show="showEmail" >
             <div class="col-md-7">
@@ -135,7 +137,7 @@
           </div>
 
           <div ng-show = "windowWidth < 752">
-            <div class="advertise" ng-show = " (category == 'Men Seeking Woman') || (category == 'Women Seeking Men') || (category == 'Woman Seeking Woman') ">
+            <div class="advertise" ng-show = " (category == 'Men Seeking Woman') || (category == 'Women Seeking Men') || (category == 'Woman Seeking Woman') || (category == 't4m') || (category == 'm4t') || (category == 't4w') || (category == 'w4t') || (category == 't4t') || (category == 'mw4mw') || (category == 'mw4w') || (category == 'mw4m') || (category == 'w4mw') || (category == 'w4ww') || (category == 'ww4w') || (category == 'ww4m') || (category == 'mm4w') || (category == 'm4ww') || (category == 'w4mm') || (category == 't4mw') || (category == 'mw4t') ">
                 
                 <!-- JuicyAds v3.0 -->
                 <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>
@@ -144,7 +146,7 @@
                 <!--JuicyAds END-->
 
             </div>
-            <div class="advertise" ng-show = " (category == 'Men Seeking Men') ">
+            <div class="advertise" ng-show = " (category == 'Men Seeking Men') || (category == 'mm4m') || (category == 'm4mm') ">
               
               <!-- JuicyAds v3.0 -->
               <script type="text/javascript" data-cfasync="false" async src="//adserver.juicyads.com/js/jads.js"></script>

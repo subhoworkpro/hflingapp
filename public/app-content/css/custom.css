@@ -933,3 +933,9 @@ font-weight: 400;
 .follow_sec p a:focus {
     color: #d35668;
 }
+
+
+.confirm_edit .post_bk{
+    display: inline-block;
+    margin-right: 20px;
+}

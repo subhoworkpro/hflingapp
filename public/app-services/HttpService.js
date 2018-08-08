@@ -68,6 +68,30 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
                     }).then(handleSuccess, handleError('Error getting result'));
         };
 
+        service.EditPost = function (id,data) {
+            console.log(data);
+            var serializeData = JSON.stringify(data);
+            var url = "/api/editpost/"+id;
+            var config = {
+                headers : {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': undefined
+                }
+            };
+             return $http.post(url, serializeData, config).then(handleSuccess, handleError('Error getting sales report'));
+        };
+
+        service.DeleteAPost = function (id) {
+            var url = "/api/posts/"+id;
+             return $http({
+                        url: url,
+                        method: "DELETE",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
         service.FlagAPost = function (id) {
             var url = "/api/flagpost/"+id;
              return $http({
