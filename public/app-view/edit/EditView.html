@@ -61,7 +61,7 @@
               <p>Add Images (Up to 5 images allowed).
               <em>The first image will be the featured image.</em></p>
             </div>
-              <!-- <input type="file" class="cust_file" ng-file-model="files" multiple /> -->
+              <input type="file" class="cust_file" ng-file-model="files" multiple />
               <div style="margin-bottom: 20px;">
                 <!-- <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;"> -->
                 <div class='col-md-2 col-sm-2 col-xs-2' ng-repeat="file in imageList" style="padding: 20px 0px;"><img style="padding: 5px;" class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"></div>
