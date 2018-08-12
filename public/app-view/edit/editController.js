@@ -27,6 +27,14 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         $rootScope.loadingImage = false;
    };
 
+   $scope.deleteImage = function(index){
+        console.log("Deleted");
+        $rootScope.imageList.splice(index, 1);
+        $scope.files = $rootScope.imageList;
+        console.log($rootScope.imageList);
+        console.log($scope.files);
+   };
+
     vm.files = []; 
 
     console.log("asd");
@@ -123,7 +131,8 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 "category": $scope.category, 
                 "location": $scope.location, 
                 "age": $scope.age,
-                "message": $scope.message
+                "message": $scope.message,
+                "files": $rootScope.imageList
             };
             console.log(postData);
              HttpService.EditPost(id,postData)
@@ -193,7 +202,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
-                $scope.imageList = $rootScope.currentPost.data.files;
+                $rootScope.imageList = $rootScope.currentPost.data.files;
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;

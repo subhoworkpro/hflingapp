@@ -70,8 +70,8 @@
           </ol>
       </div>
       <div class="add_hdr">
-        <h2 ng-hide="data" style="font-weight: normal;font-size: 14px;">Showing 0 of 0</h2>
-        <h2 ng-show="data" style="font-weight: normal;font-size: 14px;">Showing {{vm.currentPage+1}} of {{data.length/vm.pageSize | roundup}}</h2>
+        <h2 ng-hide="data" style="font-weight: normal;font-size: 14px;">Showing page 0 of 0</h2>
+        <h2 ng-show="data" style="font-weight: normal;font-size: 14px;">Showing page {{vm.currentPage+1}} of {{data.length/vm.pageSize | roundup}}</h2>
       </div>
       <div class="add_cnt">
         <div ng-show="data">

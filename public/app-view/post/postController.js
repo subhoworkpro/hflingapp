@@ -27,6 +27,14 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 		$rootScope.loadingImage = false;
    };
 
+   $scope.deleteImage = function(index){
+		console.log("Deleted");
+		$rootScope.imageList.splice(index, 1);
+		vm.data.files = $rootScope.imageList;
+		console.log($rootScope.imageList);
+		console.log(vm.data.files);
+   };
+
     vm.files = []; 
 
     console.log("asd");

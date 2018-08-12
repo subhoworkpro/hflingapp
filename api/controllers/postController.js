@@ -355,6 +355,9 @@ exports.edit_a_post= function(req, res) {
     if(req.body.message){
       post.body = req.body.message;
     }
+    if(req.body.files){
+      post.files = req.body.files;
+    }
     // post.status = "inactive";
     post.save(function(err, post) {
       if (err)
