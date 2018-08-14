@@ -238,6 +238,7 @@ app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$h
                         modelSetter(scope, values[0]);
                     }
                 });
+                angular.element("input[type='file']").val(null);
             });
         }
     };
