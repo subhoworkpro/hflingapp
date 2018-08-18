@@ -140,9 +140,11 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
 
         }else{
             $rootScope.loading = true;
+            var options = { timeZone: "America/New_York"}
+            var estTime = new Date();
             var data = {
                 "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
-                "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message),
+                "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message)+" - "+estTime.toLocaleString("en-US", options),
                 "sender1": $scope.sender1,
                 "x-from": $scope.email,
                 "x-post-id": $scope.id

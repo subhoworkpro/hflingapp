@@ -939,3 +939,22 @@ font-weight: 400;
     display: inline-block;
     margin-right: 20px;
 }
+
+
+.page_hdr{
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   -webkit-box-pack: justify;
+   -ms-flex-pack: justify;
+   justify-content: space-between;
+   padding-bottom: 5px;
+   border-bottom: 1px solid #e4e4e4;
+   margin-bottom:  30px;
+}
+
+.page_hdr .add_hdr h2{
+   margin-bottom: 0;
+   border-bottom: 0;
+   padding-bottom:  0;
+}

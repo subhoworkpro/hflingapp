@@ -69,9 +69,14 @@
              <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,vm.region,vm.category)">{{vm.category}}</a></li>
           </ol>
       </div>
-      <div class="add_hdr">
-        <h2 ng-hide="data" style="font-weight: normal;font-size: 14px;">Showing page 0 of 0</h2>
+      <div class="page_hdr">
+        <div class="add_hdr">
+             <h2 ng-hide="data" style="font-weight: normal;font-size: 14px;">Showing page 0 of 0</h2>
         <h2 ng-show="data" style="font-weight: normal;font-size: 14px;">Showing page {{vm.currentPage+1}} of {{data.length/vm.pageSize | roundup}}</h2>
+          </div>
+        <div class="total_post">
+            <p>{{data.length}} active posts</p>
+        </div>
       </div>
       <div class="add_cnt">
         <div ng-show="data">
