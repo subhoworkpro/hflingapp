@@ -64,7 +64,7 @@
               <input type="file" class="cust_file" ng-file-model="files" multiple style="color: transparent;"/>
               <div style="margin-bottom: 20px;">
                 <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
-                <div class='col-md-2 col-sm-2 col-xs-2' ng-repeat="file in imageList" style="padding: 20px 0px;"><div style="position: relative"><img style="padding: 5px;" class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="http://wecision.com/enterprise/images/icons/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
+                <div class='col-md-2 col-sm-2 col-xs-2' ng-repeat="file in imageList" style="padding: 20px 0px;"><div style="position: relative"><img style="padding: 5px;" class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
               </div>
             </div>
 
