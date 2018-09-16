@@ -5,6 +5,18 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
+
+    $scope.haircolors = $rootScope.haircolorList;
+    $scope.heights = $rootScope.heightList;
+    $scope.ethnicity = $rootScope.ethnicityList;
+    $scope.orientation = $rootScope.orientationList;
+    $scope.bodytype = $rootScope.bodytypeList;
+    $scope.eyecolor = $rootScope.eyecolorList;
+    $scope.status = $rootScope.statusList;
+    $scope.gender = $rootScope.genderList;
+    $scope.bodyhair = $rootScope.bodyHairList;
+    $scope.hivstatus = $rootScope.hivstatusList;
+
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
 	    $scope.regions.unshift("Region");
 	}
@@ -63,6 +75,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
         $location.path('/search');
     };
 
+
     vm.data = {
     	"title": "",
 	  	"state": "State", 
@@ -71,7 +84,18 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	    "location": "", 
 	    "age": "",
 	    "message": "",
-	    "email": ""
+	    "email": "",
+	    "haircolor": "Hair Color",
+	    "height": "Height",
+	    "ethnicity": "Ethnicity",
+	    "orientation": "Orientation",
+	    "bodytype": "Body Type",
+	    "eyecolor": "Eye Color",
+	    "mstatus": "Status",
+	    "gender": "Gender",
+	    "bodyhair": "Body Hair",
+	    "hivstatus": "HIV Status",
+	    "weight" : ""
 	};
 	vm.verifyemail = "";
     vm.addPost = function(){
@@ -126,6 +150,56 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			// alert("Please accept the terms and condition."); 
 		}
 
+		if ((vm.data.haircolor == 'Hair Color')){
+			vm.data.haircolor = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.height == 'Height')){
+			vm.data.height = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.ethnicity == 'Ethnicity')){
+			vm.data.ethnicity = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.orientation == 'Orientation')){
+			vm.data.orientation = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.bodytype == 'Body Type')){
+			vm.data.bodytype = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.eyecolor == 'Eye Color')){
+			vm.data.eyecolor = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.mstatus == 'Status')){
+			vm.data.mstatus = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.gender == 'Gender')){
+			vm.data.gender = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.bodyhair == 'Body Hair')){
+			vm.data.bodyhair = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.hivstatus == 'HIV Status')){
+			vm.data.hivstatus = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
 		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
@@ -142,6 +216,17 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "age": this.data.age,
 			    "message": this.data.message, 
 			    "email": this.data.email,
+			    "haircolor": this.data.haircolor,
+			    "height": this.data.height,
+			    "ethnicity": this.data.ethnicity,
+			    "orientation": this.data.orientation,
+			    "bodytype": this.data.bodytype,
+			    "eyecolor": this.data.eyecolor,
+			    "mstatus": this.data.mstatus,
+			    "gender": this.data.gender,
+			    "bodyhair": this.data.bodyhair,
+			    "hivstatus": this.data.hivstatus,
+			    "weight" : this.data.weight,
 			    "files": $rootScope.imageList
 			};
 	    	 HttpService.AddPost(postData)

@@ -180,6 +180,17 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
        $rootScope.regionList = ['Region'];
        $rootScope.categoryList = ['Category','Men Seeking Woman','Women Seeking Men', 'Men Seeking Men', 'Woman Seeking Woman','t4m', 'm4t', 't4w', 'w4t', 't4t', 'mw4mw', 'mw4w', 'mw4m', 'w4mw', 'm4mw', 'w4ww', 'm4mm', 'mm4m', 'ww4w', 'ww4m', 'mm4w', 'm4ww', 'w4mm', 't4mw', 'mw4t'];
        $rootScope.locationList = ['Location','Location1','Location2'];
+       
+       $rootScope.haircolorList = ['Hair Color','Black','Blonde','Brunette','White','Red','Brown','Bald'];
+       $rootScope.heightList = ["Height","4'0","4'1","4'2","4'3","4'4","4'5","4'6","4'7","4'8","4'9","4'10","4'11","5'0","5'1","5'2","5'3","5'4","5'5","5'6","5'7","5'8","5'9","5'10","5'11","6'0","6'1","6'2","6'3","6'4","6'5","6'6","6'7","6'8","6'9","6'10","6'11","7'0","7'1","7'2","7'3","7'4","7'5","7'6","7'7","7'8","7'9","7'10","7'11","8'0","8'1","8'2","8'3","8'4","8'5","8'6","8'7","8'8","8'9","8'10","8'11"];
+       $rootScope.ethnicityList = ["Ethnicity","White","Black","Hispanic/Latino","Asian","Native American","Pacific Islanders","Native Hawaiians","Middle Eastern","South Asian","European","Multi-Racial"];
+       $rootScope.orientationList = ["Orientation","Straight","Gay","Bi","Lesbian"];
+       $rootScope.bodytypeList = ["Body Type","Athletic","Lean","Muscualr","Bear","Jock","Daddy","Otter","Military","Hourglass","Pear","Bananna (Rectangular)","Petite","Apple","Slim","Average","Chubby","husky","Obese","Twink"];
+       $rootScope.eyecolorList = ["Eye Color","Black","Brown","Green","Blue","Hazel"];
+       $rootScope.statusList = ["Status","Single","Married","Open Relationship","complicated"];
+       $rootScope.genderList = ["Gender","Male","Female","Trans"];
+       $rootScope.bodyHairList = ["Body Hair","Hairy","Some hair","Light hair","Smooth"];
+       $rootScope.hivstatusList = ["HIV Status","Negative","Positive (Detectable)","Positive (Undetectable)"];
 
         console.log("asdsadsa");
        $rootScope.changeList = function(data){

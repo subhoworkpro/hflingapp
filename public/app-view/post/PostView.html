@@ -54,47 +54,112 @@
               <p>* <em>REMINDER:</em> Please be aware that your email address will be shown to the poster so its up to you as far as which email address you use to reply.  For safety, never send personal information over the internet to anyone you may not know!</p>
             </div>
           </div>
-          <div class="bio_area mand bio_title bio_full">
-            
-            <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.title" maxlength="100">
-          </div>
-
-          <div class="bio_area mand bio_full">
-            
-            <textarea class="bio_block ui-selectmenu-button ui-button ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
-          </div>
-          <div class="bio_sec">
-            <div class="bio_area mand">
-              
+          <div class="bio_clear">
+            <div class="bio_left">
+              <div class="bio_area mand">
+                <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select wd_45" ng-model="vm.data.title" maxlength="100">
+              </div>
+              <div class="bio_area mand">            
+                <textarea class="bio_block ui-selectmenu-button ui-button ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
+              </div>
+            </div>
+            <div class="bio_right">              
+                <div class="bio_area mand">              
               <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.data.state);" required>
               </select>
             </div>
-            <div class="bio_area mand">
-              
+            <div class="bio_area mand">              
               <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region" ng-options="x for x in regions">
               </select>
             </div>
-            <div class="bio_area mand">
-              
+            <div class="bio_area mand">              
               <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category" ng-options="x for x in categories">
               </select>
-            </div>
+            </div>            
             <div class="bio_area">
-              <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.location" 
-              placeholder="SPECIFIC LOCATION">
-              </input>
+              <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.location" placeholder="SPECIFIC LOCATION">
             </div>
             <div class="bio_area">
               <input name="number" id="slct_age" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.age" placeholder="AGE" min="18" max="60">
-              </input>
             </div>
+            </div>
+          </div>
+          <div class="bio_mid">
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">  
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.haircolor" ng-options="x for x in haircolors">
+              </select> 
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">   
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.height" ng-options="x for x in heights">
+                </select>            
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.ethnicity" ng-options="x for x in ethnicity">
+                </select>
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.orientation" ng-options="x for x in orientation">
+                </select>
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.bodytype" ng-options="x for x in bodytype">
+                </select>
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.eyecolor" ng-options="x for x in eyecolor">
+                </select>
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.mstatus" ng-options="x for x in status">
+                </select>
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.gender" ng-options="x for x in gender">
+                </select>
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+              <div class="bio_area">
+                 <input name="number" id="" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.weight" placeholder="Weight" min="90" max="500">
+              </div>
+            </div>            
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.bodyhair" ng-options="x for x in bodyhair">
+                </select>
+              </div> 
+            </div>          
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.hivstatus" ng-options="x for x in hivstatus">
+                </select>
+              </div> 
+            </div>
+          </div>  
 
+          
+          <div class="bio_sec">
             <div class="bio_area bio_full">
               <div class="upload_txt">
               <p>Add Images (Up to 5 images allowed).
               <em>The first image will be the featured image.</em></p>
             </div>
-              <input type="file" class="cust_file" ng-file-model="vm.data.files" multiple style="color: transparent;" />
+              <input type="file" class="cust_file wd_97" ng-file-model="vm.data.files" multiple style="color: transparent;" />
               <div style="margin-bottom: 20px;">
                 <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
                 <div class='col-md-2 col-sm-2 col-xs-2' ng-repeat="file in imageList" style="padding: 20px 0px;"><div style="position: relative"><img style="padding: 5px;" class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>

@@ -103,6 +103,56 @@
                 </ul>
               </div>
           </div>
+          <div class="details_section">
+            <div class="det_item" ng-if = "age">
+              <label>Age</label>
+              <span>{{age}}</span>
+            </div>
+            <div class="det_item" ng-if = "bodytype">
+              <label>Body</label>
+              <span>{{bodytype}}</span>
+            </div>    
+            <div class="det_item" ng-if = "height">
+              <label>Height</label>
+              <span>{{height}}</span>
+            </div>
+            <div class="det_item" ng-if = "mstatus">
+              <label>Status</label>
+              <span>{{mstatus}}</span>
+            </div>
+            <div class="det_item" ng-if = "haircolor">
+              <label>Hair</label>
+              <span>{{haircolor}}</span>
+            </div>
+            <div class="det_item" ng-if = "ethnicity">
+              <label>Ethnicity</label>
+              <span>{{ethnicity}}</span>
+            </div>
+            <div class="det_item" ng-if = "orientation">
+              <label>Orientation</label>
+              <span>{{orientation}}</span>
+            </div>
+            <div class="det_item" ng-if = "eyecolor">
+              <label>Eye</label>
+              <span>{{eyecolor}}</span>
+            </div>
+            <div class="det_item" ng-if = "gender">
+              <label>Gender</label>
+              <span>{{gender}}</span>
+            </div>
+            <div class="det_item" ng-if = "weight">
+              <label>Weight</label>
+              <span>{{weight}} LB</span>
+            </div>
+            <div class="det_item" ng-if = "bodyhair">
+              <label>Body Hair</label>
+              <span>{{bodyhair}}</span>
+            </div>
+            <div class="det_item" ng-if = "hivstatus">
+              <label>HIV</label>
+              <span>{{hivstatus}}</span>
+            </div>
+          </div>
           <div class="created_section">
             <h4 style="word-wrap: break-word;">{{message}}</h2>  
             <h5 style= "margin-top: 10px;font-weight: 500;">Posted: <time am-time-ago="created"></time</h5>

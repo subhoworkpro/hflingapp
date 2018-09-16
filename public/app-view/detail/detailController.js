@@ -83,6 +83,19 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
+
+                $scope.haircolor = $rootScope.currentPost.data.haircolo;
+                $scope.height = $rootScope.currentPost.data.height;
+                $scope.ethnicity = $rootScope.currentPost.data.ethnicity;
+                $scope.orientation = $rootScope.currentPost.data.orientation;
+                $scope.bodytype = $rootScope.currentPost.data.bodytype;
+                $scope.eyecolor = $rootScope.currentPost.data.eyecolor;
+                $scope.mstatus = $rootScope.currentPost.data.mstatus;
+                $scope.gender = $rootScope.currentPost.data.gender;
+                $scope.bodyhair = $rootScope.currentPost.data.bodyhair;
+                $scope.hivstatus = $rootScope.currentPost.data.hivstatus;
+                $scope.weight = $rootScope.currentPost.data.weight;
+
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;

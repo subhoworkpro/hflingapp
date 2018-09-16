@@ -5,6 +5,18 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
+
+    $scope.haircolorList = $rootScope.haircolorList;
+    $scope.heightList = $rootScope.heightList;
+    $scope.ethnicityList = $rootScope.ethnicityList;
+    $scope.orientationList = $rootScope.orientationList;
+    $scope.bodytypeList = $rootScope.bodytypeList;
+    $scope.eyecolorList = $rootScope.eyecolorList;
+    $scope.statusList = $rootScope.statusList;
+    $scope.genderList = $rootScope.genderList;
+    $scope.bodyHairList = $rootScope.bodyHairList;
+    $scope.hivstatusList = $rootScope.hivstatusList;
+
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
         $scope.regions.unshift("Region");
     }
@@ -71,7 +83,18 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         "location": "", 
         "age": "",
         "message": "",
-        "email": ""
+        "email": "",
+        "haircolor": "Hair Color",
+        "height": "Height",
+        "ethnicity": "Ethnicity",
+        "orientation": "Orientation",
+        "bodytype": "Body Type",
+        "eyecolor": "Eye Color",
+        "status": "Status",
+        "gender": "Gender",
+        "bodyhair": "Body Hair",
+        "hivstatus": "HIV Status",
+        "weight" : ""
     };
     vm.verifyemail = "";
     $scope.editPost = function(id){
@@ -117,6 +140,56 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
             // alert("Please accept the terms and condition."); 
         }
 
+        if (($scope.haircolor == 'Hair Color')){
+            $scope.haircolor = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.height == 'Height')){
+            $scope.height = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.ethnicity == 'Ethnicity')){
+            $scope.ethnicity = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.orientation == 'Orientation')){
+            $scope.orientation = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.bodytype == 'Body Type')){
+            $scope.bodytype = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.eyecolor == 'Eye Color')){
+            $scope.eyecolor = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.mstatus == 'Status')){
+            $scope.mstatus = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.gender == 'Gender')){
+            $scope.gender = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.bodyhair == 'Body Hair')){
+            $scope.bodyhair = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.hivstatus == 'HIV Status')){
+            $scope.hivstatus = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
         if( $scope.showRequiredStateError || $scope.showRequiredRegionError || $scope.showRequiredCategoryError || $scope.showMessageError || $scope.showCaptchaError || $scope.showImageError || $scope.showTitleError ){
             console.log("Validation Failed");
             $window.scrollTo(0, 0);
@@ -132,6 +205,17 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 "location": $scope.location, 
                 "age": $scope.age,
                 "message": $scope.message,
+                "haircolor": $scope.haircolor,
+                "height": $scope.height,
+                "ethnicity": $scope.ethnicity,
+                "orientation": $scope.orientation,
+                "bodytype": $scope.bodytype,
+                "eyecolor": $scope.eyecolor,
+                "mstatus": $scope.mstatus,
+                "gender": $scope.gender,
+                "bodyhair": $scope.bodyhair,
+                "hivstatus": $scope.hivstatus,
+                "weight" : $scope.weight,
                 "files": $rootScope.imageList
             };
             console.log(postData);
@@ -203,6 +287,20 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
                 $rootScope.imageList = $rootScope.currentPost.data.files;
+
+                $scope.haircolor = $rootScope.currentPost.data.haircolor || "Hair Color";
+                $scope.height = $rootScope.currentPost.data.height || "Height";
+                $scope.ethnicity = $rootScope.currentPost.data.ethnicity || "Ethnicity";
+                $scope.orientation = $rootScope.currentPost.data.orientation || "Orientation";
+                $scope.bodytype = $rootScope.currentPost.data.bodytype || "Body Type";
+                $scope.eyecolor = $rootScope.currentPost.data.eyecolor || "Eye Color";
+                $scope.mstatus = $rootScope.currentPost.data.mstatus || "Status";
+                $scope.gender = $rootScope.currentPost.data.gender || "Gender";
+                $scope.bodyhair = $rootScope.currentPost.data.bodyhair || "Body Hair";
+                $scope.hivstatus = $rootScope.currentPost.data.hivstatus || "HIV Status";
+                $scope.weight = $rootScope.currentPost.data.weight || "";
+
+
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;
