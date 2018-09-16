@@ -1,4 +1,4 @@
-app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpService', '$http','$window','FlashService', function( $rootScope,$scope,$location,HttpService,$http,$window,FlashService ){
+app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpService', '$http','$window','FlashService','$modal', function( $rootScope,$scope,$location,HttpService,$http,$window,FlashService,$modal){
     var vm = this;
 
     $scope.states = $rootScope.stateList;
@@ -140,6 +140,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
 
         }else{
             $rootScope.loading = true;
+            $scope.closeModal();
             var options = { timeZone: "America/New_York"}
             var estTime = new Date();
             var data = {
@@ -157,7 +158,9 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 if (response.status == '200' || response.status == '250') {
                     console.log("success");
                     $rootScope.loading = false;
-                    $location.path('/response');
+                    // $location.path('/response');
+                    var redirect = "/detail/"+$scope.id+"?msg=true";
+                    $location.path(unescape(redirect));
                     $rootScope.loading = false;
                     // alert("Email has been sent to the poster!"); 
                 }else{
@@ -173,5 +176,10 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         } 
         
     };
+
+    $scope.closeModal = function(){
+        console.log("closing modal");
+        $rootScope.modalInstance.close();
+    }
 
 }]);

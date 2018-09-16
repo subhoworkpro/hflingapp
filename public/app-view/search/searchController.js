@@ -23,7 +23,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     $rootScope.adPosts = {};
     console.log("in SearchController");
     vm.currentPage = 0;
-    vm.pageSize = 10;
+    vm.pageSize = 100;
 
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;

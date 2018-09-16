@@ -1,4 +1,4 @@
-app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document){
+app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document','$modal', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document,$modal){
     var vm = this;
 
     if($rootScope.visitedSearchPage){
@@ -64,6 +64,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                     FlashService.Success("Your post is now Live.");
                 }else if(params && params.edit == 'true'){
                     $scope.is_edit = true;
+                }else if($location.url().indexOf("msg=true") > -1){
+                    FlashService.Success("You have successfully replied to this post, you may or may not get a response from this poster.");
                 }
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;
@@ -171,6 +173,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         }
     	
     };
+
+    $scope.openModal = function (){
+         $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/reply/ReplyView.html'
+        });
+    }
 
 
     // if ($rootScope.currentPost.data) {

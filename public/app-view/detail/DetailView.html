@@ -75,7 +75,7 @@
         <div class="gallery_det">
           <h2>{{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
           <div>
-            <a href="#reply/{{post_id}}">Reply</a>
+            <a href="" ng-click="openModal()">Reply</a>
             <a style="margin-left: 5px;" href="#flag/{{post_id}}">Flag</a>
             <a ng-if = "is_edit" style="margin-left: 5px;" href="#edit/{{post_id}}">Edit</a>
             <a ng-if = "is_edit" style="margin-left: 5px;" href="#delete/{{post_id}}">Delete</a>

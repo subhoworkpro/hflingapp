@@ -1046,6 +1046,39 @@ input[type=file].wd_97{
     vertical-align: top;
 }
 
+.reply_item_outer .form-horizontal .form-group{
+    margin: 0;
+}
+
+.modal-content{
+    padding: 15px 25px;
+}
+
+.reply_item_outer .pdL{
+    padding-left: 15px;
+}
+
+.reply_item{
+    margin-bottom: 15px;
+}
+
+.reply_item_outer .form-group:last-child .reply_item{
+    margin-bottom: 0;
+}
+
+.add_details .add_hdr h2{
+    margin-bottom: 15px;
+}
+
+.add_details .add_note p{
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.reply_item .form-control{
+    resize: vertical;
+}
+
 /*** 06-09-18 ***/
 
 /*** 16-09-18 ***/
