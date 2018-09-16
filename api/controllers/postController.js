@@ -50,19 +50,30 @@ exports.list_featured_images = function(req, res) {
 
 exports.create_a_post = function(req, res) {
   console.log(req.body);
-  console.log(req.body.state);	
+  console.log(req.body.state);  
   var new_post = new Post({
             title: req.body.title,
-  					state: req.body.state, 
-				    region: req.body.region,
-				    category: req.body.category,
-				    location: req.body.location, 
-				    age: req.body.age,
-				    body: req.body.message,
-				    email: req.body.email,
+            state: req.body.state, 
+            region: req.body.region,
+            category: req.body.category,
+            location: req.body.location, 
+            age: req.body.age,
+            body: req.body.message,
+            email: req.body.email,
+            haircolor: req.body.haircolor,
+            height: req.body.height,
+            ethnicity: req.body.ethnicity,
+            orientation: req.body.orientation,
+            bodytype: req.body.bodytype,
+            eyecolor: req.body.eyecolor,
+            mstatus: req.body.mstatus,
+            gender: req.body.gender,
+            bodyhair: req.body.bodyhair,
+            hivstatus: req.body.hivstatus,
+            weight : req.body.weight,
             files: req.body.files,
             status: "inactive"
-	  			});
+          });
 
   var date = new Date();
   var daysToDeletion = POSTS_TIMEOUT;
@@ -355,6 +366,43 @@ exports.edit_a_post= function(req, res) {
     if(req.body.message){
       post.body = req.body.message;
     }
+
+
+    if(req.body.haircolor){
+      post.haircolor = req.body.haircolor;
+    }
+    if(req.body.height){
+      post.height = req.body.height;
+    }
+    if(req.body.ethnicity){
+      post.ethnicity = req.body.ethnicity;
+    }
+    if(req.body.orientation){
+      post.orientation = req.body.orientation;
+    }
+    if(req.body.bodytype){
+      post.bodytype = req.body.bodytype;
+    }
+    if(req.body.eyecolor){
+      post.eyecolor = req.body.eyecolor;
+    }
+    if(req.body.mstatus){
+      post.mstatus = req.body.mstatus;
+    }
+    if(req.body.gender){
+      post.gender = req.body.gender;
+    }
+    if(req.body.bodyhair){
+      post.bodyhair = req.body.bodyhair;
+    }
+    if(req.body.hivstatus){
+      post.hivstatus = req.body.hivstatus;
+    }
+    if(req.body.weight){
+      post.weight = req.body.weight;
+    }
+
+
     if(req.body.files){
       post.files = req.body.files;
     }
