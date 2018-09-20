@@ -71,6 +71,7 @@ exports.create_a_post = function(req, res) {
             bodyhair: req.body.bodyhair,
             hivstatus: req.body.hivstatus,
             weight : req.body.weight,
+            mage : req.body.mage,
             files: req.body.files,
             status: "inactive"
           });
@@ -400,6 +401,9 @@ exports.edit_a_post= function(req, res) {
     }
     if(req.body.weight){
       post.weight = req.body.weight;
+    }
+    if(req.body.mage){
+      post.mage = req.body.mage;
     }
 
 

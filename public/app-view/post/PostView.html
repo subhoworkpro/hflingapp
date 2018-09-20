@@ -87,6 +87,12 @@
           <div class="bio_mid">
             <div class="bio_mid_item wd_20">
              <div class="bio_area">  
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.mage" ng-options="x for x in ageRange">
+              </select> 
+              </div> 
+            </div>
+            <div class="bio_mid_item wd_20">
+             <div class="bio_area">  
                 <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.haircolor" ng-options="x for x in haircolors">
               </select> 
               </div> 
@@ -134,9 +140,10 @@
               </div> 
             </div>
             <div class="bio_mid_item wd_20">
-              <div class="bio_area">
-                 <input name="number" id="" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.weight" placeholder="Weight" min="90" max="500">
-              </div>
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.weight" ng-options="x for x in weightRange">
+                </select>
+              </div> 
             </div>            
             <div class="bio_mid_item wd_20">
              <div class="bio_area">              

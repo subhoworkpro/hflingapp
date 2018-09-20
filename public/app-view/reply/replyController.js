@@ -139,8 +139,9 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             $window.scrollTo(0, 0);
 
         }else{
-            $rootScope.loading = true;
+            // $rootScope.loading = true;
             $scope.closeModal();
+            FlashService.Error("You have successfully replied to this post, you may or may not get a response from this poster.");
             var options = { timeZone: "America/New_York"}
             var estTime = new Date();
             var data = {
@@ -159,8 +160,8 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                     console.log("success");
                     $rootScope.loading = false;
                     // $location.path('/response');
-                    var redirect = "/detail/"+$scope.id+"?msg=true";
-                    $location.path(unescape(redirect));
+                    // var redirect = "/detail/"+$scope.id+"?msg=true";
+                    // $location.path(unescape(redirect));
                     $rootScope.loading = false;
                     // alert("Email has been sent to the poster!"); 
                 }else{

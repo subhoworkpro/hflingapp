@@ -17,6 +17,19 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.bodyHairList = $rootScope.bodyHairList;
     $scope.hivstatusList = $rootScope.hivstatusList;
 
+    var range = ["Age"];
+    for(var i=0;i<201;i++) {
+      range.push(i);
+    }
+    $scope.ageRange = range;
+
+    range = ["Weight"];
+    for(var i=90;i<501;i++) {
+      range.push(i);
+    }
+
+    $scope.weightRange = range;
+
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
         $scope.regions.unshift("Region");
     }
@@ -94,7 +107,8 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         "gender": "Gender",
         "bodyhair": "Body Hair",
         "hivstatus": "HIV Status",
-        "weight" : ""
+        "weight" : "Weight",
+        "mage" : "Age"
     };
     vm.verifyemail = "";
     $scope.editPost = function(id){
@@ -190,6 +204,16 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
             // alert("Please Select, Region and Category."); 
         }
 
+        if (($scope.weight == 'Weight')){
+            $scope.weight = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if (($scope.mage == 'Age')){
+            $scope.mage = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
         if( $scope.showRequiredStateError || $scope.showRequiredRegionError || $scope.showRequiredCategoryError || $scope.showMessageError || $scope.showCaptchaError || $scope.showImageError || $scope.showTitleError ){
             console.log("Validation Failed");
             $window.scrollTo(0, 0);
@@ -216,6 +240,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 "bodyhair": $scope.bodyhair,
                 "hivstatus": $scope.hivstatus,
                 "weight" : $scope.weight,
+                "mage" : $scope.mage,
                 "files": $rootScope.imageList
             };
             console.log(postData);
@@ -298,7 +323,8 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.gender = $rootScope.currentPost.data.gender || "Gender";
                 $scope.bodyhair = $rootScope.currentPost.data.bodyhair || "Body Hair";
                 $scope.hivstatus = $rootScope.currentPost.data.hivstatus || "HIV Status";
-                $scope.weight = $rootScope.currentPost.data.weight || "";
+                $scope.weight = $rootScope.currentPost.data.weight || "Weight";
+                $scope.mage = $rootScope.currentPost.data.mage || "Age";
 
 
                 $rootScope.loading = false;

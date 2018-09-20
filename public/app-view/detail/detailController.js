@@ -97,6 +97,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.bodyhair = $rootScope.currentPost.data.bodyhair;
                 $scope.hivstatus = $rootScope.currentPost.data.hivstatus;
                 $scope.weight = $rootScope.currentPost.data.weight;
+                $scope.mage = $rootScope.currentPost.data.mage;
 
                 $rootScope.loading = false;
                 if($scope.files.length > 0){

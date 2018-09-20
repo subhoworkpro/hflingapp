@@ -17,6 +17,20 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.bodyhair = $rootScope.bodyHairList;
     $scope.hivstatus = $rootScope.hivstatusList;
 
+    var range = ["Age"];
+	for(var i=0;i<201;i++) {
+	  range.push(i);
+	}
+	$scope.ageRange = range;
+
+	range = ["Weight"];
+	for(var i=90;i<501;i++) {
+	  range.push(i);
+	}
+
+	$scope.weightRange = range;
+
+
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
 	    $scope.regions.unshift("Region");
 	}
@@ -95,7 +109,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	    "gender": "Gender",
 	    "bodyhair": "Body Hair",
 	    "hivstatus": "HIV Status",
-	    "weight" : ""
+	    "weight" : "Weight",
+	    "mage" : "Age"
 	};
 	vm.verifyemail = "";
     vm.addPost = function(){
@@ -200,6 +215,16 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			// alert("Please Select, Region and Category."); 
 		}
 
+		if ((vm.data.mage == 'Age')){
+			vm.data.mage = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
+		if ((vm.data.weight == 'Weight')){
+			vm.data.weight = "";
+			// alert("Please Select, Region and Category."); 
+		}
+
 		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
@@ -227,6 +252,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "bodyhair": this.data.bodyhair,
 			    "hivstatus": this.data.hivstatus,
 			    "weight" : this.data.weight,
+			    "mage" : this.data.mage,
 			    "files": $rootScope.imageList
 			};
 	    	 HttpService.AddPost(postData)
