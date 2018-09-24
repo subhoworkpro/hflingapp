@@ -77,7 +77,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $rootScope.pageTitle = $scope.title;
                 $scope.post_id = $rootScope.currentPost.data["_id"];
                 $scope.message = $rootScope.currentPost.data.body;
-                $scope.message = '<p>' + $scope.message.replace(/[\r\n]+/g, '</p><p>') + '</p>';
+                $scope.message = $scope.message.replace(/[\r\n]/g, '<br/>');
                 $scope.age = $rootScope.currentPost.data.age;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.location = $rootScope.currentPost.data.location;
