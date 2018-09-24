@@ -290,3 +290,9 @@ app.filter('range', function() {
     return input;
   };
 });
+
+app.filter('unsafe', function($sce) {
+    return function(val) {
+        return $sce.trustAsHtml(val);
+    };
+});

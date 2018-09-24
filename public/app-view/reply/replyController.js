@@ -66,7 +66,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         var arr = path.split("/");
         var id = arr[arr.length-1];
         $scope.id = id;
-        $rootScope.loading = true;
+        // $rootScope.loading = true;
         $scope.mainImage = "https://placehold.it/710X420";
         HttpService.GetAPost(id)
         .then(function(response){
@@ -141,7 +141,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         }else{
             // $rootScope.loading = true;
             $scope.closeModal();
-            FlashService.Error("You have successfully replied to this post, you may or may not get a response from this poster.");
+            FlashService.Success("You have successfully replied to this post, you may or may not get a response from this poster.");
             var options = { timeZone: "America/New_York"}
             var estTime = new Date();
             var data = {

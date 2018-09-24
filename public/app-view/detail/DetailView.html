@@ -154,7 +154,7 @@
             </div>
           </div>
           <div class="created_section">
-            <h4 style="word-wrap: break-word;">{{message}}</h2>  
+            <h4 style="word-wrap: break-word;" ng-bind-html="message | unsafe"></h2>  
             <h5 style= "margin-top: 10px;font-weight: 500;">Posted: <time am-time-ago="created"></time</h5>
           </div>
           <div ng-show = "windowWidth >= 752">
