@@ -5,20 +5,20 @@ var cloudinary = require('cloudinary');
 var tempcloudinary = require('cloudinary');
 var url  = require('url');
 
-var multer = require('multer');
+// var multer = require('multer');
 
-var Storage = multer.diskStorage({
-     destination: function(req, file, callback) {
-         callback(null, "public/app-content/ImagesHfling");
-     },
-     filename: function(req, file, callback) {
-         callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
-     }
- });
+// var Storage = multer.diskStorage({
+//      destination: function(req, file, callback) {
+//          callback(null, "public/app-content/ImagesHfling");
+//      },
+//      filename: function(req, file, callback) {
+//          callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+//      }
+//  });
 
-var upload = multer({
-     storage: Storage
- }).array("imgUploader", 3); //Field name and max count
+// var upload = multer({
+//      storage: Storage
+//  }).array("imgUploader", 3); //Field name and max count
 
 
 cloudinary.config({ 
@@ -65,16 +65,16 @@ exports.list_featured_images = function(req, res) {
 	}
 };
 
-exports.upload_images_to_local = function(req, res) {
-	console.log(req);
-     upload(req, res, function(err) {
-         if (err) {
-         	console.log(err);
-            return res.end("Something went wrong!");
-         }
-         return res.end("File uploaded sucessfully!.");
-     });
-};
+// exports.upload_images_to_local = function(req, res) {
+// 	console.log(req);
+//      upload(req, res, function(err) {
+//          if (err) {
+//          	console.log(err);
+//             return res.end("Something went wrong!");
+//          }
+//          return res.end("File uploaded sucessfully!.");
+//      });
+// };
 
 exports.upload_images_to_temp = function(req, res) {
 	console.log(req.body);
