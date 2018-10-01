@@ -22,6 +22,25 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
         $scope.regions.unshift("Region");
    };
 
+    $rootScope.tempImageList = [];
+
+    $scope.replyfiles = [];
+
+   $scope.stopLoader = function(){
+        $rootScope.loadingImage = false;
+   };
+
+   $scope.deleteImage = function(index){
+        console.log("Deleted");
+        $rootScope.tempImageList.splice(index, 1);
+        $scope.replyfiles = $rootScope.tempImageList;
+        console.log($rootScope.tempImageList);
+        console.log($scope.replyfiles);
+   };
+
+ 
+
+
     // vm.state = $rootScope.search.state;
     // vm.region = $rootScope.search.region;
     // vm.category = $rootScope.search.category;
@@ -107,12 +126,21 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
 
     $scope.notify = function () {
 
+        $scope.imageLength = 0;
+
         $scope.showError = true;
         $scope.showRequiredEmailError = false;
         $scope.showRequiredReplyMessageError = false;
         $scope.showEmailError = false;
+        $scope.showImageError = false;
 
         $scope.showCaptchaError = false;
+
+        if ($rootScope.tempImageList && $rootScope.tempImageList.length > 5) {
+            $scope.showImageError = true;
+            $scope.imageLength = $rootScope.tempImageList.length;
+            // alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
+        }
 
         if (!$scope.email ){
             $scope.showRequiredEmailError = true;
@@ -148,6 +176,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
                 "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
                 "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message)+" - "+estTime.toLocaleString("en-US", options)+" ET",
                 "sender1": $scope.sender1,
+                "attachments": $rootScope.tempImageList,
                 "x-from": $scope.email,
                 "x-post-id": $scope.id
             };

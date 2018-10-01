@@ -9,6 +9,7 @@ module.exports = function(apiRoutes) {
   apiRoutes.get('/listfeaturedimages', gallery.list_featured_images);
 
   apiRoutes.post('/uploadimages', gallery.uploadimages);
+  apiRoutes.post('/uploadtempimages', gallery.upload_images_to_temp);
 
   // app.route('/tasks/:taskId')
   //   .get(todoList.read_a_task)

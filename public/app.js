@@ -255,6 +255,62 @@ app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$h
     };
 }]);
 
+
+app.directive('ngTempFileModel', ['$parse','$http','$rootScope', function ($parse,$http,$rootScope) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.ngTempFileModel);
+            var isMultiple = attrs.multiple;
+            var modelSetter = model.assign;
+            element.bind('change', function () {
+                $rootScope.loadingImage = true;
+                var values = [];
+                angular.forEach(element[0].files, function (item) {
+                    var fileReader = new FileReader();
+                    value ={};
+                    fileReader.onload = function (event) {
+                        var uri = event.target.result;    
+                        value = {
+                           // File Name 
+                            // name: item.name,
+                            //File Size 
+                            // size: item.size,
+                            //File URL to view 
+                            url: uri
+                            // File Input Value 
+                            // _file: item
+                        };
+                        console.log(value);
+                        $http.post("/api/uploadtempimages",JSON.stringify(value), {'Content-Type': 'application/json; charset=utf-8','Authorization': undefined })
+                        .success(function (data) {
+                            console.log(data);
+                            values.push(data);
+                            $rootScope.tempImageList.push(data);
+                            console.log($rootScope.loadingImage);
+                        })
+                        .error(function (data) {
+                            console.log("there was an error");
+                        });
+
+                        // values.push(value);
+                    };
+                    fileReader.readAsDataURL(item);
+                    
+                });
+                scope.$apply(function () {
+                    if (isMultiple) {
+                        modelSetter(scope, values);
+                    } else {
+                        modelSetter(scope, values[0]);
+                    }
+                });
+                angular.element("input[type='file']").val(null);
+            });
+        }
+    };
+}]);
+
 app.directive('windowSize', function ($window) {
   return function (scope, element) {
     var w = angular.element($window);

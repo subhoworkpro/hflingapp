@@ -40,6 +40,7 @@
             <p ng-if = "showRequiredReplyMessageError">- Please enter body of the message.</p>
             <p ng-if = "showEmailError">- Your verification email doesn't match</p>
             <p ng-if = "showCaptchaError">- Please accept the Recaptcha</p>
+            <p ng-if = "showImageError">- Selected {{imageLength}} images ... Max allowed images is 5.</p>
           </div>
           <div class="bio_sec">
             <div class="add_cnt">
@@ -68,6 +69,18 @@
                 <div class="form-group">
                   <div class="reply_item mand">
                     <textarea class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5" ng-model="replymessage"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="reply_item mand">
+                    <p>Add Images (Up to 5 images allowed).
+                    <em>The first image will be attached with your reply.</em></p>
+                  </div>
+                  <input type="file" class="cust_file wd_97" ng--temp-file-model="replyfiles" multiple style="color: transparent;" />
+                  <div style="margin-bottom: 20px;">
+                    <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
+                    <div class='col-md-2 col-sm-2 col-xs-2' ng-repeat="file in tempImageList" style="padding: 20px 0px;"><div style="position: relative"><img style="padding: 5px;" class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
                   </div>
                 </div>
 

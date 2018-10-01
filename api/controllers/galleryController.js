@@ -2,13 +2,35 @@
 
 
 var cloudinary = require('cloudinary');
+var tempcloudinary = require('cloudinary');
 var url  = require('url');
+
+var multer = require('multer');
+
+var Storage = multer.diskStorage({
+     destination: function(req, file, callback) {
+         callback(null, "public/app-content/ImagesHfling");
+     },
+     filename: function(req, file, callback) {
+         callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+     }
+ });
+
+var upload = multer({
+     storage: Storage
+ }).array("imgUploader", 3); //Field name and max count
 
 
 cloudinary.config({ 
-  cloud_name: 'dtrj5hqdm', 
-  api_key: '415183322599141', 
-  api_secret: 'LUhuCC5Iw5V3hizFzPFdztazwLI' 
+ cloud_name: 'dtrj5hqdm', 
+ api_key: '415183322599141', 
+ api_secret: 'LUhuCC5Iw5V3hizFzPFdztazwLI' 
+});
+
+tempcloudinary.config({ 
+ cloud_name: 'intellirio-consultancy-and-labs-llp', 
+ api_key: '579673852831583', 
+ api_secret: 'BCArjT98AV1jmrSwL45DNnlK_DE' 
 });
 
 
@@ -41,6 +63,28 @@ exports.list_featured_images = function(req, res) {
 			res.json(result.resources);
 		});
 	}
+};
+
+exports.upload_images_to_local = function(req, res) {
+	console.log(req);
+     upload(req, res, function(err) {
+         if (err) {
+         	console.log(err);
+            return res.end("Something went wrong!");
+         }
+         return res.end("File uploaded sucessfully!.");
+     });
+};
+
+exports.upload_images_to_temp = function(req, res) {
+	console.log(req.body);
+	tempcloudinary.v2.uploader.upload(req.body.url, function(error, result) {
+		if (result) {
+			res.json(result);
+		}else{
+			res.json(error);
+		}
+	});
 };
 
 

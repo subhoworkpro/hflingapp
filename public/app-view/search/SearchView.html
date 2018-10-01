@@ -71,12 +71,24 @@
       </div>
       <div class="page_hdr">
         <div class="add_hdr">
-             <h2 ng-hide="data" style="font-weight: normal;font-size: 14px;">Showing page 0 of 0</h2>
-        <h2 ng-show="data" style="font-weight: normal;font-size: 14px;">Showing page {{vm.currentPage+1}} of {{data.length/vm.pageSize | roundup}}</h2>
-          </div>
+            <h2 ng-hide="data" style="font-weight: normal;font-size: 14px;">Showing page 0 of 0</h2>
+            <h2 ng-show="data" style="font-weight: normal;font-size: 14px;">Showing page {{vm.currentPage+1}} of {{data.length/vm.pageSize | roundup}}</h2>
+        </div>
+        <div class="total_post">
+            <p>[{{vm.currentPage * vm.pageSize + 1}}-{{data.length}}]</p>
+        </div>
         <div class="total_post">
             <p>{{data.length}} active posts</p>
         </div>
+      </div>
+
+      <div class="blog_slider blog_slider_search">
+          <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1" class="nav_btn prev">
+          < Previous
+        </button>
+          <button ng-disabled="vm.currentPage >= data.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.currentPage+1" class="nav_btn">
+                Next >
+          </button>
       </div>
       <div class="add_cnt">
         <div ng-show="data">
@@ -93,14 +105,6 @@
         </div>
          <div ng-hide="data">
             <h3 style="margin-bottom: 30px;">No record found!</h3>
-        </div>
-        <div class="blog_slider">
-          <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1" class="nav_btn prev">
-            < Previous
-            </button>
-            <button ng-disabled="vm.currentPage >= data.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.currentPage+1" class="nav_btn">
-                Next >
-            </button>
         </div>
       </div>
   </div>

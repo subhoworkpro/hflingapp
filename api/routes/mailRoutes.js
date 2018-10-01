@@ -29,6 +29,20 @@ module.exports = function(apiRoutes) {
         replyAddr = req.body['x-from']
       }
 
+      var attachments = [];
+
+      if(req.body["attachments"] && req.body["attachments"].length > 0) {
+        for(var i =0; i < req.body["attachments"].length; i++){
+          var attachment = req.body["attachments"][i];
+          attachments.push({
+            filename: attachment.public_id +"."+attachment.format,
+            path: attachment.secure_url
+          });
+        }
+      }
+
+      console.log(attachments);
+
       var mailOptions = {};
       console.log(req.body);
       if (req.body.htmlmessage) {
@@ -38,7 +52,8 @@ module.exports = function(apiRoutes) {
             to: [req.body.sender1,req.body.sender2], // list of receivers
             subject: req.body.subject, // Subject line
             html: "<b>Greetings!</b> <br/>"+text+"\n\n"+link,
-            replyTo: replyAddr
+            replyTo: replyAddr,
+            attachments: attachments
             // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
         };
       }else{

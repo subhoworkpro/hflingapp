@@ -123,6 +123,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     	vm.showCaptchaError = false;
     	vm.showMissingEmailError =false;
     	vm.showEmailError = false;
+    	vm.showAgeError = false;
 
     	vm.showError = true;
     	if ($rootScope.imageList && $rootScope.imageList.length > 5) {
@@ -158,6 +159,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 		if (vm.data.email == ''){
 			vm.showMissingEmailError = true;
 			// alert("Please accept the terms and condition."); 
+		}
+
+		if(vm.data.age && isNaN(vm.data.age)){
+			vm.showAgeError = true;
 		}
 
 		if (vm.data.email != vm.verifyemail){
@@ -225,7 +230,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			// alert("Please Select, Region and Category."); 
 		}
 
-		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
+		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showAgeError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
 		}else{
