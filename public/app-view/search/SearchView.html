@@ -75,11 +75,15 @@
             <h2 ng-show="data" style="font-weight: normal;font-size: 14px;">Showing page {{vm.currentPage+1}} of {{data.length/vm.pageSize | roundup}}</h2>
         </div>
         <div class="total_post">
-            <p>[{{vm.currentPage * vm.pageSize + 1}}-{{data.length}}]</p>
+            <p>[101-200]</p>
         </div>
         <div class="total_post">
             <p>{{data.length}} active posts</p>
         </div>
+      </div>
+
+      <div class="expanding">
+        <p>We are still growing and you may see that in some cities and categories there are either no posts yet or a few at the moment. Don't get discouraged. A post is only live for 7 days before it expires and sometimes the poster may delete their posts for any reason. Slowly but surely we are getting more users. Also, based on our analytics, our traffic is growing substantially. Many visitors are browsing the site but might be a little apprehensive about posting. Let us fix this by not being shy and start posting!</p>
       </div>
 
       <div class="blog_slider blog_slider_search">
@@ -105,14 +109,6 @@
         </div>
          <div ng-hide="data">
             <h3 style="margin-bottom: 30px;">No record found!</h3>
-        </div>
-        <div class="blog_slider">
-          <button ng-disabled="vm.currentPage == 0" ng-click="vm.currentPage=vm.currentPage-1" class="nav_btn prev">
-            < Previous
-            </button>
-            <button ng-disabled="vm.currentPage >= data.length/vm.pageSize - 1" ng-click="vm.currentPage=vm.currentPage+1" class="nav_btn">
-                Next >
-            </button>
         </div>
       </div>
   </div>

@@ -1205,3 +1205,19 @@ input[type=file].wd_97{
 }
 
 /*** 28-09-18 ***/
+
+/*** 08-10-18 ***/
+.expanding{
+    padding: 8px 22px;
+    margin: 10px 0;
+    background-color: #fc0001;
+}
+
+.expanding p{
+    color: #fff;
+    font-size: 17px;
+    line-height: 25px;
+    font-weight: 500;
+}
+
+/*** 08-10-18 ***/
