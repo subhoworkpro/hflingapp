@@ -1,4 +1,4 @@
-@media(max-width: 1199px){
+ @media(max-width: 1199px){
      .select_area {
          width: 30%;
          float: left;
@@ -111,8 +111,39 @@
         width: 32%;
     }
 
-
     /*** 09-09-18 ***/
+    /*** 28-10-18 ***/
+
+    .win_money p {
+        font-size: 20px;
+        letter-spacing: 0.5px;
+    }
+
+    .win_money p a{
+        font-size: 16px;
+    }
+
+    .win_outer {
+       padding-top: 20px;
+    }
+
+    .win_outer h1 {
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
+
+    .win_outer h3 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .win_outer p, .win_outer span {
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 15px;
+    }
+
+    /*** 28-10-18 ***/
 }
 /******/
  @media(max-width: 767px) {
@@ -337,6 +368,37 @@
         padding-left: 15px;
         margin: 0;
     }
+    /*** 28-10-18 ***/
+
+    .win_money p {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .win_money p a{
+        font-size: 14px;
+    }
+
+    .win_money {
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+
+    .win_outer h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .win_outer h3 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .win_outer p, .win_outer span {
+        font-size: 14px;
+    }
+
+    /*** 28-10-18 ***/
  }
 
  @media(max-width: 420px) {
@@ -357,7 +419,7 @@
     }
      .fav_hdr h2 {
          display: block;
-         font-size: 21px;
+         font-size: 18px;
          border-bottom: 1px solid #000;
          margin-bottom: 15px;
          line-height: 25px;
@@ -455,6 +517,17 @@
     .bio_area{
         width: 100%;
     }
+
+    /*** 28-10-18 ***/
+    .page_hdr{
+        font-size: 12px;
+    }
+
+    .page_hdr h2{
+        font-size: 12px !important;
+    }
+
+    /*** 28-10-18 ***/
 }
  @media(max-width: 360px) {
      .select_area {
