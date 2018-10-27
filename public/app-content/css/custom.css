@@ -1221,3 +1221,73 @@ input[type=file].wd_97{
 }
 
 /*** 08-10-18 ***/
+/*** 27-10-18 ***/
+.win_money{
+    padding: 12px 15px;;
+    margin-bottom: 22px;
+    background-color: #0dc611;
+}
+
+.win_money p{
+    font-size: 25px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.win_money p a{
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 0;
+    text-decoration: underline;
+}
+
+.win_money p a:hover{
+    color: #fff;
+}
+
+
+.srch_money{
+    margin: 12px 0;
+}
+
+.win_outer{
+    padding-top: 50px;
+}
+
+.win_outer h1{
+    font-size: 30px;
+    color: #000;
+    font-weight: 700;
+    text-decoration: underline;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.win_outer h3{
+    font-size: 20px;
+    color: #000;
+    text-decoration: underline;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.win_outer p,
+.win_outer span{
+    font-size: 20px;
+    color: #fc0001;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.win_outer span{
+    color: #000;
+    line-height: 25px;
+}
+
+.win_outer span i{
+    font-style: normal;
+    color: #fc0001;
+}
+
+/*** 27-10-18 ***/
