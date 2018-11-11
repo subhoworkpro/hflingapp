@@ -42,6 +42,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             $rootScope.masterList = data;
         })
 
+        $rootScope.is_flagged = false;
+
         vm.state = $rootScope.search.state;
         vm.region = $rootScope.search.region;
         vm.category = $rootScope.search.category;

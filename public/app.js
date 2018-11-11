@@ -163,6 +163,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.search.state = "State";
         $rootScope.search.region = "Region";
         $rootScope.search.category = "Category";
+        $rootScope.is_flagged = false;
 
         $rootScope.currentPost = {};
 
@@ -191,6 +192,8 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
        $rootScope.genderList = ["Gender","Male","Female","Trans"];
        $rootScope.bodyHairList = ["Body Hair","Hairy","Some hair","Light hair","Smooth"];
        $rootScope.hivstatusList = ["HIV Status","Negative","Positive (Detectable)","Positive (Undetectable)"];
+       
+       $rootScope.flagOptionList = ["Child pornograpy and or endangerment","Prostitution","Promoted terrorism","Spam or misleading"];
 
         console.log("asdsadsa");
        $rootScope.changeList = function(data){

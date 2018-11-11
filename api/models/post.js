@@ -23,6 +23,7 @@ module.exports = mongoose.model('Post', new Schema({
     gender: String,
     bodyhair: String,
     hivstatus: String,
+    flagreason: String,
     weight : Number,
     mage : Number,
     files: [

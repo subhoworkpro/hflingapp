@@ -1,4 +1,4 @@
-app.controller('FlagController', ['$rootScope','$scope', '$location', 'HttpService', '$http', function( $rootScope,$scope,$location,HttpService,$http ){
+app.controller('FlagController', ['$rootScope','$scope', '$location', 'HttpService', '$http', 'FlashService','$window', function( $rootScope,$scope,$location,HttpService,$http,FlashService,$window ){
     var vm = this;
 
     $rootScope.pageTitle = "Healthy Fling";
@@ -9,6 +9,22 @@ app.controller('FlagController', ['$rootScope','$scope', '$location', 'HttpServi
         $scope.regions.unshift("Region");
     }
     $scope.categories = $rootScope.categoryList;
+
+    $scope.selection = [];
+
+    $scope.toggleSelection = function (selectionName, listSelection) {
+        var idx = listSelection.indexOf(selectionName);
+
+        // is currently selected
+        if (idx > -1) {
+          listSelection.splice(idx, 1);
+        }
+
+        // is newly selected
+        else {
+          listSelection.push(selectionName);
+        }
+    };
 
     $scope.changeListInCtrl = function(data){
         $rootScope.regionList = $rootScope.masterList[data];
@@ -64,47 +80,94 @@ app.controller('FlagController', ['$rootScope','$scope', '$location', 'HttpServi
         // vm.state = $rootScope.search.state;
         // vm.region = $rootScope.search.region;
         // vm.category = $rootScope.search.category;
+    };
+
+    $scope.flagPost = function(){
+
+        $scope.showError = true;
+        $scope.showReasonError = false;
+
+        if ($scope.selection.length < 1){
+            $scope.showReasonError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
         var path = $location.path();
         var arr = path.split("/");
         var id = arr[arr.length-1];
         $scope.id = id;
         $rootScope.loading = true;
         $scope.mainImage = "https://placehold.it/710X420";
-        HttpService.FlagAPost(id)
-        .then(function(response){
-            console.log(response);
-            if (response.status == '200') {
-                $rootScope.currentPost.data = response.data;
 
-                $rootScope.regionList = $rootScope.masterList[response.data.state];
-                $scope.regions = $rootScope.regionList;
-                console.log("success");
-                vm.state = response.data.state;
-                vm.region = response.data.region;
-                vm.category = response.data.category;
-                $scope.id = $rootScope.currentPost.data["_id"];
-                $scope.title = $rootScope.currentPost.data.title;
-                $rootScope.pageTitle = $scope.title;
-                $scope.message = $rootScope.currentPost.data.body;
-                $scope.age = $rootScope.currentPost.data.age;
-                $scope.location = $rootScope.currentPost.data.location;
-                $scope.region = $rootScope.currentPost.data.region;
-                $scope.sender1 = $rootScope.currentPost.data.email;
-                $scope.state = $rootScope.currentPost.data.state;
-                $scope.category = $rootScope.currentPost.data.category;
-                $scope.created = $rootScope.currentPost.data.created;
-                $scope.files = $rootScope.currentPost.data.files;
-                $rootScope.loading = false;
-                if($scope.files.length > 0){
-                    $scope.mainImage = $scope.files[0].url;
-                }
-            }else{
-                $rootScope.loading = false;
-                vm.dataLoading = false;
-                $location.path('/');
+        if ($scope.showReasonError) {
+            console.log("Validation Failed");
+            $window.scrollTo(0, 0);
+
+        }else{
+            $scope.showError = false;
+            $scope.closeModal();
+            // HttpService.FlagAPost(id)
+            // .then(function(response){
+            //     console.log(response);
+            //     if (response.status == '200') {
+            //         $rootScope.currentPost.data = response.data;
+
+            //         $rootScope.regionList = $rootScope.masterList[response.data.state];
+            //         $scope.regions = $rootScope.regionList;
+            //         console.log("success");
+            //         vm.state = response.data.state;
+            //         vm.region = response.data.region;
+            //         vm.category = response.data.category;
+            //         $scope.id = $rootScope.currentPost.data["_id"];
+            //         $scope.title = $rootScope.currentPost.data.title;
+            //         $rootScope.pageTitle = $scope.title;
+            //         $scope.message = $rootScope.currentPost.data.body;
+            //         $scope.age = $rootScope.currentPost.data.age;
+            //         $scope.location = $rootScope.currentPost.data.location;
+            //         $scope.region = $rootScope.currentPost.data.region;
+            //         $scope.sender1 = $rootScope.currentPost.data.email;
+            //         $scope.state = $rootScope.currentPost.data.state;
+            //         $scope.category = $rootScope.currentPost.data.category;
+            //         $scope.created = $rootScope.currentPost.data.created;
+            //         $scope.files = $rootScope.currentPost.data.files;
+            //         $rootScope.loading = false;
+            //         if($scope.files.length > 0){
+            //             $scope.mainImage = $scope.files[0].url;
+            //         }
+            //         FlashService.Success("An email has been sent to the poster saying that the post is flagged and will be removed from healthyflings listing.");
+            //         $rootScope.is_flagged = true;
+            //     }else{
+            //         $rootScope.loading = false;
+            //         vm.dataLoading = false;
+            //         FlashService.Error("There was an error while submitting your request. Please try again.");
+            //     };
+                
+            // });
+
+            var postData = {
+                "flagreason": $scope.selection
             };
-            
-        });
+
+            HttpService.FlagPostReason(id,postData)
+            .then(function(response){
+                if (response.status == '200') {
+                    console.log("success");
+                    console.log(response)
+                    // alert("Your ad has been created. A verification mail will be sent shortly!"); 
+                    if (response && response.data && response.data["_id"]) {
+                        FlashService.Success("An email has been sent to the poster saying that the post is flagged and will be removed from healthyflings listing.");
+                        $rootScope.is_flagged = true;
+                    }
+                    $rootScope.loading = false;
+                }else{
+                    $rootScope.loading = false;
+                    FlashService.Error("There was an error while submitting your request. Please try again.");  
+                    vm.dataLoading = false;
+                    // $location.path('/');
+                };
+                
+            });
+        }
     };
 
     $scope.notify = function () {
@@ -139,5 +202,10 @@ app.controller('FlagController', ['$rootScope','$scope', '$location', 'HttpServi
         } 
         
     };
+
+    $scope.closeModal = function(){
+        console.log("closing modal");
+        $rootScope.modalInstance.close();
+    }
 
 }]);

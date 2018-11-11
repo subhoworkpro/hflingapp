@@ -121,6 +121,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
+                $scope.flagreason = $rootScope.currentPost.data.flagreason;
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;

@@ -33,10 +33,24 @@
           <div class="add_hdr flag_hdr">
             <h2>Why they flagged the post?</h2>
           </div>
+          <div class="mandatory_section" ng-if = "showError">
+            <h3>Important</h3>
+            <p ng-if = "showReasonError">- Please select a valid reason.</p>
+          </div>
           <div class="flag_reason">
             <h5>here are the options:</h5>
             <ul>
-              <li>
+              <li ng-repeat="flagOption in flagOptionList">
+                <label class="cust_check">
+                  <input
+                    type="checkbox"
+                    value="{{flagOption}}"
+                    ng-checked="selection.indexOf(flagOption) > -1"
+                    ng-click="toggleSelection(flagOption, selection)"
+                  ><span></span> {{flagOption}}
+                </label>
+              </li>
+              <!-- <li>
                 <label class="cust_check">
                     <input type="checkbox">
                     <span></span> Child pornograpy and or endangerment
@@ -59,14 +73,14 @@
                     <input type="checkbox">
                     <span></span> Spam or misleading
                 </label>
-              </li>
+              </li> -->
             </ul>
             <div class="response_btn_area">
               <div class="innr_btn">
-                <input type="submit" class="cust_btn" value="Cancel">
+                <input type="submit" class="cust_btn" value="Cancel" ng-click="closeModal();">
               </div>
               <div class="innr_btn">
-                <input type="submit" class="cust_btn" value="Submit">
+                <input type="submit" class="cust_btn" value="Submit" ng-click="flagPost();">
               </div>
             </div>
           </div>

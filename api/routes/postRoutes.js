@@ -11,6 +11,7 @@ module.exports = function(apiRoutes) {
   apiRoutes.delete('/posts/:postId', post.delete_a_post);
   apiRoutes.get('/verifypost/:postId', post.verifypost);
   apiRoutes.get('/flagpost/:postId', post.flagpost);
+  apiRoutes.post('/flagpostreason/:postId', post.flagpostreason);
   apiRoutes.get('/unflagpost/:postId', post.unflagpost);
   apiRoutes.get('/adminpost/:postId', post.admin_read_a_post);
 

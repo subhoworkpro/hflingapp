@@ -78,6 +78,12 @@
             <a style="margin-left: 5px;" href="#delete/{{post_id}}">Delete</a>
             <a style="margin-left: 5px;" href="#unflag/{{post_id}}">Activate</a>
           </div>
+          <div class="details_section" ng-if = "flagreason">
+            <div class="det_item" ng-if = "flagreason">
+              <label>Flag Reason:</label>
+              <span>{{flagreason}}</span>
+            </div>
+          </div>
           <div class="row" ng-show="showEmail" >
             <div class="col-md-7">
               <div class="form-group">

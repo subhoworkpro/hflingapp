@@ -274,6 +274,7 @@ exports.unflagpost = function(req, res) {
     if (err)
       res.send(err);
     post.status = "active";
+    post.flagreason = "";
     post.save(function(err, post) {
       if (err)
         res.send(err);
@@ -414,6 +415,53 @@ exports.edit_a_post= function(req, res) {
     post.save(function(err, post) {
       if (err)
         res.send(err);
+      res.json(post);
+    });
+  });
+};
+
+exports.flagpostreason = function(req, res) {
+  console.log(req.params);
+  console.log(req.body);
+  Post.findById(req.params.postId, function(err, post) {
+    if (err)
+      res.send(err);
+    post.status = "flagged";
+    if(req.body.flagreason){
+      post.flagreason = req.body.flagreason;
+    }
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+
+      var subject_sufix = "";
+
+      if(post.location || post.age){
+        subject_sufix = " -";
+        if(post.age){
+          subject_sufix = subject_sufix + " " +post.location;
+        }
+        if(post.location){
+          subject_sufix = subject_sufix + " (" +post.location+")";
+        }
+      }
+
+      var mailBody = "<b>Greetings!</b><br/>"+ "<p>Your posting in HealthyFling has been flagged!</p>"+"<p>If you feel your post was flagged incorrectly, please contact us for further review.</p><p>You can contact us <a href='https://www.healthyfling.com/#/contact'>here</a></p><p>https://www.healthyfling.com/#/contact</p>";
+      var mailOptions = {
+          from: 'Healthy Fling <info@healthyfling.com>', // sender address
+          to: post.email,
+          subject: "[POST FLAGGED] : " + post.title + subject_sufix,
+          html: mailBody
+      };
+
+
+      transporter.sendMail(mailOptions, function(error, info){
+          if(error){
+              console.log(error);
+          }else{
+              console.log('Message sent: ' + info.response);
+          };
+      });
       res.json(post);
     });
   });
