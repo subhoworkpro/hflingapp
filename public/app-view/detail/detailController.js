@@ -45,15 +45,15 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         vm.state = $rootScope.search.state;
         vm.region = $rootScope.search.region;
         vm.category = $rootScope.search.category;
-	    var	path = $location.path();
-	    var arr = path.split("/");
-	    var id = arr[arr.length-1];
-	    $scope.id = id;
+        var path = $location.path();
+        var arr = path.split("/");
+        var id = arr[arr.length-1];
+        $scope.id = id;
         if($rootScope.visitedSearchPage){
             $rootScope.loading = true;
         }
         $scope.mainImage = "https://placehold.it/710X420";
-	    HttpService.GetAPost(id)
+        HttpService.GetAPost(id)
         .then(function(response){
             console.log(response);
             $scope.is_edit = false;
@@ -114,7 +114,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     };
 
     $rootScope.reloadPost = function(){
-    	vm.state = $rootScope.currentPost.data.body;
+        vm.state = $rootScope.currentPost.data.body;
     }
 
     vm.post = function () {
@@ -123,7 +123,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     vm.search = function () {
         $rootScope.loading = true;
-    	$rootScope.search.state = this.state;
+        $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
         console.log("asdasdsa");
@@ -145,7 +145,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     $scope.notify = function () {
         $scope.showEmail = true;
-    	console.log("mail sent");
+        console.log("mail sent");
 
         if ($scope.showEmail && $scope.sender2 && $scope.sender2.length > 0) {
             $rootScope.loading = true;
@@ -173,7 +173,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 
             });    
         }
-    	
+        
     };
 
     $scope.openModal = function (){
@@ -182,17 +182,22 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
+     $scope.openModal_flag = function (){
+         $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/flag/FlagView.html'
+        });
+    }
 
     // if ($rootScope.currentPost.data) {
-    // 	console.log($rootScope.currentPost);
-    // 	vm.message = $rootScope.currentPost.data.body;
-    // 	vm.age = $rootScope.currentPost.data.age;
-    // 	vm.region = $rootScope.currentPost.data.region;
+    //  console.log($rootScope.currentPost);
+    //  vm.message = $rootScope.currentPost.data.body;
+    //  vm.age = $rootScope.currentPost.data.age;
+    //  vm.region = $rootScope.currentPost.data.region;
 
     // }else if(id){
 
     // }else{
-    // 	$location.path("/");
+    //  $location.path("/");
     // }
 
 }]);
