@@ -1,4 +1,4 @@
-app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpService', '$window', function( $rootScope,$scope,$location,HttpService,$window ){
+app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpService', '$window', 'FlashService', function( $rootScope,$scope,$location,HttpService,$window,FlashService ){
     var vm = this;
 
     $rootScope.pageTitle = "Post an ad";
@@ -234,6 +234,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
 		}else{
+			vm.showError = false;
 			vm.showImageError = false;
 			$rootScope.loading = true;
             console.log(vm.data.files);
@@ -269,7 +270,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	                if (response && response.data && response.data["_id"]) {
 	                	$location.path('/confirm/'+response.data["_id"]);
 	                }else if(response && response.data && response.data["data"] == "limit reached"){
-	                	$location.path('/error');
+	                	FlashService.Error("Maximum Limit Reached: You have too many posts at one time. You can delete some posts or wait till your other posts expire!");
 	                }
 	                $rootScope.loading = false;
 	            }else{
