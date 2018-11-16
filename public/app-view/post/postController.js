@@ -233,6 +233,42 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showAgeError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
+			if(vm.data.mage == ""){
+		    	vm.data.mage = "Age";
+		    }
+		    if(vm.data.haircolor == ""){
+		    	vm.data.haircolor = "Hair Color";
+		    }
+		    if(vm.data.height == ""){
+		    	vm.data.height = "Height";
+		    }
+		    if(vm.data.ethnicity == ""){
+		    	vm.data.ethnicity = "Ethnicity";
+		    }
+		    if(vm.data.orientation == ""){
+		    	vm.data.orientation = "Orientation";
+		    }
+		    if(vm.data.bodytype == ""){
+		    	vm.data.bodytype = "Body Type";
+		    }
+		    if(vm.data.eyecolor == ""){
+		    	vm.data.eyecolor = "Eye Color";
+		    }
+		    if(vm.data.mstatus == ""){
+		    	vm.data.mstatus = "Status";
+		    }
+		    if(vm.data.gender == ""){
+		    	vm.data.gender = "Gender";
+		    }
+		    if(vm.data.bodyhair == ""){
+		    	vm.data.bodyhair = "Body Hair";
+		    }
+		    if(vm.data.hivstatus == ""){
+		    	vm.data.hivstatus = "HIV Status";
+		    }
+		    if(vm.data.weight == ""){
+		    	vm.data.weight = "Weight";
+		    }
 		}else{
 			vm.showError = false;
 			vm.showImageError = false;
@@ -270,7 +306,45 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	                if (response && response.data && response.data["_id"]) {
 	                	$location.path('/confirm/'+response.data["_id"]);
 	                }else if(response && response.data && response.data["data"] == "limit reached"){
+	      
+					    if(vm.data.mage == ""){
+					    	vm.data.mage = "Age";
+					    }
+					    if(vm.data.haircolor == ""){
+					    	vm.data.haircolor = "Hair Color";
+					    }
+					    if(vm.data.height == ""){
+					    	vm.data.height = "Height";
+					    }
+					    if(vm.data.ethnicity == ""){
+					    	vm.data.ethnicity = "Ethnicity";
+					    }
+					    if(vm.data.orientation == ""){
+					    	vm.data.orientation = "Orientation";
+					    }
+					    if(vm.data.bodytype == ""){
+					    	vm.data.bodytype = "Body Type";
+					    }
+					    if(vm.data.eyecolor == ""){
+					    	vm.data.eyecolor = "Eye Color";
+					    }
+					    if(vm.data.mstatus == ""){
+					    	vm.data.mstatus = "Status";
+					    }
+					    if(vm.data.gender == ""){
+					    	vm.data.gender = "Gender";
+					    }
+					    if(vm.data.bodyhair == ""){
+					    	vm.data.bodyhair = "Body Hair";
+					    }
+					    if(vm.data.hivstatus == ""){
+					    	vm.data.hivstatus = "HIV Status";
+					    }
+					    if(vm.data.weight == ""){
+					    	vm.data.weight = "Weight";
+					    }
 	                	FlashService.Error("Maximum Limit Reached: You have too many posts at one time. You can delete some posts or wait till your other posts expire!");
+	                	$window.scrollTo(0, 0);
 	                }
 	                $rootScope.loading = false;
 	            }else{

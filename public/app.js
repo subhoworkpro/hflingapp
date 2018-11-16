@@ -193,7 +193,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
        $rootScope.bodyHairList = ["Body Hair","Hairy","Some hair","Light hair","Smooth"];
        $rootScope.hivstatusList = ["HIV Status","Negative","Positive (Detectable)","Positive (Undetectable)"];
        
-       $rootScope.flagOptionList = ["Child pornograpy and or endangerment","Prostitution","Promoted terrorism","Spam or misleading"];
+       $rootScope.flagOptionList = ["Child pornograpy and or endangerment","Prostitution","Promoted terrorism","Spam or misleading", "Others"];
 
         console.log("asdsadsa");
        $rootScope.changeList = function(data){
