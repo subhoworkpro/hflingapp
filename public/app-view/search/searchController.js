@@ -1,4 +1,4 @@
-app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService', function( $rootScope,$scope,$location,HttpService ){
+app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService','$window', function( $rootScope,$scope,$location,HttpService,$window ){
     var vm = this;
 
     $rootScope.pageTitle = "Healthy Fling";
@@ -22,12 +22,15 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
 
     $rootScope.adPosts = {};
     console.log("in SearchController");
-    vm.currentPage = 0;
+    // vm.currentPage = 0;
+    var path = $location.search();
+    console.log(path);
+    vm.currentPage = path.page || 0;
     vm.pageSize = 100;
 
-    vm.state = $rootScope.search.state;
-    vm.region = $rootScope.search.region;
-    vm.category = $rootScope.search.category;
+    vm.state = $rootScope.search.state || "State";
+    vm.region = $rootScope.search.region || "Region";
+    vm.category = $rootScope.search.category || "Category";
 
      vm.post = function () {
         $location.path('/post');
@@ -78,6 +81,18 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
             };
             
         });
+    }
+
+    vm.nextPage = function(){
+        vm.currentPage=vm.currentPage+1;
+        console.log(vm.currentPage);
+        $location.search('page',vm.currentPage);
+    }
+
+    vm.prevPage = function(){
+        vm.currentPage=vm.currentPage-1;
+        console.log(vm.currentPage);
+        $location.search('page',vm.currentPage);
     }
 
     $scope.initController = function () {
