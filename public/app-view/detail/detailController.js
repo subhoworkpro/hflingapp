@@ -30,7 +30,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             // alert("Please Select, Region and Category."); 
         }
 
-        if( $scope.commentmessage == undefined || $scope.commentmessage == '' ){
+        if( $scope.commentmessage == undefined && $scope.commentmessage == '' || $scope.captcha == undefined){
             console.log("Validation Failed");
             FlashService.Error("Please select the Capcha!");
             $window.scrollTo(0, 0);
