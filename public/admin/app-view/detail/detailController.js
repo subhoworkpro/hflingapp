@@ -88,6 +88,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
       var path = $location.path();
       var arr = path.split("/");
       var id = arr[arr.length-1];
+      $scope.comments = [];
       $scope.id = id;
         if($rootScope.visitedSearchPage){
             $rootScope.loading = true;
