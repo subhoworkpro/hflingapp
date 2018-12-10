@@ -6,9 +6,11 @@ module.exports = function(apiRoutes) {
   apiRoutes.get('/posts', post.read_all_posts);
   apiRoutes.get('/adminposts', post.admin_read_all_posts);
   apiRoutes.get('/posts/:postId', post.read_a_post);
+  apiRoutes.get('/comments/:postId', post.get_all_comments);
   apiRoutes.post('/posts', post.create_a_post);
   apiRoutes.post('/editpost/:postId', post.edit_a_post);
   apiRoutes.delete('/posts/:postId', post.delete_a_post);
+  apiRoutes.delete('/comments/:commentId', post.delete_a_comment);
   apiRoutes.get('/verifypost/:postId', post.verifypost);
   apiRoutes.get('/flagpost/:postId', post.flagpost);
   apiRoutes.post('/flagpostreason/:postId', post.flagpostreason);

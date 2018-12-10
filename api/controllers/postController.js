@@ -1,6 +1,7 @@
 'use strict';
 
 var Post = require('../models/post');
+var Comment = require('../models/comment');
 
 var nodemailer = require('nodemailer');
 
@@ -72,6 +73,7 @@ exports.create_a_post = function(req, res) {
             hivstatus: req.body.hivstatus,
             weight : req.body.weight,
             mage : req.body.mage,
+            anonymouscomment : req.body.anonymouscomment,
             files: req.body.files,
             status: "inactive"
           });
@@ -171,6 +173,48 @@ exports.read_a_post = function(req, res) {
         // console.log(posts[0]);
         res.json(posts[0]); // return all todos in JSON format
     });
+
+};
+
+
+exports.get_all_comments = function(req, res) {
+
+  var date = new Date();
+  var daysToDeletion = POSTS_TIMEOUT;
+  var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+  var query_params = {};
+  // query_params.created = {$gt : deletionDate};
+  query_params.status = ["active","inactive"];
+  query_params["post"] = req.params.postId;
+  var query = {
+    state : 'STATE1'
+  };  
+
+  console.log(query_params);
+  Comment.find(query_params, function (err, comments) {
+    // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err) {
+            res.send(err);
+        }
+        // console.log(posts[0]);
+        res.json(comments); // return all todos in JSON format
+    });
+
+};
+
+exports.delete_a_comment= function(req, res) {
+
+  Comment.findById(req.params.commentId, function(err, comment) {
+    if (err)
+      res.send(err);
+    comment.status = "inactive";
+    comment.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'comment successfully deleted' });
+    });
+  });
 
 };
 
@@ -406,7 +450,9 @@ exports.edit_a_post= function(req, res) {
     if(req.body.mage){
       post.mage = req.body.mage;
     }
-
+    if(req.body.anonymouscomment){
+      post.anonymouscomment = req.body.anonymouscomment;
+    }
 
     if(req.body.files){
       post.files = req.body.files;
@@ -415,6 +461,16 @@ exports.edit_a_post= function(req, res) {
     post.save(function(err, post) {
       if (err)
         res.send(err);
+      if(req.body.commentmessage){
+        var comment = new Comment({
+          body: req.body.commentmessage,
+          status: "active",
+          post: post._id    // assign the _id from the post
+        });
+        comment.save(function (err) {
+          if (err) return handleError(err);
+        });
+      }
       res.json(post);
     });
   });

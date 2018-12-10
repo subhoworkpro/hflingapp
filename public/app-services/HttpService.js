@@ -57,6 +57,19 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
                     }).then(handleSuccess, handleError('Error getting result'));
         };
 
+
+        service.GetComments = function (id) {
+
+            var url = "/api/comments/"+id;
+             return $http({
+                        url: url,
+                        method: "GET",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
         service.GetAPost = function (id) {
             var url = "/api/posts/"+id;
              return $http({
@@ -96,6 +109,17 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
 
         service.DeleteAPost = function (id) {
             var url = "/api/posts/"+id;
+             return $http({
+                        url: url,
+                        method: "DELETE",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
+        service.DeleteAComment = function (id) {
+            var url = "/api/comments/"+id;
              return $http({
                         url: url,
                         method: "DELETE",

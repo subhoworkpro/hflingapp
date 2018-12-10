@@ -158,6 +158,42 @@
             <h4 style="word-wrap: break-word;" ng-bind-html="message | unsafe"></h2>  
             <h5 style= "margin-top: 10px;font-weight: 500;">Posted: <time am-time-ago="created"></time</h5>
           </div>
+
+          <div class="anonnymous_comment" ng-show = "anonymouscomment == 'enabled'">
+            <div class="anonnymous_typos">
+              <div class="comment_block">
+                <h4>Post an anonnymous comment for this post!</h4>
+                <div class="comment_field">
+                  <textarea class="cust_textarea" ng-model="commentmessage"></textarea>
+                </div>
+              </div>
+              <div class="comments_counter">
+                <p><span>{{comments.length}}</span>comments</p>
+              </div>
+              <!-- <div class="form-group pdL">
+                  <div class="reply_item" vc-recaptcha key="'6LdK608UAAAAAIIPni45gUqw9p_vn4mLa_CtlSlv'" ng-model="captcha"></div>
+              </div> -->
+              <div class="cust_sbt_outer text-right">
+                 <input type="submit" value="Comment!" ng-click="addComment(post_id);">
+              </div>
+            </div>
+            <div class="reply_anonnymous">
+              <div class="reply_item_anony" ng-repeat="item in comments">
+                <span>Reply {{$index+1}}</span>
+                <a ng-if ="is_edit" href="" ng-click="deleteComment(item._id)">Delete</a>
+                <div class="reply_txt_anony">
+                  <h5 ng-show = "item.status == 'active'"> {{item.body}}</h5>
+                  <h5 ng-show = "item.status == 'inactive'"> The post has been deleted</h5>
+                  <p>Posted: <em><time am-time-ago="item.created"></time></em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="disabled_anonymous_text" ng-show = "anonymouscomment != 'enabled'">
+            <p><span><i class="fa fa-ban"></i></span>The poster has disabled anonymous comments</p>
+          </div>
+
           <div ng-show = "windowWidth >= 752">
             <div class="advertise" ng-show = " (category == 'Men Seeking Woman') || (category == 'Women Seeking Men') || (category == 'Woman Seeking Woman') || (category == 't4m') || (category == 'm4t') || (category == 't4w') || (category == 'w4t') || (category == 't4t') || (category == 'mw4mw') || (category == 'mw4w') || (category == 'mw4m') || (category == 'w4mw') || (category == 'w4ww') || (category == 'ww4w') || (category == 'ww4m') || (category == 'mm4w') || (category == 'm4ww') || (category == 'w4mm') || (category == 't4mw') || (category == 'mw4t') ">
                 

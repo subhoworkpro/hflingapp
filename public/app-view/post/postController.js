@@ -17,6 +17,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.bodyhair = $rootScope.bodyHairList;
     $scope.hivstatus = $rootScope.hivstatusList;
 
+    $scope.anonymouscomment = [ "enabled", "disabled" ];
+
     var range = ["Age"];
 	for(var i=0;i<201;i++) {
 	  range.push(i);
@@ -109,6 +111,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	    "gender": "Gender",
 	    "bodyhair": "Body Hair",
 	    "hivstatus": "HIV Status",
+	    "anonymouscomment" : "disabled",
 	    "weight" : "Weight",
 	    "mage" : "Age"
 	};
@@ -293,6 +296,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "gender": this.data.gender,
 			    "bodyhair": this.data.bodyhair,
 			    "hivstatus": this.data.hivstatus,
+			    "anonymouscomment": this.data.anonymouscomment,
 			    "weight" : this.data.weight,
 			    "mage" : this.data.mage,
 			    "files": $rootScope.imageList

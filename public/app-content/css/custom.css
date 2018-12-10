@@ -1377,3 +1377,132 @@ input[type=file].wd_97{
 }
 
 /*** 09-11-18 ***/
+
+/*** 02-12-18 ***/
+
+.anonymous_area{
+    margin-bottom: 20px;
+}
+
+.anonymous_area .bio_area{
+    padding: 0 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.anonymous_area .bio_area .ui-selectmenu-button.ui-button{
+    width: 17.5%;
+    margin-bottom: 0;
+}   
+
+.anonymous_cnt{
+    padding-left: 30px;
+}
+
+.anonymous_cnt p{
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.anonnymous_comment{
+    max-width: 740px;
+    padding-bottom: 30px;
+}
+
+.comment_block h4{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.cust_textarea{
+    font-size: 14px;
+    color: #000;
+    font-weight: 600;
+    border: 2px solid #7e7e7e;
+    width: 100%;
+    resize: none;
+    min-height: 120px;
+}
+
+.comments_counter p{
+    font-size: 15px;
+    color: #abafaa;
+    font-weight: 600;
+}
+
+.comments_counter span{
+    padding-right: 5px;
+}
+
+.cust_sbt_outer {
+    padding: 12px 0;
+}
+
+.cust_sbt_outer input[type="submit"]{
+    background: rgb(244,101,87);
+    background: -moz-linear-gradient(top, rgba(244,101,87,1) 0%, rgba(237,94,80,1) 2%, rgba(255,77,87,1) 4%, rgba(255,70,80,1) 7%, rgba(248,76,76,1) 9%, rgba(246,74,74,1) 11%, rgba(243,70,64,1) 13%, rgba(240,67,61,1) 16%, rgba(255,56,53,1) 18%, rgba(252,53,50,1) 20%, rgba(255,42,43,1) 22%, rgba(255,39,40,1) 24%, rgba(251,40,47,1) 27%, rgba(245,32,38,1) 33%, rgba(247,28,34,1) 36%, rgba(243,18,24,1) 42%, rgba(249,16,22,1) 44%, rgba(246,13,19,1) 47%, rgba(249,8,15,1) 49%, rgba(247,0,8,1) 56%, rgba(250,1,9,1) 60%, rgba(247,2,0,1) 62%, rgba(247,2,0,1) 64%, rgba(253,0,0,1) 67%, rgba(253,0,0,1) 82%, rgba(246,2,2,1) 91%, rgba(253,0,6,1) 93%, rgba(253,0,6,1) 96%, rgba(248,1,0,1) 98%, rgba(248,1,0,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(244,101,87,1) 0%,rgba(237,94,80,1) 2%,rgba(255,77,87,1) 4%,rgba(255,70,80,1) 7%,rgba(248,76,76,1) 9%,rgba(246,74,74,1) 11%,rgba(243,70,64,1) 13%,rgba(240,67,61,1) 16%,rgba(255,56,53,1) 18%,rgba(252,53,50,1) 20%,rgba(255,42,43,1) 22%,rgba(255,39,40,1) 24%,rgba(251,40,47,1) 27%,rgba(245,32,38,1) 33%,rgba(247,28,34,1) 36%,rgba(243,18,24,1) 42%,rgba(249,16,22,1) 44%,rgba(246,13,19,1) 47%,rgba(249,8,15,1) 49%,rgba(247,0,8,1) 56%,rgba(250,1,9,1) 60%,rgba(247,2,0,1) 62%,rgba(247,2,0,1) 64%,rgba(253,0,0,1) 67%,rgba(253,0,0,1) 82%,rgba(246,2,2,1) 91%,rgba(253,0,6,1) 93%,rgba(253,0,6,1) 96%,rgba(248,1,0,1) 98%,rgba(248,1,0,1) 100%);
+    background: linear-gradient(to bottom, rgba(244,101,87,1) 0%,rgba(237,94,80,1) 2%,rgba(255,77,87,1) 4%,rgba(255,70,80,1) 7%,rgba(248,76,76,1) 9%,rgba(246,74,74,1) 11%,rgba(243,70,64,1) 13%,rgba(240,67,61,1) 16%,rgba(255,56,53,1) 18%,rgba(252,53,50,1) 20%,rgba(255,42,43,1) 22%,rgba(255,39,40,1) 24%,rgba(251,40,47,1) 27%,rgba(245,32,38,1) 33%,rgba(247,28,34,1) 36%,rgba(243,18,24,1) 42%,rgba(249,16,22,1) 44%,rgba(246,13,19,1) 47%,rgba(249,8,15,1) 49%,rgba(247,0,8,1) 56%,rgba(250,1,9,1) 60%,rgba(247,2,0,1) 62%,rgba(247,2,0,1) 64%,rgba(253,0,0,1) 67%,rgba(253,0,0,1) 82%,rgba(246,2,2,1) 91%,rgba(253,0,6,1) 93%,rgba(253,0,6,1) 96%,rgba(248,1,0,1) 98%,rgba(248,1,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f46557', endColorstr='#f80100',GradientType=0 );
+    border: 3px solid #e40b00;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    width: 145px;
+}
+
+.reply_item_anony{
+    border-left: 1px solid #4d4d4d;
+    margin-bottom: 35px;
+}
+
+.reply_item_anony span{
+    font-size: 15px;
+    color: #000;
+    padding-left: 10px;
+}
+
+.reply_txt_anony{
+    border-top: 1px solid #4d4d4d;
+    padding: 10px 0 0 15px;
+}
+
+.reply_txt_anony h5,
+.reply_txt_anony h6{
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.reply_txt_anony h6{
+    color: #f00;
+}
+
+.reply_txt_anony p{
+    font-weight: 500;
+}
+
+.reply_txt_anony p em{
+    font-style: normal;
+}
+
+.disabled_anonymous_text p{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.disabled_anonymous_text{
+    padding-bottom: 30px;
+}
+
+.disabled_anonymous_text p span{
+    padding-right: 8px;
+}
+
+.delete_post_btn{
+    padding-left: 15px;
+}
+
+/*** 02-12-18 ***/

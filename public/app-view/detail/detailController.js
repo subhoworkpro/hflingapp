@@ -1,4 +1,4 @@
-app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document','$modal', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document,$modal){
+app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document','$modal','$window', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document,$modal,$window){
     var vm = this;
 
     if($rootScope.visitedSearchPage){
@@ -19,6 +19,55 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.regions.unshift("Region");
    };
 
+
+   $scope.addComment = function(id){
+        console.log("AddComment clicked");
+
+        $scope.showError = true;
+
+        if (($scope.mage == 'Age')){
+            $scope.mage = "";
+            // alert("Please Select, Region and Category."); 
+        }
+
+        if( $scope.commentmessage == undefined || $scope.commentmessage == '' ){
+            console.log("Validation Failed");
+            FlashService.Error("Please select the Capcha!");
+            $window.scrollTo(0, 0);
+        }else{
+            $scope.showImageError = false;
+            $rootScope.loading = true;
+            // console.log(vm.data.files);
+            var postData = {
+                "commentmessage": $scope.commentmessage, 
+            };
+            console.log(postData);
+             HttpService.EditPost(id,postData)
+            .then(function(response){
+                if (response.status == '200') {
+                    console.log("success");
+                    console.log(response)
+                    // alert("Your ad has been created. A verification mail will be sent shortly!"); 
+                    if (response && response.data && response.data["_id"]) {
+                        $location.path('/detail/'+response.data["_id"]);
+                        FlashService.Success("Your comment has been successfully added.");
+                        $scope.loadComments($scope.id);
+                        $scope.commentmessage = "";
+                        $window.scrollTo(0, 0);
+                    }
+                    $rootScope.loading = false;
+                }else{
+                    $rootScope.loading = false;
+                    // FlashService.Error(response.data.resultDescription);
+                    vm.dataLoading = false;
+                    $location.path('/');
+                };
+                
+            });
+        }
+    }
+
+
    $scope.changeMainImage = function(file){
         $scope.mainImage = file.secure_url;
    }
@@ -34,6 +83,42 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     var id = arr[arr.length-1];
     $scope.id = id;
 
+    $scope.loadComments = function(id){
+        HttpService.GetComments(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.comments = response.data;
+            }else{
+                console.log("something went wrong");
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
+
+    $scope.deleteComment = function(id){
+        $rootScope.loading = true;
+        HttpService.DeleteAComment(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.loadComments($scope.id);
+                FlashService.Success("The comment has been successfully deleted.");
+                $rootScope.loading = false;
+                $window.scrollTo(0, 0);
+            }else{
+                console.log("something went wrong");
+                $rootScope.loading = false;
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
 
     $scope.initController = function () {
 
@@ -47,6 +132,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         vm.state = $rootScope.search.state;
         vm.region = $rootScope.search.region;
         vm.category = $rootScope.search.category;
+        $scope.comments = [];
         var path = $location.path();
         var arr = path.split("/");
         var id = arr[arr.length-1];
@@ -101,6 +187,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.hivstatus = $rootScope.currentPost.data.hivstatus;
                 $scope.weight = $rootScope.currentPost.data.weight;
                 $scope.mage = $rootScope.currentPost.data.mage;
+                $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment;
 
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
@@ -113,6 +200,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             };
             
         });
+
+        $scope.loadComments(id);
+
     };
 
     $rootScope.reloadPost = function(){

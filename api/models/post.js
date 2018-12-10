@@ -26,6 +26,7 @@ module.exports = mongoose.model('Post', new Schema({
     flagreason: String,
     weight : Number,
     mage : Number,
+    anonymouscomment: String,
     files: [
         {
             url: String,
@@ -44,6 +45,7 @@ module.exports = mongoose.model('Post', new Schema({
             secure_url: String
         }   
     ],
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     created: { 
         type: Date,
         default: Date.now
