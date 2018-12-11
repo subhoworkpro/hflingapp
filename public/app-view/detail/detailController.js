@@ -187,7 +187,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.hivstatus = $rootScope.currentPost.data.hivstatus;
                 $scope.weight = $rootScope.currentPost.data.weight;
                 $scope.mage = $rootScope.currentPost.data.mage;
-                $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment;
+                $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment || 'disabled';
 
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
