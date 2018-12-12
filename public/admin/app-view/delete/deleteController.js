@@ -227,12 +227,13 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             $rootScope.masterList = data;
         })
 
-        vm.state = $rootScope.search.state;
-        vm.region = $rootScope.search.region;
-        vm.category = $rootScope.search.category;
+        vm.state = $rootScope.search.state || 'State';
+        vm.region = $rootScope.search.region || 'Region';
+        vm.category = $rootScope.search.category || 'Category';
       var path = $location.path();
       var arr = path.split("/");
       var id = arr[arr.length-1];
+      $scope.comments = [];
       $scope.id = id;
         if($rootScope.visitedSearchPage){
             $rootScope.loading = true;
@@ -266,6 +267,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
+                $scope.flagreason = $rootScope.currentPost.data.flagreason;
+                $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment;
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;
@@ -277,7 +280,45 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             };
             
         });
+        $scope.loadComments(id);
     };
+
+    $scope.loadComments = function(id){
+        HttpService.GetComments(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.comments = response.data;
+            }else{
+                console.log("something went wrong");
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
+
+    $scope.deleteComment = function(id){
+        $rootScope.loading = true;
+        HttpService.DeleteAComment(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.loadComments($scope.id);
+                FlashService.Success("The comment has been successfully deleted.");
+                $rootScope.loading = false;
+                $window.scrollTo(0, 0);
+            }else{
+                console.log("something went wrong");
+                $rootScope.loading = false;
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
 
     $rootScope.reloadPost = function(){
       vm.state = $rootScope.currentPost.data.body;
