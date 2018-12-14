@@ -137,7 +137,7 @@
                 <a href="" ng-click="deleteComment(item._id)">Delete</a>
                 <div class="reply_txt_anony">
                   <h5 ng-show = "item.status == 'active'"> {{item.body}}</h5>
-                  <h5 ng-show = "item.status == 'inactive'"> The post has been deleted</h5>
+                  <h5 ng-show = "item.status == 'inactive'" style="color: #8dc63f;"> The comment has been deleted</h5>
                   <p>Posted: <em><time am-time-ago="item.created"></time></em></p>
                 </div>
               </div>

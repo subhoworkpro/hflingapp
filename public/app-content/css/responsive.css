@@ -144,6 +144,12 @@
     }
 
     /*** 28-10-18 ***/
+    input[type=file].wd_97{
+        width: 100%;
+    }
+    .anonnymous_area .bio_area{
+        padding: 0 15px;
+    }
 }
 /******/
  @media(max-width: 767px) {
@@ -214,6 +220,12 @@
     .advertise{
         width: 100%;
         border: none;
+    }
+    .anonnymous_area .bio_area .ui-selectmenu-button.ui-button{
+        width: 150px;
+    }
+    .anonymous_cnt {
+       padding-left: 18px;
     }
 }
 /******/
@@ -352,6 +364,14 @@
     .advertise{
         width: 100%;
     }
+    .anonnymous_area .bio_area{
+        flex-wrap: wrap;
+        padding: 0 15px;
+    }
+    .anonymous_cnt{
+        padding-left: 0;
+        padding-top: 10px;
+    }
 }
 
  @media(max-width: 480px) {
@@ -399,6 +419,17 @@
     }
 
     /*** 28-10-18 ***/
+    
+    /*** 14-12-18 ***/
+    .anonnymous_area .bio_area{
+        padding: 0 0 0 15px;
+    }
+
+    .anonnymous_area .bio_area .ui-selectmenu-button.ui-button{
+        width: 100%;
+    }
+
+    /*** 14-12-18 ***/
  }
 
  @media(max-width: 420px) {

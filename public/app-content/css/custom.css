@@ -1403,6 +1403,7 @@ input[type=file].wd_97{
 .anonymous_cnt p{
     font-size: 15px;
     font-weight: 600;
+    line-height: 22px;
 }
 
 .anonnymous_comment{
@@ -1503,6 +1504,22 @@ input[type=file].wd_97{
 
 .delete_post_btn{
     padding-left: 15px;
+}
+
+.reply_anonnymous{
+    padding-top: 30px;
+}
+
+.anonnymous_area .bio_area{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.anonnymous_area .bio_area .ui-selectmenu-button.ui-button{
+    width: auto;
+    margin-bottom: 0;
 }
 
 /*** 02-12-18 ***/
