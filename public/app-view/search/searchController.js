@@ -44,6 +44,18 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
         this.reloadSearch();
     };
 
+    vm.searchAll = function(){
+        vm.state = "State";
+        vm.region = "Region";
+        vm.category = "Category";
+
+        $rootScope.search.state = vm.state;
+        $rootScope.search.region = vm.region;
+        $rootScope.search.category = vm.category;
+        console.log("asdasdsa");
+        this.reloadSearch();
+    }
+
     vm.searchFilter = function (state,region,category) {
         if(state == 'State' && region == 'Region'){
             console.log("Do nothing");

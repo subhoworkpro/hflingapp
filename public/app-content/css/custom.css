@@ -1220,6 +1220,17 @@ input[type=file].wd_97{
     font-weight: 500;
 }
 
+.expanding p a{
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 0;
+    text-decoration: underline;
+}
+
+.expanding p a:hover{
+    color: #fff;
+}
+
 /*** 08-10-18 ***/
 /*** 27-10-18 ***/
 .win_money{
