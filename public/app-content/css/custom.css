@@ -1222,13 +1222,13 @@ input[type=file].wd_97{
 
 .expanding p a{
     font-size: 18px;
-    color: #000;
+    color: #fff;
     letter-spacing: 0;
     text-decoration: underline;
 }
 
 .expanding p a:hover{
-    color: #fff;
+    color: #000;
 }
 
 /*** 08-10-18 ***/
