@@ -1534,3 +1534,19 @@ input[type=file].wd_97{
 }
 
 /*** 02-12-18 ***/
+
+/*** 09-01-18 ***/
+
+.created_tag_section{
+    padding-top: 10px;
+    font-size: 0;
+}
+
+.created_tag_section p{
+    display: inline-block;
+    padding: 8px;
+    border: 1px solid #b5b3b3;
+    margin-right: 10px;
+}
+
+/*** 09-01-18 ***/

@@ -156,7 +156,10 @@
           </div>
           <div class="created_section">
             <h4 style="word-wrap: break-word;" ng-bind-html="message | unsafe"></h2>  
-            <h5 style= "margin-top: 10px;font-weight: 500;">Posted: <time am-time-ago="created"></time</h5>
+              <div class="created_tag_section">
+                <p style= "font-size: 15px;font-weight: 500;">Posted: <time am-time-ago="created"></time></p>  
+                <p style= "font-size: 15px;font-weight: 500;">Expires: {{expires | amDifference : null : 'day' }} days</p>
+              </div>
           </div>
 
           
@@ -213,7 +216,7 @@
           <div class="anonnymous_comment" ng-show = "anonymouscomment == 'enabled'">
             <div class="anonnymous_typos">
               <div class="comment_block">
-                <h4>Post an anonnymous comment for this post!</h4>
+                <h4>Post an public comment for this post!</h4>
                 <div class="comment_field">
                   <textarea class="cust_textarea" ng-model="commentmessage"></textarea>
                 </div>
@@ -242,7 +245,7 @@
           </div>
 
           <div class="disabled_anonymous_text" ng-show = "anonymouscomment == 'disabled'">
-            <p><span><i class="fa fa-ban"></i></span>The poster has disabled anonymous comments</p>
+            <p><span><i class="fa fa-ban"></i></span>The poster has disabled public comments</p>
           </div>
 
           <p style="margin-bottom: 20px;"> *If you feel this post violates the law in any way shape or form, such as exploitation of minors or human trafficking, please contact the authorities immediately</p>  

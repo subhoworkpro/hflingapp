@@ -173,6 +173,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
+                $scope.expires = new Date($rootScope.currentPost.data.created);
+                $scope.expires.setDate($scope.expires.getDate() + 8);
                 $scope.files = $rootScope.currentPost.data.files;
 
                 $scope.haircolor = $rootScope.currentPost.data.haircolo;
