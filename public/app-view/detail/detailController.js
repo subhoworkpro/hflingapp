@@ -120,6 +120,50 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
+    $scope.flagComment = function(id){
+        console.log("The comment has been flagged");
+        $rootScope.loading = true;
+        HttpService.FlagAComment(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.loadComments($scope.id);
+                FlashService.Success("The comment has been successfully flagged.");
+                $rootScope.loading = false;
+                $window.scrollTo(0, 0);
+            }else{
+                console.log("something went wrong");
+                $rootScope.loading = false;
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
+
+    $scope.unflagComment = function(id){
+        console.log("The comment has been flagged");
+        $rootScope.loading = true;
+        HttpService.UnflagAComment(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.loadComments($scope.id);
+                FlashService.Success("The comment has been successfully unflagged.");
+                $rootScope.loading = false;
+                $window.scrollTo(0, 0);
+            }else{
+                console.log("something went wrong");
+                $rootScope.loading = false;
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
+
     $scope.initController = function () {
 
         $http.get("/data.json")

@@ -185,7 +185,7 @@ exports.get_all_comments = function(req, res) {
 
   var query_params = {};
   // query_params.created = {$gt : deletionDate};
-  query_params.status = ["active","inactive"];
+  query_params.status = ["active","inactive","flagged"];
   query_params["post"] = req.params.postId;
   var query = {
     state : 'STATE1'
@@ -213,6 +213,36 @@ exports.delete_a_comment= function(req, res) {
       if (err)
         res.send(err);
       res.json({ message: 'comment successfully deleted' });
+    });
+  });
+
+};
+
+exports.flag_a_comment= function(req, res) {
+
+  Comment.findById(req.params.commentId, function(err, comment) {
+    if (err)
+      res.send(err);
+    comment.status = "flagged";
+    comment.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'comment successfully flagged' });
+    });
+  });
+
+};
+
+exports.unflag_a_comment= function(req, res) {
+
+  Comment.findById(req.params.commentId, function(err, comment) {
+    if (err)
+      res.send(err);
+    comment.status = "active";
+    comment.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'comment successfully activated' });
     });
   });
 

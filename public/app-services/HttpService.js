@@ -129,6 +129,28 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
                     }).then(handleSuccess, handleError('Error getting result'));
         };
 
+        service.FlagAComment = function (id) {
+            var url = "/api/flagcomment/"+id;
+             return $http({
+                        url: url,
+                        method: "GET",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
+        service.UnflagAComment = function (id) {
+            var url = "/api/unflagcomment/"+id;
+             return $http({
+                        url: url,
+                        method: "GET",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
         service.FlagAPost = function (id) {
             var url = "/api/flagpost/"+id;
              return $http({
