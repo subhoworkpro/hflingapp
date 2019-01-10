@@ -135,9 +135,12 @@
               <div class="reply_item_anony" ng-repeat="item in comments">
                 <span>Reply {{$index+1}}</span>
                 <a href="" ng-click="deleteComment(item._id)">Delete</a>
+                <a ng-if = "item.status == 'active'" href="" ng-click="flagComment(item._id)">Flag</a>
+                <a ng-if = "item.status == 'flagged'" href="" href="" ng-click="unflagComment(item._id)">Unflag</a>
                 <div class="reply_txt_anony">
                   <h5 ng-show = "item.status == 'active'"> {{item.body}}</h5>
                   <h5 ng-show = "item.status == 'inactive'" style="color: #8dc63f;"> The comment has been deleted</h5>
+                  <h5 ng-show = "item.status == 'flagged'" style="color: #8dc63f;"> The comment has been flagged</h5>
                   <p>Posted: <em><time am-time-ago="item.created"></time></em></p>
                 </div>
               </div>
