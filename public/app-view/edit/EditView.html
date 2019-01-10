@@ -143,7 +143,18 @@
                   <p>Allow anonymous comments on your post.(You can always disable/enable and delete comments anytime)</p>
                 </div>
               </div>
-          </div>
+        </div>
+
+        <div class="bio_mid_item  anonnymous_area" style="margin-top: 15px;margin-right: 5px;">
+             <div class="bio_area">              
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                ui-selectmenu-button-closed ui-corner-all" ng-model="notified" ng-options="x for x in notifiedList">
+                </select>
+                <div class="anonymous_cnt" style= "padding-left: 0;">
+                  <p>Get notified when someone comments on your post</p>
+                </div>
+              </div>
+        </div>
 
         <div class="bio_sec">
             <div class="bio_area bio_full">

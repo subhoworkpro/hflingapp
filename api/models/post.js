@@ -27,6 +27,7 @@ module.exports = mongoose.model('Post', new Schema({
     weight : Number,
     mage : Number,
     anonymouscomment: String,
+    notified: String,
     files: [
         {
             url: String,

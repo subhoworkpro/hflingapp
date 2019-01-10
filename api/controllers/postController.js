@@ -74,6 +74,7 @@ exports.create_a_post = function(req, res) {
             weight : req.body.weight,
             mage : req.body.mage,
             anonymouscomment : req.body.anonymouscomment,
+            notified : req.body.notified,
             files: req.body.files,
             status: "inactive"
           });
@@ -483,6 +484,9 @@ exports.edit_a_post= function(req, res) {
     if(req.body.anonymouscomment){
       post.anonymouscomment = req.body.anonymouscomment;
     }
+    if(req.body.notified){
+      post.notified = req.body.notified;
+    }
 
     if(req.body.files){
       post.files = req.body.files;
@@ -498,7 +502,27 @@ exports.edit_a_post= function(req, res) {
           post: post._id    // assign the _id from the post
         });
         comment.save(function (err) {
-          if (err) return handleError(err);
+          if (err) {
+            return handleError(err);
+          }else{
+            if(post.notified == 'yes'){
+              var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
+              var mailOptions = {
+                  from: 'Healthy Fling <info@healthyfling.com>', // sender address
+                  to: post.email,
+                  subject: "You have a new comment ["+post.title+"]",
+                  html: mailBody
+              };
+
+              transporter.sendMail(mailOptions, function(error, info){
+                  if(error){
+                      console.log(error);
+                  }else{
+                      console.log('Message sent: ' + info.response);
+                  };
+              });
+            }
+          }
         });
       }
       res.json(post);

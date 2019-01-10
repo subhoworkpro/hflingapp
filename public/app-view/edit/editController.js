@@ -17,6 +17,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.bodyHairList = $rootScope.bodyHairList;
     $scope.hivstatusList = $rootScope.hivstatusList;
     $scope.anonymouscommentList = [ "enabled", "disabled" ];
+    $scope.notifiedList = [ "yes", "no" ];
 
     var range = ["Age"];
     for(var i=0;i<201;i++) {
@@ -109,6 +110,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         "bodyhair": "Body Hair",
         "hivstatus": "HIV Status",
         "anonymouscomment" : "disabled",
+        "notified" : "yes",
         "weight" : "Weight",
         "mage" : "Age"
     };
@@ -242,6 +244,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 "bodyhair": $scope.bodyhair,
                 "hivstatus": $scope.hivstatus,
                 "anonymouscomment" : $scope.anonymouscomment,
+                "notified" : $scope.notified,
                 "weight" : $scope.weight,
                 "mage" : $scope.mage,
                 "files": $rootScope.imageList
@@ -329,7 +332,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.weight = $rootScope.currentPost.data.weight || "Weight";
                 $scope.mage = $rootScope.currentPost.data.mage || "Age";
                 $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment || "disabled";
-
+                $scope.notified = $rootScope.currentPost.data.notified || "no";
 
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
