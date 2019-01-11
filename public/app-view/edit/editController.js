@@ -110,7 +110,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         "bodyhair": "Body Hair",
         "hivstatus": "HIV Status",
         "anonymouscomment" : "disabled",
-        "notified" : "yes",
+        "notified" : "no",
         "weight" : "Weight",
         "mage" : "Age"
     };

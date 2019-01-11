@@ -145,7 +145,7 @@
               </div>
         </div>
 
-        <div class="bio_mid_item  anonnymous_area" style="margin-top: 15px;margin-right: 5px;">
+        <div ng-if ="anonymouscomment == 'enabled'" class="bio_mid_item  anonnymous_area" style="margin-top: 15px;margin-right: 5px;">
              <div class="bio_area">              
                 <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
                 ui-selectmenu-button-closed ui-corner-all" ng-model="notified" ng-options="x for x in notifiedList">
