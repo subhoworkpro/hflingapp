@@ -21,10 +21,16 @@ var POSTS_TIMEOUT = 7;
 var ADMIN_POSTS_TIMEOUT = 30;
 
 
+// cloudinary.config({ 
+//   cloud_name: 'dtrj5hqdm', 
+//   api_key: '415183322599141', 
+//   api_secret: 'LUhuCC5Iw5V3hizFzPFdztazwLI' 
+// });
+
 cloudinary.config({ 
-  cloud_name: 'dtrj5hqdm', 
-  api_key: '415183322599141', 
-  api_secret: 'LUhuCC5Iw5V3hizFzPFdztazwLI' 
+ cloud_name: 'dosxjzleb', 
+ api_key: '652824273966278', 
+ api_secret: 'K2oWfPXPXTm9PTGZD47bFQnIGAI' 
 });
 
 
