@@ -10,6 +10,7 @@ module.exports = function(apiRoutes) {
 
   apiRoutes.post('/uploadimages', gallery.uploadimages);
   apiRoutes.post('/uploadtempimages', gallery.upload_images_to_temp);
+  apiRoutes.post('/uploadimagestolocal', gallery.upload_images_to_local);
 
   // app.route('/tasks/:taskId')
   //   .get(todoList.read_a_task)

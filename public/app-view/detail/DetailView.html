@@ -92,13 +92,13 @@
           </div>
           <div class="gallery_slider clearfix" ng-if = "files" style="padding-bottom:15px;">
               <div class="galery_full">
-                  <img src="{{mainImage}}" alt=""/>
+                  <img src="{{mainImage}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
               </div>
               <div class="gallery_thumb">
                 <ul>
                     <li ng-repeat="item in files">
                       <a href="" ng-click = "changeMainImage(item);" >
-                          <img src="{{ item.secure_url}}" alt=""/>
+                          <img src="{{ item.secure_url}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
                       </a>
                     </li>
                 </ul>

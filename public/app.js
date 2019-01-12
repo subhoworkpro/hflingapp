@@ -215,21 +215,11 @@ app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$h
                 var values = [];
                 angular.forEach(element[0].files, function (item) {
                     var fileReader = new FileReader();
-                    value ={};
+                    var myFormData = new FormData();
                     fileReader.onload = function (event) {
-                        var uri = event.target.result;    
-                        value = {
-                           // File Name 
-                            // name: item.name,
-                            //File Size 
-                            // size: item.size,
-                            //File URL to view 
-                            url: uri
-                            // File Input Value 
-                            // _file: item
-                        };
-                        console.log(value);
-                        $http.post("/api/uploadimages",JSON.stringify(value), {'Content-Type': 'application/json; charset=utf-8','Authorization': undefined })
+                        console.log(item);
+                        myFormData.append('imgUploader', item);
+                        $http.post("/api/uploadimagestolocal",myFormData, {transformRequest: angular.identity, headers: {'Content-Type': undefined}})
                         .success(function (data) {
                             console.log(data);
                             values.push(data);
@@ -239,10 +229,37 @@ app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$h
                         .error(function (data) {
                             console.log("there was an error");
                         });
-
-                        // values.push(value);
                     };
                     fileReader.readAsDataURL(item);
+                    // var fileReader = new FileReader();
+                    // value ={};
+                    // fileReader.onload = function (event) {
+                    //     var uri = event.target.result;    
+                    //     value = {
+                    //        // File Name 
+                    //         // name: item.name,
+                    //         //File Size 
+                    //         // size: item.size,
+                    //         //File URL to view 
+                    //         url: uri
+                    //         // File Input Value 
+                    //         // _file: item
+                    //     };
+                    //     console.log(value);
+                    //     $http.post("/api/uploadimagestolocal",JSON.stringify(value), {'Content-Type': 'application/json; charset=utf-8','Authorization': undefined })
+                    //     .success(function (data) {
+                    //         console.log(data);
+                    //         values.push(data);
+                    //         $rootScope.imageList.push(data);
+                    //         console.log($rootScope.loadingImage);
+                    //     })
+                    //     .error(function (data) {
+                    //         console.log("there was an error");
+                    //     });
+
+                    //     // values.push(value);
+                    // };
+                    // fileReader.readAsDataURL(item);
                     
                 });
                 scope.$apply(function () {
