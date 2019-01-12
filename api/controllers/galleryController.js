@@ -81,8 +81,8 @@ exports.upload_images_to_local = function(req, res) {
             return res.end("Something went wrong!");
          }
          console.log("SUBHA TESTING");
-         console.log(req.protocol + "://" + req.host + '/files/' + local_file_path);
-         res.json({"secure_url": req.protocol + "://" + req.host + ':8000/files/' + local_file_path});
+         console.log('https://www.healthyfling.com/files/' + local_file_path);
+         res.json({"secure_url": 'https://www.healthyfling.com/files/' + local_file_path});
      });
 };
 
