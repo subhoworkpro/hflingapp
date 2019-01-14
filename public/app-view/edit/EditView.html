@@ -133,31 +133,32 @@
                 </div>
             </div>
         </div>
+        <div class="anonnymous_area_outer">
+            <div class="bio_mid_item  anonnymous_area">
+                 <div class="bio_area">              
+                    <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                    ui-selectmenu-button-closed ui-corner-all" ng-model="anonymouscomment" ng-options="x for x in anonymouscommentList">
+                    </select>
+                    <div class="anonymous_cnt" >
+                      <p>Allow anonymous comments on your post.(You can always disable/enable and delete comments anytime)</p>
+                    </div>
+                  </div>
+            </div>
 
-        <div class="bio_mid_item  anonnymous_area">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
-                ui-selectmenu-button-closed ui-corner-all" ng-model="anonymouscomment" ng-options="x for x in anonymouscommentList">
-                </select>
-                <div class="anonymous_cnt" style= "padding-left: 0;">
-                  <p>Allow anonymous comments on your post.(You can always disable/enable and delete comments anytime)</p>
-                </div>
-              </div>
-        </div>
-
-        <div ng-if ="anonymouscomment == 'enabled'" class="bio_mid_item  anonnymous_area" style="margin-top: 15px;margin-right: 5px;">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
-                ui-selectmenu-button-closed ui-corner-all" ng-model="notified" ng-options="x for x in notifiedList">
-                </select>
-                <div class="anonymous_cnt" style= "padding-left: 0;">
-                  <p>Get notified when someone comments on your post</p>
-                </div>
-              </div>
+            <div ng-if ="anonymouscomment == 'enabled'" class="bio_mid_item  anonnymous_area" style="margin-top: 15px;margin-right: 5px;">
+                 <div class="bio_area">              
+                    <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                    ui-selectmenu-button-closed ui-corner-all" ng-model="notified" ng-options="x for x in notifiedList">
+                    </select>
+                    <div class="anonymous_cnt">
+                      <p>Get notified when someone comments on your post</p>
+                    </div>
+                  </div>
+            </div>
         </div>
 
         <div class="bio_sec">
-            <div class="bio_area bio_full">
+            <div class="bio_area bio_full image_upload_area" >
                 <div class="upload_txt">
                     <p>Add Images (Up to 5 images allowed).
                         <em>The first image will be the featured image.</em></p>
