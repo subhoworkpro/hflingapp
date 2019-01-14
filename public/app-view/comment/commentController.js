@@ -168,7 +168,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
                 console.log(response);
                 if (response.status == '200') {
                     // $scope.loadComments($scope.id);
-                    FlashService.Success("The comment has been successfully flagged.");
+                    FlashService.Success("You have successfully replied to this comment!");
                     $rootScope.loading = false;
                     $window.scrollTo(0, 0);
                     $rootScope.comment = {};
