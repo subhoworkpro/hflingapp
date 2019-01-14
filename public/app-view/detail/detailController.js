@@ -5,6 +5,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $rootScope.loading = true;
     }
 
+    $scope.replyNotified = false;
+    $scope.replyNotifiedEmail = "";
+
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -40,7 +43,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             // console.log(vm.data.files);
             var postData = {
                 "commentmessage": $scope.commentmessage, 
+                "email": $scope.replyNotifiedEmail
             };
+
             console.log(postData);
              HttpService.EditPost(id,postData)
             .then(function(response){
@@ -65,6 +70,53 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 
             });
         }
+    }
+
+    $scope.replyComment = function(id){
+        console.log("ReplyComment clicked");
+
+        // $scope.showError = true;
+
+        // if (($scope.mage == 'Age')){
+        //     $scope.mage = "";
+        //     // alert("Please Select, Region and Category."); 
+        // }
+
+        // if( $scope.commentmessage == undefined && $scope.commentmessage == '' || $scope.captcha == undefined){
+        //     console.log("Validation Failed");
+        //     FlashService.Error("Please select the Capcha!");
+        //     $window.scrollTo(0, 0);
+        // }else{
+        //     $scope.showImageError = false;
+        //     $rootScope.loading = true;
+        //     // console.log(vm.data.files);
+        //     var postData = {
+        //         "commentmessage": $scope.commentmessage, 
+        //     };
+        //     console.log(postData);
+        //      HttpService.EditPost(id,postData)
+        //     .then(function(response){
+        //         if (response.status == '200') {
+        //             console.log("success");
+        //             console.log(response)
+        //             // alert("Your ad has been created. A verification mail will be sent shortly!"); 
+        //             if (response && response.data && response.data["_id"]) {
+        //                 $location.path('/detail/'+response.data["_id"]);
+        //                 FlashService.Success("Your comment has been successfully added.");
+        //                 $scope.loadComments($scope.id);
+        //                 $scope.commentmessage = "";
+        //                 $window.scrollTo(0, 0);
+        //             }
+        //             $rootScope.loading = false;
+        //         }else{
+        //             $rootScope.loading = false;
+        //             // FlashService.Error(response.data.resultDescription);
+        //             vm.dataLoading = false;
+        //             $location.path('/');
+        //         };
+                
+        //     });
+        // }
     }
 
 
@@ -314,6 +366,15 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         
     };
 
+    $scope.toggleReplyNotify = function(){
+        if($scope.replyNotified && $scope.replyNotified == true){
+            $scope.replyNotified = false;
+            $scope.replyNotifiedEmail = "";
+        }else{
+            $scope.replyNotified = true;
+        }
+    }
+
     $scope.openModal = function (){
          $rootScope.modalInstance = $modal.open({
             templateUrl: 'app-view/reply/ReplyView.html'
@@ -325,6 +386,17 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             templateUrl: 'app-view/flag/FlagView.html'
         });
     }
+
+    $scope.openCommentModal = function (comment){
+        $rootScope.comment = comment;
+         $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/comment/CommentView.html'
+        });
+    }
+
+    $scope.$on("reloadComments",function () {
+        $scope.loadComments($scope.id);
+    });
 
     // if ($rootScope.currentPost.data) {
     //  console.log($rootScope.currentPost);

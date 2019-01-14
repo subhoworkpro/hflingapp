@@ -224,6 +224,14 @@
               <div class="comments_counter">
                 <p><span>{{comments.length}}</span>comments</p>
               </div>
+              <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+              <div class="notified_area">
+                <a href="" ng-click="toggleReplyNotify();">Get notified when someone comments to your comment(optional)</a>
+              </div> 
+
+              <div class="comment_field" ng-show = "replyNotified == true">
+                <input id="email" name="email" type="text" placeholder="Your email" class="cust_email" ng-model="replyNotifiedEmail">
+              </div>
               <div class="pdL">
                   <div class="reply_item" vc-recaptcha key="'6LdK608UAAAAAIIPni45gUqw9p_vn4mLa_CtlSlv'" ng-model="captcha"></div>
               </div>
@@ -237,11 +245,19 @@
                 <a ng-if ="is_edit" href="" ng-click="deleteComment(item._id)">Delete</a>
                 <a ng-if = "item.status == 'active'" href="" ng-click="flagComment(item._id)">Flag</a>
                 <a ng-if ="is_edit" href="" ng-click="unflagComment(item._id)">Unflag</a>
+                <a ng-if ="is_edit" href="" ng-click="openCommentModal(item)">Reply</a>
                 <div class="reply_txt_anony">
                   <h5 ng-show = "item.status == 'active'"> {{item.body}}</h5>
                   <h5 ng-show = "item.status == 'inactive'" style="color: #8dc63f;"> The comment has been deleted</h5>
                   <h5 ng-show = "item.status == 'flagged'" style="color: #8dc63f;"> The comment has been flagged</h5>
                   <p>Posted: <em><time am-time-ago="item.created"></time></em></p>
+                </div>
+                <div ng-if = "item.reply" class="posters_response">
+                    <h4>Posters response</h4>
+                    <div class="posters_inr">
+                      <h5>{{item.reply.body}}</h5>
+                      <p>posted <em><time am-time-ago="item.reply.created"></time></em></p>
+                    </div>  
                 </div>
               </div>
             </div>

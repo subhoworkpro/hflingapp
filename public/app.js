@@ -111,6 +111,18 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/comment', {
+            controller: 'CommentController',
+            templateUrl: 'app-view/comment/CommentView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/comment/:id', {
+            controller: 'CommentController',
+            templateUrl: 'app-view/comment/CommentView.html',
+            controllerAs: 'vm'
+        })
+
 
         .otherwise({ redirectTo: '404.html' });
 
@@ -166,6 +178,8 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.is_flagged = false;
 
         $rootScope.currentPost = {};
+
+        $rootScope.comment = {};
 
         $rootScope.pageTitle = "Healthy Fling";
 

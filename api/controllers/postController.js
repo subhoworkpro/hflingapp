@@ -2,6 +2,7 @@
 
 var Post = require('../models/post');
 var Comment = require('../models/comment');
+var Reply = require('../models/reply');
 
 var nodemailer = require('nodemailer');
 
@@ -250,6 +251,55 @@ exports.unflag_a_comment= function(req, res) {
       if (err)
         res.send(err);
       res.json({ message: 'comment successfully activated' });
+    });
+  });
+
+};
+
+exports.reply_a_comment= function(req, res) {
+
+
+  Comment.findById(req.params.commentId, function(err, comment) {
+    if (err) {
+      return handleError(err);
+    }
+    Post.findById(comment.post, function(err, post) {
+      if (err) {
+        return handleError(err);
+      }
+      var reply = new Reply({
+        body: req.body.commentmessage,
+        status: "active",
+        comment: req.params.commentId // assign the _id from the post
+      });
+      reply.save(function (err, reply) {
+        if (err) {
+          return handleError(err);
+        }
+        comment.reply = reply;
+        comment.save(function(err, comment) {
+          if (err)
+            res.send(err);
+          if(comment.email && comment.email != ""){
+            var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
+            var mailOptions = {
+                from: 'Healthy Fling <info@healthyfling.com>', // sender address
+                to: comment.email,
+                subject: "You have a new comment ["+post.title+"]",
+                html: mailBody
+            };
+
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    console.log(error);
+                }else{
+                    console.log('Message sent: ' + info.response);
+                };
+            });
+          }
+          res.json(comment);
+        });
+      });
     });
   });
 
@@ -504,6 +554,7 @@ exports.edit_a_post= function(req, res) {
       if(req.body.commentmessage){
         var comment = new Comment({
           body: req.body.commentmessage,
+          email: req.body.email || "",
           status: "active",
           post: post._id    // assign the _id from the post
         });

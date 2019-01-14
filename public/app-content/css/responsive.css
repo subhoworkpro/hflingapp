@@ -148,8 +148,25 @@
         width: 100%;
     }
     .anonnymous_area .bio_area{
-        padding: 0 15px;
+        padding: 0;
     }
+
+     /**** 11-01-18 ****/
+
+     .image_upload_area .cust_file{
+        padding: 0;
+     }
+
+     .image_upload_area{
+        width: 96%;
+     }
+
+     .emmbed_video{
+        margin-top: 0;
+     }
+
+     /**** 11-01-18 ****/
+
 }
 /******/
  @media(max-width: 767px) {
@@ -227,6 +244,13 @@
     .anonymous_cnt {
        padding-left: 18px;
     }
+    /**** 11-01-18 ****/
+
+     .image_upload_area{
+        width: 95%;
+     }
+
+     /**** 11-01-18 ****/
 }
 /******/
  @media(max-width: 568px) {
@@ -366,12 +390,28 @@
     }
     .anonnymous_area .bio_area{
         flex-wrap: wrap;
-        padding: 0 15px;
     }
     .anonymous_cnt{
         padding-left: 0;
         padding-top: 10px;
     }
+    /**** 11-01-18 ****/
+
+    .anonnymous_area_outer{
+        margin-right: 5px;
+    }
+
+    .image_upload_area{
+        width: 96%;
+        padding-right: 10px;
+    }
+
+    .emmbed_video {
+        margin: 15px;
+        padding: 15px 12px;
+    }
+
+    /**** 11-01-18 ****/
 }
 
  @media(max-width: 480px) {
@@ -421,9 +461,6 @@
     /*** 28-10-18 ***/
     
     /*** 14-12-18 ***/
-    .anonnymous_area .bio_area{
-        padding: 0 0 0 15px;
-    }
 
     .anonnymous_area .bio_area .ui-selectmenu-button.ui-button{
         width: 100%;
@@ -559,6 +596,18 @@
     }
 
     /*** 28-10-18 ***/
+
+    /**** 11-01-18 ****/
+
+    .image_upload_area{
+        width: 96%;
+    }
+
+    .anonnymous_area_outer {
+       margin-right: 0;
+    }
+
+    /**** 11-01-18 ****/
 }
  @media(max-width: 360px) {
      .select_area {
@@ -601,6 +650,14 @@
     .advertise{
         width: 100%;
     }
+
+     /**** 11-01-18 ****/
+
+    .image_upload_area{
+        width: 95%;
+    }
+
+    /**** 11-01-18 ****/
 }
  @media(max-width: 320px) {
 }
