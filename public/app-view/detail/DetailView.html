@@ -252,12 +252,16 @@
                   <h5 ng-show = "item.status == 'flagged'" style="color: #8dc63f;"> The comment has been flagged</h5>
                   <p>Posted: <em><time am-time-ago="item.created"></time></em></p>
                 </div>
-                <div ng-if = "item.reply" class="posters_response">
-                    <h4>Posters response</h4>
-                    <div class="posters_inr">
-                      <h5>{{item.reply.body}}</h5>
-                      <p>posted <em><time am-time-ago="item.reply.created"></time></em></p>
-                    </div>  
+                <div ng-if = "item.replies">
+                  <div class="posters_response" ng-repeat="reply in item.replies">
+                      <span>Posters response</span>
+                      <a ng-if ="is_edit" href="" ng-click="deleteReply(reply._id)">Delete</a>
+                      <div class="posters_inr">
+                        <h5 ng-show = "reply.status == 'active'" >{{reply.body}}</h5>
+                        <h5 ng-show = "reply.status == 'inactive'" style="color: #8dc63f;">The reply has been deleted</h5>
+                        <p>posted <em><time am-time-ago="reply.created"></time></em></p>
+                      </div>  
+                  </div>
                 </div>
               </div>
             </div>

@@ -1636,6 +1636,14 @@ input[type=file].wd_97{
     padding-bottom: 5px;
 }
 
+.posters_response span{
+    font-size: 17px;
+    color: rgb(244,101,87);
+    font-weight: 700;
+    padding-left: 10px;
+    padding-bottom: 5px;
+}
+
 .posters_response h5{
     font-size: 15px;
     color: #000;

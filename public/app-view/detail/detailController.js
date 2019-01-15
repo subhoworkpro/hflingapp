@@ -172,6 +172,27 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
+    $scope.deleteReply = function(id){
+        $rootScope.loading = true;
+        HttpService.DeleteAReply(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.loadComments($scope.id);
+                FlashService.Success("The reply has been successfully deleted.");
+                $rootScope.loading = false;
+                $window.scrollTo(0, 0);
+            }else{
+                console.log("something went wrong");
+                $rootScope.loading = false;
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
+
     $scope.flagComment = function(id){
         console.log("The comment has been flagged");
         $rootScope.loading = true;

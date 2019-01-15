@@ -129,6 +129,17 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
                     }).then(handleSuccess, handleError('Error getting result'));
         };
 
+        service.DeleteAReply = function (id) {
+            var url = "/api/deletereply/"+id;
+             return $http({
+                        url: url,
+                        method: "DELETE",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
         service.FlagAComment = function (id) {
             var url = "/api/flagcomment/"+id;
              return $http({

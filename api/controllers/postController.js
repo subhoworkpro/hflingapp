@@ -200,7 +200,7 @@ exports.get_all_comments = function(req, res) {
   };  
 
   console.log(query_params);
-  Comment.find(query_params, function (err, comments) {
+  Comment.find(query_params).populate('replies').exec(function (err, comments) {
     // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err) {
             res.send(err);
@@ -221,6 +221,21 @@ exports.delete_a_comment= function(req, res) {
       if (err)
         res.send(err);
       res.json({ message: 'comment successfully deleted' });
+    });
+  });
+
+};
+
+exports.delete_a_reply= function(req, res) {
+
+  Reply.findById(req.params.replyId, function(err, reply) {
+    if (err)
+      res.send(err);
+    reply.status = "inactive";
+    reply.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'reply successfully deleted' });
     });
   });
 
@@ -276,10 +291,17 @@ exports.reply_a_comment= function(req, res) {
         if (err) {
           return handleError(err);
         }
-        comment.reply = reply;
+        console.log(comment);
+        console.log(comment.replies);
+
+        comment.replies.unshift(reply);
+        console.log(comment.replies);
+        
         comment.save(function(err, comment) {
-          if (err)
+          if (err){
+            console.log(err);
             res.send(err);
+          }
           if(comment.email && comment.email != ""){
             var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
             var mailOptions = {
