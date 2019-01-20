@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularMoment', 'vcRecaptcha' ]);
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularMoment', 'vcRecaptcha']);
 
 
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
@@ -128,6 +128,9 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
 
 }]);
 
+app.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist(['**']);
+});
 
 
 app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache', function($rootScope, $location, $cookieStore, $http,$route,$templateCache ){
@@ -384,5 +387,11 @@ app.filter('range', function() {
 app.filter('unsafe', function($sce) {
     return function(val) {
         return $sce.trustAsHtml(val);
+    };
+});
+
+app.filter('trusted', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
     };
 });

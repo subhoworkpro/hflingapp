@@ -28,6 +28,7 @@ module.exports = mongoose.model('Post', new Schema({
     mage : Number,
     anonymouscomment: String,
     notified: String,
+    embed: String,
     files: [
         {
             url: String,

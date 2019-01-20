@@ -155,7 +155,8 @@
             </div>
           </div>
           <div class="created_section">
-            <h4 style="word-wrap: break-word;" ng-bind-html="message | unsafe"></h2>  
+            <h4 style="word-wrap: break-word;" ng-bind-html="message | unsafe"></h2> 
+            <div ng-if ="embed != ''" ng-bind-html="embed | unsafe"></div>
               <div class="created_tag_section">
                 <p style= "font-size: 15px;font-weight: 500;">Posted: <time am-time-ago="created"></time></p>  
                 <p style= "font-size: 15px;font-weight: 500;">Expires: {{expires | amDifference : null : 'day' }} days</p>

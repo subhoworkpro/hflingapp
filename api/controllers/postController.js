@@ -82,6 +82,7 @@ exports.create_a_post = function(req, res) {
             mage : req.body.mage,
             anonymouscomment : req.body.anonymouscomment,
             notified : req.body.notified,
+            embed : req.body.embed,
             files: req.body.files,
             status: "inactive"
           });
@@ -564,6 +565,10 @@ exports.edit_a_post= function(req, res) {
     }
     if(req.body.notified){
       post.notified = req.body.notified;
+    }
+
+    if(req.body.embed){
+      post.embed = req.body.embed;
     }
 
     if(req.body.files){
