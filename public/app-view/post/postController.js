@@ -301,7 +301,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "hivstatus": this.data.hivstatus,
 			    "anonymouscomment": this.data.anonymouscomment,
 			    "notified" : this.data.notified,
-			    "embed": this.data.embed,
+			    "embed": this.data.embed.replace("src=", "xxx="),
 			    "weight" : this.data.weight,
 			    "mage" : this.data.mage,
 			    "files": $rootScope.imageList

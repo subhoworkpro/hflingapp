@@ -307,7 +307,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.weight = $rootScope.currentPost.data.weight;
                 $scope.mage = $rootScope.currentPost.data.mage;
                 $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment || 'disabled';
-                $scope.embed = $rootScope.currentPost.data.embed || '';
+                $scope.embed = $rootScope.currentPost.data.embed.replace("xxx=", "src=") || '';
 
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
