@@ -6,7 +6,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     }
 
     $scope.replyNotified = false;
+    $scope.showShareButtons = false;
     $scope.replyNotifiedEmail = "";
+    $scope.currentPath = $location.absUrl();
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
@@ -308,6 +310,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.mage = $rootScope.currentPost.data.mage;
                 $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment || 'disabled';
                 $scope.embed = $rootScope.currentPost.data.embed.replace("xxx=", "src=") || '';
+                $scope.share = $rootScope.currentPost.data.share || 'disabled';
 
                 $rootScope.loading = false;
                 if($scope.files.length > 0){
@@ -394,6 +397,14 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             $scope.replyNotifiedEmail = "";
         }else{
             $scope.replyNotified = true;
+        }
+    }
+
+    $scope.toggleShareButton = function(){
+        if($scope.showShareButtons && $scope.showShareButtons == true){
+            $scope.showShareButtons = false;
+        }else{
+            $scope.showShareButtons = true;
         }
     }
 

@@ -111,6 +111,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         "hivstatus": "HIV Status",
         "anonymouscomment" : "disabled",
         "notified" : "no",
+        "share" : "disabled",
         "embed": "",
         "weight" : "Weight",
         "mage" : "Age"
@@ -247,6 +248,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 "anonymouscomment" : $scope.anonymouscomment,
                 "notified" : $scope.notified,
                 "embed": $scope.embed.replace("src=", "xxx="),
+                "share" : $scope.share,
                 "weight" : $scope.weight,
                 "mage" : $scope.mage,
                 "files": $rootScope.imageList
@@ -335,6 +337,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.mage = $rootScope.currentPost.data.mage || "Age";
                 $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment || "disabled";
                 $scope.notified = $rootScope.currentPost.data.notified || "no";
+                $scope.share = $rootScope.currentPost.data.share || "disabled";
                 $scope.embed = $rootScope.currentPost.data.embed.replace("xxx=", "src=") || "";
 
                 $rootScope.loading = false;

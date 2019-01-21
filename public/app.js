@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularMoment', 'vcRecaptcha']);
+var app = angular.module('app', ['ngRoute', 'ngCookies', 'ui.bootstrap', 'angularMoment', 'vcRecaptcha', '720kb.socialshare']);
 
 
 app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
