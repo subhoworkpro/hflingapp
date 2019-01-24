@@ -122,8 +122,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     }
 
 
-   $scope.changeMainImage = function(file){
-        $scope.mainImage = file.secure_url;
+   $scope.changeMainImage = function(file,embed=false){
+        if(embed == false){
+            $scope.mainImage = file.secure_url;
+        }else{
+            $scope.mainImage = file;
+        }
    }
 
     vm.state = $rootScope.search.state;
