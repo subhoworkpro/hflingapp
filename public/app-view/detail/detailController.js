@@ -330,7 +330,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                       'og:image:width': '680',
                       'og:image:height': '340',
                       // Twitter
-                      'twitter:card': 'summary',
+                      'twitter:card': 'summary_large_image',
                       'twitter:site': '@healthyfling',
                       // 'twitter:creator': '@healthyfling',
                       'twitter:title': $scope.title,
@@ -348,7 +348,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                       'og:image:width': '680',
                       'og:image:height': '340',
                       // Twitter
-                      'twitter:card': 'summary',
+                      'twitter:card': 'summary_large_image',
                       'twitter:site': '@healthyfling',
                       // 'twitter:creator': '@healthyfling',
                       'twitter:title': $scope.title,
@@ -365,7 +365,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                       'og:image:width': '680',
                       'og:image:height': '340',
                       // Twitter
-                      'twitter:card': 'summary',
+                      'twitter:card': 'summary_large_image',
                       'twitter:site': '@healthyfling',
                       // 'twitter:creator': '@healthyfling',
                       'twitter:title': $scope.title,
