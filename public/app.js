@@ -133,7 +133,7 @@ app.config(function($sceDelegateProvider) {
 });
 
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache', function($rootScope, $location, $cookieStore, $http,$route,$templateCache ){
+app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache','MetaTagsService', function($rootScope, $location, $cookieStore, $http,$route,$templateCache,MetaTagsService ){
 
        // keep user logged in after page refresh
         // $rootScope.globals = $cookieStore.get('globals') || {};
@@ -167,6 +167,23 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
                     console.log("reload");
                 });
             }
+        });
+
+        MetaTagsService.setDefaultTags({
+          // OpenGraph
+          'og:type': 'article',
+          'og:title': 'HealthyFling',
+          'og:description': 'Your new favorite personals site to create, search and reply to personal ads.',
+          'og:image': 'https://www.healthyfling.com/app-content/images/logo.png',
+          'og:image:width': '680',
+          'og:image:height': '340',
+          // Twitter
+          'twitter:card': 'summary',
+          'twitter:site': '@healthyfling',
+          // 'twitter:creator': '@healthyfling',
+          'twitter:title': 'HealthyFling Post',
+          'twitter:description': 'Your new favorite personals site to create, search and reply to personal ads.',
+          'twitter:image': 'https://www.healthyfling.com/app-content/images/logo.png',
         });
 
         $rootScope.visitedSearchPage = false;
