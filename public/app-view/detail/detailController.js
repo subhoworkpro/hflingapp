@@ -9,6 +9,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.showShareButtons = false;
     $scope.replyNotifiedEmail = "";
     $scope.currentPath = $location.absUrl();
+    $scope.embed = "";
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
@@ -317,8 +318,11 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.share = $rootScope.currentPost.data.share || 'disabled';
 
                 $rootScope.loading = false;
+
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;
+                }else if($scope.embed != "" && $scope.files.length == 0){
+                    $scope.mainImage = $scope.embed;
                 }
             }else{
                 $rootScope.loading = false;

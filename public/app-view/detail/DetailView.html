@@ -153,7 +153,7 @@
               </div>
             </div>
           </div>
-          <div class="gallery_slider clearfix" ng-if = "files || embed != ''" style="padding-bottom:15px;">
+          <div class="gallery_slider clearfix" ng-if = "files.length > 0 || embed != ''" style="padding-bottom:15px;">
               <div class="galery_full">
                   <img ng-if = "mainImage.indexOf('iframe') == -1" src="{{mainImage}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
                   <div ng-if ="embed != '' && mainImage.indexOf('iframe') > -1" ng-bind-html="embed | unsafe"></div>
@@ -167,7 +167,7 @@
                     </li>
                     <li ng-if = "embed != ''">
                       <a href="" ng-click = "changeMainImage(embed,true);" >
-                          <img src="app-content/images/video-placeholder.jpg" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                          <img src="app-content/images/video-placeholder.png" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
                       </a>
                     </li>
                 </ul>
