@@ -383,7 +383,8 @@ exports.verifypost = function(req, res) {
 
 exports.renderpost = function(req, res) {
   var ua = req.headers['user-agent'];
-  if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)/gi.test(ua)) { 
+  if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)(googlebot)|(bingbot)|(linkedinbot)/gi.test(ua)) { 
+    
   // if (true) {   
     console.log(ua,' is a bot'); 
 
