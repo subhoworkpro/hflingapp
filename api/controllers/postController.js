@@ -385,7 +385,7 @@ exports.renderpost = function(req, res) {
   var ua = req.headers['user-agent'];
   if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)/gi.test(ua)) { 
     console.log(ua,' is a bot'); 
-    res.send('<meta property="og:type" content="article"><meta property="og:title" content="Healthy Fling"><meta property="og:description" content="{{metaDescription}}"><meta property="og:image" content="{{metaUrl}}"><meta property="og:image:width" content="680"><meta property="og:image:height" content="340"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@healthyfling"><meta name="twitter:title" content="Healthy Fling"><meta name="twitter:description" content="{{metaDescription}}"><meta name="twitter:image" content="{{metaUrl}}">');
+    res.send('<meta property="og:type" content="article"><meta property="og:title" content="Healthy Fling"><meta property="og:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta property="og:image" content="https://www.healthyfling.com/app-content/images/logo_meta.png"><meta property="og:image:width" content="680"><meta property="og:image:height" content="340"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@healthyfling"><meta name="twitter:title" content="Healthy Fling"><meta name="twitter:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta name="twitter:image" content="https://www.healthyfling.com/app-content/images/logo_meta.png">');
   }else{
     console.log(ua); 
     res.redirect("/#/");
