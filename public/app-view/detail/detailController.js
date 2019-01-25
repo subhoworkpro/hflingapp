@@ -8,7 +8,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.replyNotified = false;
     $scope.showShareButtons = false;
     $scope.replyNotifiedEmail = "";
-    $scope.currentPath = $location.absUrl();
+    $scope.currentPath = $location.absUrl().replace("#/detail","api/render");
     $scope.embed = "";
 
     $scope.states = $rootScope.stateList;
