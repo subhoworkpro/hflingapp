@@ -1,4 +1,4 @@
-app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document','$modal','$window','MetaTagsService', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document,$modal,$window,MetaTagsService){
+app.controller('DetailController', ['$rootScope','$scope','$location','HttpService','$http','$route','FlashService','$document','$modal','$window', function( $rootScope,$scope,$location,HttpService,$http,$route,FlashService,$document,$modal,$window){
     var vm = this;
 
     if($rootScope.visitedSearchPage){
@@ -321,57 +321,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
                 if($scope.files.length > 0){
                     $scope.mainImage = $scope.files[0].secure_url;
-                    MetaTagsService.setTags({
-                      // OpenGraph
-                      'og:type': 'article',
-                      'og:title': 'HealthyFling',
-                      'og:description': $scope.title,
-                      'og:image': $scope.mainImage,
-                      'og:image:width': '680',
-                      'og:image:height': '340',
-                      // Twitter
-                      'twitter:card': 'summary_large_image',
-                      'twitter:site': '@healthyfling',
-                      // 'twitter:creator': '@healthyfling',
-                      'twitter:title': $scope.title,
-                      'twitter:description': $scope.title,
-                      'twitter:image': $scope.mainImage,
-                    });
                 }else if($scope.embed != "" && $scope.files.length == 0){
                     $scope.mainImage = $scope.embed;
-                    MetaTagsService.setTags({
-                      // OpenGraph
-                      'og:type': 'article',
-                      'og:title': 'HealthyFling',
-                      'og:description': $scope.title,
-                      'og:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-                      'og:image:width': '680',
-                      'og:image:height': '340',
-                      // Twitter
-                      'twitter:card': 'summary_large_image',
-                      'twitter:site': '@healthyfling',
-                      // 'twitter:creator': '@healthyfling',
-                      'twitter:title': $scope.title,
-                      'twitter:description': $scope.title,
-                      'twitter:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-                    });
-                }else{
-                    MetaTagsService.setTags({
-                      // OpenGraph
-                      'og:type': 'article',
-                      'og:title': 'HealthyFling',
-                      'og:description': $scope.title,
-                      'og:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-                      'og:image:width': '680',
-                      'og:image:height': '340',
-                      // Twitter
-                      'twitter:card': 'summary_large_image',
-                      'twitter:site': '@healthyfling',
-                      // 'twitter:creator': '@healthyfling',
-                      'twitter:title': $scope.title,
-                      'twitter:description': $scope.title,
-                      'twitter:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-                    });
                 }
 
 
