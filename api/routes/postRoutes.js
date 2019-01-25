@@ -20,6 +20,7 @@ module.exports = function(apiRoutes) {
   apiRoutes.post('/flagpostreason/:postId', post.flagpostreason);
   apiRoutes.get('/unflagpost/:postId', post.unflagpost);
   apiRoutes.get('/adminpost/:postId', post.admin_read_a_post);
+  apiRoutes.get('/render/:postId', post.renderpost);
 
   // app.route('/tasks/:taskId')
   //   .get(todoList.read_a_task)

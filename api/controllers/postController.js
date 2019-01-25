@@ -381,6 +381,11 @@ exports.verifypost = function(req, res) {
   });
 };
 
+exports.renderpost = function(req, res) {
+  console.log(req.headers);
+  res.redirect("/#/");
+};
+
 exports.flagpost = function(req, res) {
   Post.findById(req.params.postId, function(err, post) {
     if (err)
