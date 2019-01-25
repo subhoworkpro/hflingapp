@@ -169,22 +169,22 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
             }
         });
 
-        MetaTagsService.setDefaultTags({
-          // OpenGraph
-          'og:type': 'article',
-          'og:title': 'HealthyFling',
-          'og:description': 'Your new favorite personals site to create, search and reply to personal ads.',
-          'og:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-          'og:image:width': '680',
-          'og:image:height': '340',
-          // Twitter
-          'twitter:card': 'summary_large_image',
-          'twitter:site': '@healthyfling',
-          // 'twitter:creator': '@healthyfling',
-          'twitter:title': 'HealthyFling Post',
-          'twitter:description': 'Your new favorite personals site to create, search and reply to personal ads.',
-          'twitter:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-        });
+        // MetaTagsService.setDefaultTags({
+        //   // OpenGraph
+        //   'og:type': 'article',
+        //   'og:title': 'HealthyFling',
+        //   'og:description': 'Your new favorite personals site to create, search and reply to personal ads.',
+        //   'og:image': 'https://www.healthyfling.com/app-content/images/logo.png',
+        //   'og:image:width': '680',
+        //   'og:image:height': '340',
+        //   // Twitter
+        //   'twitter:card': 'summary_large_image',
+        //   'twitter:site': '@healthyfling',
+        //   // 'twitter:creator': '@healthyfling',
+        //   'twitter:title': 'HealthyFling Post',
+        //   'twitter:description': 'Your new favorite personals site to create, search and reply to personal ads.',
+        //   'twitter:image': 'https://www.healthyfling.com/app-content/images/logo.png',
+        // });
 
         $rootScope.visitedSearchPage = false;
 
@@ -202,6 +202,8 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.comment = {};
 
         $rootScope.pageTitle = "Healthy Fling";
+
+        $rootScope.shareTitle = "Healthy Fling";
 
         $http.get("/data.json")
         .success(function (data) {
