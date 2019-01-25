@@ -384,8 +384,35 @@ exports.verifypost = function(req, res) {
 exports.renderpost = function(req, res) {
   var ua = req.headers['user-agent'];
   if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)/gi.test(ua)) { 
+  // if (true) {   
     console.log(ua,' is a bot'); 
-    res.send('<meta property="og:type" content="article"><meta property="og:title" content="Healthy Fling"><meta property="og:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta property="og:image" content="https://www.healthyfling.com/app-content/images/logo_meta.png"><meta property="og:image:width" content="680"><meta property="og:image:height" content="340"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@healthyfling"><meta name="twitter:title" content="Healthy Fling"><meta name="twitter:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta name="twitter:image" content="https://www.healthyfling.com/app-content/images/logo_meta.png">');
+
+    var date = new Date();
+    var daysToDeletion = POSTS_TIMEOUT;
+    var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+    var query_params = {};
+    query_params.created = {$gt : deletionDate};
+    query_params.status = "active";
+    query_params["_id"] = req.params.postId;
+    var query = {
+      state : 'STATE1'
+    };  
+
+    console.log(query_params);
+    Post.find(query_params, function (err, posts) {
+      if (err) {
+          console.log(err);
+          res.redirect("/#/expired");
+      }
+      var post = posts[0];
+      console.log(posts);
+      var metaUrl = "https://www.healthyfling.com/app-content/images/logo_meta.png";
+      if(post && post.files && post.files.length >0){
+        metaUrl = post.files[0];
+      }
+      res.send('<meta property="og:type" content="article"><meta property="og:title" content="'+post.title+'"><meta property="og:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta property="og:image" content="'+metaUrl+'"><meta property="og:image:width" content="680"><meta property="og:image:height" content="340"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@healthyfling"><meta name="twitter:title" content="'+post.title+'"><meta name="twitter:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta name="twitter:image" content="'+metaUrl+'">');  
+    });
   }else{
     console.log(ua); 
     res.redirect("/#/");
