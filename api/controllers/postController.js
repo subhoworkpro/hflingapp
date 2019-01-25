@@ -415,7 +415,7 @@ exports.renderpost = function(req, res) {
     });
   }else{
     console.log(ua); 
-    res.redirect("/#/");
+    res.redirect("/#/detail/"+req.params.postId);
   }
 };
 
