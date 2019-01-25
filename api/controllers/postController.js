@@ -383,9 +383,9 @@ exports.verifypost = function(req, res) {
 
 exports.renderpost = function(req, res) {
   var ua = req.headers['user-agent'];
-  if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)(googlebot)|(bingbot)|(linkedinbot)/gi.test(ua)) { 
-    
-  // if (true) {   
+  // if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)(googlebot)|(bingbot)|(linkedinbot)/gi.test(ua)) { 
+
+  if (true) {   
     console.log(ua,' is a bot'); 
 
     var date = new Date();
@@ -410,7 +410,7 @@ exports.renderpost = function(req, res) {
       console.log(posts);
       var metaUrl = "https://www.healthyfling.com/app-content/images/logo_meta.png";
       if(post && post.files && post.files.length >0){
-        metaUrl = post.files[0];
+        metaUrl = post.files[0].secure_url;
       }
       res.send('<meta property="og:type" content="article"><meta property="og:title" content="'+post.title+'"><meta property="og:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta property="og:image" content="'+metaUrl+'"><meta property="og:image:width" content="680"><meta property="og:image:height" content="340"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@healthyfling"><meta name="twitter:title" content="'+post.title+'"><meta name="twitter:description" content="Your new favorite personals site to create, search and reply to personal ads."><meta name="twitter:image" content="'+metaUrl+'">');  
     });
