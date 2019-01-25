@@ -382,8 +382,14 @@ exports.verifypost = function(req, res) {
 };
 
 exports.renderpost = function(req, res) {
-  console.log(req.headers);
-  res.redirect("/#/");
+  var ua = req.headers['user-agent'];
+  if (/^(facebookexternalhit)|(Twitterbot)|(Pinterest)/gi.test(ua)) { 
+    console.log(ua,' is a bot'); 
+    res.redirect("/#/");
+  }else{
+    console.log(ua); 
+    res.redirect("/#/");
+  }
 };
 
 exports.flagpost = function(req, res) {
