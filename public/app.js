@@ -203,7 +203,9 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
 
         $rootScope.pageTitle = "Healthy Fling";
 
-        $rootScope.shareTitle = "Healthy Fling";
+        $rootScope.metaTitle = "Healthy Fling";
+        $rootScope.metaDescription = "Your new favorite personals site to create, search and reply to personal ads.";
+        $rootScope.metaUrl = "https://www.healthyfling.com/app-content/images/logo.png";
 
         $http.get("/data.json")
         .success(function (data) {
