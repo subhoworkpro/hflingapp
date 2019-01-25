@@ -133,7 +133,7 @@ app.config(function($sceDelegateProvider) {
 });
 
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache','MetaTagsService', function($rootScope, $location, $cookieStore, $http,$route,$templateCache,MetaTagsService ){
+app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache', function($rootScope, $location, $cookieStore, $http,$route,$templateCache ){
 
        // keep user logged in after page refresh
         // $rootScope.globals = $cookieStore.get('globals') || {};
@@ -169,22 +169,6 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
             }
         });
 
-        // MetaTagsService.setDefaultTags({
-        //   // OpenGraph
-        //   'og:type': 'article',
-        //   'og:title': 'HealthyFling',
-        //   'og:description': 'Your new favorite personals site to create, search and reply to personal ads.',
-        //   'og:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-        //   'og:image:width': '680',
-        //   'og:image:height': '340',
-        //   // Twitter
-        //   'twitter:card': 'summary_large_image',
-        //   'twitter:site': '@healthyfling',
-        //   // 'twitter:creator': '@healthyfling',
-        //   'twitter:title': 'HealthyFling Post',
-        //   'twitter:description': 'Your new favorite personals site to create, search and reply to personal ads.',
-        //   'twitter:image': 'https://www.healthyfling.com/app-content/images/logo.png',
-        // });
 
         $rootScope.visitedSearchPage = false;
 
@@ -202,10 +186,6 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.comment = {};
 
         $rootScope.pageTitle = "Healthy Fling";
-
-        $rootScope.metaTitle = "Healthy Fling";
-        $rootScope.metaDescription = "Your new favorite personals site to create, search and reply to personal ads.";
-        $rootScope.metaUrl = "https://www.healthyfling.com/app-content/images/logo.png";
 
         $http.get("/data.json")
         .success(function (data) {
