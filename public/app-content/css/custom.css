@@ -605,7 +605,7 @@ select {
 
 .galery_full{
     float: left;
-    max-width: 400px;
+    max-width: 550px;
 }
 
 .galery_full img{
@@ -613,7 +613,7 @@ select {
 }
 
 .galery_full iframe{
-    width: 100%;
+    /*width: 100%;*/
 }
 
 iframe {
