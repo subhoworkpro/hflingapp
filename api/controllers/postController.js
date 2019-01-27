@@ -625,6 +625,8 @@ exports.edit_a_post= function(req, res) {
         var comment = new Comment({
           body: req.body.commentmessage,
           email: req.body.email || "",
+          embed : req.body.commentembed,
+          files: req.body.commentfiles,
           status: "active",
           post: post._id    // assign the _id from the post
         });

@@ -25,6 +25,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.regions.unshift("Region");
    };
 
+   $rootScope.imageList = [];
+
 
    $scope.addComment = function(id){
         console.log("AddComment clicked");
@@ -46,7 +48,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             // console.log(vm.data.files);
             var postData = {
                 "commentmessage": $scope.commentmessage, 
-                "email": $scope.replyNotifiedEmail
+                "email": $scope.replyNotifiedEmail,
+                "commentfiles": $rootScope.imageList,
+                "commentembed": $scope.commentembed.replace("src=", "xxx=")
             };
 
             console.log(postData);
@@ -440,6 +444,14 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.$on("reloadComments",function () {
         $scope.loadComments($scope.id);
     });
+
+    $scope.deleteImage = function(index){
+        console.log("Deleted");
+        $rootScope.imageList.splice(index, 1);
+        $scope.files = $rootScope.imageList;
+        console.log($rootScope.imageList);
+        console.log($scope.files);
+   };
 
     // if ($rootScope.currentPost.data) {
     //  console.log($rootScope.currentPost);
