@@ -7,9 +7,11 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     $scope.replyNotified = false;
     $scope.showShareButtons = false;
+    $scope.showEmbedButtons = false;
     $scope.replyNotifiedEmail = "";
     $scope.currentPath = $location.absUrl().replace("#/detail","api/render");
     $scope.embed = "";
+    $scope.commentembed = "";
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
@@ -68,6 +70,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                         $window.scrollTo(0, 0);
                     }
                     $rootScope.loading = false;
+                    $rootScope.imageList = [];
                 }else{
                     $rootScope.loading = false;
                     // FlashService.Error(response.data.resultDescription);
@@ -414,6 +417,14 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         }
     }
 
+    $scope.toggleEmbedButton = function(){
+        if($scope.showEmbedButtons && $scope.showEmbedButtons == true){
+            $scope.showEmbedButtons = false;
+        }else{
+            $scope.showEmbedButtons = true;
+        }
+    }
+
     $scope.toggleShareButton = function(){
         if($scope.showShareButtons && $scope.showShareButtons == true){
             $scope.showShareButtons = false;
@@ -451,6 +462,10 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.files = $rootScope.imageList;
         console.log($rootScope.imageList);
         console.log($scope.files);
+   };
+
+   $scope.stopLoader = function(){
+        $rootScope.loadingImage = false;
    };
 
     // if ($rootScope.currentPost.data) {

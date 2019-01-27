@@ -309,12 +309,14 @@
                     </a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">
+                    <a href="" ng-click="toggleEmbedButton();">
                       <i class="fa fa-file-video-o"></i>
                     </a>
                   </li>
                 </ul>
-
+                <div class="emmbed_video" style="background: #cdcbf5;clear: both;margin:0px;" ng-show = "showEmbedButtons == true">
+                  <input type="text" placeholder='<iframe src="embed_url"></iframe>' class="embeded_area" ng-model="commentembed">
+                </div>
                 <div class="file_results">
                 <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
                 <div class="upload_item" ng-repeat="file in imageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
@@ -347,27 +349,27 @@
                   <h5 ng-show = "item.status == 'flagged'" style="color: #8dc63f;"> The comment has been flagged</h5>
                   <p>Posted: <em><time am-time-ago="item.created"></time></em></p>
                 </div> 
-                <div class="upload_result clearfix" ng-if = "files.length > 0 || embed != ''">
-              <div class="galery_full">
-                  <img ng-if = "mainImage.indexOf('iframe') == -1" src="{{mainImage}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
-                  <div ng-if ="embed != '' && mainImage.indexOf('iframe') > -1" ng-bind-html="embed | unsafe"></div>
-              </div>
-              <div class="gallery_thumb">
-                <ul>
-                    <li ng-repeat="item in files">
-                      <a href="" ng-click = "changeMainImage(item,false);" >
-                          <img src="{{ item.secure_url}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
-                      </a>
-                    </li>
-                    <li ng-if = "embed != ''">
-                      <a href="" ng-click = "changeMainImage(embed,true);" >
-                          <img src="app-content/images/video-placeholder.png" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
-                      </a>
-                    </li>
-                </ul>
-              </div>
-          </div>               
-                <!-- <div class="upload_result">
+                <div class="upload_result clearfix" ng-if = "item.files.length > 0 || item.embed != ''">
+                  <div class="galery_full">
+                      <!-- <img src="{{mainImage}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/> -->
+                      <div ng-if ="item.embed != ''" ng-bind-html="item.embed.replace('xxx=', 'src=') | unsafe"></div>
+                  </div>
+                  <div class="gallery_thumb">
+                    <ul>
+                        <li ng-repeat="file in item.files">
+                          <a href="{{ file.secure_url}}" target="_blank">
+                              <img src="{{ file.secure_url}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                          </a>
+                        </li>
+                        <!-- <li ng-if = "item.embed != ''">
+                          <a href="" ng-click = "changeMainImage(item.embed,true);" >
+                              <img src="app-content/images/video-placeholder.png" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                          </a>
+                        </li> -->
+                    </ul>
+                  </div>
+                </div>               
+                    <!-- <div class="upload_result">
                   <div class="upload_block" ng-repeat="item in files">
                     <a href="{{ item.secure_url}}" target="blank">
                       <img src="{{ item.secure_url}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
