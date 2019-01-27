@@ -251,6 +251,14 @@
      }
 
      /**** 11-01-18 ****/
+
+     /*** 27-01-19 ***/
+
+    .upload_block{
+        width: 33.33%;
+    }
+
+     /*** 27-01-19 ***/
 }
 /******/
  @media(max-width: 568px) {
@@ -412,6 +420,19 @@
     }
 
     /**** 11-01-18 ****/
+
+    /*** 27-01-19 ***/
+
+    .upload_item{
+        padding: 10px 8px;
+        width: 33.33%;
+    }
+
+    .file_results {
+        margin: 0 -8px 10px;
+    }
+
+    /*** 27-01-19 ***/
 }
 
  @media(max-width: 480px) {
@@ -467,6 +488,13 @@
     }
 
     /*** 14-12-18 ***/
+    /*** 27-01-19 ***/
+
+    .upload_item, .upload_block{
+        width: 50%;
+    }
+
+    /*** 27-01-19 ***/
  }
 
  @media(max-width: 420px) {
@@ -608,6 +636,13 @@
     }
 
     /**** 11-01-18 ****/
+    /*** 27-01-19 ***/
+
+    .upload_item, .upload_block{
+        width: 100%;
+    }
+
+    /*** 27-01-19 ***/
 }
  @media(max-width: 360px) {
      .select_area {
