@@ -1720,7 +1720,8 @@ input[type=file].wd_97{
 
 .upload_result .galery_full{
     float: none;
-    max-width: 100%;
+    /*max-width: 100%;*/
+    max-width: 450px;
 }
 
 .upload_result .gallery_thumb{
