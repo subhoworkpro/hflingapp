@@ -342,7 +342,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.weight = $rootScope.currentPost.data.weight;
                 $scope.mage = $rootScope.currentPost.data.mage;
                 $scope.anonymouscomment = $rootScope.currentPost.data.anonymouscomment || 'disabled';
-                $scope.embed = $rootScope.currentPost.data.embed.replace("xxx=", "src=") || '';
+                $scope.embed = $rootScope.currentPost.data.embed.replace("xxx=", "src=").replace("yyyy=", "href=") || '';
                 $scope.share = $rootScope.currentPost.data.share || 'disabled';
 
                 $rootScope.loading = false;

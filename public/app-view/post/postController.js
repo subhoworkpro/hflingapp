@@ -303,7 +303,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "anonymouscomment": this.data.anonymouscomment,
 			    "notified" : this.data.notified,
 			    "share": this.data.share,
-			    "embed": this.data.embed.replace("src=", "xxx="),
+			    "embed": this.data.embed.replace("src=", "xxx=").replace("href=", "yyyy="),
 			    "weight" : this.data.weight,
 			    "mage" : this.data.mage,
 			    "files": $rootScope.imageList
