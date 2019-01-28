@@ -74,6 +74,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                     }
                     $rootScope.loading = false;
                     $rootScope.imageList = [];
+                    $scope.commentsMainImage = [];
+                    $scope.comments = [];
                 }else{
                     $rootScope.loading = false;
                     // FlashService.Error(response.data.resultDescription);
@@ -157,6 +159,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.id = id;
 
     $scope.loadComments = function(id){
+        $scope.commentsMainImage = [];
+        $scope.comments = [];
         HttpService.GetComments(id)
         .then(function(response){
             console.log(response);
