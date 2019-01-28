@@ -12,6 +12,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.currentPath = $location.absUrl().replace("#/detail","api/render");
     $scope.embed = "";
     $scope.commentembed = "";
+    $scope.comments = [];
+    $scope.commentsMainImage = [];
 
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
@@ -67,6 +69,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                         FlashService.Success("Your comment has been successfully added.");
                         $scope.loadComments($scope.id);
                         $scope.commentmessage = "";
+                        $scope.commentembed = "";
                         $window.scrollTo(0, 0);
                     }
                     $rootScope.loading = false;
@@ -138,6 +141,10 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         }
    }
 
+   $scope.changeCommentsMainImage = function(url,index){
+        $scope.commentsMainImage[index] = url;
+   }
+
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
@@ -154,7 +161,21 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         .then(function(response){
             console.log(response);
             if (response.status == '200') {
-                $scope.comments = response.data;
+                for (var i = 0; i < response.data.length; i++) {
+                    var obj = response.data[i];
+                    if(obj.embed){
+                        obj.embed = obj.embed.replace('xxx=', 'src=');
+                    }
+                    if(obj != undefined && obj.files.length > 0){
+                        obj['mainImage'] = obj.files[0].secure_url;
+                    }else if(obj != undefined && obj.embed != "" && obj.files.length == 0){
+                        obj['mainImage'] = obj.embed;
+                    }
+                    console.log(obj);
+
+                    $scope.commentsMainImage.push(obj['mainImage']);
+                    $scope.comments.push(obj);
+                }
             }else{
                 console.log("something went wrong");
                 // $rootScope.loading = false;
