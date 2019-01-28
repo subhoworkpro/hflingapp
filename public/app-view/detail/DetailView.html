@@ -292,34 +292,36 @@
             <div class="anonnymous_typos">
               <div class="comment_block">
                 <h4>Post an public comment for this post!</h4>
-                <div class="comment_field">
-                  <textarea class="cust_textarea" ng-model="commentmessage"></textarea>
+                <div style="border: 2px solid #7e7e7e;">
+                  <div class="comment_field">
+                    <textarea style = "border: none;" class="cust_textarea" ng-model="commentmessage"></textarea>
+                  </div>
+                  <div class="file_upload" style="margin-left: 10px;margin-right: 10px;">
+                    <ul>
+                      <li>
+                        <a href="javascript:void(0)">
+                          <input type="file" class="cust_file wd_97" ng-file-model="vm.data.files" multiple style="color: transparent;" />
+                          <i class="fa fa-picture-o"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="" ng-click="toggleEmbedButton();">
+                          <i class="fa fa-file-video-o"></i>
+                        </a>
+                      </li>
+                    </ul>
+                    <div class="emmbed_video" style="background: #cdcbf5;clear: both;margin:0px;" ng-show = "showEmbedButtons == true">
+                      <input type="text" placeholder='<iframe src="embed_url"></iframe>' class="embeded_area" ng-model="commentembed">
+                    </div>
+                    <div class="file_results">
+                    <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
+                    <div class="upload_item" ng-repeat="file in imageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
+                  </div>
                 </div>
               </div>
               <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-              <div class="file_upload">
-                <ul>
-                  <li>
-                    <a href="javascript:void(0)">
-                      <input type="file" class="cust_file wd_97" ng-file-model="vm.data.files" multiple style="color: transparent;" />
-                      <i class="fa fa-picture-o"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" ng-click="toggleEmbedButton();">
-                      <i class="fa fa-file-video-o"></i>
-                    </a>
-                  </li>
-                </ul>
-                <div class="emmbed_video" style="background: #cdcbf5;clear: both;margin:0px;" ng-show = "showEmbedButtons == true">
-                  <input type="text" placeholder='<iframe src="embed_url"></iframe>' class="embeded_area" ng-model="commentembed">
-                </div>
-                <div class="file_results">
-                <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
-                <div class="upload_item" ng-repeat="file in imageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
               </div>
-              </div>
-              <div class="comments_counter">
+              <div class="comments_counter" style="margin-top: 10px;">
                 <p><span>{{comments.length}}</span>comments</p>
               </div>
               <div class="notified_area">
