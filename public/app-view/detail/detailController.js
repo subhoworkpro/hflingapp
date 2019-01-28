@@ -54,7 +54,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 "commentmessage": $scope.commentmessage, 
                 "email": $scope.replyNotifiedEmail,
                 "commentfiles": $rootScope.imageList,
-                "commentembed": $scope.commentembed.replace("src=", "xxx=")
+                "commentembed": $scope.commentembed.replace("src=", "xxx=").replace("href=", "yyyy=")
             };
 
             console.log(postData);
@@ -164,7 +164,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 for (var i = 0; i < response.data.length; i++) {
                     var obj = response.data[i];
                     if(obj.embed){
-                        obj.embed = obj.embed.replace('xxx=', 'src=');
+                        obj.embed = obj.embed.replace('xxx=', 'src=').replace('yyyy=', 'href=');
                     }
                     if(obj != undefined && obj.files.length > 0){
                         obj['mainImage'] = obj.files[0].secure_url;
