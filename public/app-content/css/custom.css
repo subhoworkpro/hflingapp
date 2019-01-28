@@ -1701,7 +1701,7 @@ input[type=file].wd_97{
 }
 
 .upload_result{
-    padding: 15px 15px 0;
+    /*padding: 15px 15px;*/
     font-size: 0;
 }
 
@@ -1727,6 +1727,7 @@ input[type=file].wd_97{
     overflow: visible;
     padding-left: 0;
     padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .upload_result .gallery_thumb li{
