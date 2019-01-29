@@ -621,7 +621,7 @@ exports.edit_a_post= function(req, res) {
     post.save(function(err, post) {
       if (err)
         res.send(err);
-      if(req.body.commentmessage){
+      if(req.body.commentmessage || req.body.commentfiles || req.body.commentembed){
         var comment = new Comment({
           body: req.body.commentmessage,
           email: req.body.email || "",
