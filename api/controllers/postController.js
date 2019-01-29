@@ -631,7 +631,9 @@ exports.edit_a_post= function(req, res) {
           post: post._id    // assign the _id from the post
         });
         comment.save(function (err) {
+          console.log("Saving comment...");
           if (err) {
+            console.log(err);
             return handleError(err);
           }else{
             if(post.notified == 'yes'){
@@ -651,6 +653,7 @@ exports.edit_a_post= function(req, res) {
                   };
               });
             }
+            console.log("Comment saved successfully...");
           }
         });
       }
