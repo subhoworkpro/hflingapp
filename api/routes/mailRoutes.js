@@ -13,7 +13,7 @@ module.exports = function(apiRoutes) {
         port: 25,
         auth: {
             user: 'info@healthyfling.com',
-            pass: 'photography99'
+            pass: 'Photography88'
         }
     });
 

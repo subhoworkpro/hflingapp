@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
             user: 'info@healthyfling.com',
-            pass: 'photography99'
+            pass: 'Photography88'
     }
 });
 
