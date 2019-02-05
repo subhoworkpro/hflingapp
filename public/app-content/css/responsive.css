@@ -53,7 +53,12 @@
      .bio_area .ui-selectmenu-button.ui-button{
          width: 100%;
     }
-     .bio_full{
+
+    .bio_area .ui-selectmenu-button.ui_textarea{
+        width: 100%;
+    }
+
+    .bio_full{
          width: 91%;
     }
 
@@ -193,6 +198,14 @@
          border: 1px solid #7e7e7e;
          margin-bottom: 15px;
     }
+
+    .bio_area .ui-selectmenu-button.ui_textarea{
+        font-size: 13px;
+         width: 100%;
+         border: 1px solid #7e7e7e;
+         margin-bottom: 15px;
+    }
+    
      .gallery_slider {
          padding-bottom: 20px;
     }
