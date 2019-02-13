@@ -53,12 +53,7 @@
      .bio_area .ui-selectmenu-button.ui-button{
          width: 100%;
     }
-
-    .bio_area .ui-selectmenu-button.ui_textarea{
-        width: 100%;
-    }
-
-    .bio_full{
+     .bio_full{
          width: 91%;
     }
 
@@ -198,14 +193,6 @@
          border: 1px solid #7e7e7e;
          margin-bottom: 15px;
     }
-
-    .bio_area .ui-selectmenu-button.ui_textarea{
-        font-size: 13px;
-         width: 100%;
-         border: 1px solid #7e7e7e;
-         margin-bottom: 15px;
-    }
-    
      .gallery_slider {
          padding-bottom: 20px;
     }
@@ -272,6 +259,19 @@
     }
 
      /*** 27-01-19 ***/
+
+    /*** added on 12-02-19 ***/
+
+    .banner_section figure{
+        height: 300px;
+    }
+
+    .banner_section figure img{
+        height: 100%;
+    }
+
+
+    /*** added on 12-02-19 ***/
 }
 /******/
  @media(max-width: 568px) {
@@ -446,6 +446,14 @@
     }
 
     /*** 27-01-19 ***/
+
+    /*** added on 12-02-19 ***/
+
+    .banner_section figure{
+        height: 240px;
+    }
+
+    /*** added on 12-02-19 ***/
 }
 
  @media(max-width: 480px) {
@@ -656,6 +664,14 @@
     }
 
     /*** 27-01-19 ***/
+
+    /*** added on 12-02-19 ***/
+
+    .banner_section figure{
+        height: 220px;
+    }
+
+    /*** added on 12-02-19 ***/
 }
  @media(max-width: 360px) {
      .select_area {
