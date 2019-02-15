@@ -167,6 +167,18 @@
 
      /**** 11-01-18 ****/
 
+     /**** 14-02-19 ****/
+
+     .desk_view{
+        display: none;
+     }
+
+     .tab_view{
+        display: block;
+     }
+
+     /**** 14-02-19 ****/
+
 }
 /******/
  @media(max-width: 767px) {
@@ -260,18 +272,7 @@
 
      /*** 27-01-19 ***/
 
-    /*** added on 12-02-19 ***/
 
-    .banner_section figure{
-        height: 300px;
-    }
-
-    .banner_section figure img{
-        height: 100%;
-    }
-
-
-    /*** added on 12-02-19 ***/
 }
 /******/
  @media(max-width: 568px) {
@@ -447,13 +448,19 @@
 
     /*** 27-01-19 ***/
 
-    /*** added on 12-02-19 ***/
+    /**** 14-02-19 ****/
 
-    .banner_section figure{
-        height: 240px;
-    }
+    .tab_view{
+        display: none;
+     }
 
-    /*** added on 12-02-19 ***/
+    .mobile_view{
+        display: block;
+     }
+
+    /**** 14-02-19 ****/
+
+
 }
 
  @media(max-width: 480px) {
@@ -665,13 +672,7 @@
 
     /*** 27-01-19 ***/
 
-    /*** added on 12-02-19 ***/
 
-    .banner_section figure{
-        height: 220px;
-    }
-
-    /*** added on 12-02-19 ***/
 }
  @media(max-width: 360px) {
      .select_area {
