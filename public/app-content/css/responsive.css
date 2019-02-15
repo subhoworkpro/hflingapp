@@ -29,7 +29,7 @@
      .select_sbt {
          top: 16px;
     }
-     .bio_area {
+    .bio_area {
          width: 45%;
          display: inline-block;
     }
@@ -103,7 +103,7 @@
     }
 
     .bio_mid{
-        margin: 0 -20px 0 10px;
+        margin: 0 -32px 0 10px;
     }
 
     .bio_mid_item .bio_area{
@@ -162,7 +162,7 @@
      }
 
      .image_upload_area{
-        width: 96%;
+        width: 98%;
      }
 
      .emmbed_video{
@@ -180,6 +180,26 @@
      .tab_view{
         display: block;
      }
+
+     .bio_half.mand{
+        display: block;
+        width: 100%;
+     }
+
+     .bio_right{
+        font-size: 0;
+     }
+
+     .bio_right .bio_area, .bio_mid_item .wd_20{
+        width: 50%;
+        vertical-align: top;
+     }
+
+     .bio_area .bio_block{
+        height: 35px;
+     }
+
+
 
      /**** 14-02-19 ****/
 
@@ -270,10 +290,10 @@
     }
     /**** 11-01-18 ****/
 
-     .image_upload_area{
+/*     .image_upload_area{
         width: 95%;
      }
-
+*/
      /**** 11-01-18 ****/
 
      /*** 27-01-19 ***/
@@ -431,19 +451,19 @@
     }
     /**** 11-01-18 ****/
 
-    .anonnymous_area_outer{
+    /*.anonnymous_area_outer{
         margin-right: 5px;
-    }
+    }*/
 
     .image_upload_area{
         width: 96%;
         padding-right: 10px;
     }
 
-    .emmbed_video {
+  /*  .emmbed_video {
         margin: 15px;
         padding: 15px 12px;
-    }
+    }*/
 
     /**** 11-01-18 ****/
 
@@ -469,6 +489,10 @@
     .mobile_view{
         display: block;
      }
+
+     .image_upload_area {
+       width: 97.2%;
+    }
 
     /**** 14-02-19 ****/
 
