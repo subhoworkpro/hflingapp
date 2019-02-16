@@ -199,7 +199,10 @@
         height: 35px;
      }
 
-
+    .email_field {
+        display: block;
+        width: 300px;
+    }
 
      /**** 14-02-19 ****/
 
@@ -492,6 +495,10 @@
 
      .image_upload_area {
        width: 97.2%;
+    }
+
+    .email_field {
+        width: 100%;
     }
 
     /**** 14-02-19 ****/
