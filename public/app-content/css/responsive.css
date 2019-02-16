@@ -200,7 +200,16 @@
         width: 300px;
     }
 
-     /**** 14-02-19 ****/
+    /**** 14-02-19 ****/
+    
+    /*** 17-02-19 ***/     
+
+    .confirm_edit{
+        width: 100%;
+        display: block;
+    }
+
+    /*** 17-02-19 ***/
 
 }
 /******/
@@ -499,6 +508,15 @@
 
     /**** 14-02-19 ****/
 
+    /*** 17-02-19 ***/     
+
+    .confirm_edit{
+        width: 100%;
+        display: block;
+    }
+
+    /*** 17-02-19 ***/
+
 
 }
 
@@ -710,6 +728,23 @@
     }
 
     /*** 27-01-19 ***/
+
+    /*** 17-02-19 ***/
+
+    .recaptcha_blk{
+        padding-left: 0;
+    }
+
+    .confirm_edit .post_bk{
+        margin-right: 10px;
+    }
+
+    .confirm_edit .post_bk input[type="submit"]{
+        width: 110px;
+        font-size: 18px;
+    }
+
+    /*** 17-02-19 ***/
 
 
 }
