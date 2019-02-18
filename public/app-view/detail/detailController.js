@@ -135,7 +135,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     }
 
 
-   $scope.changeMainImage = function(file,embed=false){
+   $scope.changeMainImage = function(file,embed){
         if(embed == false){
             $scope.mainImage = file.secure_url;
         }else{
