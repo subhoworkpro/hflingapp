@@ -1,5 +1,7 @@
 'use strict';
 
+const sharp = require('sharp');
+const fs = require('fs');
 
 var cloudinary = require('cloudinary');
 var tempcloudinary = require('cloudinary');
@@ -82,7 +84,18 @@ exports.upload_images_to_local = function(req, res) {
          }
          console.log("SUBHA TESTING");
          console.log('https://www.healthyfling.com/files/' + local_file_path);
-         res.json({"secure_url": 'https://www.healthyfling.com/files/' + local_file_path});
+
+         sharp('./public/files/'+local_file_path).resize({ width: 500 }).toFile('./public/processed/'+local_file_path)
+	    .then(function(newFileInfo) {
+	        console.log("Success");
+	        // res.json({"secure_url": 'http://localhost:8000/processed/' + local_file_path});
+	        res.json({"secure_url": 'https://www.healthyfling.com/processed/' + local_file_path});
+	    })
+	    .catch(function(err) {
+	        console.log("Error occured");
+	        return res.end("Something went wrong!");
+	    });
+
      });
 };
 
