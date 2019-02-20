@@ -340,7 +340,7 @@
             </div>
             <div class="reply_anonnymous">
               <div class="reply_item_anony" ng-repeat="item in comments">
-                <span>Reply {{$index+1}}</span>
+                <span>Comment {{$index+1}}</span>
                 <a ng-if ="is_edit" href="" ng-click="deleteComment(item._id)">Delete</a>
                 <a ng-if = "item.status == 'active'" href="" ng-click="flagComment(item._id)">Flag</a>
                 <a ng-if ="is_edit" href="" ng-click="unflagComment(item._id)">Unflag</a>
