@@ -637,7 +637,7 @@ exports.edit_a_post= function(req, res) {
             return handleError(err);
           }else{
             if(post.notified == 'yes'){
-              var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"?edit=true'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
+              var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view this post and reply to this comment <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"?edit=true'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
               var mailOptions = {
                   from: 'Healthy Fling <info@healthyfling.com>', // sender address
                   to: post.email,
