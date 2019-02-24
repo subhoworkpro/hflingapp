@@ -3,6 +3,7 @@ app.controller('ErrorController', ['$rootScope','$scope', '$location', 'HttpServ
 
     $rootScope.pageTitle = "Healthy Fling";
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -33,6 +34,7 @@ app.controller('ErrorController', ['$rootScope','$scope', '$location', 'HttpServ
     };
 
     vm.search = function () {
+        $rootScope.search.country = "United States";
         $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;

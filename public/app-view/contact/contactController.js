@@ -3,6 +3,7 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
 
     $rootScope.pageTitle = "Contact us";
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -33,6 +34,7 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
     };
 
     vm.search = function () {
+        $rootScope.search.country = "United States";
     	$rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;

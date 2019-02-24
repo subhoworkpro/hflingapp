@@ -15,6 +15,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.comments = [];
     $scope.commentsMainImage = [];
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -147,6 +148,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.commentsMainImage[index] = url;
    }
 
+    vm.country = $rootScope.search.country;
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
@@ -285,6 +287,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
         $rootScope.is_flagged = false;
 
+        vm.country = $rootScope.search.country;
         vm.state = $rootScope.search.state;
         vm.region = $rootScope.search.region;
         vm.category = $rootScope.search.category;
@@ -314,6 +317,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;
                 console.log("success");
+                vm.country = "United States";
                 vm.state = response.data.state;
                 vm.region = response.data.region;
                 vm.category = response.data.category;
@@ -326,6 +330,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.sender1 = $rootScope.currentPost.data.email;
+                $scope.country = "United States";
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
@@ -380,6 +385,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     vm.search = function () {
         $rootScope.loading = true;
+        $rootScope.search.country = "United States";
         $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
@@ -392,6 +398,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             console.log("Do nothing");
         }else{
             $rootScope.loading = true;
+            $rootScope.search.country = "United States";
             $rootScope.search.state = state;
             $rootScope.search.region = region;
             $rootScope.search.category = category;

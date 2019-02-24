@@ -3,6 +3,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $rootScope.pageTitle = "Post an ad";
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
 
@@ -39,6 +40,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	}
     $scope.categories = $rootScope.categoryList;
 
+    vm.country = $rootScope.search.country;
     vm.state = $rootScope.search.state;
     vm.region = $rootScope.search.region;
     vm.category = $rootScope.search.category;
@@ -85,6 +87,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	};
 
     vm.search = function () {
+    	$rootScope.search.country = this.country;
     	$rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;

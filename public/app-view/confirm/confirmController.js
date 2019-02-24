@@ -3,6 +3,7 @@ app.controller('ConfirmController', ['$rootScope','$scope', '$location', 'HttpSe
 
     $rootScope.pageTitle = "Healthy Fling";
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -33,6 +34,7 @@ app.controller('ConfirmController', ['$rootScope','$scope', '$location', 'HttpSe
     };
 
     vm.search = function () {
+        $rootScope.search.country = "United States";
         $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
@@ -79,6 +81,7 @@ app.controller('ConfirmController', ['$rootScope','$scope', '$location', 'HttpSe
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;
                 console.log("success");
+                vm.country = "United States";
                 vm.state = response.data.state;
                 vm.region = response.data.region;
                 vm.category = response.data.category;
@@ -90,6 +93,7 @@ app.controller('ConfirmController', ['$rootScope','$scope', '$location', 'HttpSe
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
+                $scope.country = "United States";
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;

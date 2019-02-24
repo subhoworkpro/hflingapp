@@ -3,6 +3,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
 
     $rootScope.pageTitle = "Healthy Fling";
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -28,6 +29,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     vm.currentPage = path.page || 0;
     vm.pageSize = 100;
 
+    vm.country = $rootScope.search.country || "Country";
     vm.state = $rootScope.search.state || "State";
     vm.region = $rootScope.search.region || "Region";
     vm.category = $rootScope.search.category || "Category";
@@ -37,6 +39,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     };
 
     vm.search = function () {
+        $rootScope.search.country = vm.country;
         $rootScope.search.state = vm.state;
         $rootScope.search.region = vm.region;
         $rootScope.search.category = vm.category;
@@ -45,10 +48,12 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     };
 
     vm.searchAll = function(){
+        vm.country = "Country";
         vm.state = "State";
         vm.region = "Region";
         vm.category = "Category";
 
+        $rootScope.search.country = vm.country;
         $rootScope.search.state = vm.state;
         $rootScope.search.region = vm.region;
         $rootScope.search.category = vm.category;
@@ -61,6 +66,8 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
             console.log("Do nothing");
         }else{
             // $rootScope.loading = true;
+            $rootScope.search.country = "United States";
+            vm.country = "United States";
             $rootScope.search.state = state;
             vm.state = state;
             $rootScope.search.region = region;
@@ -167,6 +174,7 @@ app.filter('roundup', function() {
 app.controller("AdsController",['$scope','$rootScope','$location','HttpService', function ($scope,$rootScope,$location,HttpService) {
   console.log("Inside AdsController ");
   var vm = {};
+  vm.country = $rootScope.search.country;
   vm.state = $rootScope.search.state;
   vm.region = $rootScope.search.region;
   vm.category = $rootScope.search.category;

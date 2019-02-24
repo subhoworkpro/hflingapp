@@ -2,7 +2,12 @@
     <div class="select_sec" ng-controller = "SearchController" >
       <div class="container">
           <div class="select_inr">
-            <div class="select_item clearfix"> 
+            <div class="select_item"> 
+              <div class="select_area">
+                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries">
+                  </select>
+                  </select>
+                </div>
               <div class="select_area">
                   <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);">
                   </select>
@@ -51,6 +56,12 @@
                 <div class="select_sbt">
                    <input type="submit" placeholder="Submit" ng-click ="vm.search()">
                 </div>
+                <div class="loc_block">
+                  <a href="javascript:void(0)"><i class="fa fa-lock"></i></a>
+                </div>
+                <div class="unloc_block" style="display: none;">
+                  <a href="javascript:void(0)"><i class="fa fa-unlock"></i></a>
+                </div>
             </div>
             <div class="add_post post_bk">
               <input type="submit" value="Post an AD" ng-click="vm.post()">
@@ -64,6 +75,7 @@
   <div class="container" ng-controller="AdsController">
       <div class="bread_cnt">
           <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,'Region','Category')">{{vm.country}}</a></li>
             <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,'Region','Category')">{{vm.state}}</a></li>
             <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,vm.region,'Category')">{{vm.region}}</a></li>
              <li class="breadcrumb-item"><a href="" ng-click="vm.searchFilter(vm.state,vm.region,vm.category)">{{vm.category}}</a></li>

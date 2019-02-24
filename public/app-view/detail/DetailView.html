@@ -2,7 +2,11 @@
     <div class="select_sec" ng-controller = "DetailController" >
       <div class="container">
           <div class="select_inr">
-            <div class="select_item clearfix"> 
+            <div class="select_item"> 
+                <div class="select_area">
+                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries"  ng-init="vm.country = vm.country || 'Country'">
+                  </select>
+                </div>
                 <div class="select_area">
                   <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" ng-init="vm.state = vm.state || 'State'">
                   </select>
@@ -51,6 +55,12 @@
                 <div class="select_sbt">
                    <input type="submit" placeholder="Submit" ng-click ="vm.search()">
                 </div>
+                <div class="loc_block">
+                  <a href="javascript:void(0)"><i class="fa fa-lock"></i></a>
+                </div>
+                <div class="unloc_block" style="display: none;">
+                  <a href="javascript:void(0)"><i class="fa fa-unlock"></i></a>
+                </div>
             </div>
             <div class="add_post post_bk">
               <input type="submit" value="Post an AD" ng-click="vm.post()">
@@ -66,6 +76,7 @@
       <div class="container">
          <div class="bread_cnt">
             <ol class="breadcrumb">
+              <li class="breadcrumb-item" ng-if ="country"><a href="" ng-click="vm.searchFilter(state,'Region','Category')">{{country}}</a></li>
               <li class="breadcrumb-item" ng-if ="state"><a href="" ng-click="vm.searchFilter(state,'Region','Category')">{{state}}</a></li>
               <li class="breadcrumb-item" ng-if ="region"><a href="" ng-click="vm.searchFilter(state,region,'Category')">{{region}}</a></li>
                <li class="breadcrumb-item" ng-if ="category"><a href="" ng-click="vm.searchFilter(state,region,category)">{{category}}</a></li>

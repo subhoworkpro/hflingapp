@@ -3,10 +3,11 @@ app.controller('HomeController', ['$rootScope','$scope', '$location', function( 
 
     $rootScope.pageTitle = "Healthy Fling";
 
+    vm.country = "Country";
     vm.state = "State";
     vm.region = "Region";
     vm.category = "Category";
-
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -33,6 +34,7 @@ app.controller('HomeController', ['$rootScope','$scope', '$location', function( 
     vm.search = function () {
         $rootScope.loading = true;
         console.log(this.state);
+        $rootScope.search.country = this.country;
         $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
