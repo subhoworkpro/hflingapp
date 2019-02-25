@@ -133,7 +133,7 @@ app.config(function($sceDelegateProvider) {
 });
 
 
-app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache', function($rootScope, $location, $cookieStore, $http,$route,$templateCache ){
+app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$templateCache','$window', function($rootScope, $location, $cookieStore, $http,$route,$templateCache,$window ){
 
        // keep user logged in after page refresh
         // $rootScope.globals = $cookieStore.get('globals') || {};
@@ -181,6 +181,15 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.search.region = "Region";
         $rootScope.search.category = "Category";
         $rootScope.is_flagged = false;
+
+        $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
+
+        if ($rootScope.savedPreference == "locked") {
+            $rootScope.search.country = $window.localStorage.getItem("healthyfling_preference_country") || "Country";
+            $rootScope.search.state = $window.localStorage.getItem("healthyfling_preference_state") || "State";
+            $rootScope.search.region = $window.localStorage.getItem("healthyfling_preference_region") || "Region";
+            $rootScope.search.category = $window.localStorage.getItem("healthyfling_preference_category") || "Category";
+        }
 
         $rootScope.currentPost = {};
 

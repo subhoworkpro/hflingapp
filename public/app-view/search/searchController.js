@@ -1,4 +1,4 @@
-app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService','$window', function( $rootScope,$scope,$location,HttpService,$window ){
+app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpService','$window','FlashService', function( $rootScope,$scope,$location,HttpService,$window,FlashService ){
     var vm = this;
 
     $rootScope.pageTitle = "Healthy Fling";
@@ -6,6 +6,10 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
+
+    $scope.savedPreference = ($rootScope.savedPreference == "locked");
+    vm.savedPreference = ($rootScope.savedPreference == "locked");
+
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
         $scope.regions.unshift("Region");
     }
@@ -13,10 +17,14 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     $scope.categories = $rootScope.categoryList;
 
     $scope.changeListInCtrl = function(data){
-        $rootScope.regionList = $rootScope.masterList[data];
-        console.log("list updated:"+data);
-        $scope.regions = $rootScope.regionList
-        $scope.regions.unshift("Region");
+        if(data != "State"){
+            $rootScope.regionList = $rootScope.masterList[data];
+            console.log("list updated:"+data);
+            $scope.regions = $rootScope.regionList
+            $scope.regions.unshift("Region");
+        }else{
+            $scope.regions = ['Region'];
+        }
    };
 
     $rootScope.loading = true;
@@ -36,6 +44,28 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
 
      vm.post = function () {
         $location.path('/post');
+    };
+
+    vm.lockPreference = function () {
+        $window.localStorage.setItem("healthyfling_preference","locked");
+        $window.localStorage.setItem("healthyfling_preference_country",vm.country);
+        $window.localStorage.setItem("healthyfling_preference_state",vm.state);
+        $window.localStorage.setItem("healthyfling_preference_region",vm.region);
+        $window.localStorage.setItem("healthyfling_preference_category",vm.category);
+        $rootScope.savedPreference = true;
+        vm.savedPreference = true;
+        $scope.savedPreference = "locked";
+        FlashService.Success("Your preference has been saved.");
+        console.log("preference locked");
+    };
+
+    vm.unlockPreference = function () {
+        $window.localStorage.setItem("healthyfling_preference","unlocked");
+        $rootScope.savedPreference = false;
+        vm.savedPreference = false;
+        $scope.savedPreference = "unlocked";
+        FlashService.Success("Your preference has been deleted.");
+        console.log("preference unlocked");  
     };
 
     vm.search = function () {
