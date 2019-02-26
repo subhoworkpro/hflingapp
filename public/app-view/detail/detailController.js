@@ -23,12 +23,41 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     }
     $scope.categories = $rootScope.categoryList;
 
+    $scope.savedPreference = ($rootScope.savedPreference == "locked");
+    vm.savedPreference = ($rootScope.savedPreference == "locked");
+
     $scope.changeListInCtrl = function(data){
-        $rootScope.regionList = $rootScope.masterList[data];
-        console.log("list updated:"+data);
-        $scope.regions = $rootScope.regionList
-        $scope.regions.unshift("Region");
+        if(data != "" && data != undefined && data != "State"){
+            $rootScope.regionList = $rootScope.masterList[data];
+            console.log("list updated:"+data);
+            $scope.regions = $rootScope.regionList
+            $scope.regions.unshift("Region");
+        }else{
+            $scope.regions = ['Region'];
+        }
    };
+
+   vm.lockPreference = function () {
+        $window.localStorage.setItem("healthyfling_preference","locked");
+        $window.localStorage.setItem("healthyfling_preference_country",vm.country);
+        $window.localStorage.setItem("healthyfling_preference_state",vm.state);
+        $window.localStorage.setItem("healthyfling_preference_region",vm.region);
+        $window.localStorage.setItem("healthyfling_preference_category",vm.category);
+        $rootScope.savedPreference = true;
+        vm.savedPreference = true;
+        $scope.savedPreference = "locked";
+        FlashService.Success("Search preference saved for easier browsing.");
+        console.log("preference locked");
+    };
+
+    vm.unlockPreference = function () {
+        $window.localStorage.setItem("healthyfling_preference","unlocked");
+        $rootScope.savedPreference = false;
+        vm.savedPreference = false;
+        $scope.savedPreference = "unlocked";
+        FlashService.Success("Search preference has been deleted.");
+        console.log("preference unlocked");  
+    };
 
    $rootScope.imageList = [];
 

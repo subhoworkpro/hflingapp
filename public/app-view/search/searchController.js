@@ -17,7 +17,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     $scope.categories = $rootScope.categoryList;
 
     $scope.changeListInCtrl = function(data){
-        if(data != "State"){
+        if(data != "" && data != undefined && data != "State"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
             $scope.regions = $rootScope.regionList

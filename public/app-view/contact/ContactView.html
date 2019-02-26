@@ -8,7 +8,7 @@
                   </select>
                 </div>
                 <div class="select_area">
-                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" ng-init="vm.state = vm.state || 'State'">
+                  <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" ng-init = "changeListInCtrl(vm.state)">
                   </select>
                 </div>
                 <div class="select_area">
@@ -55,11 +55,11 @@
                 <div class="select_sbt">
                    <input type="submit" placeholder="Submit" ng-click ="vm.search()">
                 </div>
-                <div class="loc_block">
-                  <a href="javascript:void(0)"><i class="fa fa-lock"></i></a>
+                <div ng-show = "vm.savedPreference == true" class="loc_block">
+                  <a href="" ng-click="vm.unlockPreference()"><i class="fa fa-lock"></i></a>
                 </div>
-                <div class="unloc_block" style="display: none;">
-                  <a href="javascript:void(0)"><i class="fa fa-unlock"></i></a>
+                <div ng-hide = "vm.savedPreference == true" class="unloc_block">
+                  <a href="" ng-click="vm.lockPreference()"><i class="fa fa-unlock"></i></a>
                 </div>
             </div>
             <div class="add_post post_bk">
