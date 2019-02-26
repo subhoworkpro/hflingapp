@@ -15,6 +15,21 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.comments = [];
     $scope.commentsMainImage = [];
 
+
+    $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
+
+    if ($rootScope.savedPreference == "locked") {
+        $rootScope.search.country = $window.localStorage.getItem("healthyfling_preference_country") || "Country";
+        $rootScope.search.state = $window.localStorage.getItem("healthyfling_preference_state") || "State";
+        $rootScope.search.region = $window.localStorage.getItem("healthyfling_preference_region") || "Region";
+        $rootScope.search.category = $window.localStorage.getItem("healthyfling_preference_category") || "Category";
+    }
+
+    vm.country = $rootScope.search.country || "Country";
+    vm.state = $rootScope.search.state || "State";
+    vm.region = $rootScope.search.region || "Region";
+    vm.category = $rootScope.search.category || "Category";
+
     $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList || ["REGION"];
