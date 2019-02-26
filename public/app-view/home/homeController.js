@@ -59,7 +59,7 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
         $rootScope.savedPreference = true;
         vm.savedPreference = true;
         $scope.savedPreference = "locked";
-        FlashService.Success("Your preference has been saved.");
+        FlashService.Success("Search preference saved for easier browsing.");
         console.log("preference locked");
     };
 
@@ -68,7 +68,7 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
         $rootScope.savedPreference = false;
         vm.savedPreference = false;
         $scope.savedPreference = "unlocked";
-        FlashService.Success("Your preference has been deleted.");
+        FlashService.Success("Search preference has been deleted.");
         console.log("preference unlocked");  
     };
 
