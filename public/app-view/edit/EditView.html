@@ -6,6 +6,7 @@
         </div>
         <div class="mandatory_section" ng-if="showError">
             <h3>Important</h3>
+            <p ng-if="showRequiredCountryError">- Please select Country.</p>
             <p ng-if="showRequiredStateError">- Please select State.</p>
             <p ng-if="showRequiredRegionError">- Please select Region.</p>
             <p ng-if="showRequiredCategoryError">- Please select Category.</p>
@@ -30,10 +31,14 @@
 
                 <div class="bio_area mand bio_full">
 
-                    <textarea class="bio_block ui-selectmenu-button ui_textarea ui-corner-all cursor-select" ng-model="message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
+                    <textarea class="bio_block ui-selectmenu-button ui_textarea ui-corner-all cursor-select" ng-model="message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="13"></textarea>
                 </div>
             </div>
             <div class="bio_right">
+                <div class="bio_area mand">              
+                  <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="country" ng-options="x for x in countries" required>
+                  </select>
+                </div> 
                 <div class="bio_area mand">
 
                     <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.data.state);" required>

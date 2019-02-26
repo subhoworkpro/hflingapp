@@ -3,6 +3,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $rootScope.pageTitle = "Post an ad";
 
+    $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
 
@@ -92,6 +93,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
 
     vm.data = {
         "title": "",
+        "country" : "Country",
         "state": "State", 
         "region": "Region",
         "category": "Category",
@@ -120,6 +122,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.editPost = function(id){
         console.log("edit clicked");
         $scope.showImageError = false;
+        $scope.showRequiredCountryError = false;
         $scope.showRequiredStateError = false;
         $scope.showRequiredRegionError = false;
         $scope.showRequiredCategoryError = false;
@@ -134,6 +137,10 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
             $scope.showImageError = true;
             $scope.imageLength = $rootScope.imageList.length;
             // alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
+        }
+        if ((!$scope.country ||$scope.country == 'Country')){
+            $scope.showRequiredCountryError = true;
+            // alert("Please Select, Region and Category."); 
         }
         if ((!$scope.state ||$scope.state == 'State')){
             $scope.showRequiredStateError = true;
@@ -223,6 +230,42 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
         if( $scope.showRequiredStateError || $scope.showRequiredRegionError || $scope.showRequiredCategoryError || $scope.showMessageError || $scope.showCaptchaError || $scope.showImageError || $scope.showTitleError ){
             console.log("Validation Failed");
             $window.scrollTo(0, 0);
+            if($scope.mage == ""){
+                $scope.mage = "Age";
+            }
+            if($scope.haircolor == ""){
+                $scope.haircolor = "Hair Color";
+            }
+            if($scope.height == ""){
+                $scope.height = "Height";
+            }
+            if($scope.ethnicity == ""){
+                $scope.ethnicity = "Ethnicity";
+            }
+            if($scope.orientation == ""){
+                $scope.orientation = "Orientation";
+            }
+            if($scope.bodytype == ""){
+                $scope.bodytype = "Body Type";
+            }
+            if($scope.eyecolor == ""){
+                $scope.eyecolor = "Eye Color";
+            }
+            if($scope.mstatus == ""){
+                $scope.mstatus = "Status";
+            }
+            if($scope.gender == ""){
+                $scope.gender = "Gender";
+            }
+            if($scope.bodyhair == ""){
+                $scope.bodyhair = "Body Hair";
+            }
+            if($scope.hivstatus == ""){
+                $scope.hivstatus = "HIV Status";
+            }
+            if($scope.weight == ""){
+                $scope.weight = "Weight";
+            }
         }else{
             $scope.showImageError = false;
             $rootScope.loading = true;
@@ -317,6 +360,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
+                $scope.country = "United States";
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
