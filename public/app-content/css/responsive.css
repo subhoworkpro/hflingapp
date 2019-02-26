@@ -21,6 +21,7 @@
     }*/
     .add_post.post_bk{
         margin-top: 10px;
+        margin-left: auto;
         width: 135px;
         height: auto;
     }
@@ -329,6 +330,8 @@
     }
 
     .select_item{
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
         justify-content: flex-start;
         padding: 8px;
     }
@@ -798,6 +801,17 @@
         max-width: 100%;
     }
 
+    .add_post.post_bk{
+        width: 100%;
+        margin-left: 0;
+    }
+
+   /* .loc_block, .unloc_block{
+        padding-left: 0;
+        width: 100%;
+        text-align: center;
+    }*/
+
     /*** 22-02-19 ***/
 
 }
@@ -814,7 +828,6 @@
          bottom: 0;
          font-size: 18px;
          font-weight: 600;
-         margin-top: 10px;
     }
      .select_inr {
          padding-right: 0px;
