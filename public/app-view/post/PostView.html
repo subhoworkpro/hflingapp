@@ -47,6 +47,7 @@
           <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
           <div class="mandatory_section" ng-if ="vm.showError">
             <h3>Important</h3>
+            <p ng-if = "vm.showRequiredCountryError">- Please select Country.</p>
             <p ng-if = "vm.showRequiredStateError">- Please select State.</p>
             <p ng-if = "vm.showRequiredRegionError">- Please select Region.</p>
             <p ng-if = "vm.showRequiredCategoryError">- Please select Category.</p>
@@ -72,11 +73,15 @@
                 <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select wd_45" ng-model="vm.data.title" maxlength="100">
               </div>
               <div class="bio_area mand">            
-                <textarea class="bio_block ui-selectmenu-button ui_textarea ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="10"></textarea>
+                <textarea class="bio_block ui-selectmenu-button ui_textarea ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="13"></textarea>
               </div>
             </div>
-            <div class="bio_right">              
-                <div class="bio_area mand">              
+            <div class="bio_right">  
+            <div class="bio_area mand">              
+              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.country" ng-options="x for x in countries" required>
+              </select>
+            </div>            
+            <div class="bio_area mand">              
               <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.data.state);" required>
               </select>
             </div>
@@ -243,9 +248,9 @@
             </div>
 
 
-            <div class="bio_area">
+            <div class="bio_area confirm_edit">
               <div class="post_bk">
-                <input type="submit" value="Post!" ng-click = "vm.addPost()">
+                <input type="submit" value="Post!" ng-click = "vm.addPost()" style="padding-left: 30px;padding-right: 30px;">
               </div>
             </div>
 

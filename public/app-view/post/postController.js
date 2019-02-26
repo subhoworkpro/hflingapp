@@ -127,6 +127,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 
     vm.data = {
     	"title": "",
+    	"country": "Country",
 	  	"state": "State", 
 	    "region": "Region",
 	    "category": "Category",
@@ -154,6 +155,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	vm.verifyemail = "";
     vm.addPost = function(){
     	vm.showImageError = false;
+    	vm.showRequiredCountryError = false;
     	vm.showRequiredStateError = false;
     	vm.showRequiredRegionError = false;
     	vm.showRequiredCategoryError = false;
@@ -169,6 +171,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     		vm.showImageError = true;
     		vm.imageLength = $rootScope.imageList.length;
 	    	// alert($rootScope.imageList.length+" files selected ... Max allowed files is 5."); 
+		}
+		if ((!vm.data.country ||vm.data.country == 'Country')){
+			vm.showRequiredCountryError = true;
+			// alert("Please Select, Region and Category."); 
 		}
 		if ((!vm.data.state ||vm.data.state == 'State')){
 			vm.showRequiredStateError = true;
