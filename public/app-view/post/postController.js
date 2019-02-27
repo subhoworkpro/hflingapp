@@ -43,10 +43,10 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.savedPreference = ($rootScope.savedPreference == "locked");
     vm.savedPreference = ($rootScope.savedPreference == "locked");
 
-    vm.country = $rootScope.search.country;
-    vm.state = $rootScope.search.state;
-    vm.region = $rootScope.search.region;
-    vm.category = $rootScope.search.category;
+    vm.country = $rootScope.search.country || "Country";
+    vm.state = $rootScope.search.state || "State";
+    vm.region = $rootScope.search.region || "Region";
+    vm.category = $rootScope.search.category || "Category";
 
     $rootScope.imageList = [];
 
@@ -76,6 +76,12 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 
     vm.unlockPreference = function () {
         $window.localStorage.setItem("healthyfling_preference","unlocked");
+        
+        vm.country = $rootScope.search.country = "Country";
+        vm.state = $rootScope.search.state = "State";
+        vm.region = $rootScope.search.region = "Region";
+        vm.category = $rootScope.search.category = "Category";
+
         $rootScope.savedPreference = false;
         vm.savedPreference = false;
         $scope.savedPreference = "unlocked";

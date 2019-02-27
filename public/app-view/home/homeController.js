@@ -15,10 +15,10 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
     }
     
 
-    vm.country = $rootScope.search.country;
-    vm.state = $rootScope.search.state;
-    vm.region = $rootScope.search.region;
-    vm.category = $rootScope.search.category;
+    vm.country = $rootScope.search.country || "Country";
+    vm.state = $rootScope.search.state || "State";
+    vm.region = $rootScope.search.region || "Region";
+    vm.category = $rootScope.search.category || "Category";
 
     $scope.countries = $rootScope.countryList;
     $scope.states = $rootScope.stateList;
@@ -67,6 +67,12 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
 
     vm.unlockPreference = function () {
         $window.localStorage.setItem("healthyfling_preference","unlocked");
+        
+        vm.country = $rootScope.search.country = "Country";
+        vm.state = $rootScope.search.state = "State";
+        vm.region = $rootScope.search.region = "Region";
+        vm.category = $rootScope.search.category = "Category";
+
         $rootScope.savedPreference = false;
         vm.savedPreference = false;
         $scope.savedPreference = "unlocked";

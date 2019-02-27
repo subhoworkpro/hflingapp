@@ -67,6 +67,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     vm.unlockPreference = function () {
         $window.localStorage.setItem("healthyfling_preference","unlocked");
+        
+        vm.country = $rootScope.search.country = "Country";
+        vm.state = $rootScope.search.state = "State";
+        vm.region = $rootScope.search.region = "Region";
+        vm.category = $rootScope.search.category = "Category";
+
         $rootScope.savedPreference = false;
         vm.savedPreference = false;
         $scope.savedPreference = "unlocked";
