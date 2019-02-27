@@ -227,7 +227,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
             // alert("Please Select, Region and Category."); 
         }
 
-        if( $scope.showRequiredStateError || $scope.showRequiredRegionError || $scope.showRequiredCategoryError || $scope.showMessageError || $scope.showCaptchaError || $scope.showImageError || $scope.showTitleError ){
+        if( $scope.showRequiredStateError || $scope.showRequiredCountryError || $scope.showRequiredRegionError || $scope.showRequiredCategoryError || $scope.showMessageError || $scope.showCaptchaError || $scope.showImageError || $scope.showTitleError ){
             console.log("Validation Failed");
             $window.scrollTo(0, 0);
             if($scope.mage == ""){

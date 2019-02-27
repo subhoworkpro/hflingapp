@@ -275,7 +275,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			// alert("Please Select, Region and Category."); 
 		}
 
-		if( vm.showRequiredStateError || vm.showRequiredRegionError || vm.showAgeError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
+		if( vm.showRequiredStateError || vm.showRequiredCountryError || vm.showRequiredRegionError || vm.showAgeError || vm.showRequiredCategoryError || vm.showMessageError || vm.showCaptchaError || vm.showImageError || vm.showTitleError || vm.showEmailError || vm.showMissingEmailError){
 			console.log("Validation Failed");
 			$window.scrollTo(0, 0);
 			if(vm.data.mage == ""){
