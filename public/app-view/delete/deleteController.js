@@ -32,8 +32,12 @@ app.controller('DeleteController', ['$rootScope','$scope', '$location', 'HttpSer
         if(data != "" && data != undefined && data != "State"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
-            $scope.regions = $rootScope.regionList
+            $scope.regions = $rootScope.regionList;
             $scope.regions.unshift("Region");
+            var temp = $scope.regions;
+            $scope.regions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
         }else{
             $scope.regions = ['Region'];
         }
@@ -244,8 +248,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         if(data != "" && data != undefined && data != "State"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
-            $scope.regions = $rootScope.regionList
+            $scope.regions = $rootScope.regionList;
             $scope.regions.unshift("Region");
+            var temp = $scope.regions;
+            $scope.regions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
         }else{
             $scope.regions = ['Region'];
         }
@@ -266,6 +274,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     vm.unlockPreference = function () {
         $window.localStorage.setItem("healthyfling_preference","unlocked");
+        
+        vm.country = $rootScope.search.country = "Country";
+        vm.state = $rootScope.search.state = "State";
+        vm.region = $rootScope.search.region = "Region";
+        vm.category = $rootScope.search.category = "Category";
+
         $rootScope.savedPreference = false;
         vm.savedPreference = false;
         $scope.savedPreference = "unlocked";

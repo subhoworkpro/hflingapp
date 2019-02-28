@@ -32,8 +32,12 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
         if(data != "" && data != undefined && data != "State"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
-            $scope.regions = $rootScope.regionList
+            $scope.regions = $rootScope.regionList;
             $scope.regions.unshift("Region");
+            var temp = $scope.regions;
+            $scope.regions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
         }else{
             $scope.regions = ['Region'];
         }

@@ -28,6 +28,7 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
     vm.savedPreference = ($rootScope.savedPreference == "locked");
 
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
+        console.log("Unshifted region");
         $scope.regions.unshift("Region");
     }
     $scope.categories = $rootScope.categoryList;
@@ -36,8 +37,12 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
         if(data != "" && data != undefined && data != "State"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
-            $scope.regions = $rootScope.regionList
+            $scope.regions = $rootScope.regionList;
             $scope.regions.unshift("Region");
+            var temp = $scope.regions;
+            $scope.regions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
         }else{
             $scope.regions = ['Region'];
         }
