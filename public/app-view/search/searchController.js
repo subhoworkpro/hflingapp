@@ -7,6 +7,15 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
 
+    $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
+
+    if ($rootScope.savedPreference == "locked") {
+        $rootScope.search.country = $window.localStorage.getItem("healthyfling_preference_country") || "Country";
+        $rootScope.search.state = $window.localStorage.getItem("healthyfling_preference_state") || "State";
+        $rootScope.search.region = $window.localStorage.getItem("healthyfling_preference_region") || "Region";
+        $rootScope.search.category = $window.localStorage.getItem("healthyfling_preference_category") || "Category";
+    }
+
     $scope.savedPreference = ($rootScope.savedPreference == "locked");
     vm.savedPreference = ($rootScope.savedPreference == "locked");
 
@@ -88,15 +97,29 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     };
 
     vm.searchAll = function(){
-        vm.country = "Country";
-        vm.state = "State";
-        vm.region = "Region";
-        vm.category = "Category";
 
-        $rootScope.search.country = vm.country;
-        $rootScope.search.state = vm.state;
-        $rootScope.search.region = vm.region;
-        $rootScope.search.category = vm.category;
+        $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
+
+        if ($rootScope.savedPreference == "locked") {
+            $rootScope.search.country = $window.localStorage.getItem("healthyfling_preference_country") || "Country";
+            $rootScope.search.state = $window.localStorage.getItem("healthyfling_preference_state") || "State";
+            $rootScope.search.region = $window.localStorage.getItem("healthyfling_preference_region") || "Region";
+            $rootScope.search.category = $window.localStorage.getItem("healthyfling_preference_category") || "Category";
+
+            vm.country = $rootScope.search.country || "Country";
+            vm.state = $rootScope.search.state || "State";
+            vm.region = $rootScope.search.region || "Region";
+            vm.category = $rootScope.search.category || "Category";
+        }else{
+            vm.country = "Country";
+            vm.state = "State";
+            vm.region = "Region";
+            vm.category = "Category";
+            $rootScope.search.country = vm.country;
+            $rootScope.search.state = vm.state;
+            $rootScope.search.region = vm.region;
+            $rootScope.search.category = vm.category;
+        }
         console.log("asdasdsa");
         this.reloadSearch();
     }
@@ -211,9 +234,22 @@ app.filter('roundup', function() {
 });
 
 
-app.controller("AdsController",['$scope','$rootScope','$location','HttpService', function ($scope,$rootScope,$location,HttpService) {
+app.controller("AdsController",['$scope','$rootScope','$location','HttpService','$window', function ($scope,$rootScope,$location,HttpService,$window) {
   console.log("Inside AdsController ");
   var vm = {};
+
+  $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
+
+    if ($rootScope.savedPreference == "locked") {
+        $rootScope.search.country = $window.localStorage.getItem("healthyfling_preference_country") || "Country";
+        $rootScope.search.state = $window.localStorage.getItem("healthyfling_preference_state") || "State";
+        $rootScope.search.region = $window.localStorage.getItem("healthyfling_preference_region") || "Region";
+        $rootScope.search.category = $window.localStorage.getItem("healthyfling_preference_category") || "Category";
+    }
+
+    $scope.savedPreference = ($rootScope.savedPreference == "locked");
+    vm.savedPreference = ($rootScope.savedPreference == "locked");
+
   vm.country = $rootScope.search.country;
   vm.state = $rootScope.search.state;
   vm.region = $rootScope.search.region;

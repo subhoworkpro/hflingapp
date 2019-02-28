@@ -10,8 +10,6 @@ app.controller('HomeController', ['$rootScope','$scope', '$location','$window','
         $rootScope.search.state = $window.localStorage.getItem("healthyfling_preference_state") || "State";
         $rootScope.search.region = $window.localStorage.getItem("healthyfling_preference_region") || "Region";
         $rootScope.search.category = $window.localStorage.getItem("healthyfling_preference_category") || "Category";
-
-        $location.path('/search');
     }
     
 

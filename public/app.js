@@ -159,6 +159,11 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
             //     $location.path('/login');
             // }
             console.log($location.path());
+            if($location.path() == "/" && $rootScope.savedPreference == "locked" && $rootScope.preferenceLoaded != true){
+                $location.path('/search');
+                $rootScope.preferenceLoaded = true;
+
+            }
             if($location.path().indexOf("/detail") !== -1){
                 $http.get("/data.json")
                 .success(function (data) {
@@ -172,6 +177,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
 
         $rootScope.visitedSearchPage = false;
 
+        $rootScope.preferenceLoaded = false;
         $rootScope.loading = false;
         $rootScope.loadingImage = false;
         $rootScope.adposts = {};
