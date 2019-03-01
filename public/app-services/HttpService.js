@@ -58,6 +58,21 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
         };
 
 
+        service.GetAllPosts = function () {
+
+            var params = "";
+
+            var url = "/api/posts?"+params;
+             return $http({
+                        url: url,
+                        method: "GET",
+                        headers: {
+                                    'Content-Type': 'application/json;'
+                        }
+                    }).then(handleSuccess, handleError('Error getting result'));
+        };
+
+
         service.GetComments = function (id) {
 
             var url = "/api/comments/"+id;

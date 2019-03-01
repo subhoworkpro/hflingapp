@@ -405,11 +405,6 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.commentsMainImage[index] = url;
    }
 
-    vm.country = $rootScope.search.country;
-    vm.state = $rootScope.search.state;
-    vm.region = $rootScope.search.region;
-    vm.category = $rootScope.search.category;
-
 
 
     var path = $location.path();

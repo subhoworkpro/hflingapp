@@ -120,8 +120,27 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
             $rootScope.search.region = vm.region;
             $rootScope.search.category = vm.category;
         }
+        $rootScope.loading = true;
         console.log("asdasdsa");
-        this.reloadSearch();
+        HttpService.GetAllPosts()
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $rootScope.adPosts.data = [];
+
+                for(var i = 0;i<response.data.length;i++){
+                    $rootScope.adPosts.data.push(response.data[i]);
+                }
+                console.log("success");
+                $rootScope.refreshAds();
+                $rootScope.loading = false;
+            }else{
+                vm.dataLoading = false;
+                $location.path('/');
+                $rootScope.loading = false;
+            };
+            
+        });
     }
 
     vm.searchFilter = function (state,region,category) {
