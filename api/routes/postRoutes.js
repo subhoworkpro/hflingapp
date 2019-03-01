@@ -11,6 +11,7 @@ module.exports = function(apiRoutes) {
   apiRoutes.post('/editpost/:postId', post.edit_a_post);
   apiRoutes.delete('/posts/:postId', post.delete_a_post);
   apiRoutes.get('/flagcomment/:commentId', post.flag_a_comment);
+  apiRoutes.post('/flagcommentreason/:commentId', post.flag_a_comment_reason);
   apiRoutes.get('/unflagcomment/:commentId', post.unflag_a_comment);
   apiRoutes.delete('/comments/:commentId', post.delete_a_comment);
   apiRoutes.post('/replycomment/:commentId', post.reply_a_comment);

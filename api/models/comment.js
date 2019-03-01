@@ -27,6 +27,7 @@ module.exports = mongoose.model('Comment', new Schema({
         }   
     ],
     embed: String,
+    flagreason: String,
     created: { 
         type: Date,
         default: Date.now

@@ -736,6 +736,13 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
+    $scope.openCommentsModal_flag = function (comment){
+        $rootScope.comment_to_flag = comment;
+         $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/options/OptionsView.html'
+        });
+    }
+
     $scope.$on("reloadComments",function () {
         $scope.loadComments($scope.id);
     });

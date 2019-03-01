@@ -25,7 +25,7 @@ minify({
 
 minify({
   compressor: uglifyjs,
-  input: ['./public/app-view/home/homeController.js', './public/app-view/post/postController.js', './public/app-view/search/searchController.js', './public/app-view/contact/contactController.js', './public/app-view/confirm/confirmController.js', './public/app-view/response/responseController.js', './public/app-view/delete/deleteController.js', './public/app-view/expired/expiredController.js', './public/app-view/error/errorController.js', './public/app-view/reply/replyController.js', './public/app-view/comment/commentController.js', './public/app-view/edit/editController.js', './public/app-view/flag/flagController.js', './public/app-view/detail/detailController.js'],
+  input: ['./public/app-view/home/homeController.js', './public/app-view/post/postController.js', './public/app-view/search/searchController.js', './public/app-view/contact/contactController.js', './public/app-view/confirm/confirmController.js', './public/app-view/response/responseController.js', './public/app-view/delete/deleteController.js', './public/app-view/expired/expiredController.js', './public/app-view/error/errorController.js', './public/app-view/reply/replyController.js', './public/app-view/comment/commentController.js', './public/app-view/edit/editController.js', './public/app-view/flag/flagController.js', './public/app-view/options/optionsController.js', './public/app-view/detail/detailController.js'],
   output: './public/dist/app_controllers.js',
   callback: function(err, min) {
   	console.log("completed compressing controllers");

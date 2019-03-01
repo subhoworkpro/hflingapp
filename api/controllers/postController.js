@@ -258,6 +258,26 @@ exports.flag_a_comment= function(req, res) {
 
 };
 
+exports.flag_a_comment_reason= function(req, res) {
+
+  Comment.findById(req.params.commentId, function(err, comment) {
+    if (err)
+      res.send(err);
+    comment.status = "flagged";
+
+    if(req.body.flagreason){
+      comment.flagreason = req.body.flagreason;
+    }
+
+    comment.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'comment successfully flagged' });
+    });
+  });
+
+};
+
 exports.unflag_a_comment= function(req, res) {
 
   Comment.findById(req.params.commentId, function(err, comment) {

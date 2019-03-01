@@ -353,7 +353,7 @@
               <div class="reply_item_anony" ng-repeat="item in comments">
                 <span>Comment {{$index+1}}</span>
                 <a ng-if ="is_edit" href="" ng-click="deleteComment(item._id)">Delete</a>
-                <a ng-if = "item.status == 'active'" href="" ng-click="flagComment(item._id)">Flag</a>
+                <a ng-if = "item.status == 'active'" href="" ng-click="openCommentsModal_flag(item)">Flag</a>
                 <a ng-if ="is_edit" href="" ng-click="unflagComment(item._id)">Unflag</a>
                 <a ng-if ="is_edit" href="" ng-click="openCommentModal(item)">Reply</a>
                 <div class="reply_txt_anony">

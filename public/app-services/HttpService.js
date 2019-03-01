@@ -166,6 +166,20 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
                     }).then(handleSuccess, handleError('Error getting result'));
         };
 
+        service.FlagACommentReason = function (id,data) {
+            console.log(data);
+            var serializeData = JSON.stringify(data);
+            var url = "/api/flagcommentreason/"+id;
+            var config = {
+                headers : {
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Authorization': undefined
+                }
+            };
+             return $http.post(url, serializeData, config).then(handleSuccess, handleError('Error getting sales report'));
+        };
+
+
         service.UnflagAComment = function (id) {
             var url = "/api/unflagcomment/"+id;
              return $http({

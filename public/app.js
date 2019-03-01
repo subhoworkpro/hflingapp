@@ -75,6 +75,18 @@ app.config(['$routeProvider', '$locationProvider',function($routeProvider, $loca
             controllerAs: 'vm'
         })
 
+        .when('/options', {
+            controller: 'OptionsController',
+            templateUrl: 'app-view/options/OptionsView.html',
+            controllerAs: 'vm'
+        })
+
+        .when('/options/:id', {
+            controller: 'OptionsController',
+            templateUrl: 'app-view/options/OptionsView.html',
+            controllerAs: 'vm'
+        })
+
         .when('/detail', {
             controller: 'DetailController',
             templateUrl: 'app-view/detail/DetailView.html',
@@ -187,6 +199,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.search.region = "Region";
         $rootScope.search.category = "Category";
         $rootScope.is_flagged = false;
+        $rootScope.comment_to_flag = {};
 
         $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
 
