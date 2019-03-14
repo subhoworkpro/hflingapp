@@ -307,6 +307,8 @@ exports.reply_a_comment= function(req, res) {
       var reply = new Reply({
         body: req.body.commentmessage,
         status: "active",
+        label: req.body.label,
+        owner: req.body.owner,
         comment: req.params.commentId // assign the _id from the post
       });
       reply.save(function (err, reply) {

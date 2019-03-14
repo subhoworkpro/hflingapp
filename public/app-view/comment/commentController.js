@@ -77,6 +77,8 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
 
         $scope.commentMessage = $rootScope.comment.body;
         $scope.commentId = $rootScope.comment["_id"];
+        $scope.commentLabel = $rootScope.comment["replyLabel"];
+        $scope.commentOwner = $rootScope.comment["owner"];
 
         $http.get("/data.json")
         .success(function (data) {
@@ -160,7 +162,9 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
             $rootScope.loading = true;
 
             var postData = {
-                "commentmessage": $scope.replymessage, 
+                "commentmessage": $scope.replymessage,
+                "label":  $scope.commentLabel,
+                "owner":  $scope.commentOwner
             };
 
             HttpService.ReplyAComment($scope.commentId, postData)

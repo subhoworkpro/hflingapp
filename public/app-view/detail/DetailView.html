@@ -355,7 +355,7 @@
                 <a ng-if ="is_edit" href="" ng-click="deleteComment(item._id)">Delete</a>
                 <a ng-if = "item.status == 'active'" href="" ng-click="openCommentsModal_flag(item)">Flag</a>
                 <a ng-if ="is_edit" href="" ng-click="unflagComment(item._id)">Unflag</a>
-                <a ng-if ="is_edit" href="" ng-click="openCommentModal(item)">Reply</a>
+                <a ng-if ="is_edit" href="" ng-click="openCommentModalPoster(item,{})">Reply</a>
                 <div class="reply_txt_anony">
                   <h5 ng-show = "item.status == 'active'"> {{item.body}}</h5>
                   <h5 ng-show = "item.status == 'inactive'" style="color: #8dc63f;"> The comment has been deleted</h5>
@@ -394,8 +394,11 @@
                 </div> -->
                 <div ng-if = "item.replies">
                   <div class="posters_response" ng-repeat="reply in item.replies">
-                      <span>Posters response</span>
+                      <span style="color:black;">Reply {{$index+1}}</span>
+                      <span ng-if="reply.owner" style="font-size: 14px;">Posters response</span>
+                      <span style="color:#886c6a;">{{reply.responseLabel}}</span>
                       <a ng-if ="is_edit" href="" ng-click="deleteReply(reply._id)">Delete</a>
+                      <a href="" ng-click="openCommentModal(item,reply)">Reply</a>
                       <div class="posters_inr">
                         <h5 ng-show = "reply.status == 'active'" >{{reply.body}}</h5>
                         <h5 ng-show = "reply.status == 'inactive'" style="color: #8dc63f;">The reply has been deleted</h5>

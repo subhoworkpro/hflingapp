@@ -6,6 +6,8 @@ module.exports = mongoose.model('Reply', new Schema({
     body: String,
     comment: { type: Schema.Types.ObjectId, ref: 'Comment' },
     status: String,
+    label: String,
+    owner: String,
     created: { 
         type: Date,
         default: Date.now

@@ -227,6 +227,20 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                         obj['mainImage'] = obj.embed;
                     }
                     console.log(obj);
+                    for (var j = 0; j < obj.replies.length; j++) {
+                        if (obj.replies[j].label != undefined) {
+                            var index = $scope.findIndexByKeyValue(obj.replies, '_id', obj.replies[j].label);
+                            if (index > -1) {
+                                var owner = obj.replies[index].owner;
+                                console.log(owner);
+                                if (owner == "poster") {
+                                    obj.replies[j].responseLabel = '(Response to "Reply '+(index+1)+' posters response")';
+                                }else{
+                                    obj.replies[j].responseLabel = '(Response to "Reply '+(index+1)+'")';
+                                }
+                            }
+                        }
+                    }
 
                     $scope.commentsMainImage.push(obj['mainImage']);
                     $scope.comments.push(obj);
@@ -239,6 +253,15 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             };
             
         });
+    }
+
+    $scope.findIndexByKeyValue = function(_array, key, value) {
+        for (var i = 0; i < _array.length; i++) { 
+            if (_array[i][key] == value) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     $scope.deleteComment = function(id){
@@ -526,9 +549,19 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
-    $scope.openCommentModal = function (comment){
+    $scope.openCommentModal = function (comment,reply){
         $rootScope.comment = comment;
-         $rootScope.modalInstance = $modal.open({
+        $rootScope.comment.replyLabel = reply["_id"];
+        $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/comment/CommentView.html'
+        });
+    }
+
+    $scope.openCommentModalPoster = function (comment,reply){
+        $rootScope.comment = comment;
+        $rootScope.comment.replyLabel = reply["_id"];
+        $rootScope.comment.owner = "poster";
+        $rootScope.modalInstance = $modal.open({
             templateUrl: 'app-view/comment/CommentView.html'
         });
     }
