@@ -227,6 +227,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                         obj['mainImage'] = obj.embed;
                     }
                     console.log(obj);
+                    obj.replies.reverse();
+                    
                     for (var j = 0; j < obj.replies.length; j++) {
                         if (obj.replies[j].label != undefined) {
                             var index = $scope.findIndexByKeyValue(obj.replies, '_id', obj.replies[j].label);
