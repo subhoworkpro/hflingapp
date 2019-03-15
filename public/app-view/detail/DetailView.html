@@ -396,7 +396,7 @@
                 <div ng-if = "item.replies">
                   <div class="posters_response" ng-repeat="reply in item.replies">
                       <span style="color:black;font-size: 15px;font-weight: normal;">Reply {{$index+1}}</span>
-                      <span ng-if="reply.owner" style="font-size: 14px;">Posters response</span>
+                      <span ng-if="reply.owner" style="font-size: 14px;font-weight: normal;">Posters response</span>
                       <span style="color:#886c6a;font-size: 15px;font-weight: normal;">{{reply.responseLabel}}</span>
                       <a ng-if ="is_edit" href="" ng-click="deleteReply(reply._id)">Delete</a>
                       <a ng-if = "reply.status == 'active'" href="" ng-click="openReplyModal_flag(reply)">Flag</a>
