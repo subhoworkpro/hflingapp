@@ -776,6 +776,35 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
+    $scope.openReplyModal_flag = function (reply){
+        $rootScope.reply_to_flag = reply;
+        $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/options/OptionsView.html'
+        });
+    }
+
+    $scope.unflagReply = function(id){
+        console.log("The reply has been unflagged");
+        $rootScope.loading = true;
+        HttpService.UnflagAReply(id)
+        .then(function(response){
+            console.log(response);
+            if (response.status == '200') {
+                $scope.loadComments($scope.id);
+                FlashService.Success("The comment has been successfully unflagged.");
+                $rootScope.loading = false;
+                $window.scrollTo(0, 0);
+            }else{
+                console.log("something went wrong");
+                $rootScope.loading = false;
+                // $rootScope.loading = false;
+                // vm.dataLoading = false;
+                // $location.path('/expired');
+            };
+            
+        });
+    }
+
     $scope.$on("reloadComments",function () {
         $scope.loadComments($scope.id);
     });

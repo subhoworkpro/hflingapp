@@ -200,6 +200,7 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
         $rootScope.search.category = "Category";
         $rootScope.is_flagged = false;
         $rootScope.comment_to_flag = {};
+        $rootScope.reply_to_flag = {};
 
         $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
 

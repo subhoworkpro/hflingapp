@@ -79,8 +79,11 @@
               <div class="innr_btn">
                 <input type="submit" class="cust_btn" value="Cancel" ng-click="closeModal();">
               </div>
-              <div class="innr_btn">
+              <div class="innr_btn" ng-if="comment_to_flag.status">
                 <input type="submit" class="cust_btn" value="Submit" ng-click="flagComment();">
+              </div>
+              <div class="innr_btn" ng-if="reply_to_flag.status">
+                <input type="submit" class="cust_btn" value="Submit" ng-click="flagReply();">
               </div>
             </div>
           </div>

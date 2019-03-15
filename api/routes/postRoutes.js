@@ -16,6 +16,8 @@ module.exports = function(apiRoutes) {
   apiRoutes.delete('/comments/:commentId', post.delete_a_comment);
   apiRoutes.post('/replycomment/:commentId', post.reply_a_comment);
   apiRoutes.delete('/deletereply/:replyId', post.delete_a_reply);
+  apiRoutes.post('/flagreply/:replyId', post.flag_a_reply);
+  apiRoutes.get('/unflagreply/:replyId', post.unflag_a_reply);
   apiRoutes.get('/verifypost/:postId', post.verifypost);
   apiRoutes.get('/flagpost/:postId', post.flagpost);
   apiRoutes.post('/flagpostreason/:postId', post.flagpostreason);

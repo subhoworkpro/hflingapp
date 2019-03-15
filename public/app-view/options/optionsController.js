@@ -128,6 +128,53 @@ app.controller('OptionsController', ['$rootScope','$scope', '$location', 'HttpSe
         }
     }
 
+
+    $scope.flagReply = function(){
+        $scope.showError = true;
+        $scope.showReasonError = false;
+
+        if ($scope.selection.length < 1){
+            $scope.showReasonError = true;
+            // alert("Please Select, Region and Category."); 
+        }
+
+        console.log("The comment has been flagged");
+        var comment_id = $rootScope.reply_to_flag["_id"];
+        console.log($rootScope.reply_to_flag["_id"]);
+        $rootScope.loading = true;
+
+        if ($scope.showReasonError) {
+            console.log("Validation Failed");
+            $window.scrollTo(0, 0);
+
+        }else{
+            $scope.showError = false;
+            $scope.closeModal();
+
+            var postData = {
+                "flagreason": $scope.selection
+            };
+
+            HttpService.FlagAReply(comment_id, postData)
+            .then(function(response){
+                console.log(response);
+                if (response.status == '200') {
+                    FlashService.Success("The comment has been successfully flagged.");
+                    $rootScope.loading = false;
+                    $rootScope.reply_to_flag = {};
+                    $window.scrollTo(0, 0);
+                }else{
+                    console.log("something went wrong");
+                    $rootScope.loading = false;
+                    // $rootScope.loading = false;
+                    // vm.dataLoading = false;
+                    // $location.path('/expired');
+                };
+                
+            });
+        }
+    }
+
     $scope.flagPost = function(){
 
         $scope.showError = true;

@@ -243,6 +243,41 @@ exports.delete_a_reply= function(req, res) {
 
 };
 
+exports.flag_a_reply = function(req, res) {
+  console.log("flagging a reply");
+  Reply.findById(req.params.replyId, function(err, reply) {
+    if (err)
+      res.send(err);
+    reply.status = "flagged";
+
+    if(req.body.flagreason){
+      reply.flagreason = req.body.flagreason;
+    }
+
+    reply.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'reply successfully flagged' });
+    });
+  });
+
+};
+
+exports.unflag_a_reply= function(req, res) {
+
+  Reply.findById(req.params.replyId, function(err, reply) {
+    if (err)
+      res.send(err);
+    reply.status = "active";
+    reply.save(function(err, comment) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'reply successfully activated' });
+    });
+  });
+
+};
+
 exports.flag_a_comment= function(req, res) {
 
   Comment.findById(req.params.commentId, function(err, comment) {

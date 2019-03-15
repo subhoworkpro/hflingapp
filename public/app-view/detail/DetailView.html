@@ -356,6 +356,7 @@
                 <a ng-if = "item.status == 'active'" href="" ng-click="openCommentsModal_flag(item)">Flag</a>
                 <a ng-if ="is_edit" href="" ng-click="unflagComment(item._id)">Unflag</a>
                 <a ng-if ="is_edit" href="" ng-click="openCommentModalPoster(item,{})">Reply</a>
+                <a ng-if ="!is_edit" href="" ng-click="openCommentModal(item,{})">Reply</a>
                 <div class="reply_txt_anony">
                   <h5 ng-show = "item.status == 'active'"> {{item.body}}</h5>
                   <h5 ng-show = "item.status == 'inactive'" style="color: #8dc63f;"> The comment has been deleted</h5>
@@ -398,10 +399,13 @@
                       <span ng-if="reply.owner" style="font-size: 14px;">Posters response</span>
                       <span style="color:#886c6a;">{{reply.responseLabel}}</span>
                       <a ng-if ="is_edit" href="" ng-click="deleteReply(reply._id)">Delete</a>
+                      <a ng-if = "reply.status == 'active'" href="" ng-click="openReplyModal_flag(reply)">Flag</a>
+                      <a ng-if ="is_edit" href="" ng-click="unflagReply(reply._id)">Unflag</a>
                       <a href="" ng-click="openCommentModal(item,reply)">Reply</a>
                       <div class="posters_inr">
                         <h5 ng-show = "reply.status == 'active'" >{{reply.body}}</h5>
                         <h5 ng-show = "reply.status == 'inactive'" style="color: #8dc63f;">The reply has been deleted</h5>
+                        <h5 ng-show = "reply.status == 'flagged'" style="color: #8dc63f;">The reply has been flagged</h5>
                         <p>posted <em><time am-time-ago="reply.created"></time></em></p>
                       </div>  
                   </div>
