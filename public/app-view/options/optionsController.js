@@ -1,4 +1,4 @@
-app.controller('OptionsController', ['$rootScope','$scope', '$location', 'HttpService', '$http', 'FlashService','$window', function( $rootScope,$scope,$location,HttpService,$http,FlashService,$window ){
+app.controller('OptionsController', ['$rootScope','$scope', '$location', 'HttpService', '$http', 'FlashService','$window','$route', function( $rootScope,$scope,$location,HttpService,$http,FlashService,$window,$route ){
     var vm = this;
 
     $rootScope.pageTitle = "Healthy Fling";
@@ -116,6 +116,7 @@ app.controller('OptionsController', ['$rootScope','$scope', '$location', 'HttpSe
                     $rootScope.loading = false;
                     $rootScope.comment_to_flag = {};
                     $window.scrollTo(0, 0);
+                    $route.reload();
                 }else{
                     console.log("something went wrong");
                     $rootScope.loading = false;
@@ -163,6 +164,7 @@ app.controller('OptionsController', ['$rootScope','$scope', '$location', 'HttpSe
                     $rootScope.loading = false;
                     $rootScope.reply_to_flag = {};
                     $window.scrollTo(0, 0);
+                    $route.reload();
                 }else{
                     console.log("something went wrong");
                     $rootScope.loading = false;
