@@ -25,7 +25,6 @@ module.exports = mongoose.model('Reply', new Schema({
             secure_url: String
         }   
     ],
-    email: String,
     embed: String,
     flagreason: String,
     label: String,
