@@ -14,6 +14,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.commentembed = "";
     $scope.comments = [];
     $scope.commentsMainImage = [];
+    $scope.replyMainImage = [];
 
 
     $rootScope.savedPreference = $window.localStorage.getItem("healthyfling_preference");
@@ -130,6 +131,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                     $rootScope.loading = false;
                     $rootScope.imageList = [];
                     $scope.commentsMainImage = [];
+                    $scope.replyMainImage = [];
                     $scope.comments = [];
                 }else{
                     $rootScope.loading = false;
@@ -202,6 +204,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $scope.commentsMainImage[index] = url;
    }
 
+   $scope.changeReplyMainImage = function(url,parent_index,index){
+        console.log("changeReplyMainImage:"+parent_index+","+index);
+        console.log($scope.replyMainImage);
+        $scope.replyMainImage[parent_index][index] = url;
+   }
+
 
 
     var path = $location.path();
@@ -211,7 +219,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     $scope.loadComments = function(id){
         $scope.commentsMainImage = [];
+        $scope.replyMainImage = [];
         $scope.comments = [];
+        var commentReply = [];
         HttpService.GetComments(id)
         .then(function(response){
             console.log(response);
@@ -228,6 +238,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                     }
                     console.log(obj);
                     obj.replies.reverse();
+
+                    commentReply = [];
                     
                     for (var j = 0; j < obj.replies.length; j++) {
                         if (obj.replies[j].label != undefined) {
@@ -242,11 +254,25 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                                 }
                             }
                         }
+                        if(obj.replies[j].embed != undefined && obj.replies[j].embed != ''){
+                            console.log("Replies Embed: "+obj.replies[j].embed);
+                            obj.replies[j].embed = obj.replies[j].embed.replace('xxx=', 'src=').replace('yyyy=', 'href=');
+                        }else{
+                            obj.replies[j].embed = "";
+                        }
+                        if(obj.replies[j] != undefined && obj.replies[j].files.length > 0){
+                            obj.replies[j]['mainImage'] = obj.replies[j].files[0].secure_url;
+                        }else if(obj.replies[j] != undefined && obj.replies[j].embed != "" && obj.replies[j].files.length == 0){
+                            obj.replies[j]['mainImage'] = obj.replies[j].embed;
+                        }
+                        commentReply.push(obj.replies[j]['mainImage']);
                     }
-
+                    $scope.replyMainImage.push(commentReply);
                     $scope.commentsMainImage.push(obj['mainImage']);
                     $scope.comments.push(obj);
                 }
+                console.log("replyMainImage:");
+                console.log($scope.replyMainImage);
             }else{
                 console.log("something went wrong");
                 // $rootScope.loading = false;
@@ -554,6 +580,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.openCommentModal = function (comment,reply){
         $rootScope.comment = comment;
         $rootScope.comment.replyLabel = reply["_id"];
+        $rootScope.comment.replyEmail = reply["email"] || '';
         $rootScope.modalInstance = $modal.open({
             templateUrl: 'app-view/comment/CommentView.html'
         });
@@ -562,6 +589,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.openCommentModalPoster = function (comment,reply){
         $rootScope.comment = comment;
         $rootScope.comment.replyLabel = reply["_id"];
+        $rootScope.comment.replyEmail = reply["email"] || '';
         $rootScope.comment.owner = "poster";
         $rootScope.modalInstance = $modal.open({
             templateUrl: 'app-view/comment/CommentView.html'

@@ -1,6 +1,11 @@
 app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpService', '$http','$window','FlashService','$modal', function( $rootScope,$scope,$location,HttpService,$http,$window,FlashService,$modal){
     var vm = this;
 
+    $scope.replyNotified = false;
+    $scope.showEmbedButtons = false;
+    $scope.replyNotifiedEmail = "";
+    $scope.replyembed = "";
+
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
     if ($scope.regions && $scope.regions.indexOf("Region") == -1){
@@ -22,7 +27,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
         $scope.regions.unshift("Region");
    };
 
-    $rootScope.tempImageList = [];
+    $rootScope.imageList = [];
 
     $scope.replyfiles = [];
 
@@ -32,14 +37,11 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
 
    $scope.deleteImage = function(index){
         console.log("Deleted");
-        $rootScope.tempImageList.splice(index, 1);
-        $scope.replyfiles = $rootScope.tempImageList;
-        console.log($rootScope.tempImageList);
+        $rootScope.imageList.splice(index, 1);
+        $scope.replyfiles = $rootScope.imageList;
+        console.log($rootScope.imageList);
         console.log($scope.replyfiles);
    };
-
- 
-
 
     // vm.state = $rootScope.search.state;
     // vm.region = $rootScope.search.region;
@@ -73,11 +75,13 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
 
      $scope.initController = function () {
 
+        console.log("comment passed: ");
         console.log($rootScope.comment);
 
         $scope.commentMessage = $rootScope.comment.body;
         $scope.commentId = $rootScope.comment["_id"];
         $scope.commentLabel = $rootScope.comment["replyLabel"];
+        $scope.commentEmail = $rootScope.comment["replyEmail"];
         $scope.commentOwner = $rootScope.comment["owner"];
 
         $http.get("/data.json")
@@ -163,6 +167,9 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
 
             var postData = {
                 "commentmessage": $scope.replymessage,
+                "commentfiles": $rootScope.imageList,
+                "commentembed": $scope.replyembed.replace("src=", "xxx=").replace("href=", "yyyy="),
+                "commentemail": $scope.replyNotifiedEmail,
                 "label":  $scope.commentLabel,
                 "owner":  $scope.commentOwner
             };
@@ -175,8 +182,32 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
                     FlashService.Success("You have successfully replied to this comment!");
                     $rootScope.loading = false;
                     $window.scrollTo(0, 0);
+                    $rootScope.imageList = [];
                     $rootScope.comment = {};
                     $rootScope.$broadcast("reloadComments");
+                    console.log($location.absUrl());
+                    console.log($rootScope.pageTitle);
+                    if ($scope.commentEmail != "") {
+                        var data = {
+                            "htmlmessage": "<p>A new comment has been added to the post [<b>"+$rootScope.pageTitle+"</b>]</p><p>To view the post <a href='"+$location.absUrl()+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>",
+                            "subject": "You have a new comment ["+$rootScope.pageTitle+"]",
+                            "sender1": $scope.commentEmail
+                        };
+
+                        HttpService.SendMail(data)
+                        .then(function(response){
+                            console.log(response);
+                            if (response.status == '200' || response.status == '250') {
+                                console.log("reply email sent successfully");
+                            }else{
+                                FlashService.Error("There was an error while submitting your request. Please try again.");
+                                // $location.path('/');
+                            };
+                            
+                        });
+                    }
+
+
                 }else{
                     console.log("something went wrong");
                     $rootScope.loading = false;
@@ -193,7 +224,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
             //     "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
             //     "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message)+" - "+estTime.toLocaleString("en-US", options)+" ET",
             //     "sender1": $scope.sender1,
-            //     "attachments": $rootScope.tempImageList,
+            //     "attachments": $rootScope.imageList,
             //     "x-from": $scope.email,
             //     "x-post-id": $scope.id
             // };
@@ -223,6 +254,23 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
         } 
         
     };
+
+    $scope.toggleReplyNotify = function(){
+        if($scope.replyNotified && $scope.replyNotified == true){
+            $scope.replyNotified = false;
+            $scope.replyNotifiedEmail = "";
+        }else{
+            $scope.replyNotified = true;
+        }
+    }
+
+    $scope.toggleEmbedButton = function(){
+        if($scope.showEmbedButtons && $scope.showEmbedButtons == true){
+            $scope.showEmbedButtons = false;
+        }else{
+            $scope.showEmbedButtons = true;
+        }
+    }
 
     $scope.closeModal = function(){
         console.log("closing modal");

@@ -406,6 +406,28 @@
                         <h5 ng-show = "reply.status == 'active'" >{{reply.body}}</h5>
                         <h5 ng-show = "reply.status == 'inactive'" style="color: #8dc63f;">The reply has been deleted</h5>
                         <h5 ng-show = "reply.status == 'flagged'" style="color: #8dc63f;">The reply has been flagged</h5>
+
+                        <div class="upload_result clearfix" ng-if = "reply.status == 'active' && (reply.files.length > 0 || reply.embed != '')">
+                          <div class="galery_full">
+                              <img ng-show = "replyMainImage[$parent.$parent.$index][$index].indexOf('iframe') == -1" src="{{replyMainImage[$parent.$parent.$index][$index]}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                              <div ng-if ="reply.embed != '' && replyMainImage[$parent.$parent.$index][$index].indexOf('iframe') > -1" ng-bind-html="reply.embed | unsafe"></div>
+                          </div>
+                          <div class="gallery_thumb">
+                            <ul>
+                                <li ng-repeat="replyfile in reply.files">
+                                  <a ng-click = "changeReplyMainImage(replyfile.secure_url,$parent.$parent.$parent.$index, $parent.$index);" href="">
+                                      <img src="{{ replyfile.secure_url}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                                  </a>
+                                </li>
+                                <li ng-if = "reply.embed != ''">
+                                  <a href="" ng-click = "changeReplyMainImage(reply.embed,$parent.$parent.$parent.$index, $index);" >
+                                      <img src="app-content/images/video-placeholder.png" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                                  </a>
+                                </li>
+                            </ul>
+                          </div>
+                        </div>
+
                         <p>posted <em><time am-time-ago="reply.created"></time></em></p>
                       </div>  
                   </div>

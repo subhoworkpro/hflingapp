@@ -4,8 +4,30 @@ var Schema = mongoose.Schema;
 
 module.exports = mongoose.model('Reply', new Schema({
     body: String,
+    email: String,
     comment: { type: Schema.Types.ObjectId, ref: 'Comment' },
     status: String,
+    files: [
+        {
+            url: String,
+            public_id: String,
+            version: String,
+            signature: String,
+            width: String,
+            height: String,
+            format: String,
+            resource_type: String,
+            created_at: String,
+            bytes: String,
+            tags: [],
+            etag: String,
+            placeholder: String,
+            secure_url: String
+        }   
+    ],
+    email: String,
+    embed: String,
+    flagreason: String,
     label: String,
     owner: String,
     created: { 

@@ -299,7 +299,7 @@
     }
     .gallery_thumb li{
         display: inline-block;
-        margin-right: 10px;
+        /*margin-right: 10px;*/
     }
     .gallery_thumb{
         overflow: inherit;

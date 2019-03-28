@@ -1774,7 +1774,7 @@ input[type=file].wd_97{
 
 .upload_result .galery_full{
     float: none;
-    max-width: 100%;
+    max-width: 550px;
 }
 
 .upload_result .gallery_thumb{
@@ -1786,12 +1786,12 @@ input[type=file].wd_97{
 .upload_result .gallery_thumb li{
     display: inline-block;
     vertical-align: middle;
-    width: 33.33%
+    /*width: 33.33%*/
 }
 
 .upload_result .gallery_thumb li a{
-    width: 100%;
-    height: 135px;
+    width: 80px;
+    height: 80px;
 }
 
 .upload_result .gallery_thumb li a img{
@@ -1882,3 +1882,29 @@ input[type=file].wd_97{
 }
 
 /*** 01-03-19 ***/
+
+/*** 24-03-19 ***/
+
+.comment_upload_outer .file_upload{
+    padding: 0 20px;
+    margin-bottom: 20px;
+}
+
+.comment_upload_outer .file_upload li a{
+    font-size: 15px;
+    background-color: #cbc8c3;
+    padding: 2px 5px;
+    display: inline-block;
+    color: #000;
+}
+
+.comment_upload_outer .notified_area a {
+    font-size: 15px;
+    color: #99d9ea;
+    font-weight: 600;
+    background: none;
+    margin: 5px 0 0;
+    padding: 0;
+}
+
+/*** 24-03-19 ***/
