@@ -582,8 +582,10 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $rootScope.comment.replyLabel = reply["_id"];
         if (reply["owner"] == "poster" && $rootScope.currentPost.data.notified == "yes") {
             $rootScope.comment.replyEmail = $rootScope.currentPost.data.email || "";
+            $rootScope.comment.ownerEmail = $rootScope.currentPost.data.email;
         }else{
             $rootScope.comment.replyEmail = reply["email"] || '';
+            $rootScope.comment.ownerEmail = $rootScope.currentPost.data.email;
         }
         $rootScope.modalInstance = $modal.open({
             templateUrl: 'app-view/comment/CommentView.html'
@@ -594,6 +596,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $rootScope.comment = comment;
         $rootScope.comment.replyLabel = reply["_id"];
         $rootScope.comment.replyEmail = reply["email"] || '';
+        $rootScope.comment.ownerEmail = $rootScope.currentPost.data.email;
         $rootScope.comment.owner = "poster";
         $rootScope.modalInstance = $modal.open({
             templateUrl: 'app-view/comment/CommentView.html'

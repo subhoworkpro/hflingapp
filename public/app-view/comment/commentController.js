@@ -83,6 +83,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
         $scope.commentLabel = $rootScope.comment["replyLabel"];
         $scope.commentEmail = $rootScope.comment["replyEmail"];
         $scope.commentOwner = $rootScope.comment["owner"];
+        $scope.ownerEmail = $rootScope.comment["ownerEmail"];
 
         $http.get("/data.json")
         .success(function (data) {
@@ -185,11 +186,14 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
                     $rootScope.imageList = [];
                     $rootScope.comment = {};
                     $rootScope.$broadcast("reloadComments");
-                    console.log($location.absUrl());
-                    console.log($rootScope.pageTitle);
+                    
                     if ($scope.commentEmail != "") {
+                        var postLink = $location.absUrl();
+                        if ($scope.commentEmail == $scope.ownerEmail) {
+                            postLink = postLink + "?edit=true";
+                        }
                         var data = {
-                            "htmlmessage": "<p>A new comment has been added to the post [<b>"+$rootScope.pageTitle+"</b>]</p><p>To view the post <a href='"+$location.absUrl()+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>",
+                            "htmlmessage": "<p>A new comment has been added to the post [<b>"+$rootScope.pageTitle+"</b>]</p><p>To view the post <a href='"+postLink+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>",
                             "subject": "You have a new comment ["+$rootScope.pageTitle+"]",
                             "sender1": $scope.commentEmail
                         };
