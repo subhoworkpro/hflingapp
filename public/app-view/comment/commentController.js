@@ -27,7 +27,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
         $scope.regions.unshift("Region");
    };
 
-    $rootScope.imageList = [];
+    $rootScope.tempImageList = [];
 
     $scope.replyfiles = [];
 
@@ -37,9 +37,9 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
 
    $scope.deleteImage = function(index){
         console.log("Deleted");
-        $rootScope.imageList.splice(index, 1);
-        $scope.replyfiles = $rootScope.imageList;
-        console.log($rootScope.imageList);
+        $rootScope.tempImageList.splice(index, 1);
+        $scope.replyfiles = $rootScope.tempImageList;
+        console.log($rootScope.tempImageList);
         console.log($scope.replyfiles);
    };
 
@@ -168,7 +168,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
 
             var postData = {
                 "commentmessage": $scope.replymessage,
-                "commentfiles": $rootScope.imageList,
+                "commentfiles": $rootScope.tempImageList,
                 "commentembed": $scope.replyembed.replace("src=", "xxx=").replace("href=", "yyyy="),
                 "commentemail": $scope.replyNotifiedEmail,
                 "label":  $scope.commentLabel,
@@ -184,7 +184,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
                     FlashService.Success("You have successfully replied to this comment!");
                     $rootScope.loading = false;
                     $window.scrollTo(0, 0);
-                    $rootScope.imageList = [];
+                    $rootScope.tempImageList = [];
                     $rootScope.comment = {};
                     $rootScope.$broadcast("reloadComments");
 
@@ -229,7 +229,7 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
             //     "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team",
             //     "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message)+" - "+estTime.toLocaleString("en-US", options)+" ET",
             //     "sender1": $scope.sender1,
-            //     "attachments": $rootScope.imageList,
+            //     "attachments": $rootScope.tempImageList,
             //     "x-from": $scope.email,
             //     "x-post-id": $scope.id
             // };

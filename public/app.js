@@ -325,6 +325,50 @@ app.directive('ngFileModel', ['$parse','$http','$rootScope', function ($parse,$h
 }]);
 
 
+app.directive('ngReplyFileModel', ['$parse','$http','$rootScope', function ($parse,$http,$rootScope) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            var model = $parse(attrs.ngFileModel);
+            var isMultiple = attrs.multiple;
+            var modelSetter = model.assign;
+            element.bind('change', function () {
+                $rootScope.loadingImage = true;
+                var values = [];
+                angular.forEach(element[0].files, function (item) {
+                    var fileReader = new FileReader();
+                    var myFormData = new FormData();
+                    fileReader.onload = function (event) {
+                        console.log(item);
+                        myFormData.append('imgUploader', item);
+                        $http.post("/api/uploadimagestolocal",myFormData, {transformRequest: angular.identity, headers: {'Content-Type': undefined}})
+                        .success(function (data) {
+                            console.log(data);
+                            values.push(data);
+                            $rootScope.tempImageList.push(data);
+                            console.log($rootScope.loadingImage);
+                        })
+                        .error(function (data) {
+                            console.log("there was an error");
+                        });
+                    };
+                    fileReader.readAsDataURL(item);
+                    
+                });
+                scope.$apply(function () {
+                    if (isMultiple) {
+                        modelSetter(scope, values);
+                    } else {
+                        modelSetter(scope, values[0]);
+                    }
+                });
+                angular.element("input[type='file']").val(null);
+            });
+        }
+    };
+}]);
+
+
 app.directive('ngTempFileModel', ['$parse','$http','$rootScope', function ($parse,$http,$rootScope) {
     return {
         restrict: 'A',

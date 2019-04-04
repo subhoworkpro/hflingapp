@@ -65,7 +65,7 @@
                     <ul>
                       <li>
                         <a href="javascript:void(0)">
-                          <input type="file" class="cust_file wd_97" ng-file-model="vm.data.files" multiple style="color: transparent;" />
+                          <input type="file" class="cust_file wd_97" ng-reply-file-model="vm.data.files" multiple style="color: transparent;" />
                           <i class="fa fa-picture-o"></i>
                         </a>
                       </li>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="file_results">
                     <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
-                    <div class="upload_item" ng-repeat="file in imageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
+                    <div class="upload_item" ng-repeat="file in tempImageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
                   </div>
 
                  <div class="notified_area">
