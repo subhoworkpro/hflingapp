@@ -350,6 +350,7 @@ exports.reply_a_comment= function(req, res) {
         comment: req.params.commentId // assign the _id from the post
       });
       reply.save(function (err, reply) {
+        let replyEmail = req.body.replyEmail || '';
         if (err) {
           return handleError(err);
         }
@@ -358,13 +359,36 @@ exports.reply_a_comment= function(req, res) {
 
         comment.replies.unshift(reply);
         console.log(comment.replies);
+
+        if (replyEmail && replyEmail != '') {
+          var mailBody = '';
+          if (replyEmail.toLowerCase() == post.email.toLowerCase()) {
+            mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"?edit=true'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
+          }else{
+            mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
+          }
+          var mailOptions = {
+              from: 'Healthy Fling <info@healthyfling.com>', // sender address
+              to: replyEmail,
+              subject: "You have a new comment ["+post.title+"]",
+              html: mailBody
+          };
+
+          transporter.sendMail(mailOptions, function(error, info){
+              if(error){
+                  console.log(error);
+              }else{
+                  console.log('Message sent: ' + info.response);
+              };
+          });
+        }
         
         comment.save(function(err, comment) {
           if (err){
             console.log(err);
             res.send(err);
           }
-          if(comment.email && comment.email != ""){
+          if(comment.email && comment.email != "" && replyEmail.toLowerCase() != comment.email.toLowerCase()){
             var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view the post <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
             var mailOptions = {
                 from: 'Healthy Fling <info@healthyfling.com>', // sender address

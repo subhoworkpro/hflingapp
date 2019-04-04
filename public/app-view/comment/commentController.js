@@ -172,7 +172,8 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
                 "commentembed": $scope.replyembed.replace("src=", "xxx=").replace("href=", "yyyy="),
                 "commentemail": $scope.replyNotifiedEmail,
                 "label":  $scope.commentLabel,
-                "owner":  $scope.commentOwner
+                "owner":  $scope.commentOwner,
+                "replyEmail" : $scope.commentEmail
             };
 
             HttpService.ReplyAComment($scope.commentId, postData)
@@ -186,30 +187,30 @@ app.controller('CommentController', ['$rootScope','$scope', '$location', 'HttpSe
                     $rootScope.imageList = [];
                     $rootScope.comment = {};
                     $rootScope.$broadcast("reloadComments");
-                    
-                    if ($scope.commentEmail != "") {
-                        var postLink = $location.absUrl();
-                        if ($scope.commentEmail == $scope.ownerEmail) {
-                            postLink = postLink + "?edit=true";
-                        }
-                        var data = {
-                            "htmlmessage": "<p>A new comment has been added to the post [<b>"+$rootScope.pageTitle+"</b>]</p><p>To view the post <a href='"+postLink+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>",
-                            "subject": "You have a new comment ["+$rootScope.pageTitle+"]",
-                            "sender1": $scope.commentEmail
-                        };
 
-                        HttpService.SendMail(data)
-                        .then(function(response){
-                            console.log(response);
-                            if (response.status == '200' || response.status == '250') {
-                                console.log("reply email sent successfully");
-                            }else{
-                                FlashService.Error("There was an error while submitting your request. Please try again.");
-                                // $location.path('/');
-                            };
+                    // if ($scope.commentEmail != "") {
+                    //     var postLink = $location.absUrl();
+                    //     if ($scope.commentEmail == $scope.ownerEmail) {
+                    //         postLink = postLink + "?edit=true";
+                    //     }
+                    //     var data = {
+                    //         "htmlmessage": "<p>A new comment has been added to the post [<b>"+$rootScope.pageTitle+"</b>]</p><p>To view the post <a href='"+postLink+"'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>",
+                    //         "subject": "You have a new comment ["+$rootScope.pageTitle+"]",
+                    //         "sender1": $scope.commentEmail
+                    //     };
+
+                    //     HttpService.SendMail(data)
+                    //     .then(function(response){
+                    //         console.log(response);
+                    //         if (response.status == '200' || response.status == '250') {
+                    //             console.log("reply email sent successfully");
+                    //         }else{
+                    //             FlashService.Error("There was an error while submitting your request. Please try again.");
+                    //             // $location.path('/');
+                    //         };
                             
-                        });
-                    }
+                    //     });
+                    // }
 
 
                 }else{
