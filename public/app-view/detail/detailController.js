@@ -44,6 +44,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
      $scope.changeListInCtrl = function(data){
         if(data != "" && data != undefined && data != "State" && data != "Provinces"){
+            $rootScope.masterList = $rootScope.masterListAll[vm.country];
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
             $scope.regions = $rootScope.regionList;
@@ -448,10 +449,16 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 }else if($location.url().indexOf("msg=true") > -1){
                     FlashService.Success("You have successfully replied to this post, you may or may not get a response from this poster.");
                 }
+
+                vm.country = response.data.country || "United States";
+                
+                $rootScope.masterList = $rootScope.masterListAll[vm.country];
+                console.log($rootScope.masterListAll);
+                console.log($rootScope.masterList);
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;
                 console.log("success");
-                vm.country = response.data.country || "United States";
+                
                 vm.state = response.data.state;
                 vm.region = response.data.region;
                 vm.category = response.data.category;
