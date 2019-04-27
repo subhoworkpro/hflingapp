@@ -308,7 +308,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 vm.state = "Provinces";
             }
         }else{
-            // $scope.regions = ['Region'];
+            $rootScope.stateList = ['State'];
+            $scope.states = $rootScope.stateList;
         }
    };
 
