@@ -225,8 +225,16 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
             console.log("there was an error");
         });
 
-       $rootScope.countryList = ['Country',"United States"]; 
-       $rootScope.stateList = ['State',"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "District of Columbia", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Territories"];
+        $http.get("/data_country.json")
+        .success(function (data) {
+            $rootScope.masterListAll = data;
+        })
+        .error(function (data) {
+            console.log("there was an error");
+        });
+
+       $rootScope.countryList = ['Country', "United States", "Canada", "Australia", "United Kingdom", "South Africa"]; 
+       $rootScope.stateList = ['State'];
        $rootScope.regionList = ['Region'];
        $rootScope.categoryList = ['Category','Men Seeking Woman','Women Seeking Men', 'Men Seeking Men', 'Woman Seeking Woman','t4m', 'm4t', 't4w', 'w4t', 't4t', 'mw4mw', 'mw4w', 'mw4m', 'w4mw', 'm4mw', 'w4ww', 'm4mm', 'mm4m', 'ww4w', 'ww4m', 'mm4w', 'm4ww', 'w4mm', 't4mw', 'mw4t'];
        $rootScope.locationList = ['Location','Location1','Location2'];

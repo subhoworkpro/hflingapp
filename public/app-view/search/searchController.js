@@ -26,7 +26,7 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
     $scope.categories = $rootScope.categoryList;
 
     $scope.changeListInCtrl = function(data){
-        if(data != "" && data != undefined && data != "State"){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
             $scope.regions = $rootScope.regionList;
@@ -37,6 +37,30 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
             });
         }else{
             $scope.regions = ['Region'];
+        }
+   };
+
+   $scope.changeStateListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $rootScope.masterList = $rootScope.masterListAll[data];
+            $rootScope.stateList = Object.keys($rootScope.masterListAll[data]);
+            $scope.states = $rootScope.stateList;
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+                $rootScope.regionList = $rootScope.masterList["State"];
+                $scope.regions = $rootScope.regionList;
+                $scope.regions.unshift("Region");
+                var temp = $scope.regions;
+                $scope.regions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }else if(data == "Canada"){
+                console.log($scope.states);
+                vm.state = "Provinces";
+            }
+        }else{
+            // $scope.regions = ['Region'];
         }
    };
 
@@ -143,13 +167,13 @@ app.controller('SearchController', ['$rootScope','$scope','$location' ,'HttpServ
         });
     }
 
-    vm.searchFilter = function (state,region,category) {
-        if(state == 'State' && region == 'Region'){
+    vm.searchFilter = function (country,state,region,category) {
+        if(country == 'Country' && state == 'State' && region == 'Region'){
             console.log("Do nothing");
         }else{
             // $rootScope.loading = true;
-            $rootScope.search.country = "United States";
-            vm.country = "United States";
+            $rootScope.search.country = country;
+            vm.country = country;
             $rootScope.search.state = state;
             vm.state = state;
             $rootScope.search.region = region;

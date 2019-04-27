@@ -7,6 +7,9 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
 
+    $scope.newstates = ["State"];
+    $scope.newregions = [];
+
     $scope.haircolorList = $rootScope.haircolorList;
     $scope.heightList = $rootScope.heightList;
     $scope.ethnicityList = $rootScope.ethnicityList;
@@ -44,11 +47,76 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $rootScope.imageList = [];
 
-    $scope.changeListInCtrl = function(data){
-        $rootScope.regionList = $rootScope.masterList[data];
-        console.log("list updated:"+data);
-        $scope.regions = $rootScope.regionList
-        $scope.regions.unshift("Region");
+     $scope.changeListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
+            $rootScope.regionList = $rootScope.masterList[data];
+            console.log("list updated:"+data);
+            $scope.regions = $rootScope.regionList;
+            $scope.regions.unshift("Region");
+            var temp = $scope.regions;
+            $scope.regions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
+        }else{
+            $scope.regions = ['Region'];
+        }
+   };
+
+   $scope.changeStateListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $rootScope.masterList = $rootScope.masterListAll[data];
+            $rootScope.stateList = Object.keys($rootScope.masterListAll[data]);
+            $scope.states = $rootScope.stateList;
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+                $rootScope.regionList = $rootScope.masterList["State"];
+                $scope.regions = $rootScope.regionList;
+                $scope.regions.unshift("Region");
+                var temp = $scope.regions;
+                $scope.regions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }else if(data == "Canada"){
+                console.log($scope.states);
+                vm.state = "Provinces";
+            }
+        }else{
+            // $scope.regions = ['Region'];
+        }
+   };
+
+
+   $scope.changeNewPostList = function(data){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
+            $scope.newregions = $scope.newmasterList[data];
+            $scope.newregions.unshift("Region");
+            var temp = $scope.newregions;
+            $scope.newregions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
+        }else{
+            $scope.newregions = ['Region'];
+        }
+   };
+
+   $scope.changeNewPostStateList = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $scope.newmasterList = $rootScope.masterListAll[data];
+            $scope.newstates = Object.keys($rootScope.masterListAll[data]);
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+                $scope.newregions = $scope.newmasterList["State"];
+                $scope.newregions.unshift("Region");
+                var temp = $scope.newregions;
+                $scope.newregions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }
+        }else{
+            // $scope.regions = ['Region'];
+        }
    };
 
    $scope.stopLoader = function(){
@@ -142,7 +210,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
             $scope.showRequiredCountryError = true;
             // alert("Please Select, Region and Category."); 
         }
-        if ((!$scope.state ||$scope.state == 'State')){
+        if ((!$scope.state ||$scope.state == 'State' || $scope.state == 'Provinces') && ($scope.country == "United States" || $scope.country == "Canada")){
             $scope.showRequiredStateError = true;
             // alert("Please Select, Region and Category."); 
         }
@@ -272,6 +340,7 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
             // console.log(vm.data.files);
             var postData = {
                 "title": $scope.title, 
+                "country": $scope.country,
                 "state": $scope.state, 
                 "region": $scope.region, 
                 "category": $scope.category, 
@@ -360,12 +429,21 @@ app.controller('EditController', ['$rootScope','$scope','$location' ,'HttpServic
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.sender1 = $rootScope.currentPost.data.email;
-                $scope.country = "United States";
+                $scope.country = $rootScope.currentPost.data.country;
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
                 $scope.files = $rootScope.currentPost.data.files;
                 $rootScope.imageList = $rootScope.currentPost.data.files;
+
+                $scope.newmasterList = $rootScope.masterListAll[$scope.country];
+                $scope.newstates = Object.keys($rootScope.masterListAll[$scope.country]);
+                if ($scope.country == "United States" || $scope.country == "Canada") {
+                    $scope.newregions = $scope.newmasterList[$scope.state];
+                }else{
+                    $scope.newregions = $scope.newmasterList["State"];
+                }
+                $scope.newregions.unshift("Region");
 
                 $scope.haircolor = $rootScope.currentPost.data.haircolor || "Hair Color";
                 $scope.height = $rootScope.currentPost.data.height || "Height";

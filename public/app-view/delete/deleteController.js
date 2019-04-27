@@ -28,8 +28,8 @@ app.controller('DeleteController', ['$rootScope','$scope', '$location', 'HttpSer
     $scope.savedPreference = ($rootScope.savedPreference == "locked");
     vm.savedPreference = ($rootScope.savedPreference == "locked");
 
-    $scope.changeListInCtrl = function(data){
-        if(data != "" && data != undefined && data != "State"){
+     $scope.changeListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
             $scope.regions = $rootScope.regionList;
@@ -40,6 +40,30 @@ app.controller('DeleteController', ['$rootScope','$scope', '$location', 'HttpSer
             });
         }else{
             $scope.regions = ['Region'];
+        }
+   };
+
+   $scope.changeStateListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $rootScope.masterList = $rootScope.masterListAll[data];
+            $rootScope.stateList = Object.keys($rootScope.masterListAll[data]);
+            $scope.states = $rootScope.stateList;
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+                $rootScope.regionList = $rootScope.masterList["State"];
+                $scope.regions = $rootScope.regionList;
+                $scope.regions.unshift("Region");
+                var temp = $scope.regions;
+                $scope.regions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }else if(data == "Canada"){
+                console.log($scope.states);
+                vm.state = "Provinces";
+            }
+        }else{
+            // $scope.regions = ['Region'];
         }
    };
 

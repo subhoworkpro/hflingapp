@@ -7,6 +7,9 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     $scope.states = $rootScope.stateList;
     $scope.regions = $rootScope.regionList;
 
+    $scope.newstates = ["State"];
+    $scope.newregions = [];
+
     $scope.haircolors = $rootScope.haircolorList;
     $scope.heights = $rootScope.heightList;
     $scope.ethnicity = $rootScope.ethnicityList;
@@ -51,7 +54,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
     $rootScope.imageList = [];
 
     $scope.changeListInCtrl = function(data){
-        if(data != "" && data != undefined && data != "State"){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
             $scope.regions = $rootScope.regionList;
@@ -62,6 +65,62 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
             });
         }else{
             $scope.regions = ['Region'];
+        }
+   };
+
+   $scope.changeStateListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $rootScope.masterList = $rootScope.masterListAll[data];
+            $rootScope.stateList = Object.keys($rootScope.masterListAll[data]);
+            $scope.states = $rootScope.stateList;
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+                $rootScope.regionList = $rootScope.masterList["State"];
+                $scope.regions = $rootScope.regionList;
+                $scope.regions.unshift("Region");
+                var temp = $scope.regions;
+                $scope.regions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }else if(data == "Canada"){
+                console.log($scope.states);
+                vm.state = "Provinces";
+            }
+        }else{
+            // $scope.regions = ['Region'];
+        }
+   };
+
+   $scope.changeNewPostList = function(data){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
+            $scope.newregions = $scope.newmasterList[data];
+            $scope.newregions.unshift("Region");
+            var temp = $scope.newregions;
+            $scope.newregions = temp.filter(function(item, pos){
+              return temp.indexOf(item)== pos; 
+            });
+        }else{
+            $scope.newregions = ['Region'];
+        }
+   };
+
+   $scope.changeNewPostStateList = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $scope.newmasterList = $rootScope.masterListAll[data];
+            $scope.newstates = Object.keys($rootScope.masterListAll[data]);
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+                $scope.newregions = $scope.newmasterList["State"];
+                $scope.newregions.unshift("Region");
+                var temp = $scope.newregions;
+                $scope.newregions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }
+        }else{
+            // $scope.regions = ['Region'];
         }
    };
 
@@ -186,7 +245,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			vm.showRequiredCountryError = true;
 			// alert("Please Select, Region and Category."); 
 		}
-		if ((!vm.data.state ||vm.data.state == 'State')){
+		if ((!vm.data.state ||vm.data.state == 'State' || vm.data.state == 'Provinces') && (vm.data.country == "United States" || vm.data.country == "Canada")){
 			vm.showRequiredStateError = true;
 			// alert("Please Select, Region and Category."); 
 		}
@@ -330,7 +389,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			$rootScope.loading = true;
             console.log(vm.data.files);
 			var postData = {
-				"title": this.data.title, 
+				"title": this.data.title,
+				"country": this.data.country,
 				"state": this.data.state, 
 			    "region": this.data.region, 
 			    "category": this.data.category, 

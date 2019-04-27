@@ -1908,3 +1908,14 @@ input[type=file].wd_97{
 }
 
 /*** 24-03-19 ***/
+
+/*** 27-04-19 ***/
+
+.select_three .select_area {
+    -ms-flex: 0 0 25%;
+    -webkit-box-flex: 0;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+/*** 27-04-19 ***/

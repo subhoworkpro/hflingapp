@@ -2,12 +2,12 @@
     <div class="select_sec" ng-controller = "DetailController" >
       <div class="container">
           <div class="select_inr">
-            <div class="select_item"> 
+            <div class="select_item" ng-class="{select_three: vm.country != 'United States' && vm.country != 'Canada' && vm.country != 'Country'}"> 
                 <div class="select_area">
-                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries"  ng-init="vm.country = vm.country || 'Country'">
+                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries"  ng-change="changeStateListInCtrl(vm.country);vm.state = states[0];" ng-init = "changeStateListInCtrl(vm.country);">
                   </select>
                 </div>
-                <div class="select_area">
+                <div class="select_area" ng-show ="vm.country == 'United States' || vm.country == 'Canada' || vm.country == 'Country'">
                   <select name="number" class="block" ng-model="vm.state" ng-options="x for x in states" ng-change="changeListInCtrl(vm.state);" ng-init = "changeListInCtrl(vm.state)">
                   </select>
                 </div>
@@ -76,10 +76,10 @@
       <div class="container">
          <div class="bread_cnt">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item" ng-if ="country"><a href="" ng-click="vm.searchFilter(state,'Region','Category')">{{country}}</a></li>
-              <li class="breadcrumb-item" ng-if ="state"><a href="" ng-click="vm.searchFilter(state,'Region','Category')">{{state}}</a></li>
-              <li class="breadcrumb-item" ng-if ="region"><a href="" ng-click="vm.searchFilter(state,region,'Category')">{{region}}</a></li>
-               <li class="breadcrumb-item" ng-if ="category"><a href="" ng-click="vm.searchFilter(state,region,category)">{{category}}</a></li>
+              <li class="breadcrumb-item" ng-if ="country"><a href="" ng-click="vm.searchFilter(country,'State','Region','Category')">{{country}}</a></li>
+              <li class="breadcrumb-item" ng-if ="state && (country == 'United States' || country == 'Canada')"><a href="" ng-click="vm.searchFilter(country,state,'Region','Category')">{{state}}</a></li>
+              <li class="breadcrumb-item" ng-if ="region"><a href="" ng-click="vm.searchFilter(country,state,region,'Category')">{{region}}</a></li>
+               <li class="breadcrumb-item" ng-if ="category"><a href="" ng-click="vm.searchFilter(country,state,region,category)">{{category}}</a></li>
             </ol>
         </div>
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>

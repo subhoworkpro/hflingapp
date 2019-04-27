@@ -61,6 +61,7 @@ exports.create_a_post = function(req, res) {
   console.log(req.body.state);  
   var new_post = new Post({
             title: req.body.title,
+            country: req.body.country,
             state: req.body.state, 
             region: req.body.region,
             category: req.body.category,
@@ -627,6 +628,9 @@ exports.edit_a_post= function(req, res) {
       res.send(err);
     if(req.body.title){
       post.title = req.body.title;
+    }
+    if(req.body.country){
+      post.country = req.body.country;
     }
     if(req.body.state){
       post.state = req.body.state;

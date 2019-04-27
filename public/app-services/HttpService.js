@@ -32,10 +32,17 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
 
             var params = "";
 
-            if($rootScope.search.state == "State" || $rootScope.search.state == ""){
+            if($rootScope.search.country == "Country" || $rootScope.search.country == ""){
+                $rootScope.search.country = "";
+            }else if($rootScope.search.country == "United States"){
+                console.log("do nothing"); //Hack for existing records
+            }else{
+                params = params + "country="+$rootScope.search.country;
+            }
+            if($rootScope.search.state == "State" || $rootScope.search.state == "" || $rootScope.search.state == "Provinces"){
                 $rootScope.search.state = "";
             }else{
-                params = params + "state="+$rootScope.search.state;
+                params = params + "&state="+$rootScope.search.state;
             }
             if($rootScope.search.region == "Region" || $rootScope.search.region == ""){
                 $rootScope.search.region = "";
