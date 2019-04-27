@@ -39,7 +39,9 @@ app.controller('DeleteController', ['$rootScope','$scope', '$location', 'HttpSer
               return temp.indexOf(item)== pos; 
             });
         }else{
-            $scope.regions = ['Region'];
+            if (vm.country == "United States" || vm.country == "Canada") {
+                $scope.regions = ['Region'];   
+            }
         }
    };
 
@@ -50,7 +52,7 @@ app.controller('DeleteController', ['$rootScope','$scope', '$location', 'HttpSer
             $scope.states = $rootScope.stateList;
             // $rootScope.regionList = $rootScope.masterListAll[data];
             console.log("list updated:"+data);
-            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+            if (data != "United States" && data != "Canada") {
                 $rootScope.regionList = $rootScope.masterList["State"];
                 $scope.regions = $rootScope.regionList;
                 $scope.regions.unshift("Region");
@@ -269,8 +271,8 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
     $scope.savedPreference = ($rootScope.savedPreference == "locked");
     vm.savedPreference = ($rootScope.savedPreference == "locked");
 
-    $scope.changeListInCtrl = function(data){
-        if(data != "" && data != undefined && data != "State"){
+     $scope.changeListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "State" && data != "Provinces"){
             $rootScope.regionList = $rootScope.masterList[data];
             console.log("list updated:"+data);
             $scope.regions = $rootScope.regionList;
@@ -280,7 +282,33 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
               return temp.indexOf(item)== pos; 
             });
         }else{
-            $scope.regions = ['Region'];
+            if (vm.country == "United States" || vm.country == "Canada") {
+                $scope.regions = ['Region'];   
+            }
+        }
+   };
+
+   $scope.changeStateListInCtrl = function(data){
+        if(data != "" && data != undefined && data != "Country"){
+            $rootScope.masterList = $rootScope.masterListAll[data];
+            $rootScope.stateList = Object.keys($rootScope.masterListAll[data]);
+            $scope.states = $rootScope.stateList;
+            // $rootScope.regionList = $rootScope.masterListAll[data];
+            console.log("list updated:"+data);
+            if (data != "United States" && data != "Canada") {
+                $rootScope.regionList = $rootScope.masterList["State"];
+                $scope.regions = $rootScope.regionList;
+                $scope.regions.unshift("Region");
+                var temp = $scope.regions;
+                $scope.regions = temp.filter(function(item, pos){
+                  return temp.indexOf(item)== pos; 
+                });
+            }else if(data == "Canada"){
+                console.log($scope.states);
+                vm.state = "Provinces";
+            }
+        }else{
+            // $scope.regions = ['Region'];
         }
    };
 
@@ -607,10 +635,17 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     $scope.initController = function () {
 
-        $http.get("/data.json")
+        // $http.get("/data.json")
+        // .success(function (data) {
+        //     $rootScope.masterList = data;
+        // })
+
+        $http.get("/data_country.json")
         .success(function (data) {
-            $rootScope.masterList = data;
-        })
+            $rootScope.masterListAll = data;
+            console.log(data);
+            console.log(Object.keys(data));
+        });
 
         $rootScope.is_flagged = false;
 
@@ -644,7 +679,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $rootScope.regionList = $rootScope.masterList[response.data.state];
                 $scope.regions = $rootScope.regionList;
                 console.log("success");
-                vm.country = "United States";
+                vm.country = response.data.country || "United States";
                 vm.state = response.data.state;
                 vm.region = response.data.region;
                 vm.category = response.data.category;
@@ -657,7 +692,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
                 $scope.region = $rootScope.currentPost.data.region;
                 $scope.location = $rootScope.currentPost.data.location;
                 $scope.sender1 = $rootScope.currentPost.data.email;
-                $scope.country = "United States";
+                $scope.country = $rootScope.currentPost.data.country || "United States";
                 $scope.state = $rootScope.currentPost.data.state;
                 $scope.category = $rootScope.currentPost.data.category;
                 $scope.created = $rootScope.currentPost.data.created;
@@ -712,7 +747,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     vm.search = function () {
         $rootScope.loading = true;
-        $rootScope.search.country = "United States";
+        $rootScope.search.country = this.country;
         $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
@@ -720,12 +755,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         $location.path('/search');
     };
 
-    vm.searchFilter = function (state,region,category) {
-        if(state == 'State' && region == 'Region'){
+    vm.searchFilter = function (country, state,region,category) {
+        if(country == 'Country' && state == 'State' && region == 'Region'){
             console.log("Do nothing");
         }else{
             $rootScope.loading = true;
-            $rootScope.search.country = "United States";
+            $rootScope.search.country = country;
             $rootScope.search.state = state;
             $rootScope.search.region = region;
             $rootScope.search.category = category;

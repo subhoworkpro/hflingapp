@@ -535,15 +535,307 @@
 	    "Yukon Territory": ["WHITEHORSE"]
 	},
 
-	"Australia": {
-		"State": ["ADELAIDE","BRISBANE","CAIRNS","CANBERRA","DARWIN","GOLD COAST","MELBOURNE","NEWCASTLE, NSW","PERTH","SYDNEY","TASMANIA","WOLLONGONG"]
+	"Austria" : {
+		"State": ["VIENNA"]
+	},
+
+	"Belgium" : {
+		"State": ["BELGIUM"]
+	},
+
+	"Bulgaria" : {
+		"State": ["BULGARIA"]
+	},
+
+	"Croatia" : {
+		"State": ["CROATIA"]
+	},
+
+	"Czech Republic" : {
+		"State": ["PRAGUE"]
+	},
+
+	"Denmark" : {
+		"State": ["COPENHAGEN"]
+	},
+
+	"Finland" : {
+		"State": ["FINLAND"]
+	},
+
+	"France" : {
+		"State": ["BORDEAUX","BRITTANY","GRENOBLE","LILLE","LOIRE VALLEY","LYON","MARSEILLE","MONTPELLIER","NICE / COTE DAZUR","NORMANDY","PARIS","STRASBOURG","TOULOUSE"]
+	},
+
+	"Germany" : {
+		"State": ["BERLIN","BREMEN","COLOGNE","DRESDEN","DUSSELDORF","ESSEN / RUHR","FRANKFURT","HAMBURG","HANNOVER","HEIDELBERG","KAISERSLAUTERN","LEIPZIG","MUNICH","NUREMBERG","STUTTGART"]
+	},
+
+	"Greece" : {
+		"State": ["GREECE"]
+	},
+
+	"Hungary" : {
+		"State": ["BUDAPEST"]
+	},
+
+	"Iceland" : {
+		"State": ["REYKJAVIK"]
+	},
+
+	"Ireland" : {
+		"State": ["DUBLIN"]
+	},
+
+	"Italy" : {
+		"State": ["BOLOGNA","FLORENCE / TUSCANY","GENOA","MILAN","NAPOLI / CAMPANIA","PERUGIA","ROME","SARDINIA","SICILIA","TORINO","VENICE / VENETO"]
+	},
+
+	"Luxembourg" : {
+		"State": ["LUXEMBOURG"]
+	},
+
+	"Netherlands" : {
+		"State": ["AMSTERDAM / RANDSTAD"]
+	},
+
+	"Norway" : {
+		"State": ["NORWAY"]
+	},
+
+	"Poland" : {
+		"State": ["POLAND"]
+	},
+
+	"Portugal" : {
+		"State": ["FARO / ALGARVE","LISBON","PORTO"]
+	},
+
+	"Romania" : {
+		"State": ["ROMANIA"]
+	},
+
+	"Russian Federation" : {
+		"State": ["MOSCOW","ST PETERSBURG"]
+	},
+
+	"Spain" : {
+		"State": ["ALICANTE","BALEARES","BARCELONA","BILBAO","CADIZ","CANARIAS","GRANADA","MADRID","MALAGA","SEVILLA","VALENCIA"]
+	},
+
+	"Sweden" : {
+		"State": ["SWEDEN"]
+	},
+
+	"Switzerland" : {
+		"State": ["BASEL","BERN","GENEVA","LAUSANNE","ZURICH"]
+	},
+
+	"Turkey" : {
+		"State": ["TURKEY"]
+	},
+
+	"Ukraine" : {
+		"State": ["UKRAINE"]
 	},
 
 	"United Kingdom": {
 		"State": ["ABERDEEN","BATH","BELFAST","BIRMINGHAM / WEST MIDS","BRIGHTON","BRISTOL","CAMBRIDGE, UK","CARDIFF / WALES","COVENTRY","DERBY","DEVON &AMP; CORNWALL","DUNDEE","EAST ANGLIA","EAST MIDLANDS","EDINBURGH","ESSEX","GLASGOW","HAMPSHIRE","KENT","LEEDS","LIVERPOOL","LONDON","MANCHESTER","NEWCASTLE / NE ENGLAND","NOTTINGHAM","OXFORD","SHEFFIELD"]
 	},
 
+	"Bangladesh" : {
+		"State": ["BANGLADESH"]
+	},
+
+	"China" : {
+		"State": ["BEIJING","CHENGDU","CHONGQING","DALIAN","GUANGZHOU","HANGZHOU","NANJING","SHANGHAI","SHENYANG","SHENZHEN","WUHAN","XIAN"]
+	},
+
+	"Guam / Micronesia" : {
+		"State": ["GUAM-MICRONESIA"]
+	},
+
+	"Hong Kong" : {
+		"State": ["HONG KONG"]
+	},
+
+	"India" : {
+		"State": ["AHMEDABAD","BANGALORE","BHUBANESWAR","CHANDIGARH","CHENNAI (MADRAS)","DELHI","GOA","HYDERABAD","INDORE","JAIPUR","KERALA","KOLKATA (CALCUTTA)","LUCKNOW","MUMBAI","PUNE","SURAT SURAT"]
+	},
+
+	"Indonesia" : {
+		"State": ["INDONESIA"]
+	},
+
+	"Iran" : {
+		"State": ["IRAN"]
+	},
+
+	"Iraq" : {
+		"State": ["IRAQ"]
+	},
+
+	"Israel and Palestine" : {
+		"State": ["HAIFA","JERUSALEM","TEL AVIV","WEST BANK"]
+	},
+
+	"Japan" : {
+		"State": ["FUKUOKA","HIROSHIMA","NAGOYA","OKINAWA","OSAKA-KOBE-KYOTO","SAPPORO","SENDAI","TOKYO"]
+	},
+
+	"Korea" : {
+		"State": ["SEOUL"]
+	},
+
+	"Kuwait" : {
+		"State": ["KUWAIT"]
+	},
+
+	"Lebanon" : {
+		"State": ["BEIRUT, LEBANON"]
+	},
+
+	"Malaysia" : {
+		"State": ["MALAYSIA"]
+	},
+
+	"Pakistan" : {
+		"State": ["PAKISTAN"]
+	},
+
+	"Philippines" : {
+		"State": ["BACOLOD","BICOL REGION","CAGAYAN DE ORO","CEBU","DAVAO CITY","ILOILO","MANILA","PAMPANGA","ZAMBOANGA"]
+	},
+
+	"Singapore" : {
+		"State": ["SINGAPORE"]
+	},
+
+	"Taiwan" : {
+		"State": ["TAIWAN"]
+	},
+
+	"Thailand" : {
+		"State": ["THAILAND"]
+	},
+
+	"United Arab Emirates" : {
+		"State": ["UNITED ARAB EMIRATES"]
+	},
+
+	"Vietnam" : {
+		"State": ["VIETNAM"]
+	},
+
+	"Australia": {
+		"State": ["ADELAIDE","BRISBANE","CAIRNS","CANBERRA","DARWIN","GOLD COAST","MELBOURNE","NEWCASTLE, NSW","PERTH","SYDNEY","TASMANIA","WOLLONGONG"]
+	},
+
+	"New Zealand": {
+		"State": ["AUCKLAND","CHRISTCHURCH","DUNEDIN","WELLINGTON"]
+	},
+
+	"Argentina" : {
+		"State": ["BUENOS AIRES"]
+	},
+
+	"Bolivia" : {
+		"State": ["BOLIVIA"]
+	},
+
+	"Brazil" : {
+		"State": ["BELO HORIZONTE","BRASILIA","CURITIBA","FORTALEZA","PORTO ALEGRE","RECIFE","RIO DE JANEIRO","SALVADOR, BAHIA","SAO PAULO"]
+	},
+
+	"Caribbean Islands" : {
+		"State": ["CARIBBEAN ISLANDS"]
+	},
+
+	"Chile" : {
+		"State": ["CHILE"]
+	},
+
+	"Colombia" : {
+		"State": ["COLOMBIA"]
+	},
+
+	"Costa Rica" : {
+		"State": ["COSTA RICA"]
+	},
+
+	"Dominican Republic" : {
+		"State": ["DOMINICAN REPUBLIC"]
+	},
+
+	"Ecuador" : {
+		"State": ["ECUADOR"]
+	},
+
+	"El Salvador" : {
+		"State": ["EL SALVADOR"]
+	},
+
+	"Guatemala" : {
+		"State": ["GUATEMALA"]
+	},
+
+	"Mexico" : {
+		"State": ["ACAPULCO","BAJA CALIFORNIA SUR","CHIHUAHUA","CIUDAD JUAREZ","GUADALAJARA","GUANAJUATO","HERMOSILLO","MAZATLAN","MEXICO CITY","MONTERREY","OAXACA","PUEBLA","PUERTO VALLARTA","TIJUANA","VERACRUZ","YUCATAN"]
+	},
+
+	"Nicaragua" : {
+		"State": ["NICARAGUA"]
+	},
+
+	"Panama" : {
+		"State": ["PANAMA"]
+	},
+
+	"Peru" : {
+		"State": ["PERU"]
+	},
+
+	"Puerto Rico" : {
+		"State": ["PUERTO RICO"]
+	},
+
+	"Uruguay" : {
+		"State": ["URUGUAY"]
+	},
+
+	"Venezuela" : {
+		"State": ["VENEZUELA"]
+	},
+
+	"Virgin Islands, U.S." : {
+		"State": ["VIRGIN ISLANDS"]
+	},
+	
+	"Egypt" : {
+		"State": ["EGYPT"]
+	},
+
+	"Ethiopia" : {
+		"State": ["ETHIOPIA"]
+	},
+
+	"Ghana" : {
+		"State": ["GHANA"]
+	},
+
+	"Kenya" : {
+		"State": ["KENYA"]
+	},
+
+	"Morocco" : {
+		"State": ["MOROCCO"]
+	},
+
 	"South Africa": {
 		"State": ["CAPE TOWN","DURBAN","JOHANNESBURG","PRETORIA"]
+	},
+
+	"Tunisia" : {
+		"State": ["TUNISIA"]
 	}
 }

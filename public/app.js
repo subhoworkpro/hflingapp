@@ -177,11 +177,18 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
 
             }
             if($location.path().indexOf("/detail") !== -1){
-                $http.get("/data.json")
+                // $http.get("/data.json")
+                // .success(function (data) {
+                //     $rootScope.masterList = data;
+                //     $route.reload();
+                //     console.log("reload");
+                // });
+
+                $http.get("/data_country.json")
                 .success(function (data) {
-                    $rootScope.masterList = data;
-                    $route.reload();
-                    console.log("reload");
+                    $rootScope.masterListAll = data;
+                    console.log(data);
+                    console.log(Object.keys(data));
                 });
             }
         });
@@ -217,23 +224,25 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http','$route', '$template
 
         $rootScope.pageTitle = "Healthy Fling";
 
-        $http.get("/data.json")
-        .success(function (data) {
-            $rootScope.masterList = data;
-        })
-        .error(function (data) {
-            console.log("there was an error");
-        });
+        // $http.get("/data.json")
+        // .success(function (data) {
+        //     $rootScope.masterList = data;
+        // })
+        // .error(function (data) {
+        //     console.log("there was an error");
+        // });
 
         $http.get("/data_country.json")
         .success(function (data) {
             $rootScope.masterListAll = data;
+            console.log(data);
+            console.log(Object.keys(data));
         })
         .error(function (data) {
             console.log("there was an error");
         });
 
-       $rootScope.countryList = ['Country', "United States", "Canada", "Australia", "United Kingdom", "South Africa"]; 
+       $rootScope.countryList = ['Country', "United States", "Canada", "Austria", "Belgium", "Bulgaria", "Croatia", "Czech Republic", "Denmark", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Luxembourg", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russian Federation", "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Bangladesh", "China", "Guam / Micronesia", "Hong Kong", "India", "Indonesia", "Iran", "Iraq", "Israel and Palestine", "Japan", "Korea", "Kuwait", "Lebanon", "Malaysia", "Pakistan", "Philippines", "Singapore", "Taiwan", "Thailand", "United Arab Emirates", "Vietnam", "Australia", "New Zealand", "Argentina", "Bolivia", "Brazil", "Caribbean Islands", "Chile", "Colombia", "Costa Rica", "Dominican Republic", "Ecuador", "El Salvador", "Guatemala", "Mexico", "Nicaragua", "Panama", "Peru", "Puerto Rico", "Uruguay", "Venezuela", "Virgin Islands, U.S.", "Egypt", "Ethiopia", "Ghana", "Kenya", "Morocco", "South Africa", "Tunisia"]; 
        $rootScope.stateList = ['State'];
        $rootScope.regionList = ['Region'];
        $rootScope.categoryList = ['Category','Men Seeking Woman','Women Seeking Men', 'Men Seeking Men', 'Woman Seeking Woman','t4m', 'm4t', 't4w', 'w4t', 't4t', 'mw4mw', 'mw4w', 'mw4m', 'w4mw', 'm4mw', 'w4ww', 'm4mm', 'mm4m', 'ww4w', 'ww4m', 'mm4w', 'm4ww', 'w4mm', 't4mw', 'mw4t'];

@@ -53,7 +53,9 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
               return temp.indexOf(item)== pos; 
             });
         }else{
-            $scope.regions = ['Region'];
+            if (vm.country == "United States" || vm.country == "Canada") {
+                $scope.regions = ['Region'];   
+            }
         }
    };
 
@@ -64,7 +66,7 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
             $scope.states = $rootScope.stateList;
             // $rootScope.regionList = $rootScope.masterListAll[data];
             console.log("list updated:"+data);
-            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+            if (data != "United States" && data != "Canada") {
                 $rootScope.regionList = $rootScope.masterList["State"];
                 $scope.regions = $rootScope.regionList;
                 $scope.regions.unshift("Region");
@@ -404,10 +406,17 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
 
     $scope.initController = function () {
 
-        $http.get("/data.json")
+        // $http.get("/data.json")
+        // .success(function (data) {
+        //     $rootScope.masterList = data;
+        // })
+
+        $http.get("/data_country.json")
         .success(function (data) {
-            $rootScope.masterList = data;
-        })
+            $rootScope.masterListAll = data;
+            console.log(data);
+            console.log(Object.keys(data));
+        });
 
         $rootScope.is_flagged = false;
 

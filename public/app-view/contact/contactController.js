@@ -39,7 +39,9 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
               return temp.indexOf(item)== pos; 
             });
         }else{
-            $scope.regions = ['Region'];
+            if (vm.country == "United States" || vm.country == "Canada") {
+                $scope.regions = ['Region'];   
+            }
         }
    };
 
@@ -50,7 +52,7 @@ app.controller('ContactController', ['$rootScope','$scope', '$location', 'HttpSe
             $scope.states = $rootScope.stateList;
             // $rootScope.regionList = $rootScope.masterListAll[data];
             console.log("list updated:"+data);
-            if (data == "Australia" || data == "United Kingdom" || data == "South Africa") {
+            if (data != "United States" && data != "Canada") {
                 $rootScope.regionList = $rootScope.masterList["State"];
                 $scope.regions = $rootScope.regionList;
                 $scope.regions.unshift("Region");
