@@ -5,7 +5,7 @@
           <div class="select_inr">
             <div class="select_item" ng-class="{select_three: vm.country != 'United States' && vm.country != 'Canada' && vm.country != 'Country'}"> 
                 <div class="select_area">
-                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries" ng-change="changeStateListInCtrl(vm.country);vm.state = states[0];" ng-init = "changeStateListInCtrl(vm.country);">
+                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries" ng-change="changeStateListInCtrl(vm.country);vm.state = states[0];vm.region = regions[0];" ng-init = "changeStateListInCtrl(vm.country);">
                   </select>
                 </div>
                 <div class="select_area" ng-show ="vm.country == 'United States' || vm.country == 'Canada' || vm.country == 'Country'">

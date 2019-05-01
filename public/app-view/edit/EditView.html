@@ -36,7 +36,7 @@
             </div>
             <div class="bio_right">
                 <div class="bio_area mand">              
-                  <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="country" ng-options="x for x in countries" ng-change="changeNewPostStateList(country);state = newstates[0];" ng-init="changeNewPostStateList(country);state = newstates[0];" required>
+                  <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="country" ng-options="x for x in countries" ng-change="changeNewPostStateList(country);state = newstates[0];region = newregions[0];" ng-init="changeNewPostStateList(country);state = newstates[0];" required>
                   </select>
                 </div> 
                 <div class="bio_area mand" ng-show="country == 'United States' || country == 'Canada'">

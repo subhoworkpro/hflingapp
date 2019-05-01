@@ -4,7 +4,7 @@
           <div class="select_inr">
             <div class="select_item" ng-class="{select_three: vm.country != 'United States' && vm.country != 'Canada' && vm.country != 'Country'}"> 
                 <div class="select_area">
-                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries" ng-change="changeStateListInCtrl(vm.country);vm.state = states[0];" ng-init = "changeStateListInCtrl(vm.country);">
+                  <select name="number" class="block" ng-model="vm.country" ng-options="x for x in countries" ng-change="changeStateListInCtrl(vm.country);vm.state = states[0];vm.region = regions[0];" ng-init = "changeStateListInCtrl(vm.country);">
                   </select>
                   </select>
                 </div>
@@ -78,7 +78,7 @@
             </div>
             <div class="bio_right">  
             <div class="bio_area mand">              
-              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.country" ng-options="x for x in countries" ng-change="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];" ng-init="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];" required>
+              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.country" ng-options="x for x in countries" ng-change="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];vm.data.region = newregions[0];" ng-init="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];" required>
               </select>
             </div>            
             <div class="bio_area mand" ng-show="vm.data.country == 'United States' || vm.data.country == 'Canada' || vm.data.country == 'Country'">              
