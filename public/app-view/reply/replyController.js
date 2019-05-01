@@ -126,7 +126,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             console.log(response);
             if (response.status == '200') {
                 $rootScope.currentPost.data = response.data;
-                
+
                 // $rootScope.regionList = $rootScope.masterList[response.data.state];
                 // $scope.regions = $rootScope.regionList;
                 console.log("success");
@@ -207,7 +207,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             var options = { timeZone: "America/New_York"}
             var estTime = new Date();
             var data = {
-                "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team<p style='font-size:11px'>If this message is spam, you can always block this email so you no longer recieve their messages. You need to do this through your email provider!</p>",
+                "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team<p>If this message is spam, you can always block this email so you no longer recieve their messages. You need to do this through your email provider!</p>",
                 "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message)+" - "+estTime.toLocaleString("en-US", options)+" ET",
                 "sender1": $scope.sender1,
                 "attachments": $rootScope.tempImageList,
