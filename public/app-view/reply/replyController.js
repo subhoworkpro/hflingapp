@@ -126,9 +126,9 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             console.log(response);
             if (response.status == '200') {
                 $rootScope.currentPost.data = response.data;
-
-                $rootScope.regionList = $rootScope.masterList[response.data.state];
-                $scope.regions = $rootScope.regionList;
+                
+                // $rootScope.regionList = $rootScope.masterList[response.data.state];
+                // $scope.regions = $rootScope.regionList;
                 console.log("success");
                 vm.state = response.data.state;
                 vm.region = response.data.region;
