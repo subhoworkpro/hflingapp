@@ -41,6 +41,8 @@ app.factory('HttpService', ['$http', '$rootScope',function($http,$rootScope){
             }
             if($rootScope.search.state == "State" || $rootScope.search.state == "" || $rootScope.search.state == "Provinces"){
                 $rootScope.search.state = "";
+            }else if($rootScope.search.country == "United States"){
+                params = params + "state="+$rootScope.search.state;
             }else{
                 params = params + "&state="+$rootScope.search.state;
             }
