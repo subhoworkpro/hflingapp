@@ -172,7 +172,8 @@
           </div>
           <div class="gallery_slider clearfix" ng-if = "files.length > 0 || embed != ''" style="padding-bottom:15px;">
               <div class="galery_full">
-                  <img ng-if = "mainImage.indexOf('iframe') == -1" src="{{mainImage}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                <a href="{{mainImage.replace('/processed', '/files')}}" style="padding: 0;" target="_blank">
+                  <img ng-if = "mainImage.indexOf('iframe') == -1" src="{{mainImage}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/></a>
                   <div ng-if ="embed != '' && mainImage.indexOf('iframe') > -1" ng-bind-html="embed | unsafe"></div>
               </div>
               <div class="gallery_thumb">
@@ -363,7 +364,9 @@
                   <h5 ng-show = "item.status == 'flagged'" style="color: #8dc63f;"> The comment has been flagged</h5>
                   <div class="upload_result clearfix" ng-if = "item.status == 'active' && (item.files.length > 0 || item.embed != '')">
                     <div class="galery_full">
+                      <a href="{{commentsMainImage[$index].replace('/processed', '/files')}}" style="padding: 0;" target="_blank">
                         <img ng-if = "commentsMainImage[$index].indexOf('iframe') == -1" src="{{commentsMainImage[$index]}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                      </a>
                         <div ng-if ="item.embed != '' && commentsMainImage[$index].indexOf('iframe') > -1" ng-bind-html="item.embed | unsafe"></div>
                     </div>
                     <div class="gallery_thumb">
@@ -410,7 +413,9 @@
 
                         <div class="upload_result clearfix" ng-if = "reply.status == 'active' && (reply.files.length > 0 || reply.embed != '')">
                           <div class="galery_full">
+                            <a href="{{replyMainImage[$parent.$parent.$index][$index].replace('/processed', '/files')}}" style="padding: 0;" target="_blank">
                               <img ng-show = "replyMainImage[$parent.$parent.$index][$index].indexOf('iframe') == -1" src="{{replyMainImage[$parent.$parent.$index][$index]}}" onError="this.src='https://spotlight.dlme.clir.org/assets/default-52adc3dc03639885e8aa93763e29868269dd3b9dad4689f140c0175b4f945922.png';" alt=""/>
+                            </a>
                               <div ng-if ="reply.embed != '' && replyMainImage[$parent.$parent.$index][$index].indexOf('iframe') > -1" ng-bind-html="reply.embed | unsafe"></div>
                           </div>
                           <div class="gallery_thumb">

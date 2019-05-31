@@ -84,7 +84,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
     };
 
     vm.search = function () {
-    	$rootScope.search.state = this.state;
+        $rootScope.search.state = this.state;
         $rootScope.search.region = this.region;
         $rootScope.search.category = this.category;
         console.log("asdasdsa");
@@ -207,7 +207,7 @@ app.controller('ReplyController', ['$rootScope','$scope', '$location', 'HttpServ
             var options = { timeZone: "America/New_York"}
             var estTime = new Date();
             var data = {
-                "htmlmessage": "<p>"+$scope.replymessage +"</p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team<p>If you feel this message is spam or an advertisement, you can always block or report this email through your email provider. If this message is illegal or associated with anything illegal, PLEASE CONTACT THE AUTHORITIES!</p>",
+                "htmlmessage": "<p>"+$scope.replymessage +"</p><p><b>You can respond by replying directly to this email!</b></p><p>Original Post:</p><p>"+ $location.absUrl().replace("reply","detail")+"</p> Regards, <br/>Healthyfling Team<p>If you feel this message is spam or an advertisement, you can always block or report this email through your email provider. If this message is illegal or associated with anything illegal, PLEASE CONTACT THE AUTHORITIES!</p>",
                 "subject": "[HealthyFling] RE: "+( $scope.title || $scope.message)+" - "+estTime.toLocaleString("en-US", options)+" ET",
                 "sender1": $scope.sender1,
                 "attachments": $rootScope.tempImageList,
