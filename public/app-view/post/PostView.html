@@ -44,216 +44,229 @@
           <div class="add_hdr">
             <h2>Post an Ad</h2>
           </div>
-          <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
-          <div class="mandatory_section" ng-if ="vm.showError">
-            <h3>Important</h3>
-            <p ng-if = "vm.showRequiredCountryError">- Please select Country.</p>
-            <p ng-if = "vm.showRequiredStateError">- Please select State.</p>
-            <p ng-if = "vm.showRequiredRegionError">- Please select Region.</p>
-            <p ng-if = "vm.showRequiredCategoryError">- Please select Category.</p>
-            <p ng-if = "vm.showTitleError">- Please enter title of the post.</p>
-            <p ng-if = "vm.showMessageError">- Please enter body of the post.</p>
-            <p ng-if = "vm.showMissingEmailError">- Please enter a valid email.</p>
-            <p ng-if = "vm.showCaptchaError">- Please accept the Recaptcha</p>
-            <p ng-if = "vm.showEmailError">- Your verification email doesn't match</p>
-            <p ng-if = "vm.showAgeError">- The age field needs to be in numbers only, no other characters allowed in this field</p>
-            <p ng-if = "vm.showImageError">- Selected {{vm.imageLength}} images ... Max allowed images is 5.</p>
-          </div>
-          <div class="add_cnt">
-            <div class="add_note">
-              <p>* All posts will automatically delete after 7 days</p>
-              <p>* Once a post is created, you can always <em>edit</em> the post using the verification email link</p>
-              <p>* <em>DO NOT</em> post anything illegal as well as advertisements!</p>
-              <p>* <em>REMINDER:</em> Please be aware that your email address will be shown to the poster so its up to you as far as which email address you use to reply.  For safety, never send personal information over the internet to anyone you may not know!</p>
-            </div>
-          </div>
-          <div class="bio_clear">
-            <div class="bio_left">
-              <div class="bio_area mand">
-                <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select wd_45" ng-model="vm.data.title" maxlength="100">
-              </div>
-              <div class="bio_area mand">            
-                <textarea class="bio_block ui-selectmenu-button ui_textarea ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="13"></textarea>
-              </div>
-            </div>
-            <div class="bio_right">  
-            <div class="bio_area mand">              
-              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.country" ng-options="x for x in countries" ng-change="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];vm.data.region = newregions[0];" ng-init="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];" required>
-              </select>
-            </div>            
-            <div class="bio_area mand" ng-show="vm.data.country == 'United States' || vm.data.country == 'Canada' || vm.data.country == 'Country'">              
-              <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in newstates" ng-change="changeNewPostList(vm.data.state);vm.data.region = newregions[0];" ng-init="changeNewPostList(vm.data.state);vm.data.region = newregions[0];" required>
-              </select>
-            </div>
-            <div class="bio_area mand">              
-              <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region" ng-options="x for x in newregions">
-              </select>
-            </div>
-            <div class="bio_area mand">              
-              <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category" ng-options="x for x in categories">
-              </select>
-            </div>            
-            <div class="bio_area">
-              <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.location" placeholder="SPECIFIC LOCATION">
-            </div>
-            <div class="bio_area">
-              <input name="number" id="slct_age" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.age" placeholder="AGE" min="18" max="60">
-            </div>
-            </div>
-          </div>
-          <div class="bio_mid bio_mid_brd">
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">  
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.mage" ng-options="x for x in ageRange">
-              </select> 
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">  
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.haircolor" ng-options="x for x in haircolors">
-              </select> 
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
+          <div class="poster_mode">
              <div class="bio_area">   
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.height" ng-options="x for x in heights">
-                </select>            
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.ethnicity" ng-options="x for x in ethnicity">
+                <p>What kind of post this will be?</p>           
+                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.postermode" ng-options="x for x in postermode">
                 </select>
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.orientation" ng-options="x for x in orientation">
-                </select>
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.bodytype" ng-options="x for x in bodytype">
-                </select>
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.eyecolor" ng-options="x for x in eyecolor">
-                </select>
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.mstatus" ng-options="x for x in status">
-                </select>
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.gender" ng-options="x for x in gender">
-                </select>
-              </div> 
-            </div>
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.weight" ng-options="x for x in weightRange">
-                </select>
-              </div> 
-            </div>            
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.bodyhair" ng-options="x for x in bodyhair">
-                </select>
-              </div> 
-            </div>          
-            <div class="bio_mid_item wd_20">
-             <div class="bio_area">              
-                <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.hivstatus" ng-options="x for x in hivstatus">
-                </select>
-              </div> 
-            </div>
-          </div>  
-
-          <div class="anonnymous_area_outer">
-            <div class="bio_mid_item  anonnymous_area">
-               <div class="bio_area">              
-                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
-                  ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.anonymouscomment" ng-options="x for x in anonymouscomment">
-                  </select>
-                  <div class="anonymous_cnt">
-                    <p>Allow public comments on your post.(You can always disable/enable and delete comments anytime). You can reply to comments as poster through your verification link sent to your email</p>
-                  </div>
-                </div>
-            </div>
-
-            <div ng-if ="vm.data.anonymouscomment == 'enabled'" class="bio_mid_item  anonnymous_area">
-               <div class="bio_area">              
-                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
-                  ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.notified" ng-options="x for x in notified">
-                  </select>
-                  <div class="anonymous_cnt">
-                    <p>Get notified when someone comments on your post</p>
-                  </div>
-                </div>
-            </div>
+              </div>
           </div>
-
-          <div class="anonnymous_area_outer" style="margin-top: 10px;">
-            <div class="bio_mid_item  anonnymous_area">
-               <div class="bio_area">              
-                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
-                  ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.share" ng-options="x for x in anonymouscomment">
-                  </select>
-                  <div class="anonymous_cnt">
-                    <p>Add a share icon on your post</p>
-                  </div>
+          <div ng-if ="vm.data.postermode == 'Personals'" class="personal_posts">
+            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+            <div class="mandatory_section" ng-if ="vm.showError">
+              <h3>Important</h3>
+              <p ng-if = "vm.showRequiredCountryError">- Please select Country.</p>
+              <p ng-if = "vm.showRequiredStateError">- Please select State.</p>
+              <p ng-if = "vm.showRequiredRegionError">- Please select Region.</p>
+              <p ng-if = "vm.showRequiredCategoryError">- Please select Category.</p>
+              <p ng-if = "vm.showTitleError">- Please enter title of the post.</p>
+              <p ng-if = "vm.showMessageError">- Please enter body of the post.</p>
+              <p ng-if = "vm.showMissingEmailError">- Please enter a valid email.</p>
+              <p ng-if = "vm.showCaptchaError">- Please accept the Recaptcha</p>
+              <p ng-if = "vm.showEmailError">- Your verification email doesn't match</p>
+              <p ng-if = "vm.showAgeError">- The age field needs to be in numbers only, no other characters allowed in this field</p>
+              <p ng-if = "vm.showImageError">- Selected {{vm.imageLength}} images ... Max allowed images is 5.</p>
+            </div>
+            <div class="add_cnt">
+              <div class="add_note">
+                <p>* All posts will automatically delete after 7 days</p>
+                <p>* Once a post is created, you can always <em>edit</em> the post using the verification email link</p>
+                <p>* <em>DO NOT</em> post anything illegal as well as advertisements!</p>
+                <p>* <em>REMINDER:</em> Please be aware that your email address will be shown to the poster so its up to you as far as which email address you use to reply.  For safety, never send personal information over the internet to anyone you may not know!</p>
+              </div>
+            </div>
+            <div class="bio_clear">
+              <div class="bio_left">
+                <div class="bio_area mand">
+                  <input id="title" name="tile" type="text" placeholder="TITLE" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select wd_45" ng-model="vm.data.title" maxlength="100">
                 </div>
+                <div class="bio_area mand">            
+                  <textarea class="bio_block ui-selectmenu-button ui_textarea ui-corner-all cursor-select" ng-model="vm.data.message" id="message" name="message" placeholder="POST YOU AD HERE..." rows="13"></textarea>
+                </div>
+              </div>
+              <div class="bio_right">  
+              <div class="bio_area mand">              
+                <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.country" ng-options="x for x in countries" ng-change="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];vm.data.region = newregions[0];" ng-init="changeNewPostStateList(vm.data.country);vm.data.state = newstates[0];" required>
+                </select>
+              </div>            
+              <div class="bio_area mand" ng-show="vm.data.country == 'United States' || vm.data.country == 'Canada' || vm.data.country == 'Country'">              
+                <select name="number" id="slct_st" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.state" ng-options="x for x in newstates" ng-change="changeNewPostList(vm.data.state);vm.data.region = newregions[0];" ng-init="changeNewPostList(vm.data.state);vm.data.region = newregions[0];" required>
+                </select>
+              </div>
+              <div class="bio_area mand">              
+                <select name="number" id="slct_reg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.region" ng-options="x for x in newregions">
+                </select>
+              </div>
+              <div class="bio_area mand">              
+                <select name="number" id="slct_catg" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.category" ng-options="x for x in categories">
+                </select>
+              </div>            
+              <div class="bio_area">
+                <input name="number" id="slct_loc" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.location" placeholder="SPECIFIC LOCATION">
+              </div>
+              <div class="bio_area">
+                <input name="number" id="slct_age" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.age" placeholder="AGE" min="18" max="60">
+              </div>
+              </div>
             </div>
-          </div>
-          
-          <div class="bio_sec">
-            <div class="bio_area bio_full image_upload_area">
-              <div class="upload_txt">
-              <p>Add Images (Up to 5 images allowed).
-              <em>The first image will be the featured image.</em></p>
-            </div>
-              <input type="file" class="cust_file wd_97" ng-file-model="vm.data.files" multiple style="color: transparent;" />
-              <div class="file_results">
-                <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
-                <div class="upload_item" ng-repeat="file in imageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
+            <div class="bio_mid bio_mid_brd">
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">  
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.mage" ng-options="x for x in ageRange">
+                </select> 
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">  
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.haircolor" ng-options="x for x in haircolors">
+                </select> 
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">   
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.height" ng-options="x for x in heights">
+                  </select>            
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.ethnicity" ng-options="x for x in ethnicity">
+                  </select>
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.orientation" ng-options="x for x in orientation">
+                  </select>
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.bodytype" ng-options="x for x in bodytype">
+                  </select>
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.eyecolor" ng-options="x for x in eyecolor">
+                  </select>
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.mstatus" ng-options="x for x in status">
+                  </select>
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.gender" ng-options="x for x in gender">
+                  </select>
+                </div> 
+              </div>
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.weight" ng-options="x for x in weightRange">
+                  </select>
+                </div> 
+              </div>            
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.bodyhair" ng-options="x for x in bodyhair">
+                  </select>
+                </div> 
+              </div>          
+              <div class="bio_mid_item wd_20">
+               <div class="bio_area">              
+                  <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.hivstatus" ng-options="x for x in hivstatus">
+                  </select>
+                </div> 
+              </div>
+            </div>  
+
+            <div class="anonnymous_area_outer">
+              <div class="bio_mid_item  anonnymous_area">
+                 <div class="bio_area">              
+                    <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                    ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.anonymouscomment" ng-options="x for x in anonymouscomment">
+                    </select>
+                    <div class="anonymous_cnt">
+                      <p>Allow public comments on your post.(You can always disable/enable and delete comments anytime). You can reply to comments as poster through your verification link sent to your email</p>
+                    </div>
+                  </div>
+              </div>
+
+              <div ng-if ="vm.data.anonymouscomment == 'enabled'" class="bio_mid_item  anonnymous_area">
+                 <div class="bio_area">              
+                    <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                    ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.notified" ng-options="x for x in notified">
+                    </select>
+                    <div class="anonymous_cnt">
+                      <p>Get notified when someone comments on your post</p>
+                    </div>
+                  </div>
               </div>
             </div>
 
-            <div class="emmbed_video" style="background: #cdcbf5;clear: both;">
-              <h3>Embeded Video</h3>
-              <input type="text" placeholder='<iframe src="embed_url"></iframe>' class="embeded_area" ng-model="vm.data.embed">
-            </div>
-
-            <div class="bio_area email_field">
-              
-              <input id="email" name="email" type="email" placeholder="Your email" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.email">
-            </div>
-
-            <div class="bio_area email_field">
-              
-              <input id="email" name="email" type="email" placeholder="Verify email" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.verifyemail">
-            </div>
-            <div class="bio_area bio_full">
-              <p>By posting on Healthyfling.com you agree to the <a href="terms.html">terms and conditions</a>, <a href="policy.html">privacy policy</a> and <a href="disclaimer.html">Disclaimer</a> of this site.</p>
-            </div>
-            <div class="form-group">
-                <div class="recaptcha_blk" vc-recaptcha key="'6LdK608UAAAAAIIPni45gUqw9p_vn4mLa_CtlSlv'" ng-model="vm.captcha"></div>
-            </div>
-
-
-            <div class="bio_area confirm_edit">
-              <div class="post_bk">
-                <input type="submit" value="Post!" ng-click = "vm.addPost()" style="padding-left: 30px;padding-right: 30px;">
+            <div class="anonnymous_area_outer" style="margin-top: 10px;">
+              <div class="bio_mid_item  anonnymous_area">
+                 <div class="bio_area">              
+                    <select name="number" class="bio_block ui-selectmenu-button ui-button ui-widget 
+                    ui-selectmenu-button-closed ui-corner-all" ng-model="vm.data.share" ng-options="x for x in anonymouscomment">
+                    </select>
+                    <div class="anonymous_cnt">
+                      <p>Add a share icon on your post</p>
+                    </div>
+                  </div>
               </div>
             </div>
+            
+            <div class="bio_sec">
+              <div class="bio_area bio_full image_upload_area">
+                <div class="upload_txt">
+                <p>Add Images (Up to 5 images allowed).
+                <em>The first image will be the featured image.</em></p>
+              </div>
+                <input type="file" class="cust_file wd_97" ng-file-model="vm.data.files" multiple style="color: transparent;" />
+                <div class="file_results">
+                  <img ng-if = "loadingImage" src="app-content/images/imageLoader.gif" style="width: 100px;">
+                  <div class="upload_item" ng-repeat="file in imageList"><div style="position: relative"><img class='img-responsive' src={{file.secure_url}} ng-init = "stopLoader();"><img src="app-content/images/closeIcon.png" style="position: absolute; top: 4px; right: 5px; cursor: pointer;" ng-click = "deleteImage($index);"/></div></div>
+                </div>
+              </div>
 
+              <div class="emmbed_video" style="background: #cdcbf5;clear: both;">
+                <h3>Embeded Video</h3>
+                <input type="text" placeholder='<iframe src="embed_url"></iframe>' class="embeded_area" ng-model="vm.data.embed">
+              </div>
+
+              <div class="bio_area email_field">
+                
+                <input id="email" name="email" type="email" placeholder="Your email" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.data.email">
+              </div>
+
+              <div class="bio_area email_field">
+                
+                <input id="email" name="email" type="email" placeholder="Verify email" class="bio_block ui-selectmenu-button ui_textarea ui-widget ui-selectmenu-button-closed ui-corner-all cursor-select" ng-model="vm.verifyemail">
+              </div>
+              <div class="bio_area bio_full">
+                <p>By posting on Healthyfling.com you agree to the <a href="terms.html">terms and conditions</a>, <a href="policy.html">privacy policy</a> and <a href="disclaimer.html">Disclaimer</a> of this site.</p>
+              </div>
+              <div class="form-group">
+                  <div class="recaptcha_blk" vc-recaptcha key="'6LdK608UAAAAAIIPni45gUqw9p_vn4mLa_CtlSlv'" ng-model="vm.captcha"></div>
+              </div>
+
+
+              <div class="bio_area confirm_edit">
+                <div class="post_bk">
+                  <input type="submit" value="Post!" ng-click = "vm.addPost()" style="padding-left: 30px;padding-right: 30px;">
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div ng-if ="vm.data.postermode == 'The Wall'" class="wall_posts">
+              <h3>Coming Soon!</h3>
           </div>
       </div>
    </section>

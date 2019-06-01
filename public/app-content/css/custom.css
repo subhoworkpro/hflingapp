@@ -630,7 +630,7 @@ select {
 
 .galery_full{
     float: left;
-    max-width: 550px;
+    max-width: 375px;
 }
 
 .galery_full img{
@@ -1774,7 +1774,7 @@ input[type=file].wd_97{
 
 .upload_result .galery_full{
     float: none;
-    max-width: 550px;
+    max-width: 275px;
 }
 
 .upload_result .gallery_thumb{
@@ -1917,5 +1917,48 @@ input[type=file].wd_97{
     flex: 0 0 25%;
     max-width: 25%;
 }
-
 /*** 27-04-19 ***/
+
+/**** added on 01-06-19 ****/
+
+.poster_mode .bio_area{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 0;
+    padding-bottom: 20px;
+}
+
+.poster_mode .bio_area .ui-selectmenu-button.ui-button{
+    width: 270px;
+    margin-bottom: 0;
+    margin-left: 20px;
+}
+
+/*.bio_block option {
+    color: #454545;
+}*/
+
+.poster_mode p{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.wall_posts{
+    padding: 30px 0;
+}
+
+.wall_posts h3{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/**** added on 01-06-19 ****/

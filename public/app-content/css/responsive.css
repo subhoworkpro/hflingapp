@@ -231,6 +231,18 @@
 
     /*** 01-03-19 ***/
 
+    /**** added on 01-06-19 ****/
+
+    .poster_mode .bio_area{
+        width: 100%;
+    }
+
+    .wall_posts {
+        padding: 20px 0;
+    }
+
+    /**** added on 01-06-19 ****/   
+
 }
 /******/
  @media(max-width: 767px) {
@@ -358,8 +370,23 @@
     }
     /*** 22-02-19 ***/
 
+
+    /**** added on 01-06-19 ****/
+
+    .poster_mode .bio_area{
+        display: block;
+    }
+
+    .poster_mode .bio_area .ui-selectmenu-button.ui-button{
+        width: 200px;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+
+    /**** added on 01-06-19 ****/
+
 }
-/******/
+
  @media(max-width: 568px) {
      /*.select_area {
          width: 100%;
@@ -593,8 +620,6 @@
     }
 
     /*** 27-04-19 ***/
-
-
 }
 
  @media(max-width: 480px) {
