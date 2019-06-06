@@ -621,6 +621,7 @@ select {
     padding: 2px 5px;
     display: inline-block;
     margin-bottom: 10px;
+    vertical-align: middle;
 }
 
 .gallery_det a:hover,
@@ -1943,9 +1944,9 @@ input[type=file].wd_97{
     margin-left: 20px;
 }
 
-/*.bio_block option {
+.bio_block option {
     color: #454545;
-}*/
+}
 
 .poster_mode p{
     font-size: 18px;
@@ -1959,6 +1960,43 @@ input[type=file].wd_97{
 .wall_posts h3{
     font-size: 35px;
     font-weight: bold;
+}
+
+.gallery_det a.favourite_icon{
+    background-color: transparent;
+    padding: 0;
+    font-size: 25px;
+    color: #ffc90e;
+    margin-left: 10px;
+}
+
+.gallery_det a.favourite_icon:hover{
+    color: #e1ae2e;
+}
+
+.add_details .favorite_hdr h2{
+    border-bottom: 0;
+}
+
+.favorite_hdr h2 span{
+    font-size: 25px;
+    color: #ffc90e;
+    margin-left: 10px;
+}
+
+.favourite_cnt h3, .favourite_cnt p{
+    font-size: 18px;
+    line-height: 25px;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.favourite_field .favourite_field_item{
+    border: 1px solid #b5b3b3;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 30px;
 }
 
 /**** added on 01-06-19 ****/
