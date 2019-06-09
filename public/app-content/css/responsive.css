@@ -720,20 +720,24 @@
     /*** 27-04-19 ***/
 
     /*** 06-05-19 ***/
-    .galery_full{
+   /* .galery_full{
         float: none;
         max-width: 100%;
-    }
-
+    }*/
+/*
     .gallery_thumb {
         overflow: visible;
         padding-left: 0;
         padding-top: 15px;
-    }
+    }*/
 
     .gallery_thumb li{
         display: inline-block;
         vertical-align: middle;
+    }
+
+    .galery_full {
+       max-width: 70%;
     }
 
     /*** 06-05-19 ***/

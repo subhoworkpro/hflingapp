@@ -1939,9 +1939,15 @@ input[type=file].wd_97{
 }
 
 .poster_mode .bio_area .ui-selectmenu-button.ui-button{
+    cursor: pointer;
     width: 270px;
     margin-bottom: 0;
     margin-left: 20px;
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
 }
 
 .bio_block option {
