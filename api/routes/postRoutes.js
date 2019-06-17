@@ -8,8 +8,9 @@ module.exports = function(apiRoutes) {
   apiRoutes.get('/posts/:postId', post.read_a_post);
   apiRoutes.get('/comments/:postId', post.get_all_comments);
   apiRoutes.post('/posts', post.create_a_post);
-  apiRoutes.post('/editpost/:postId', post.edit_a_post);
+  apiRoutes.post('/editpost/:postId', post.edit_a_post_with_notify);
   apiRoutes.delete('/posts/:postId', post.delete_a_post);
+  apiRoutes.post('/addnotify/:postId', post.add_notify_post);
   apiRoutes.get('/flagcomment/:commentId', post.flag_a_comment);
   apiRoutes.post('/flagcommentreason/:commentId', post.flag_a_comment_reason);
   apiRoutes.get('/unflagcomment/:commentId', post.unflag_a_comment);

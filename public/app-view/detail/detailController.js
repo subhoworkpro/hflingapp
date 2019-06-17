@@ -618,6 +618,12 @@ app.controller('DetailController', ['$rootScope','$scope','$location','HttpServi
         });
     }
 
+    $scope.openModal_fav = function (){
+         $rootScope.modalInstance = $modal.open({
+            templateUrl: 'app-view/favourite/FavView.html'
+        });
+    }
+
     $scope.openCommentModal = function (comment,reply){
         $rootScope.comment = comment;
         $rootScope.comment.replyLabel = reply["_id"];

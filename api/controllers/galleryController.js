@@ -33,9 +33,9 @@ var upload = multer({
 // });
 
 cloudinary.config({ 
- cloud_name: 'dosxjzleb', 
- api_key: '652824273966278', 
- api_secret: 'K2oWfPXPXTm9PTGZD47bFQnIGAI' 
+ cloud_name: 'intellirio-consultancy-and-labs-llp', 
+ api_key: '579673852831583', 
+ api_secret: 'BCArjT98AV1jmrSwL45DNnlK_DE' 
 });
 
 tempcloudinary.config({ 
@@ -88,8 +88,8 @@ exports.upload_images_to_local = function(req, res) {
          sharp('./public/files/'+local_file_path).resize({ width: 500 }).toFile('./public/processed/'+local_file_path)
 	    .then(function(newFileInfo) {
 	        console.log("Success");
-	        // res.json({"secure_url": 'http://localhost:8000/processed/' + local_file_path});
-	        res.json({"secure_url": 'https://www.healthyfling.com/processed/' + local_file_path});
+	        res.json({"secure_url": 'http://localhost:8000/processed/' + local_file_path});
+	        // res.json({"secure_url": 'https://www.healthyfling.com/processed/' + local_file_path});
 	    })
 	    .catch(function(err) {
 	        console.log("Error occured");

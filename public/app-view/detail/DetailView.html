@@ -92,6 +92,7 @@
             <a ng-if = "is_edit" style="margin-left: 5px;" href="#edit/{{post_id}}">Edit</a>
             <a ng-if = "is_edit" style="margin-left: 5px;" href="#delete/{{post_id}}">Delete</a>
             <a href="" ng-if ="share == 'enabled'" style="margin-left: 5px;" ng-click="toggleShareButton();">Share</a>
+            <a href="" class="favourite_icon"  ng-click="openModal_fav()"><i class="fa fa-star"></i></a>
           </div>
           <div ng-show="showShareButtons == true">
             <a href="" class="fa fa-twitter"

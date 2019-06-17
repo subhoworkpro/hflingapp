@@ -3,6 +3,9 @@
 var Post = require('../models/post');
 var Comment = require('../models/comment');
 var Reply = require('../models/reply');
+var Notify = require('../models/notify');
+
+var mongoose    = require('mongoose');
 
 var nodemailer = require('nodemailer');
 
@@ -19,7 +22,7 @@ var url  = require('url');
 
 var MAXIMUM_ALLOWED_POST = 4;
 var POSTS_TIMEOUT = 7;
-var ADMIN_POSTS_TIMEOUT = 30;
+var ADMIN_POSTS_TIMEOUT = 3;
 
 
 // cloudinary.config({ 
@@ -55,6 +58,44 @@ exports.list_featured_images = function(req, res) {
 	}
 };
 
+exports.add_notify_post = function(req, res) {
+  console.log(req.body);
+  console.log(req.params.postId);
+  var notify = new Notify({
+    email: req.body.email || "",
+    status: "active",
+    post: req.params.postId  // assign the _id from the post
+  });
+
+  var query_params = {};
+  query_params["post"] = req.params.postId;
+
+  notify.save(function(err, notify) {
+    if (err)
+      res.send(err);
+    res.json(notify);
+  });
+
+  // Post.aggregate([{$match: {_id: mongoose.Types.ObjectId(req.params.postId)}},{ $lookup: { from: "notifies", localField: "_id", foreignField: "post", as: "notifies"  }}]).exec(function (err, posts) {
+  //   // console.log(posts);
+  //   if (err){
+  //       res.send(err);
+  //   }
+  //   res.json(posts[0]);
+  // });
+
+    // Post.findById(req.params.postId).populate('notifies').exec(function (err, posts) {
+    //   // console.log(posts);
+    //   if (err){
+    //       res.send(err);
+    //   }
+    //   res.json(posts);
+    // });
+
+ 
+ //  // var data = {data:"success"};
+  // res.json(data);
+};
 
 exports.create_a_post = function(req, res) {
   console.log(req.body);
@@ -619,6 +660,144 @@ exports.admin_read_all_posts = function(req, res) {
 //     res.json(task);
 //   });
 // };
+
+exports.edit_a_post_with_notify = function(req, res) {
+  console.log(req.params);
+  console.log(req.body);
+
+  Post.aggregate([{$match: {_id: mongoose.Types.ObjectId(req.params.postId)}},{ $lookup: { from: "notifies", localField: "_id", foreignField: "post", as: "notifies"  }}]).exec(function (err, posts) {
+    // console.log(posts);
+    if (err){
+        res.send(err);
+    }
+    res.json(posts);
+
+    var post = posts[0];
+
+    if(req.body.title){
+      post.title = req.body.title;
+    }
+    if(req.body.country){
+      post.country = req.body.country;
+    }
+    if(req.body.state){
+      post.state = req.body.state;
+    }
+    if(req.body.region){
+      post.region = req.body.region;
+    }
+    if(req.body.category){
+      post.category = req.body.category;
+    }
+    if(req.body.location){
+      post.location = req.body.location;
+    }
+    if(req.body.age){
+      post.age = req.body.age;
+    }
+    if(req.body.message){
+      post.body = req.body.message;
+    }
+
+
+    if(req.body.haircolor){
+      post.haircolor = req.body.haircolor;
+    }
+    if(req.body.height){
+      post.height = req.body.height;
+    }
+    if(req.body.ethnicity){
+      post.ethnicity = req.body.ethnicity;
+    }
+    if(req.body.orientation){
+      post.orientation = req.body.orientation;
+    }
+    if(req.body.bodytype){
+      post.bodytype = req.body.bodytype;
+    }
+    if(req.body.eyecolor){
+      post.eyecolor = req.body.eyecolor;
+    }
+    if(req.body.mstatus){
+      post.mstatus = req.body.mstatus;
+    }
+    if(req.body.gender){
+      post.gender = req.body.gender;
+    }
+    if(req.body.bodyhair){
+      post.bodyhair = req.body.bodyhair;
+    }
+    if(req.body.hivstatus){
+      post.hivstatus = req.body.hivstatus;
+    }
+    if(req.body.weight){
+      post.weight = req.body.weight;
+    }
+    if(req.body.mage){
+      post.mage = req.body.mage;
+    }
+    if(req.body.anonymouscomment){
+      post.anonymouscomment = req.body.anonymouscomment;
+    }
+    if(req.body.notified){
+      post.notified = req.body.notified;
+    }
+    if(req.body.share){
+      post.share = req.body.share;
+    }
+
+    if(req.body.embed){
+      post.embed = req.body.embed;
+    }
+
+    if(req.body.files){
+      post.files = req.body.files;
+    }
+    // post.status = "inactive";
+    post.save(function(err, post) {
+      if (err)
+        res.send(err);
+      if(req.body.commentmessage || req.body.commentfiles || req.body.commentembed){
+        var comment = new Comment({
+          body: req.body.commentmessage,
+          email: req.body.email || "",
+          embed : req.body.commentembed,
+          files: req.body.commentfiles,
+          status: "active",
+          post: post._id    // assign the _id from the post
+        });
+        comment.save(function (err) {
+          console.log("Saving comment...");
+          if (err) {
+            console.log(err);
+            return handleError(err);
+          }else{
+            if(post.notified == 'yes'){
+              var mailBody = "<p>A new comment has been added to the post [<b>"+post.title+"</b>]</p><p>To view this post and reply to this comment <a href='https://www.healthyfling.com/#/detail/"+post['_id']+"?edit=true'>click here.<a></p><br><p style='font-size:12px;font-weight:bold;'>Please dont reply to this email!</p>";
+              var mailOptions = {
+                  from: 'Healthy Fling <info@healthyfling.com>', // sender address
+                  to: post.email,
+                  subject: "You have a new comment ["+post.title+"]",
+                  html: mailBody
+              };
+
+              transporter.sendMail(mailOptions, function(error, info){
+                  if(error){
+                      console.log(error);
+                  }else{
+                      console.log('Message sent: ' + info.response);
+                  };
+              });
+            }
+            console.log("Comment saved successfully...");
+          }
+        });
+      }
+      res.json(post);
+    });
+
+  });
+};
 
 exports.edit_a_post= function(req, res) {
   console.log(req.params);

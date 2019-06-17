@@ -1,0 +1,26 @@
+   <!-- add_details -->
+   <section class="add_details" ng-controller = "FavController" ng-init = "initController();">
+      <button type="button" class="modal_close" ng-click="closeModal();"><i class="fa fa-times-circle"></i></button>
+       <div class="mandatory_section" ng-if = "showError">
+            <h3>Important</h3>
+            <p ng-if = "showRequiredEmailError">- Please enter a valid email.</p>
+          </div>
+          <div class="add_hdr favorite_hdr">
+            <h2>Is this post your favourite?<span><i class="fa fa-star"></i></span></h2>
+          </div>
+          <div class="favourite_cnt">
+            <h3>Stay updated to any changes made to this post.</h3>
+            <p>This can be new comments, updated text/images/video, deleted or expired.</p>
+            <div class="favourite_field">
+              <input type="email" class="favourite_field_item" ng-model="notify_email" placeholder="Your email" />
+            </div>
+            <div class="response_btn_area">
+              <div class="innr_btn">
+                <input type="submit" class="cust_btn" value="Cancel" ng-click="closeModal();">
+              </div>
+              <div class="innr_btn">
+                <input type="submit" class="cust_btn" value="Submit" ng-click="addNotify();">
+              </div>
+            </div>
+          </div>
+   </section>

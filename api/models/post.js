@@ -50,6 +50,7 @@ module.exports = mongoose.model('Post', new Schema({
         }   
     ],
     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+    notifies: [{ type: Schema.Types.ObjectId, ref: 'Notify' }],
     created: { 
         type: Date,
         default: Date.now
