@@ -621,6 +621,7 @@ select {
     padding: 2px 5px;
     display: inline-block;
     margin-bottom: 10px;
+    vertical-align: middle;
 }
 
 .gallery_det a:hover,
@@ -630,7 +631,7 @@ select {
 
 .galery_full{
     float: left;
-    max-width: 550px;
+    max-width: 375px;
 }
 
 .galery_full img{
@@ -1774,7 +1775,7 @@ input[type=file].wd_97{
 
 .upload_result .galery_full{
     float: none;
-    max-width: 550px;
+    max-width: 275px;
 }
 
 .upload_result .gallery_thumb{
@@ -1917,5 +1918,91 @@ input[type=file].wd_97{
     flex: 0 0 25%;
     max-width: 25%;
 }
-
 /*** 27-04-19 ***/
+
+/**** added on 01-06-19 ****/
+
+.poster_mode .bio_area{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 0;
+    padding-bottom: 20px;
+}
+
+.poster_mode .bio_area .ui-selectmenu-button.ui-button{
+    cursor: pointer;
+    width: 270px;
+    margin-bottom: 0;
+    margin-left: 20px;
+    transition: all 1s ease-in-out;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+}
+
+.bio_block option {
+    color: #454545;
+}
+
+.poster_mode p{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.wall_posts{
+    padding: 30px 0;
+}
+
+.wall_posts h3{
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.gallery_det a.favourite_icon{
+    background-color: transparent;
+    padding: 0;
+    font-size: 25px;
+    color: #ffc90e;
+    margin-left: 10px;
+}
+
+.gallery_det a.favourite_icon:hover{
+    color: #e1ae2e;
+}
+
+.add_details .favorite_hdr h2{
+    border-bottom: 0;
+}
+
+.favorite_hdr h2 span{
+    font-size: 25px;
+    color: #ffc90e;
+    margin-left: 10px;
+}
+
+.favourite_cnt h3, .favourite_cnt p{
+    font-size: 18px;
+    line-height: 25px;
+    color: #000;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.favourite_field .favourite_field_item{
+    border: 1px solid #b5b3b3;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+/**** added on 01-06-19 ****/

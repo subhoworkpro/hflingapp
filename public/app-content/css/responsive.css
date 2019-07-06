@@ -231,6 +231,18 @@
 
     /*** 01-03-19 ***/
 
+    /**** added on 01-06-19 ****/
+
+    .poster_mode .bio_area{
+        width: 100%;
+    }
+
+    .wall_posts {
+        padding: 20px 0;
+    }
+
+    /**** added on 01-06-19 ****/   
+
 }
 /******/
  @media(max-width: 767px) {
@@ -294,18 +306,18 @@
          height: auto;
     }
     .galery_full {
-        float: none;
-        width: 100%;
+        /*float: none;*/
+        max-width: 325px;
     }
     .gallery_thumb li{
-        display: inline-block;
+        /*display: inline-block;*/
         /*margin-right: 10px;*/
     }
-    .gallery_thumb{
+ /*   .gallery_thumb{
         overflow: inherit;
         padding-left: 0;
         padding-top: 20px;
-    }
+    }*/
     .advertise{
         width: 100%;
         border: none;
@@ -358,8 +370,23 @@
     }
     /*** 22-02-19 ***/
 
+
+    /**** added on 01-06-19 ****/
+
+    .poster_mode .bio_area{
+        display: block;
+    }
+
+    .poster_mode .bio_area .ui-selectmenu-button.ui-button{
+        width: 200px;
+        margin-top: 15px;
+        margin-left: 0;
+    }
+
+    /**** added on 01-06-19 ****/
+
 }
-/******/
+
  @media(max-width: 568px) {
      /*.select_area {
          width: 100%;
@@ -403,13 +430,13 @@
          font-size: 15px;
          line-height: 20px;
     }
-     .gallery_thumb {
+/*     .gallery_thumb {
          overflow: inherit;
          padding-left: 0;
-    }
-     .galery_full {
+    }*/
+/*     .galery_full {
          float: none;
-    }
+    }*/
      .gallery_slider {
          padding-bottom: 10px;
     }
@@ -593,8 +620,6 @@
     }
 
     /*** 27-04-19 ***/
-
-
 }
 
  @media(max-width: 480px) {
@@ -693,6 +718,29 @@
     }
 
     /*** 27-04-19 ***/
+
+    /*** 06-05-19 ***/
+   /* .galery_full{
+        float: none;
+        max-width: 100%;
+    }*/
+/*
+    .gallery_thumb {
+        overflow: visible;
+        padding-left: 0;
+        padding-top: 15px;
+    }*/
+
+    .gallery_thumb li{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .galery_full {
+       max-width: 70%;
+    }
+
+    /*** 06-05-19 ***/
  }
 
  @media(max-width: 420px) {

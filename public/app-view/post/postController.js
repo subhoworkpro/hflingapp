@@ -23,6 +23,7 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 
     $scope.anonymouscomment = [ "enabled", "disabled" ];
     $scope.notified = [ "yes", "no" ];
+    $scope.postermode = [ "Personals", "The Wall" ];
 
     var range = ["Age"];
 	for(var i=0;i<201;i++) {
@@ -221,7 +222,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 	    "share" : "disabled",
 	    "embed":"",
 	    "weight" : "Weight",
-	    "mage" : "Age"
+	    "mage" : "Age",	    
+	    "postermode" : "Personals",
 	};
 	vm.verifyemail = "";
     vm.addPost = function(){
@@ -416,7 +418,8 @@ app.controller('PostController', ['$rootScope','$scope','$location' ,'HttpServic
 			    "embed": this.data.embed.replace("src=", "xxx=").replace("href=", "yyyy="),
 			    "weight" : this.data.weight,
 			    "mage" : this.data.mage,
-			    "files": $rootScope.imageList
+			    "files": $rootScope.imageList,
+			    "postermode": this.data.postermode,
 			};
 	    	 HttpService.AddPost(postData)
 	        .then(function(response){
