@@ -87,7 +87,7 @@
           <h2>{{title || message}}<span ng-if= " location || age ">- </span><span ng-if="age">{{age}}</span><span ng-if="location"> ({{location}})</span></h2>
           <div>
             <a ng-if ="!is_flagged" href="" ng-click="openModal()">Reply</a>
-            <a ng-if ="!is_flagged" style="margin-left: 5px;" href="" ng-click="openModal_flag()">Flag</a>
+            <!-- <a ng-if ="!is_flagged" style="margin-left: 5px;" href="" ng-click="openModal_flag()">Flag</a> -->
             <a ng-if ="is_flagged" style="margin-left: 5px;" href="">Flagged</a>
             <a ng-if = "is_edit" style="margin-left: 5px;" href="#edit/{{post_id}}">Edit</a>
             <a ng-if = "is_edit" style="margin-left: 5px;" href="#delete/{{post_id}}">Delete</a>
